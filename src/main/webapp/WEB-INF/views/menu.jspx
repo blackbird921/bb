@@ -7,5 +7,13 @@
             <menu:item id="i_customer_new" messageCode="global_menu_new" url="/customers?form" z="d9+YIotZHp6KZLGKwwnMVzPvh8k="/>
             <menu:item id="i_customer_list" messageCode="global_menu_list" url="/customers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Yo9cUtyc7EUvbxwQ7EoeqXWaVJM="/>
         </menu:category>
+        <menu:category id="c_product" z="vJ6efqiSxFssuvqFTsXpvZ3AvA8=">
+            <menu:item id="i_product_new" messageCode="global_menu_new" url="/products?form" z="Ezf8cTW61d2RkMNEcYkDJpG01kc="/>
+            <menu:item id="i_product_list" messageCode="global_menu_list" url="/products?page=1&amp;size=${empty param.size ? 10 : param.size}" z="kEeyCmUUYXShbDEWwOLheaAkM50="/>
+        </menu:category>
+        <menu:category id="c_customerproduct" z="hnXZO+glJHoDm5ObRjv7RfD4A3A=">
+            <menu:item id="i_customerproduct_new" messageCode="global_menu_new" url="/customerproducts?form" z="t2up90dvYmc961yQ6osPGRTNcfQ="/>
+            <menu:item id="i_customerproduct_list" messageCode="global_menu_list" url="/customerproducts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="W55BzavP+QX/I0c/pRjGAH0ObtE="/>
+        </menu:category>
     </menu:menu>
 </div>

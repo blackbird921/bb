@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_Product" items="${products}" z="tzy/zLfQDlbayykkcVHw6eEc3HI=">
+        <table:table data="${products}" id="l_com_bb_domain_Product" path="/products" z="zS5jRV/jPpyF/76mQAHoBtzSPqc=">
+            <table:column id="c_com_bb_domain_Product_commits" property="commits" z="ZLQZIneP6b9mnKfV0T9VD4s/oko="/>
+            <table:column id="c_com_bb_domain_Product_stakes" property="stakes" z="RlsnX9PQ3U1hMU4dXUVMgw0q+PM="/>
+            <table:column date="true" dateTimePattern="${product_startdate_date_format}" id="c_com_bb_domain_Product_startDate" property="startDate" z="WqqwRCn5Wb5zcWOd22XdK7NGDlY="/>
+            <table:column date="true" dateTimePattern="${product_enddate_date_format}" id="c_com_bb_domain_Product_endDate" property="endDate" z="ug4YMknZLxIL+fl3GQY2tKa0hEc="/>
+        </table:table>
+    </page:list>
+</div>

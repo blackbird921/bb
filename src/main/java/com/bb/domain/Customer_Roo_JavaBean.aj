@@ -7,7 +7,6 @@ import com.bb.domain.Customer;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
 import com.bb.reference.Sex;
-import java.sql.Blob;
 import java.util.Date;
 
 privileged aspect Customer_Roo_JavaBean {
@@ -98,14 +97,6 @@ privileged aspect Customer_Roo_JavaBean {
     
     public void Customer.setBirthday(Date birthday) {
         this.birthday = birthday;
-    }
-    
-    public Blob Customer.getPicture() {
-        return this.picture;
-    }
-    
-    public void Customer.setPicture(Blob picture) {
-        this.picture = picture;
     }
     
     public String Customer.getBio() {

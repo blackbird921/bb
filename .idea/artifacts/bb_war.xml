@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="bb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="bb-0.1.0.BUILD-SNAPSHOT.war">
+      <element id="artifact" artifact-name="bb:war exploded" />
+    </root>
+  </artifact>
+</component>

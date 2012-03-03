@@ -3,7 +3,6 @@ package com.bb.domain;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
 import com.bb.reference.Sex;
-import java.sql.Blob;
 import java.util.Date;
 import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
@@ -59,8 +58,6 @@ public class Customer {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date birthday;
-
-    private Blob picture;
 
     @Size(max = 500)
     private String bio;

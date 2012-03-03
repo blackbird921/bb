@@ -4,6 +4,8 @@
 package com.bb.web;
 
 import com.bb.domain.Customer;
+import com.bb.domain.CustomerProduct;
+import com.bb.domain.Product;
 import com.bb.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -37,10 +39,64 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<CustomerProduct, String> ApplicationConversionServiceFactoryBean.getCustomerProductToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.bb.domain.CustomerProduct, java.lang.String>() {
+            public String convert(CustomerProduct customerProduct) {
+                return new StringBuilder().append(customerProduct.getStartWeek()).append(" ").append(customerProduct.getEndWeek()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, CustomerProduct> ApplicationConversionServiceFactoryBean.getIdToCustomerProductConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.CustomerProduct>() {
+            public com.bb.domain.CustomerProduct convert(java.lang.Long id) {
+                return CustomerProduct.findCustomerProduct(id);
+            }
+        };
+    }
+    
+    public Converter<String, CustomerProduct> ApplicationConversionServiceFactoryBean.getStringToCustomerProductConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.CustomerProduct>() {
+            public com.bb.domain.CustomerProduct convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), CustomerProduct.class);
+            }
+        };
+    }
+    
+    public Converter<Product, String> ApplicationConversionServiceFactoryBean.getProductToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.bb.domain.Product, java.lang.String>() {
+            public String convert(Product product) {
+                return new StringBuilder().append(product.getCommits()).append(" ").append(product.getStakes()).append(" ").append(product.getStartDate()).append(" ").append(product.getEndDate()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, Product> ApplicationConversionServiceFactoryBean.getIdToProductConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.Product>() {
+            public com.bb.domain.Product convert(java.lang.Long id) {
+                return Product.findProduct(id);
+            }
+        };
+    }
+    
+    public Converter<String, Product> ApplicationConversionServiceFactoryBean.getStringToProductConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.Product>() {
+            public com.bb.domain.Product convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Product.class);
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getCustomerToStringConverter());
         registry.addConverter(getIdToCustomerConverter());
         registry.addConverter(getStringToCustomerConverter());
+        registry.addConverter(getCustomerProductToStringConverter());
+        registry.addConverter(getIdToCustomerProductConverter());
+        registry.addConverter(getStringToCustomerProductConverter());
+        registry.addConverter(getProductToStringConverter());
+        registry.addConverter(getIdToProductConverter());
+        registry.addConverter(getStringToProductConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

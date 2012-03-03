@@ -14,7 +14,6 @@
         <field:input field="phone" id="c_com_bb_domain_Customer_phone" max="30" z="S/m0ZhJttvjKHJNpnqdPouHr9KM="/>
         <field:select field="sex" id="c_com_bb_domain_Customer_sex" items="${sexes}" path="sexes" z="PFOQY1NPkPCaos6aQRmS8M2qACw="/>
         <field:datetime dateTimePattern="${customer_birthday_date_format}" field="birthday" id="c_com_bb_domain_Customer_birthday" past="true" z="D1Wx2MGX6FHU72/u9LcGJ85ysb8="/>
-        <field:input field="picture" id="c_com_bb_domain_Customer_picture" z="1qtpK+yPtD+dNZjqZ4x8fLqm1VE="/>
         <field:textarea field="bio" id="c_com_bb_domain_Customer_bio" z="PXxLGNN35vTh9yXiB23kXDf44ig="/>
         <field:datetime dateTimePattern="${customer_registatrationdate_date_format}" field="registatrationDate" id="c_com_bb_domain_Customer_registatrationDate" z="TaJlcnTzo/UTkI2WSJ9TDcvWZDY="/>
         <field:datetime dateTimePattern="${customer_disablestartdate_date_format}" field="disableStartDate" id="c_com_bb_domain_Customer_disableStartDate" z="Ap61W6JB2kxJ+35cWqIsDWcCx50="/>
