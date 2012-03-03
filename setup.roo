@@ -1,0 +1,46 @@
+project --topLevelPackage com.bb
+
+jpa setup --provider HIBERNATE --database H2_IN_MEMORY
+
+enum type --class ~.reference.CustomerStatus
+enum constant --name Trial
+enum constant --name Approved
+enum constant --name Suspended
+enum constant --name Disabled
+
+enum type --class ~.reference.CustomerRole
+enum constant --name Customer
+enum constant --name Admin
+
+enum type --class ~.reference.Sex
+enum constant --name M
+enum constant --name F
+
+// #####################
+//   Customer
+// #####################
+entity jpa --class ~.domain.Customer --sequenceName CUSTOMER_SEQ
+field string --fieldName username --notNull --sizeMax 30 --sizeMin 3 --class ~.domain.Customer
+field string --fieldName password --notNull --sizeMax 15 --sizeMin 4
+field string --fieldName email    --notNull --sizeMax 30 --sizeMin 5
+field enum   --fieldName status   --notNull --type ~.reference.CustomerStatus
+field enum   --fieldName customerRole       --type ~.reference.CustomerRole
+field string --fieldName name               --sizeMax 30
+field string --fieldName address            --sizeMax 100
+field string --fieldName city               --sizeMax 30
+field string --fieldName phone              --sizeMax 30
+field enum   --fieldName sex                --type ~.reference.Sex
+field date   --fieldName birthday           --type java.util.Date --past
+field other  --fieldName picture            --type java.sql.Blob
+field string --fieldName bio                --sizeMax 500
+field date   --fieldName registatrationDate --type java.util.Date
+field date   --fieldName disableStartDate   --type java.util.Date
+field date   --fieldName disableEndDate     --type java.util.Date
+field string --fieldName disableReason      --sizeMax 100
+
+web mvc setup
+web mvc all --package ~.web
+web mvc finder all
+security setup
+
+logging setup --level INFO

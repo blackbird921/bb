@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_bb_domain_Customer" modelAttribute="customer" path="/customers" versionField="Version" z="0KOM89bYbze7zIuWz7F0csDoL30=">
+        <field:input field="username" id="c_com_bb_domain_Customer_username" max="30" min="3" required="true" z="4E+ZTIdBeh0T5Yvj0NfVGcPOVi4="/>
+        <field:input field="password" id="c_com_bb_domain_Customer_password" max="15" min="4" required="true" z="m85pGvbzWxsKJt71sJA4uaIyqM0="/>
+        <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email" z="yaUEIVCqoUJKOTy2AjZUw4e48bE="/>
+        <field:select field="status" id="c_com_bb_domain_Customer_status" items="${customerstatuses}" path="customerstatuses" required="true" z="UV0g0yUASgZWX7/Fuu1mEyfCWhE="/>
+        <field:select field="customerRole" id="c_com_bb_domain_Customer_customerRole" items="${customerroles}" path="customerroles" z="MSKPoQdGvqyHKEe6iwiuVAOBdbg="/>
+        <field:input field="name" id="c_com_bb_domain_Customer_name" max="30" z="Bz3Vq0TFu8udneCdv+7pRTWKGYo="/>
+        <field:textarea field="address" id="c_com_bb_domain_Customer_address" z="2vg4PmmT+M5SrTp5f9TZ7LcyscU="/>
+        <field:input field="city" id="c_com_bb_domain_Customer_city" max="30" z="o53VstJDEAwMjEWDD1UuH0J05Ko="/>
+        <field:input field="phone" id="c_com_bb_domain_Customer_phone" max="30" z="S/m0ZhJttvjKHJNpnqdPouHr9KM="/>
+        <field:select field="sex" id="c_com_bb_domain_Customer_sex" items="${sexes}" path="sexes" z="PFOQY1NPkPCaos6aQRmS8M2qACw="/>
+        <field:datetime dateTimePattern="${customer_birthday_date_format}" field="birthday" id="c_com_bb_domain_Customer_birthday" past="true" z="D1Wx2MGX6FHU72/u9LcGJ85ysb8="/>
+        <field:input field="picture" id="c_com_bb_domain_Customer_picture" z="1qtpK+yPtD+dNZjqZ4x8fLqm1VE="/>
+        <field:textarea field="bio" id="c_com_bb_domain_Customer_bio" z="PXxLGNN35vTh9yXiB23kXDf44ig="/>
+        <field:datetime dateTimePattern="${customer_registatrationdate_date_format}" field="registatrationDate" id="c_com_bb_domain_Customer_registatrationDate" z="TaJlcnTzo/UTkI2WSJ9TDcvWZDY="/>
+        <field:datetime dateTimePattern="${customer_disablestartdate_date_format}" field="disableStartDate" id="c_com_bb_domain_Customer_disableStartDate" z="Ap61W6JB2kxJ+35cWqIsDWcCx50="/>
+        <field:datetime dateTimePattern="${customer_disableenddate_date_format}" field="disableEndDate" id="c_com_bb_domain_Customer_disableEndDate" z="yZchis6yqg84AB8gPYVLa3IdvEg="/>
+        <field:textarea field="disableReason" id="c_com_bb_domain_Customer_disableReason" z="C7+VkdMG9tY212iWBEGul6RpM40="/>
+    </form:update>
+</div>

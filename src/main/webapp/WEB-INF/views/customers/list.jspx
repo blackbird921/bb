@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_Customer" items="${customers}" z="sHRF0gNlBLVHib38yPO5baV07TE=">
+        <table:table data="${customers}" id="l_com_bb_domain_Customer" path="/customers" z="klc66EitxjofETFWM7umSHyjcqM=">
+            <table:column id="c_com_bb_domain_Customer_username" property="username" z="gr3GS/jF4OvkRWpyQ8BKW8g5MtE="/>
+            <table:column id="c_com_bb_domain_Customer_password" property="password" z="hMFUsgQA8eQFh3MPymaLrKu3D+s="/>
+            <table:column id="c_com_bb_domain_Customer_email" property="email" z="ZB3+aGa8AQQwzRjqpp3JNtN7BXg="/>
+            <table:column id="c_com_bb_domain_Customer_status" property="status" z="Om1U3UQ2h2O1BxhLA4z5vmrE9IU="/>
+            <table:column id="c_com_bb_domain_Customer_customerRole" property="customerRole" z="Ox3TYvov152EPLbHms7C1khgCQ4="/>
+            <table:column id="c_com_bb_domain_Customer_name" property="name" z="NLoBIZN0ygKuiFP5pfkJyVPJU4U="/>
+        </table:table>
+    </page:list>
+</div>

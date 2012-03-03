@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_bb_domain_Customer" object="${customer}" path="/customers" z="mVN1DJKVCeiGrdw/NaygR0fvLfs=">
+        <field:display field="username" id="s_com_bb_domain_Customer_username" object="${customer}" z="EOBLp1KPw4XJzed9sXi4YjJUAfI="/>
+        <field:display field="password" id="s_com_bb_domain_Customer_password" object="${customer}" z="ZveFIG/fiTqO5AGPex17bRAXUoI="/>
+        <field:display field="email" id="s_com_bb_domain_Customer_email" object="${customer}" z="ylqeq5TFb8QUCET+lAVZ3IRNIFQ="/>
+        <field:display field="status" id="s_com_bb_domain_Customer_status" object="${customer}" z="cnOcfZTqhYDoU0LcCkpAjHbLYqY="/>
+        <field:display field="customerRole" id="s_com_bb_domain_Customer_customerRole" object="${customer}" z="Vqu5WXNd0U1kNHdq8mKYeRHIpCk="/>
+        <field:display field="name" id="s_com_bb_domain_Customer_name" object="${customer}" z="yKyuV5bGSZ9XzJ9BXnTeJRptJp0="/>
+        <field:display field="address" id="s_com_bb_domain_Customer_address" object="${customer}" z="ago5lTP0bG+bW1X4OhGXpuBb4QE="/>
+        <field:display field="city" id="s_com_bb_domain_Customer_city" object="${customer}" z="1ivWARx/R+HmF+udl0WrwiPtUYk="/>
+        <field:display field="phone" id="s_com_bb_domain_Customer_phone" object="${customer}" z="/UwqxEXutA1GC/KJQo+bf0tN5pg="/>
+        <field:display field="sex" id="s_com_bb_domain_Customer_sex" object="${customer}" z="ZRQ3W6V1JDwkYkisyKcqDdyx+Ig="/>
+        <field:display date="true" dateTimePattern="${customer_birthday_date_format}" field="birthday" id="s_com_bb_domain_Customer_birthday" object="${customer}" z="saQBtvDZliazMuhY9eHbZa7hx4E="/>
+        <field:display field="picture" id="s_com_bb_domain_Customer_picture" object="${customer}" z="f9tZo7yX77fOwVe0s92BGml3DZU="/>
+        <field:display field="bio" id="s_com_bb_domain_Customer_bio" object="${customer}" z="obfCUlGiEriEPMPwlu7q4UH2yGY="/>
+        <field:display date="true" dateTimePattern="${customer_registatrationdate_date_format}" field="registatrationDate" id="s_com_bb_domain_Customer_registatrationDate" object="${customer}" z="usNPgd7y1CUxdnMrc6Bc95/xkxo="/>
+        <field:display date="true" dateTimePattern="${customer_disablestartdate_date_format}" field="disableStartDate" id="s_com_bb_domain_Customer_disableStartDate" object="${customer}" z="H/QeG1LIM/pYftTi7kSnZxCcOLA="/>
+        <field:display date="true" dateTimePattern="${customer_disableenddate_date_format}" field="disableEndDate" id="s_com_bb_domain_Customer_disableEndDate" object="${customer}" z="0SOMUK5cR1o3KZC4OGAGlHVM6zk="/>
+        <field:display field="disableReason" id="s_com_bb_domain_Customer_disableReason" object="${customer}" z="tNLqroSXh+cuLBoMUn95SJwJDUQ="/>
+    </page:show>
+</div>
