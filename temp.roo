@@ -1,21 +1,14 @@
 // #####################
-//   Customer
+//   Location
 // #####################
-entity jpa --class ~.domain.Customer --sequenceName CUSTOMER_SEQ
-field string --fieldName username --notNull --sizeMax 30 --sizeMin 3 --class ~.domain.Customer
-field string --fieldName password --notNull --sizeMax 15 --sizeMin 4
-field string --fieldName email    --notNull --sizeMax 30 --sizeMin 5
-field enum   --fieldName status   --notNull --type ~.reference.CustomerStatus
-field enum   --fieldName customerRole       --type ~.reference.CustomerRole
-field string --fieldName name               --sizeMax 30
-field string --fieldName address            --sizeMax 100
-field string --fieldName city               --sizeMax 30
+entity jpa --class ~.domain.Location --sequenceName LOCATION_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Location
+field string --fieldName address --notNull           --sizeMax 100
+field string --fieldName city    --notNull           --sizeMax 30
+field string --fieldName gpsInfo               --sizeMax 30
 field string --fieldName phone              --sizeMax 30
-field enum   --fieldName sex                --type ~.reference.Sex
-field date   --fieldName birthday           --type java.util.Date --past
-// field other  --fieldName picture            --type java.sql.Blob
-field string --fieldName bio                --sizeMax 500
-field date   --fieldName registatrationDate --type java.util.Date
-field date   --fieldName disableStartDate   --type java.util.Date
-field date   --fieldName disableEndDate     --type java.util.Date
-field string --fieldName disableReason      --sizeMax 100
+field string --fieldName contactName               --sizeMax 30
+field string --fieldName status  --notNull             --sizeMax 30
+field string --fieldName rejectionReason               --sizeMax 30
+field date   --fieldName create_date           --type java.util.Date
+field reference --fieldName customer  --type ~.domain.Customer

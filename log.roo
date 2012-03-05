@@ -36,3 +36,5 @@ web mvc finder all
 security setup
 logging setup --level INFO
 // script setup.roo
+addon search enum
+addon list

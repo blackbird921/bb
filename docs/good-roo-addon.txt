@@ -1,0 +1,22 @@
+20 - - 0.3.0.RELEASE Addon for Spring Roo to provide generic DAO and query
+       methods based on Hades.
+22 - Y 2.0.0 Addons that adds Content Negotiating View Resolver configuration
+       to your application context: MVC multiple representations By default...
+25 - Y 0.8.1 MVC screen patterns management for Spring MVC based web layer. An
+       screen pattern is ... TBC...
+31 - Y 0.8.1 Modal Dialogs and Uncaught Exception Handler Management for Spring
+       MVC based web layer.
+33 - Y 0.8.1 Service Layer for Spring Roo. Includes management for: Local
+       services management, import remote services to local services and...
+36 - Y 0.5.0 Spring Security OAuth2 AutorizationServer/ResourceServer/Client
+       Configuration
+38 - Y 0.8.1 Dynamic configuration allows you to manage diferent values by
+       environment along different project files
+42 - Y 0.8.1 Site structure management for Spring MVC based web layer
+51 - - 0.1.1.RELEASE An add-on that enables webapp analytics and error
+       tracking.
+53 Y Y 1.2.0.M1 Offers GIT integration in the project. Each successfully
+       executed command will be automatically committed to a local GIT...
+54 - Y 2.0.0 JAXB2 Schema complier addon. It adds the maven-jaxb2-plugin to
+       your pom.xml. The plugin participates in the generate-code phase and...
+75 Y Y 1.6.1 The slf4j API
