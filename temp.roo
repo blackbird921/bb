@@ -1,23 +1,9 @@
 // #####################
-//   RefPaymentType
+//   CustomerProduct
 // #####################
-entity jpa --class ~.domain.ref.RefPaymentType --sequenceName Ref_Payment_Type_SEQ
-field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
-
-// #####################
-//   RefPaymentTxType
-// #####################
-entity jpa --class ~.domain.ref.RefPaymentTxType --sequenceName Ref_Payment_Tx_Type_SEQ
-field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxType
-
-// #####################
-//   RefPaymentTxStatus
-// #####################
-entity jpa --class ~.domain.ref.RefPaymentTxStatus --sequenceName Ref_Payment_Tx_Status_SEQ
-field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxStatus
-
-// #####################
-//   RefSex
-// #####################
-entity jpa --class ~.domain.ref.RefSex --sequenceName Ref_Sex_SEQ
-field string --fieldName name --notNull --sizeMax 30 --class ~.domain.ref.RefSex
+entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName productCommit  --notNull --type ~.domain.ProductCommit
+field reference --fieldName productStake   --notNull --type ~.domain.ProductStake
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date

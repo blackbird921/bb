@@ -302,3 +302,54 @@ quit
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-06 16:09:58
 hint
 web mvc all --package ~.web
+web mvc all --package ~.web
+entity jpa --class ~.domain.ProductCommit --sequenceName Product_Commit_SEQ
+field number --fieldName commits   --notNull --type java.lang.Long --min 1 --max 7
+field boolean --fieldName isActive --notNUll
+entity jpa --class ~.domain.ProductStake --sequenceName Product_Stake_SEQ
+field number --fieldName stakes    --notNull --type java.lang.Long --min 5 --max 50
+field boolean --fieldName isActive --notNUll
+// script temp.roo
+entity jpa --class ~.domain.ProductCommit --sequenceName Product_Commit_SEQ
+field number --fieldName commits   --notNull --type java.lang.Long --min 1 --max 7
+field boolean --fieldName isActive --notNUll
+entity jpa --class ~.domain.ProductStake --sequenceName Product_Stake_SEQ
+field number --fieldName stakes    --notNull --type java.lang.Long --min 5 --max 50
+field boolean --fieldName isActive --notNUll
+// script temp.roo
+// [failed] web mvc all --package ~.web 
+// [failed] web mvc all --package ~.web 
+// [failed] web mvc all --package ~.web 
+// [failed] web mvc all --package ~.web 
+// [failed] web mvc all --package ~.web 
+// [failed] entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+// [failed] script temp.roo
+// [failed] entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+// [failed] script temp.roo
+// [failed] entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+// [failed] script temp.roo
+entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+// [failed] field reference --fieldName customer --notNull --type ~.domain.Customer
+// [failed] script temp.roo
+// [failed] field reference --fieldName productCommit  --notNull --type ~.domain.ProductCommit
+entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+// [failed] field reference --fieldName customer --notNull --type ~.domain.Customer
+// [failed] script temp.roo
+entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+// [failed] field reference --fieldName customer --notNull --type ~.domain.Customer
+// [failed] script temp.roo
+entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+// [failed] field reference --fieldName customer --notNull --type ~.domain.Customer
+// [failed] script temp.roo
+entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+// [failed] field reference --fieldName customer --notNull --type ~.domain.Customer
+// [failed] script temp.roo
+entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+// [failed] field reference --fieldName productCommit  --notNull --type ~.domain.ProductCommit
+// [failed] script temp.roo
+// [failed] web mvc all --package ~.web
+// [failed] web mvc all --package ~.web
+// [failed] web mvc all --package ~.web
+// [failed] web mvc all --package ~.web
+web mvc all --package ~.web

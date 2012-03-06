@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_ProductCommit" items="${productcommits}" z="FO0k+SzPRqflgTNScKU/J6G2Il4=">
+        <table:table data="${productcommits}" id="l_com_bb_domain_ProductCommit" path="/productcommits" z="X+L8mkosojai7JrW64FtlIeeR6E=">
+            <table:column id="c_com_bb_domain_ProductCommit_commits" property="commits" z="MuwzY8G9G6NeDYTcmdAldXsFRvw="/>
+            <table:column id="c_com_bb_domain_ProductCommit_isActive" property="isActive" z="GCuzCIVOeaggcGBOZMCLugTUMJM="/>
+        </table:table>
+    </page:list>
+</div>

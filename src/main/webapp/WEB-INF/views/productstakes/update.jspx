@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_bb_domain_ProductStake" modelAttribute="productStake" path="/productstakes" versionField="Version" z="36Nw0dCUcYzk3roaOKcIpzbkk5M=">
+        <field:input field="stakes" id="c_com_bb_domain_ProductStake_stakes" max="50" min="5" required="true" validationMessageCode="field_invalid_integer" z="1blGJTr1LXQh6u00Lh98gl3yDyI="/>
+        <field:checkbox field="isActive" id="c_com_bb_domain_ProductStake_isActive" z="IT+Suj4D6qPwh/RGXj3+yK4aAAE="/>
+    </form:update>
+</div>

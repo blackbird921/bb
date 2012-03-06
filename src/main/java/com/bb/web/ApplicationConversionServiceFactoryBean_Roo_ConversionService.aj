@@ -15,6 +15,8 @@ import com.bb.domain.CustomerTransaction;
 import com.bb.domain.Faq;
 import com.bb.domain.Location;
 import com.bb.domain.Product;
+import com.bb.domain.ProductCommit;
+import com.bb.domain.ProductStake;
 import com.bb.domain.ref.RefPaymentTxType;
 import com.bb.domain.ref.RefPaymentType;
 import com.bb.domain.ref.RefSex;
@@ -315,6 +317,54 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<ProductCommit, String> ApplicationConversionServiceFactoryBean.getProductCommitToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.bb.domain.ProductCommit, java.lang.String>() {
+            public String convert(ProductCommit productCommit) {
+                return new StringBuilder().append(productCommit.getCommits()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, ProductCommit> ApplicationConversionServiceFactoryBean.getIdToProductCommitConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ProductCommit>() {
+            public com.bb.domain.ProductCommit convert(java.lang.Long id) {
+                return ProductCommit.findProductCommit(id);
+            }
+        };
+    }
+    
+    public Converter<String, ProductCommit> ApplicationConversionServiceFactoryBean.getStringToProductCommitConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ProductCommit>() {
+            public com.bb.domain.ProductCommit convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ProductCommit.class);
+            }
+        };
+    }
+    
+    public Converter<ProductStake, String> ApplicationConversionServiceFactoryBean.getProductStakeToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.bb.domain.ProductStake, java.lang.String>() {
+            public String convert(ProductStake productStake) {
+                return new StringBuilder().append(productStake.getStakes()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, ProductStake> ApplicationConversionServiceFactoryBean.getIdToProductStakeConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ProductStake>() {
+            public com.bb.domain.ProductStake convert(java.lang.Long id) {
+                return ProductStake.findProductStake(id);
+            }
+        };
+    }
+    
+    public Converter<String, ProductStake> ApplicationConversionServiceFactoryBean.getStringToProductStakeConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ProductStake>() {
+            public com.bb.domain.ProductStake convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ProductStake.class);
+            }
+        };
+    }
+    
     public Converter<RefPaymentTxType, String> ApplicationConversionServiceFactoryBean.getRefPaymentTxTypeToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.bb.domain.ref.RefPaymentTxType, java.lang.String>() {
             public String convert(RefPaymentTxType refPaymentTxType) {
@@ -424,6 +474,12 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getProductToStringConverter());
         registry.addConverter(getIdToProductConverter());
         registry.addConverter(getStringToProductConverter());
+        registry.addConverter(getProductCommitToStringConverter());
+        registry.addConverter(getIdToProductCommitConverter());
+        registry.addConverter(getStringToProductCommitConverter());
+        registry.addConverter(getProductStakeToStringConverter());
+        registry.addConverter(getIdToProductStakeConverter());
+        registry.addConverter(getStringToProductStakeConverter());
         registry.addConverter(getRefPaymentTxTypeToStringConverter());
         registry.addConverter(getIdToRefPaymentTxTypeConverter());
         registry.addConverter(getStringToRefPaymentTxTypeConverter());
