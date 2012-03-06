@@ -4,9 +4,9 @@
 package com.bb.domain;
 
 import com.bb.domain.Customer;
+import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
-import com.bb.reference.Sex;
 import java.util.Date;
 
 privileged aspect Customer_Roo_JavaBean {
@@ -83,11 +83,11 @@ privileged aspect Customer_Roo_JavaBean {
         this.phone = phone;
     }
     
-    public Sex Customer.getSex() {
+    public RefSex Customer.getSex() {
         return this.sex;
     }
     
-    public void Customer.setSex(Sex sex) {
+    public void Customer.setSex(RefSex sex) {
         this.sex = sex;
     }
     

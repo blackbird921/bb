@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_CustomerCard" items="${customercards}" z="pocc+QaIIdISlZnjZWRkHS9/gQo=">
+        <table:table data="${customercards}" id="l_com_bb_domain_CustomerCard" path="/customercards" z="zg8TubD99qAAxIaqgMkbDwco5Bs=">
+            <table:column id="c_com_bb_domain_CustomerCard_customer" property="customer" z="9UMTaI8CFVOT2Cthr97bqQUWENA="/>
+            <table:column id="c_com_bb_domain_CustomerCard_card" property="card" z="Ziif/S41Z06w0klDXC/eBLdcplc="/>
+            <table:column date="true" dateTimePattern="${customerCard_useddate_date_format}" id="c_com_bb_domain_CustomerCard_usedDate" property="usedDate" z="Mbv+Q5OSN7PZcn5aM8SG6Wn/V/w="/>
+        </table:table>
+    </page:list>
+</div>

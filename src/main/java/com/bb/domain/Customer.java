@@ -1,10 +1,11 @@
 package com.bb.domain;
 
+import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
-import com.bb.reference.Sex;
 import java.util.Date;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -51,8 +52,8 @@ public class Customer {
     @Size(max = 30)
     private String phone;
 
-    @Enumerated
-    private Sex sex;
+    @ManyToOne
+    private RefSex sex;
 
     @Past
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_bb_domain_CustomerCheckin" object="${customercheckin}" path="/customercheckins" z="wbPxqlC38jO54SSgCgx8gwICpow=">
+        <field:display field="customer" id="s_com_bb_domain_CustomerCheckin_customer" object="${customercheckin}" z="uuEZDESqml63mnls9IDJFrNKWls="/>
+        <field:display field="location" id="s_com_bb_domain_CustomerCheckin_location" object="${customercheckin}" z="SJjz5q4GevswLehUFtGJZz56Beg="/>
+        <field:display date="true" dateTimePattern="${customerCheckin_startdate_date_format}" field="startDate" id="s_com_bb_domain_CustomerCheckin_startDate" object="${customercheckin}" z="lEvEr687kHUYZJZA52Eu3xFwzbU="/>
+        <field:display date="true" dateTimePattern="${customerCheckin_enddate_date_format}" field="endDate" id="s_com_bb_domain_CustomerCheckin_endDate" object="${customercheckin}" z="SGEN5NdgLjUX2StAocAYeuAlcbU="/>
+        <field:display field="endType" id="s_com_bb_domain_CustomerCheckin_endType" object="${customercheckin}" z="B2ubkpMq0GO5BukpUMG6EVSg+sg="/>
+        <field:display field="isApproved" id="s_com_bb_domain_CustomerCheckin_isApproved" object="${customercheckin}" z="FspwlbesfEPtml6eWgQIm0bmmvI="/>
+    </page:show>
+</div>

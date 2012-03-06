@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_bb_domain_CustomerProfit" object="${customerprofit}" path="/customerprofits" z="M1OTYjCf/gOHy8dvdP9R5t+tASM=">
+        <field:display field="customer" id="s_com_bb_domain_CustomerProfit_customer" object="${customerprofit}" z="K0GMMJwT5qbSEgQx6OCWvCLpibc="/>
+        <field:display date="true" dateTimePattern="${customerProfit_startdate_date_format}" field="startDate" id="s_com_bb_domain_CustomerProfit_startDate" object="${customerprofit}" z="YPWyTjusE0s1TdSxrgWeSxdV+KQ="/>
+        <field:display date="true" dateTimePattern="${customerProfit_enddate_date_format}" field="endDate" id="s_com_bb_domain_CustomerProfit_endDate" object="${customerprofit}" z="WIR52q4aSAj3QBmk5KfVcY+uE9E="/>
+        <field:display field="amount" id="s_com_bb_domain_CustomerProfit_amount" object="${customerprofit}" z="/meZsze/1y38eW+XpKBGVJu5Ctg="/>
+    </page:show>
+</div>

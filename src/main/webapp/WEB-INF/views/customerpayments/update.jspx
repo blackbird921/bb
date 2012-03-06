@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_bb_domain_CustomerPayment" modelAttribute="customerPayment" path="/customerpayments" versionField="Version" z="KB3YIzimCwxYUoCeVVcAW3BKMCk=">
+        <field:select field="customer" id="c_com_bb_domain_CustomerPayment_customer" itemValue="id" items="${customers}" path="/customers" required="true" z="+0ww78ypue4D+dUs/gf3SDEHMeU="/>
+        <field:select field="paymentType" id="c_com_bb_domain_CustomerPayment_paymentType" itemValue="name_" items="${refpaymenttypes}" path="/refpaymenttypes" required="true" z="o38JuQvTEabUil4f7zAex6TirYI="/>
+        <field:input field="accountId" id="c_com_bb_domain_CustomerPayment_accountId" max="30" min="2" required="true" z="HcJfoDfqbM9Ocu36znbPYxH8iYs="/>
+        <field:datetime dateTimePattern="${customerPayment_startdate_date_format}" field="startDate" id="c_com_bb_domain_CustomerPayment_startDate" z="Y5PyB1tGL3Z91rUEIdKzrRNr/R0="/>
+        <field:datetime dateTimePattern="${customerPayment_enddate_date_format}" field="endDate" id="c_com_bb_domain_CustomerPayment_endDate" z="fPEodZzvnqiLnkMXwM0iGyLjfXw="/>
+    </form:update>
+</div>

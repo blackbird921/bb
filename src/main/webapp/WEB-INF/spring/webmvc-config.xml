@@ -78,4 +78,5 @@
     </property>
   </bean>
 <bean class="com.bb.web.ApplicationConversionServiceFactoryBean" id="applicationConversionService"/>
+<bean class="com.bb.service.InitService" id="initService"/>
 </beans>

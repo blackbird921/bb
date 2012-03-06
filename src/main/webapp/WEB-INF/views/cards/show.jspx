@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_bb_domain_Card" object="${card}" path="/cards" z="PQ1vvQWoZpwSM2RMNfCZHOQBA9A=">
+        <field:display field="name" id="s_com_bb_domain_Card_name" object="${card}" z="n+d0wH024xvzOa6aC/sxKuItuZU="/>
+        <field:display field="location" id="s_com_bb_domain_Card_location" object="${card}" z="IJmfNh7/YWLKHZk9+JZs1+i25Ks="/>
+        <field:display field="company" id="s_com_bb_domain_Card_company" object="${card}" z="2phDpvDWj84PHkgkZYJ7S7QxuWo="/>
+        <field:display field="maxUsage" id="s_com_bb_domain_Card_maxUsage" object="${card}" z="yLlNizVEd/LvvgAvSMlIDD5swVI="/>
+        <field:display date="true" dateTimePattern="${card_startdate_date_format}" field="startDate" id="s_com_bb_domain_Card_startDate" object="${card}" z="5BNb8BwOhR30K2d7XFLVl0EeF1A="/>
+        <field:display date="true" dateTimePattern="${card_enddate_date_format}" field="endDate" id="s_com_bb_domain_Card_endDate" object="${card}" z="vzXBh9z85gWomt5SwhVKPAS8MDw="/>
+        <field:display field="description" id="s_com_bb_domain_Card_description" object="${card}" z="08E9yye4vGkglcqUUmOO//x4xT0="/>
+        <field:display date="true" dateTimePattern="${card_createdate_date_format}" field="createDate" id="s_com_bb_domain_Card_createDate" object="${card}" z="R8S1jiAIHYhnx8Zojb86z9mxFA8="/>
+    </page:show>
+</div>

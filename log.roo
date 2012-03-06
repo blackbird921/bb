@@ -38,3 +38,258 @@ logging setup --level INFO
 // script setup.roo
 addon search enum
 addon list
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-05 18:16:57
+enum type --class ~.reference.LocationStatus
+// [failed] enum constant --name New
+// [failed] script temp.roo
+enum type --class ~.reference.LocationStatus
+enum constant --name Todo
+enum constant --name Approved
+enum constant --name Rejected
+entity jpa --class ~.domain.Location --sequenceName LOCATION_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Location
+field string --fieldName address --notNull           --sizeMax 100
+field string --fieldName city    --notNull           --sizeMax 30
+field string --fieldName gpsInfo               --sizeMax 30
+field string --fieldName phone              --sizeMax 30
+field string --fieldName contactName               --sizeMax 30
+field enum   --fieldName status  --notNull             --type ~.reference.LocationStatus
+field string --fieldName rejectionReason               --sizeMax 200
+field date   --fieldName create_date           --type java.util.Date
+field reference --fieldName customer  --type ~.domain.Customer
+// script temp.roo
+web mvc all --package ~.web
+entity jpa --class ~.domain.Company --sequenceName COMPANY_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Company
+enum type --class ~.reference.CardStatus
+enum constant --name Todo
+enum constant --name Approved
+enum constant --name Rejected
+entity jpa --class ~.domain.Card --sequenceName CARD_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Card
+field reference --fieldName location  --type ~.domain.Location
+field reference --fieldName company  --type ~.domain.Company
+field number --fieldName maxUsage   --type java.lang.Long
+field date   --fieldName startDate         --type java.util.Date
+field date   --fieldName endDate           --type java.util.Date
+field string --fieldName description        --sizeMax 200
+field date   --fieldName createDate         --type java.util.Date
+// script temp.roo
+enum type --class ~.reference.CardStatus
+enum constant --name Todo
+enum constant --name Approved
+enum constant --name Rejected
+entity jpa --class ~.domain.Card --sequenceName CARD_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Card
+field reference --fieldName location  --type ~.domain.Location
+field reference --fieldName company  --type ~.domain.Company
+field enum --fieldName status  --type ~.domain.CardStatus
+field number --fieldName maxUsage   --type java.lang.Long
+field date   --fieldName startDate         --type java.util.Date
+field date   --fieldName endDate           --type java.util.Date
+field string --fieldName description        --sizeMax 200
+field date   --fieldName createDate         --type java.util.Date
+entity jpa --class ~.domain.CustomerCard --sequenceName CUSTOMER_CARD_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName card  --notNull --type ~.domain.Card
+field date   --fieldName usedDate     --notNull    --type java.util.Date
+enum type --class ~.reference.CustomerCheckinEndType
+enum constant --name No_Signal
+enum constant --name Check_Out
+entity jpa --class ~.domain.CustomerCheckin --sequenceName CUSTOMER_CHECKIN_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName location  --notNull --type ~.domain.Location
+field date   --fieldName startDate     --notNull    --type java.util.Date
+field date   --fieldName endDate     --notNull    --type java.util.Date
+field enum --fieldName endType   --type ~.domain.CustomerCheckinEndType
+field boolean --fieldName isApproved
+// script temp.roo
+enum type --class ~.reference.CardStatus
+enum constant --name Todo
+enum constant --name Approved
+enum constant --name Rejected
+entity jpa --class ~.domain.Card --sequenceName CARD_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Card
+field reference --fieldName location  --type ~.domain.Location
+field reference --fieldName company  --type ~.domain.Company
+field enum --fieldName status  --type ~.reference.CardStatus
+field number --fieldName maxUsage   --type java.lang.Long
+field date   --fieldName startDate         --type java.util.Date
+field date   --fieldName endDate           --type java.util.Date
+field string --fieldName description        --sizeMax 200
+field date   --fieldName createDate         --type java.util.Date
+entity jpa --class ~.domain.CustomerCard --sequenceName CUSTOMER_CARD_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName card  --notNull --type ~.domain.Card
+field date   --fieldName usedDate     --notNull    --type java.util.Date
+enum type --class ~.reference.CustomerCheckinEndType
+enum constant --name No_Signal
+enum constant --name Check_Out
+entity jpa --class ~.domain.CustomerCheckin --sequenceName CUSTOMER_CHECKIN_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName location  --notNull --type ~.domain.Location
+field date   --fieldName startDate     --notNull    --type java.util.Date
+field date   --fieldName endDate     --notNull    --type java.util.Date
+field enum --fieldName endType   --type ~.reference.CustomerCheckinEndType
+field boolean --fieldName isApproved
+// script temp.roo
+web mvc all --package ~.web
+entity jpa --class ~.domain.Faq --sequenceName FAQ_SEQ
+field string --fieldName question --notNull --sizeMax 100 --sizeMin 2 --class ~.domain.Faq
+field string --fieldName answer   --notNull --sizeMax 500 --sizeMin 2
+// [failed] script temp.roo
+entity jpa --class ~.domain.Faq --sequenceName FAQ_SEQ
+field string --fieldName question --notNull --sizeMax 100 --sizeMin 2 --class ~.domain.Faq
+field string --fieldName answer   --notNull --sizeMax 500 --sizeMin 2
+// [failed] script temp.roo
+entity jpa --class ~.domain.Faq --sequenceName FAQ_SEQ
+field string --fieldName question --notNull --sizeMax 100 --sizeMin 2 --class ~.domain.Faq
+field string --fieldName answer   --notNull --sizeMax 500 --sizeMin 2
+field number --fieldName questionOrder  --notNull    --type java.lang.Long
+entity jpa --class ~.domain.CustomerProfit --sequenceName CUSTOMER_PROFIT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date
+field number --fieldName amount  --notNull   --type java.lang.Long
+// script temp.roo
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-05 23:38:01
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-05 23:38:07
+hint
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-05 23:38:29
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-05 23:38:35
+hint
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-05 23:50:20
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-05 23:50:29
+enum type --class ~.reference.CustomerRole
+enum constant --name Customer
+enum constant --name Admin
+enum type --class ~.reference.CustomerRole
+enum constant --name Customer
+                              enum constant --name Admin
+entity jpa --class ~.domain.ref.RefPaymentType --sequenceName REF_PAYMENT_TYPE_SEQ
+// [failed] field string --fieldName value --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
+// [failed] script temp.roo
+entity jpa --class ~.domain.ref.RefPaymentType --sequenceName REF_PAYMENT_TYPE_SEQ
+// [failed] field string --fieldName value --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
+// [failed] script temp.roo
+entity jpa --class ~.domain.ref.RefPaymentType --sequenceName REF_PAYMENT_TYPE_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
+entity jpa --class ~.domain.ref.RefPaymentTxType --sequenceName REF_PAYMENT_TX_TYPE_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxType
+entity jpa --class ~.domain.ref.RefPaymentTxStatus --sequenceName REF_PAYMENT_TX_STATUS_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxStatus
+entity jpa --class ~.domain.CustomerPayment --sequenceName CUSTOMER_PAYMENT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName paymentType --notNull --type ~.domain.ref.RefPaymentType
+// [failed] script temp.roo
+// [failed] script temp.roo
+// [failed] script temp.roo
+entity jpa --class ~.domain.ref.RefPaymentType --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
+entity jpa --class ~.domain.ref.RefPaymentTxType --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxType
+entity jpa --class ~.domain.ref.RefPaymentTxStatus --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxStatus
+entity jpa --class ~.domain.CustomerPayment --sequenceName CUSTOMER_PAYMENT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName paymentType --notNull --type ~.domain.ref.RefPaymentType
+// [failed] script temp.roo
+entity jpa --class ~.domain.ref.RefPaymentType --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
+entity jpa --class ~.domain.ref.RefPaymentTxType --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxType
+entity jpa --class ~.domain.ref.RefPaymentTxStatus --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxStatus
+entity jpa --class ~.domain.CustomerPayment --sequenceName CUSTOMER_PAYMENT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName paymentType --notNull --type ~.domain.ref.RefPaymentType
+field string --fieldName accountId  --notNull --sizeMax 30 --sizeMin 2
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date
+entity jpa --class ~.domain.CustomerTransaction --sequenceName CUSTOMER_TRANSACTION_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName customerPayment --notNull --type ~.domain.CustomerPayment
+field number    --fieldName amount   --type java.lang.Long
+field reference --fieldName transactionType --notNull --type ~.domain.ref.RefPaymentTxType
+field date      --fieldName transactionDate --notNUll --type java.util.Date
+// [failed] script temp.roo
+entity jpa --class ~.domain.ref.RefPaymentType --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
+entity jpa --class ~.domain.ref.RefPaymentTxType --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxType
+entity jpa --class ~.domain.ref.RefPaymentTxStatus --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxStatus
+entity jpa --class ~.domain.CustomerPayment --sequenceName CUSTOMER_PAYMENT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName paymentType --notNull --type ~.domain.ref.RefPaymentType
+field string --fieldName accountId  --notNull --sizeMax 30 --sizeMin 2
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date
+entity jpa --class ~.domain.CustomerTransaction --sequenceName CUSTOMER_TRANSACTION_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName customerPayment --notNull --type ~.domain.CustomerPayment
+field number    --fieldName amount   --type java.lang.Long
+field reference --fieldName transactionType --notNull --type ~.domain.ref.RefPaymentTxType
+field date      --fieldName transactionDate --notNUll --type java.util.Date
+field string    --fieldName transactionError           --sizeMax 30 --sizeMin 2
+// script temp.roo
+// [failed] web mvc all --package ~.web
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-06 01:33:45
+hint
+hint
+hint
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-06 01:41:37
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-06 01:41:44
+hint
+web mvc all --package ~.web
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-06 02:47:46
+hint
+entity jpa --class ~.domain.ref.RefSex --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefSex
+entity jpa --class ~.domain.Customer --sequenceName CUSTOMER_SEQ
+field string --fieldName username --notNull --sizeMax 30 --sizeMin 3 --class ~.domain.Customer
+field string --fieldName password --notNull --sizeMax 15 --sizeMin 4
+field string --fieldName email    --notNull --sizeMax 30 --sizeMin 5
+field enum   --fieldName status   --notNull --type ~.reference.CustomerStatus
+field enum   --fieldName customerRole       --type ~.reference.CustomerRole
+field string --fieldName name               --sizeMax 30
+field string --fieldName address            --sizeMax 100
+field string --fieldName city               --sizeMax 30
+field string --fieldName phone              --sizeMax 30
+field reference   --fieldName sex                --type ~.domain.ref.RefSex
+field date   --fieldName birthday           --type java.util.Date --past
+field string --fieldName bio                --sizeMax 500
+field date   --fieldName registatrationDate --type java.util.Date
+field date   --fieldName disableStartDate   --type java.util.Date
+field date   --fieldName disableEndDate     --type java.util.Date
+field string --fieldName disableReason      --sizeMax 100
+// script temp.roo
+entity jpa --class ~.domain.ref.RefSex --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --class ~.domain.ref.RefSex
+// [failed] field string --fieldName name --notNull --sizeMax 30 --class ~.domain.ref.RefSex
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-06 03:00:25
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-06 03:01:08
+entity jpa --class ~.domain.ref.RefSex --identifierField name
+field string --fieldName name --notNull --sizeMax 30 --class ~.domain.ref.RefSex
+entity jpa --class ~.domain.Customer --sequenceName CUSTOMER_SEQ
+field string --fieldName username --notNull --sizeMax 30 --sizeMin 3 --class ~.domain.Customer
+field string --fieldName password --notNull --sizeMax 15 --sizeMin 4
+field string --fieldName email    --notNull --sizeMax 30 --sizeMin 5
+field enum   --fieldName status   --notNull --type ~.reference.CustomerStatus
+field enum   --fieldName customerRole       --type ~.reference.CustomerRole
+field string --fieldName name               --sizeMax 30
+field string --fieldName address            --sizeMax 100
+field string --fieldName city               --sizeMax 30
+field string --fieldName phone              --sizeMax 30
+field reference   --fieldName sex                --type ~.domain.ref.RefSex
+field date   --fieldName birthday           --type java.util.Date --past
+field string --fieldName bio                --sizeMax 500
+field date   --fieldName registatrationDate --type java.util.Date
+field date   --fieldName disableStartDate   --type java.util.Date
+field date   --fieldName disableEndDate     --type java.util.Date
+field string --fieldName disableReason      --sizeMax 100
+// script temp.roo

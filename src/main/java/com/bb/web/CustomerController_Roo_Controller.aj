@@ -4,9 +4,9 @@
 package com.bb.web;
 
 import com.bb.domain.Customer;
+import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
-import com.bb.reference.Sex;
 import com.bb.web.CustomerController;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -102,9 +102,9 @@ privileged aspect CustomerController_Roo_Controller {
     void CustomerController.populateEditForm(Model uiModel, Customer customer) {
         uiModel.addAttribute("customer", customer);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("refsexes", RefSex.findAllRefSexes());
         uiModel.addAttribute("customerroles", Arrays.asList(CustomerRole.values()));
         uiModel.addAttribute("customerstatuses", Arrays.asList(CustomerStatus.values()));
-        uiModel.addAttribute("sexes", Arrays.asList(Sex.values()));
     }
     
     String CustomerController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

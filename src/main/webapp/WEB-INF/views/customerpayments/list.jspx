@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_CustomerPayment" items="${customerpayments}" z="uU86POycM06ENHQ10pyEaJy6Jao=">
+        <table:table data="${customerpayments}" id="l_com_bb_domain_CustomerPayment" path="/customerpayments" z="XtT1e2aS4rhC1ccbN5cn40tnliM=">
+            <table:column id="c_com_bb_domain_CustomerPayment_customer" property="customer" z="PvIfo6XjDarFmqHfGknfSSVcZSc="/>
+            <table:column id="c_com_bb_domain_CustomerPayment_paymentType" property="paymentType" z="LfjR5juOr0xQmmz1cvlmkFox0wM="/>
+            <table:column id="c_com_bb_domain_CustomerPayment_accountId" property="accountId" z="12CyXDSkmQKWihfonsZTZg8IWck="/>
+            <table:column date="true" dateTimePattern="${customerPayment_startdate_date_format}" id="c_com_bb_domain_CustomerPayment_startDate" property="startDate" z="Pz1vzODYwfnbNUPqLJIiY7PcfJk="/>
+            <table:column date="true" dateTimePattern="${customerPayment_enddate_date_format}" id="c_com_bb_domain_CustomerPayment_endDate" property="endDate" z="f/hlOq685dFZPi5zc8jx1HA7PHs="/>
+        </table:table>
+    </page:list>
+</div>

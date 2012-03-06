@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_CustomerCheckin" items="${customercheckins}" z="E2XGAAKKpphStViYc5KAP338fXg=">
+        <table:table data="${customercheckins}" id="l_com_bb_domain_CustomerCheckin" path="/customercheckins" z="U3TGBVJBxu5fCZSpIFCVHNQ6JXU=">
+            <table:column id="c_com_bb_domain_CustomerCheckin_customer" property="customer" z="NwvwVwrTpKZfIdhJ2YwnhVBbiI4="/>
+            <table:column id="c_com_bb_domain_CustomerCheckin_location" property="location" z="WksVU2Mcip4ro099TrrSlNPksk4="/>
+            <table:column date="true" dateTimePattern="${customerCheckin_startdate_date_format}" id="c_com_bb_domain_CustomerCheckin_startDate" property="startDate" z="z5G6ahoEdmVjpLbIqkZzSRzTJmQ="/>
+            <table:column date="true" dateTimePattern="${customerCheckin_enddate_date_format}" id="c_com_bb_domain_CustomerCheckin_endDate" property="endDate" z="KnZjokxTSrnvPYmdLGCtd5cNQ7Y="/>
+            <table:column id="c_com_bb_domain_CustomerCheckin_endType" property="endType" z="LA2wjxp0Xi2pb5n8mK/kSBdL4CQ="/>
+            <table:column id="c_com_bb_domain_CustomerCheckin_isApproved" property="isApproved" z="JV1OE/fD9BaH4h1Ql3Mh+N9bm0g="/>
+        </table:table>
+    </page:list>
+</div>

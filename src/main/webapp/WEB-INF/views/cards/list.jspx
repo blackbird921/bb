@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_Card" items="${cards}" z="2/InPHOr0Il9zU//LTicE0xe8CY=">
+        <table:table data="${cards}" id="l_com_bb_domain_Card" path="/cards" z="Ha6c0018NIQ9doOTnrfwcFkf/sU=">
+            <table:column id="c_com_bb_domain_Card_name" property="name" z="RjJ2cVOGFxOwlJIOYngfM3v68/k="/>
+            <table:column id="c_com_bb_domain_Card_location" property="location" z="M2FWtu+iUB1IKwkwNrXrKwtCxus="/>
+            <table:column id="c_com_bb_domain_Card_company" property="company" z="shOPc7JSjLeMXATS20XBGj94pK8="/>
+            <table:column id="c_com_bb_domain_Card_maxUsage" property="maxUsage" z="0eXG4250mNtOFZ0R2JOTJ7nTdL0="/>
+            <table:column date="true" dateTimePattern="${card_startdate_date_format}" id="c_com_bb_domain_Card_startDate" property="startDate" z="X7zrZB1BVE1uzi881sHDfIdi+2c="/>
+            <table:column date="true" dateTimePattern="${card_enddate_date_format}" id="c_com_bb_domain_Card_endDate" property="endDate" z="6DS2rv3bcQq4hXfLQTKjYrmC1J4="/>
+        </table:table>
+    </page:list>
+</div>

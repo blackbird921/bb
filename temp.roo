@@ -1,14 +1,23 @@
 // #####################
-//   Location
+//   RefPaymentType
 // #####################
-entity jpa --class ~.domain.Location --sequenceName LOCATION_SEQ
-field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Location
-field string --fieldName address --notNull           --sizeMax 100
-field string --fieldName city    --notNull           --sizeMax 30
-field string --fieldName gpsInfo               --sizeMax 30
-field string --fieldName phone              --sizeMax 30
-field string --fieldName contactName               --sizeMax 30
-field string --fieldName status  --notNull             --sizeMax 30
-field string --fieldName rejectionReason               --sizeMax 30
-field date   --fieldName create_date           --type java.util.Date
-field reference --fieldName customer  --type ~.domain.Customer
+entity jpa --class ~.domain.ref.RefPaymentType --sequenceName Ref_Payment_Type_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
+
+// #####################
+//   RefPaymentTxType
+// #####################
+entity jpa --class ~.domain.ref.RefPaymentTxType --sequenceName Ref_Payment_Tx_Type_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxType
+
+// #####################
+//   RefPaymentTxStatus
+// #####################
+entity jpa --class ~.domain.ref.RefPaymentTxStatus --sequenceName Ref_Payment_Tx_Status_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxStatus
+
+// #####################
+//   RefSex
+// #####################
+entity jpa --class ~.domain.ref.RefSex --sequenceName Ref_Sex_SEQ
+field string --fieldName name --notNull --sizeMax 30 --class ~.domain.ref.RefSex

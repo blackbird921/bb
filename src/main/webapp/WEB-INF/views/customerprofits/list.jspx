@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_CustomerProfit" items="${customerprofits}" z="1FpwhCTh3T0+emt6XgbCISfjUn8=">
+        <table:table data="${customerprofits}" id="l_com_bb_domain_CustomerProfit" path="/customerprofits" z="99EVSCdTi+1Ryizg1KO6kmfd2IU=">
+            <table:column id="c_com_bb_domain_CustomerProfit_customer" property="customer" z="F3WP8ZObh5OngTdR4+xmyjbxPU0="/>
+            <table:column date="true" dateTimePattern="${customerProfit_startdate_date_format}" id="c_com_bb_domain_CustomerProfit_startDate" property="startDate" z="G8SUgyRuSV9ZG+JLIiJilLpDfkE="/>
+            <table:column date="true" dateTimePattern="${customerProfit_enddate_date_format}" id="c_com_bb_domain_CustomerProfit_endDate" property="endDate" z="0Set6NOZNahHy+yQF5sIkUbtPO4="/>
+            <table:column id="c_com_bb_domain_CustomerProfit_amount" property="amount" z="mu0ritJnSnsSC6ndEP9ppCGXRhA="/>
+        </table:table>
+    </page:list>
+</div>

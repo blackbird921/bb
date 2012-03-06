@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_bb_domain_CustomerCheckin" modelAttribute="customerCheckin" path="/customercheckins" render="${empty dependencies}" z="P+K6Vb1uFDA67nqhkci7Bq+ZMWw=">
+        <field:select field="customer" id="c_com_bb_domain_CustomerCheckin_customer" itemValue="id" items="${customers}" path="/customers" required="true" z="nVQ/6wPNGenSpVbgZJODz8wIaRM="/>
+        <field:select field="location" id="c_com_bb_domain_CustomerCheckin_location" itemValue="id" items="${locations}" path="/locations" required="true" z="v/IHGN0vp7mmc9sxu0TOC9DfDeM="/>
+        <field:datetime dateTimePattern="${customerCheckin_startdate_date_format}" field="startDate" id="c_com_bb_domain_CustomerCheckin_startDate" required="true" z="VJuoj/mFHKUWDjDOoiqLupA0LMg="/>
+        <field:datetime dateTimePattern="${customerCheckin_enddate_date_format}" field="endDate" id="c_com_bb_domain_CustomerCheckin_endDate" required="true" z="PY3okTMJKVku5bQbjhDiIExRFEA="/>
+        <field:select field="endType" id="c_com_bb_domain_CustomerCheckin_endType" items="${customercheckinendtypes}" path="customercheckinendtypes" z="mC02Oz+OnVCYQMVK6FOho/WBG2w="/>
+        <field:checkbox field="isApproved" id="c_com_bb_domain_CustomerCheckin_isApproved" z="+w9maKny6D8w7lY8qExwZUMcp1E="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_bb_domain_CustomerCheckin" render="${not empty dependencies}" z="hQfXncy6HqvHMwMnwNpE05Gks3k="/>
+</div>

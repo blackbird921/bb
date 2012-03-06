@@ -1,16 +1,43 @@
+// #####################
+//   RefPaymentType
+// #####################
+entity jpa --class ~.domain.ref.RefPaymentType --sequenceName Ref_Payment_Type_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentType
+
+// #####################
+//   RefPaymentTxType
+// #####################
+entity jpa --class ~.domain.ref.RefPaymentTxType --sequenceName Ref_Payment_Tx_Type_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.ref.RefPaymentTxType
+
+
+// #####################
+//   RefSex
+// #####################
+entity jpa --class ~.domain.ref.RefSex --sequenceName Ref_Sex_SEQ
+field string --fieldName name --notNull --sizeMax 30 --class ~.domain.ref.RefSex
+
+// #####################
+// enum enum enum
+// #####################
+enum type --class ~.reference.CustomerCheckinEndType
+enum constant --name No_Signal
+enum constant --name Check_Out
+
+enum type --class ~.reference.CustomerRole
+enum constant --name Customer
+enum constant --name Admin
+
 enum type --class ~.reference.CustomerStatus
 enum constant --name Trial
 enum constant --name Approved
 enum constant --name Suspended
 enum constant --name Disabled
 
-enum type --class ~.reference.CustomerRole
-enum constant --name Customer
-enum constant --name Admin
-
-enum type --class ~.reference.Sex
-enum constant --name M
-enum constant --name F
+enum type --class ~.reference.LocationStatus
+enum constant --name Todo
+enum constant --name Approved
+enum constant --name Rejected
 
 // #####################
 //   Customer
@@ -25,7 +52,7 @@ field string --fieldName name               --sizeMax 30
 field string --fieldName address            --sizeMax 100
 field string --fieldName city               --sizeMax 30
 field string --fieldName phone              --sizeMax 30
-field enum   --fieldName sex                --type ~.reference.Sex
+field reference   --fieldName sex                --type ~.domain.ref.RefSex
 field date   --fieldName birthday           --type java.util.Date --past
 // field other  --fieldName picture            --type java.sql.Blob
 field string --fieldName bio                --sizeMax 500
@@ -49,7 +76,101 @@ field date   --fieldName endDate             --type java.util.Date
 entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
 field reference --fieldName customer --notNull --type ~.domain.Customer
 field reference --fieldName product  --notNull --type ~.domain.Product
-field number --fieldName startWeek   --notNull --type java.lang.Long --min 201201
-field number --fieldName endWeek               --type java.lang.Long --min 201201
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date
 
+// #####################
+//   Location
+// #####################
+entity jpa --class ~.domain.Location --sequenceName LOCATION_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Location
+field string --fieldName address --notNull           --sizeMax 100
+field string --fieldName city    --notNull           --sizeMax 30
+field string --fieldName gpsInfo               --sizeMax 30
+field string --fieldName phone              --sizeMax 30
+field string --fieldName contactName               --sizeMax 30
+field enum   --fieldName status  --notNull             --type ~.reference.LocationStatus
+field string --fieldName rejectionReason               --sizeMax 200
+field date   --fieldName create_date           --type java.util.Date
+field reference --fieldName customer  --type ~.domain.Customer
+
+// #####################
+//   Company
+// #####################
+entity jpa --class ~.domain.Company --sequenceName COMPANY_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Company
+
+// #####################
+//   Card
+// #####################
+entity jpa --class ~.domain.Card --sequenceName CARD_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Card
+field reference --fieldName location  --type ~.domain.Location
+field reference --fieldName company  --type ~.domain.Company
+field number --fieldName maxUsage   --type java.lang.Long
+field date   --fieldName startDate         --type java.util.Date
+field date   --fieldName endDate           --type java.util.Date
+field string --fieldName description        --sizeMax 200
+field date   --fieldName createDate         --type java.util.Date
+
+
+// #####################
+//   CustomerCard
+// #####################
+entity jpa --class ~.domain.CustomerCard --sequenceName CUSTOMER_CARD_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName card  --notNull --type ~.domain.Card
+field date   --fieldName usedDate     --notNull    --type java.util.Date
+
+
+// #####################
+//   CustomerCheckin
+// #####################
+entity jpa --class ~.domain.CustomerCheckin --sequenceName CUSTOMER_CHECKIN_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName location  --notNull --type ~.domain.Location
+field date   --fieldName startDate     --notNull    --type java.util.Date
+field date   --fieldName endDate     --notNull    --type java.util.Date
+field enum --fieldName endType   --type ~.reference.CustomerCheckinEndType
+field boolean --fieldName isApproved
+
+
+// #####################
+//   Faq
+// #####################
+entity jpa --class ~.domain.Faq --sequenceName FAQ_SEQ
+field string --fieldName question --notNull --sizeMax 100 --sizeMin 2 --class ~.domain.Faq
+field string --fieldName answer   --notNull --sizeMax 500 --sizeMin 2
+field number --fieldName questionOrder  --notNull    --type java.lang.Long
+
+// #####################
+//   CustomerProfit
+// #####################
+entity jpa --class ~.domain.CustomerProfit --sequenceName CUSTOMER_PROFIT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date
+field number --fieldName amount  --notNull  --type java.lang.Long
+
+
+// #####################
+//   CustomerPayment
+// #####################
+entity jpa --class ~.domain.CustomerPayment --sequenceName CUSTOMER_PAYMENT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName paymentType --notNull --type ~.domain.ref.RefPaymentType
+field string --fieldName accountId  --notNull --sizeMax 30 --sizeMin 2
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date
+
+// #####################
+//   CustomerTransaction
+// #####################
+entity jpa --class ~.domain.CustomerTransaction --sequenceName CUSTOMER_TRANSACTION_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName customerPayment --notNull --type ~.domain.CustomerPayment
+field number    --fieldName amount   --type java.lang.Long
+field reference --fieldName transactionType --notNull --type ~.domain.ref.RefPaymentTxType
+field date      --fieldName transactionDate --notNUll --type java.util.Date
+field string    --fieldName transactionError           --sizeMax 30 --sizeMin 2
 
