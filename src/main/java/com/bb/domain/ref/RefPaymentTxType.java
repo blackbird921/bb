@@ -14,4 +14,9 @@ public class RefPaymentTxType {
     @NotNull
     @Size(min = 2, max = 30)
     private String name;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

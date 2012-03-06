@@ -17,6 +17,7 @@ import com.bb.domain.Location;
 import com.bb.domain.Product;
 import com.bb.domain.ref.RefPaymentTxType;
 import com.bb.domain.ref.RefPaymentType;
+import com.bb.domain.ref.RefSex;
 import com.bb.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -362,6 +363,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<RefSex, String> ApplicationConversionServiceFactoryBean.getRefSexToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.bb.domain.ref.RefSex, java.lang.String>() {
+            public String convert(RefSex refSex) {
+                return new StringBuilder().append(refSex.getName()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, RefSex> ApplicationConversionServiceFactoryBean.getIdToRefSexConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ref.RefSex>() {
+            public com.bb.domain.ref.RefSex convert(java.lang.Long id) {
+                return RefSex.findRefSex(id);
+            }
+        };
+    }
+    
+    public Converter<String, RefSex> ApplicationConversionServiceFactoryBean.getStringToRefSexConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ref.RefSex>() {
+            public com.bb.domain.ref.RefSex convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), RefSex.class);
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getCardToStringConverter());
         registry.addConverter(getIdToCardConverter());
@@ -405,6 +430,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getRefPaymentTypeToStringConverter());
         registry.addConverter(getIdToRefPaymentTypeConverter());
         registry.addConverter(getStringToRefPaymentTypeConverter());
+        registry.addConverter(getRefSexToStringConverter());
+        registry.addConverter(getIdToRefSexConverter());
+        registry.addConverter(getStringToRefSexConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

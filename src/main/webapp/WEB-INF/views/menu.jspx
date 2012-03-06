@@ -63,5 +63,9 @@
             <menu:item id="i_faq_new" messageCode="global_menu_new" url="/faqs?form" z="/Ba3l6V1C3EvKYMp1uKfFgt5xV0="/>
             <menu:item id="i_faq_list" messageCode="global_menu_list" url="/faqs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JXBgd0rLLmYfWHbTTiZEewzfhrw="/>
         </menu:category>
+        <menu:category id="c_refsex" z="2vH3ampnCWkqZHAiEhRkDUBasD8=">
+            <menu:item id="i_refsex_new" messageCode="global_menu_new" url="/refsexes?form" z="SNww9LLYRBehSZ8B/HN2fr6RSs8="/>
+            <menu:item id="i_refsex_list" messageCode="global_menu_list" url="/refsexes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="F+YZsKgnRzlWjWLFDLUYViqnlbg="/>
+        </menu:category>
     </menu:menu>
 </div>

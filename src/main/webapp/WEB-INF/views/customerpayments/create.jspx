@@ -4,7 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_bb_domain_CustomerPayment" modelAttribute="customerPayment" path="/customerpayments" render="${empty dependencies}" z="DxUXew6v/1YsjS2FR9FnlNt+xf4=">
         <field:select field="customer" id="c_com_bb_domain_CustomerPayment_customer" itemValue="id" items="${customers}" path="/customers" required="true" z="+0ww78ypue4D+dUs/gf3SDEHMeU="/>
-        <field:select field="paymentType" id="c_com_bb_domain_CustomerPayment_paymentType" itemValue="name_" items="${refpaymenttypes}" path="/refpaymenttypes" required="true" z="o38JuQvTEabUil4f7zAex6TirYI="/>
+        <field:select field="paymentType" id="c_com_bb_domain_CustomerPayment_paymentType" itemValue="id" items="${refpaymenttypes}" path="/refpaymenttypes" required="true" z="EvNBwfQlL3ZGZTBzcRGmeRBll6g="/>
         <field:input field="accountId" id="c_com_bb_domain_CustomerPayment_accountId" max="30" min="2" required="true" z="HcJfoDfqbM9Ocu36znbPYxH8iYs="/>
         <field:datetime dateTimePattern="${customerPayment_startdate_date_format}" field="startDate" id="c_com_bb_domain_CustomerPayment_startDate" z="Y5PyB1tGL3Z91rUEIdKzrRNr/R0="/>
         <field:datetime dateTimePattern="${customerPayment_enddate_date_format}" field="endDate" id="c_com_bb_domain_CustomerPayment_endDate" z="fPEodZzvnqiLnkMXwM0iGyLjfXw="/>

@@ -14,4 +14,9 @@ public class RefSex {
     @NotNull
     @Size(max = 30)
     private String name;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
