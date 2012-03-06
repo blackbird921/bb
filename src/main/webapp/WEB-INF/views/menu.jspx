@@ -43,9 +43,13 @@
             <menu:item id="i_customerprofit_new" messageCode="global_menu_new" url="/customerprofits?form" z="+/MviZToGGb1D/KKVlnhqdRcp+Q="/>
             <menu:item id="i_customerprofit_list" messageCode="global_menu_list" url="/customerprofits?page=1&amp;size=${empty param.size ? 10 : param.size}" z="uEZFkwWXY+6g+qrOS4SpXkvNqa4="/>
         </menu:category>
-        <menu:category id="c_refpaymenttxstatus" z="rrGjCfslB6yF0G011+6X6s1eaSA=">
-            <menu:item id="i_refpaymenttxstatus_new" messageCode="global_menu_new" url="/refpaymenttxstatuses?form" z="xWkDsRlZJULuwufgdbj1G8DTedg="/>
-            <menu:item id="i_refpaymenttxstatus_list" messageCode="global_menu_list" url="/refpaymenttxstatuses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="m4vLRQ6nZ0r7mFH9B10XPTyUG1E="/>
+        <menu:category id="c_customerpayment" z="P0PBQdepuDSTZyKUzRVkIegzxxM=">
+            <menu:item id="i_customerpayment_new" messageCode="global_menu_new" url="/customerpayments?form" z="Btnu3vjYOY04M77iUA9t0g/dy8k="/>
+            <menu:item id="i_customerpayment_list" messageCode="global_menu_list" url="/customerpayments?page=1&amp;size=${empty param.size ? 10 : param.size}" z="CRXbFbLtp9izVZT/ow/omFKtx/U="/>
+        </menu:category>
+        <menu:category id="c_faq" z="4cHFW8rK6x3iQyfwuRrmm/knvTg=">
+            <menu:item id="i_faq_new" messageCode="global_menu_new" url="/faqs?form" z="/Ba3l6V1C3EvKYMp1uKfFgt5xV0="/>
+            <menu:item id="i_faq_list" messageCode="global_menu_list" url="/faqs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JXBgd0rLLmYfWHbTTiZEewzfhrw="/>
         </menu:category>
         <menu:category id="c_refpaymenttype" z="fpL8uzvINoHZxxH7S9+mBJKkXhw=">
             <menu:item id="i_refpaymenttype_new" messageCode="global_menu_new" url="/refpaymenttypes?form" z="tew9Wr2wqmWdOCOjpUlOJXRqt2o="/>
@@ -54,14 +58,6 @@
         <menu:category id="c_refpaymenttxtype" z="rs1VABYEOKAPQ1tWNNqqgdgKaFg=">
             <menu:item id="i_refpaymenttxtype_new" messageCode="global_menu_new" url="/refpaymenttxtypes?form" z="mPVtW4NLRvuggWzP5OAVduHAs00="/>
             <menu:item id="i_refpaymenttxtype_list" messageCode="global_menu_list" url="/refpaymenttxtypes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9Uym6aSfHoRp10CrZ3JWDVxh8uo="/>
-        </menu:category>
-        <menu:category id="c_customerpayment" z="P0PBQdepuDSTZyKUzRVkIegzxxM=">
-            <menu:item id="i_customerpayment_new" messageCode="global_menu_new" url="/customerpayments?form" z="Btnu3vjYOY04M77iUA9t0g/dy8k="/>
-            <menu:item id="i_customerpayment_list" messageCode="global_menu_list" url="/customerpayments?page=1&amp;size=${empty param.size ? 10 : param.size}" z="CRXbFbLtp9izVZT/ow/omFKtx/U="/>
-        </menu:category>
-        <menu:category id="c_faq" z="4cHFW8rK6x3iQyfwuRrmm/knvTg=">
-            <menu:item id="i_faq_new" messageCode="global_menu_new" url="/faqs?form" z="/Ba3l6V1C3EvKYMp1uKfFgt5xV0="/>
-            <menu:item id="i_faq_list" messageCode="global_menu_list" url="/faqs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JXBgd0rLLmYfWHbTTiZEewzfhrw="/>
         </menu:category>
         <menu:category id="c_refsex" z="2vH3ampnCWkqZHAiEhRkDUBasD8=">
             <menu:item id="i_refsex_new" messageCode="global_menu_new" url="/refsexes?form" z="SNww9LLYRBehSZ8B/HN2fr6RSs8="/>

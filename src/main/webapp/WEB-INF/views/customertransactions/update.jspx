@@ -8,6 +8,6 @@
         <field:input field="amount" id="c_com_bb_domain_CustomerTransaction_amount" validationMessageCode="field_invalid_integer" z="HdYTmKef9IGJPi73lmvdjo5mwBQ="/>
         <field:select field="transactionType" id="c_com_bb_domain_CustomerTransaction_transactionType" itemValue="id" items="${refpaymenttxtypes}" path="/refpaymenttxtypes" required="true" z="w/3Ot9XPrj5s5e0vFneh2MwV0TE="/>
         <field:datetime dateTimePattern="${customerTransaction_transactiondate_date_format}" field="transactionDate" id="c_com_bb_domain_CustomerTransaction_transactionDate" z="MatUR52YqrPZBudib2WVgkLGu0Q="/>
-        <field:input field="transactionError" id="c_com_bb_domain_CustomerTransaction_transactionError" max="30" min="2" required="true" z="kU4JtdvTSujrrRhIXDX1Of4wc5M="/>
+        <field:input field="transactionError" id="c_com_bb_domain_CustomerTransaction_transactionError" max="200" z="kU4JtdvTSujrrRhIXDX1Of4wc5M="/>
     </form:update>
 </div>

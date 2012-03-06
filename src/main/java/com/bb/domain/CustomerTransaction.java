@@ -35,6 +35,5 @@ public class CustomerTransaction {
     @DateTimeFormat(style = "M-")
     private Date transactionDate;
 
-    @Size(min = 2, max = 30)
     private String transactionError;
 }

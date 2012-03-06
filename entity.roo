@@ -171,6 +171,6 @@ field reference --fieldName customer --notNull --type ~.domain.Customer
 field reference --fieldName customerPayment --notNull --type ~.domain.CustomerPayment
 field number    --fieldName amount   --type java.lang.Long
 field reference --fieldName transactionType --notNull --type ~.domain.ref.RefPaymentTxType
-field date      --fieldName transactionDate --notNUll --type java.util.Date
-field string    --fieldName transactionError           --sizeMax 30 --sizeMin 2
+field date      --fieldName transactionDate --notNull --type java.util.Date
+field string    --fieldName transactionError          --sizeMax 200
 
