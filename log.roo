@@ -353,3 +353,21 @@ field reference --fieldName customer --notNull --type ~.domain.Customer
 // [failed] web mvc all --package ~.web
 // [failed] web mvc all --package ~.web
 web mvc all --package ~.web
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-07 02:52:17
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-07 02:53:39
+web mvc all --package ~.web
+hint
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-07 02:55:51
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-07 02:56:02
+hint
+entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName productCommit  --notNull --type ~.domain.ProductCommit
+field reference --fieldName productStake   --notNull --type ~.domain.ProductStake
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date
+// script temp.roo
+// [failed] field reference --fieldName productCommit  --notNull --type ~.domain.ProductCommit
+web mvc all --package ~.web

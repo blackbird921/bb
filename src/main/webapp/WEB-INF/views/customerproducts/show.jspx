@@ -4,8 +4,9 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_bb_domain_CustomerProduct" object="${customerproduct}" path="/customerproducts" z="feP/vZ/f8s6KHWAA+Slnr6sPfBM=">
         <field:display field="customer" id="s_com_bb_domain_CustomerProduct_customer" object="${customerproduct}" z="ISiwNjHgPcnwlM4d5NJD0j9lJ5U="/>
-        <field:display field="product" id="s_com_bb_domain_CustomerProduct_product" object="${customerproduct}" z="fsOk3GEqUpOhmfG3+FZ7bieoWs8="/>
-        <field:display field="startWeek" id="s_com_bb_domain_CustomerProduct_startWeek" object="${customerproduct}" z="xhjNTrzWbP28nqFBvuYtiYqJybA="/>
-        <field:display field="endWeek" id="s_com_bb_domain_CustomerProduct_endWeek" object="${customerproduct}" z="pe6lBpxQ5AaaN301XI2ZlREY/sg="/>
+        <field:display field="productCommit" id="s_com_bb_domain_CustomerProduct_productCommit" object="${customerproduct}" z="gT9Y45LWv7pwLGoYgirVmbxdOao="/>
+        <field:display field="productStake" id="s_com_bb_domain_CustomerProduct_productStake" object="${customerproduct}" z="t02YhYe5WbbaetlJ09T+oFpB6yU="/>
+        <field:display date="true" dateTimePattern="${customerProduct_startdate_date_format}" field="startDate" id="s_com_bb_domain_CustomerProduct_startDate" object="${customerproduct}" z="dNjHKJ9BU/GCVg6tntx7WE4Yqqo="/>
+        <field:display date="true" dateTimePattern="${customerProduct_enddate_date_format}" field="endDate" id="s_com_bb_domain_CustomerProduct_endDate" object="${customerproduct}" z="kYXDx/T72Ki+lh0oZ9fE84Zge0I="/>
     </page:show>
 </div>

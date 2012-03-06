@@ -4,9 +4,10 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_bb_domain_CustomerProduct" modelAttribute="customerProduct" path="/customerproducts" render="${empty dependencies}" z="qlV31x8bk8YqAR+dG4jwPP0dqb8=">
         <field:select field="customer" id="c_com_bb_domain_CustomerProduct_customer" itemValue="id" items="${customers}" path="/customers" required="true" z="tvN8V1yTH6m33RDmYBwaKHI2laQ="/>
-        <field:select field="product" id="c_com_bb_domain_CustomerProduct_product" itemValue="id" items="${products}" path="/products" required="true" z="h4n6ChQE/kAIAIYZIBcIEMs2VEA="/>
-        <field:input field="startWeek" id="c_com_bb_domain_CustomerProduct_startWeek" min="201201" required="true" validationMessageCode="field_invalid_integer" z="TEHJJoPaRI+I2yyJQFq+G8PL2Wo="/>
-        <field:input field="endWeek" id="c_com_bb_domain_CustomerProduct_endWeek" min="201201" required="true" validationMessageCode="field_invalid_integer" z="SJQl+du/ojbC2cxKepCucQ4kYF4="/>
+        <field:select field="productCommit" id="c_com_bb_domain_CustomerProduct_productCommit" itemValue="id" items="${productcommits}" path="/productcommits" required="true" z="gBSeCEjaAOdGpPfEN0b+cojzaQg="/>
+        <field:select field="productStake" id="c_com_bb_domain_CustomerProduct_productStake" itemValue="id" items="${productstakes}" path="/productstakes" required="true" z="r97DxAPioFNFDuwuCgBmx3ysuqM="/>
+        <field:datetime dateTimePattern="${customerProduct_startdate_date_format}" field="startDate" id="c_com_bb_domain_CustomerProduct_startDate" z="nSIkLgwrSCQKDkaOqeqjqgqYC6Q="/>
+        <field:datetime dateTimePattern="${customerProduct_enddate_date_format}" field="endDate" id="c_com_bb_domain_CustomerProduct_endDate" z="R3A7kj/ahdZSqMWe7owK1eReSQ0="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_bb_domain_CustomerProduct" render="${not empty dependencies}" z="4Q+zFx0jHoEsIRWLPrBAbZmSchg="/>
 </div>

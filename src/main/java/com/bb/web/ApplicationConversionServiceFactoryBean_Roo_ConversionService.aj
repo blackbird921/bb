@@ -176,7 +176,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<CustomerProduct, String> ApplicationConversionServiceFactoryBean.getCustomerProductToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.bb.domain.CustomerProduct, java.lang.String>() {
             public String convert(CustomerProduct customerProduct) {
-                return new StringBuilder().append(customerProduct.getStartWeek()).append(" ").append(customerProduct.getEndWeek()).toString();
+                return new StringBuilder().append(customerProduct.getStartDate()).append(" ").append(customerProduct.getEndDate()).toString();
             }
         };
     }

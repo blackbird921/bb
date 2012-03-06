@@ -1,8 +1,11 @@
 package com.bb.domain;
 
+import java.util.Date;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Min;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -18,12 +21,17 @@ public class CustomerProduct {
 
     @NotNull
     @ManyToOne
-    private Product product;
+    private ProductCommit productCommit;
 
     @NotNull
-    @Min(201201L)
-    private Long startWeek;
+    @ManyToOne
+    private ProductStake productStake;
 
-    @Min(201201L)
-    private Long endWeek;
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "M-")
+    private Date startDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "M-")
+    private Date endDate;
 }

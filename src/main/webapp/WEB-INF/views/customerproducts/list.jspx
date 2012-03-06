@@ -5,9 +5,10 @@
     <page:list id="pl_com_bb_domain_CustomerProduct" items="${customerproducts}" z="puCaG4FxNGW6U+Pk4MpdNDCyF70=">
         <table:table data="${customerproducts}" id="l_com_bb_domain_CustomerProduct" path="/customerproducts" z="QvZNOn5gRPhccnyooC5VhDZ9Nl0=">
             <table:column id="c_com_bb_domain_CustomerProduct_customer" property="customer" z="/lWssmLesZEG+EkuyjXjATOb/mA="/>
-            <table:column id="c_com_bb_domain_CustomerProduct_product" property="product" z="o5BOZmCc/sW0UG/BThQErguuPsY="/>
-            <table:column id="c_com_bb_domain_CustomerProduct_startWeek" property="startWeek" z="5dND57PpIdcGjBAZsD7DM84Xoq8="/>
-            <table:column id="c_com_bb_domain_CustomerProduct_endWeek" property="endWeek" z="Znw7TbhhhA6dqdLUCA90uEKpeWM="/>
+            <table:column id="c_com_bb_domain_CustomerProduct_productCommit" property="productCommit" z="kVgMVDtQyLyLmD2gQPFiJL7PYxY="/>
+            <table:column id="c_com_bb_domain_CustomerProduct_productStake" property="productStake" z="eTex9s0pTQJeJYTT1js91ppQiHw="/>
+            <table:column date="true" dateTimePattern="${customerProduct_startdate_date_format}" id="c_com_bb_domain_CustomerProduct_startDate" property="startDate" z="spQ+fyIjjbUw3MhXYF3vLWESThA="/>
+            <table:column date="true" dateTimePattern="${customerProduct_enddate_date_format}" id="c_com_bb_domain_CustomerProduct_endDate" property="endDate" z="OEZArXHuZ+xfVmwU4MbYo/TWQpY="/>
         </table:table>
     </page:list>
 </div>

@@ -5,7 +5,9 @@ package com.bb.domain;
 
 import com.bb.domain.Customer;
 import com.bb.domain.CustomerProduct;
-import com.bb.domain.Product;
+import com.bb.domain.ProductCommit;
+import com.bb.domain.ProductStake;
+import java.util.Date;
 
 privileged aspect CustomerProduct_Roo_JavaBean {
     
@@ -17,28 +19,36 @@ privileged aspect CustomerProduct_Roo_JavaBean {
         this.customer = customer;
     }
     
-    public Product CustomerProduct.getProduct() {
-        return this.product;
+    public ProductCommit CustomerProduct.getProductCommit() {
+        return this.productCommit;
     }
     
-    public void CustomerProduct.setProduct(Product product) {
-        this.product = product;
+    public void CustomerProduct.setProductCommit(ProductCommit productCommit) {
+        this.productCommit = productCommit;
     }
     
-    public Long CustomerProduct.getStartWeek() {
-        return this.startWeek;
+    public ProductStake CustomerProduct.getProductStake() {
+        return this.productStake;
     }
     
-    public void CustomerProduct.setStartWeek(Long startWeek) {
-        this.startWeek = startWeek;
+    public void CustomerProduct.setProductStake(ProductStake productStake) {
+        this.productStake = productStake;
     }
     
-    public Long CustomerProduct.getEndWeek() {
-        return this.endWeek;
+    public Date CustomerProduct.getStartDate() {
+        return this.startDate;
     }
     
-    public void CustomerProduct.setEndWeek(Long endWeek) {
-        this.endWeek = endWeek;
+    public void CustomerProduct.setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+    
+    public Date CustomerProduct.getEndDate() {
+        return this.endDate;
+    }
+    
+    public void CustomerProduct.setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
     
 }

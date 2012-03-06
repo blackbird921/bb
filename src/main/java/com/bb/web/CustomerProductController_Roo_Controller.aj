@@ -5,13 +5,16 @@ package com.bb.web;
 
 import com.bb.domain.Customer;
 import com.bb.domain.CustomerProduct;
-import com.bb.domain.Product;
+import com.bb.domain.ProductCommit;
+import com.bb.domain.ProductStake;
 import com.bb.web.CustomerProductController;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.joda.time.format.DateTimeFormat;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,8 +44,11 @@ privileged aspect CustomerProductController_Roo_Controller {
         if (Customer.countCustomers() == 0) {
             dependencies.add(new String[] { "customer", "customers" });
         }
-        if (Product.countProducts() == 0) {
-            dependencies.add(new String[] { "product", "products" });
+        if (ProductCommit.countProductCommits() == 0) {
+            dependencies.add(new String[] { "productcommit", "productcommits" });
+        }
+        if (ProductStake.countProductStakes() == 0) {
+            dependencies.add(new String[] { "productstake", "productstakes" });
         }
         uiModel.addAttribute("dependencies", dependencies);
         return "customerproducts/create";
@@ -50,6 +56,7 @@ privileged aspect CustomerProductController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String CustomerProductController.show(@PathVariable("id") Long id, Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customerproduct", CustomerProduct.findCustomerProduct(id));
         uiModel.addAttribute("itemId", id);
         return "customerproducts/show";
@@ -66,6 +73,7 @@ privileged aspect CustomerProductController_Roo_Controller {
         } else {
             uiModel.addAttribute("customerproducts", CustomerProduct.findAllCustomerProducts());
         }
+        addDateTimeFormatPatterns(uiModel);
         return "customerproducts/list";
     }
     
@@ -96,10 +104,17 @@ privileged aspect CustomerProductController_Roo_Controller {
         return "redirect:/customerproducts";
     }
     
+    void CustomerProductController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("customerProduct_startdate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("customerProduct_enddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+    }
+    
     void CustomerProductController.populateEditForm(Model uiModel, CustomerProduct customerProduct) {
         uiModel.addAttribute("customerProduct", customerProduct);
+        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customers", Customer.findAllCustomers());
-        uiModel.addAttribute("products", Product.findAllProducts());
+        uiModel.addAttribute("productcommits", ProductCommit.findAllProductCommits());
+        uiModel.addAttribute("productstakes", ProductStake.findAllProductStakes());
     }
     
     String CustomerProductController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
