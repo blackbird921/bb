@@ -14,7 +14,6 @@ import com.bb.domain.CustomerProfit;
 import com.bb.domain.CustomerTransaction;
 import com.bb.domain.Faq;
 import com.bb.domain.Location;
-import com.bb.domain.Product;
 import com.bb.domain.ProductCommit;
 import com.bb.domain.ProductStake;
 import com.bb.domain.ref.RefPaymentTxType;
@@ -293,30 +292,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<Product, String> ApplicationConversionServiceFactoryBean.getProductToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.Product, java.lang.String>() {
-            public String convert(Product product) {
-                return new StringBuilder().append(product.getCommits()).append(" ").append(product.getStakes()).append(" ").append(product.getStartDate()).append(" ").append(product.getEndDate()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, Product> ApplicationConversionServiceFactoryBean.getIdToProductConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.Product>() {
-            public com.bb.domain.Product convert(java.lang.Long id) {
-                return Product.findProduct(id);
-            }
-        };
-    }
-    
-    public Converter<String, Product> ApplicationConversionServiceFactoryBean.getStringToProductConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.Product>() {
-            public com.bb.domain.Product convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), Product.class);
-            }
-        };
-    }
-    
     public Converter<ProductCommit, String> ApplicationConversionServiceFactoryBean.getProductCommitToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.bb.domain.ProductCommit, java.lang.String>() {
             public String convert(ProductCommit productCommit) {
@@ -471,9 +446,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getLocationToStringConverter());
         registry.addConverter(getIdToLocationConverter());
         registry.addConverter(getStringToLocationConverter());
-        registry.addConverter(getProductToStringConverter());
-        registry.addConverter(getIdToProductConverter());
-        registry.addConverter(getStringToProductConverter());
         registry.addConverter(getProductCommitToStringConverter());
         registry.addConverter(getIdToProductCommitConverter());
         registry.addConverter(getStringToProductCommitConverter());
