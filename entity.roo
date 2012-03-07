@@ -56,7 +56,7 @@ field reference   --fieldName sex                --type ~.domain.ref.RefSex
 field date   --fieldName birthday           --type java.util.Date --past
 // field other  --fieldName picture            --type java.sql.Blob
 field string --fieldName bio                --sizeMax 500
-field date   --fieldName registatrationDate --type java.util.Date
+field date   --fieldName registrationDate --type java.util.Date
 field date   --fieldName disableStartDate   --type java.util.Date
 field date   --fieldName disableEndDate     --type java.util.Date
 field string --fieldName disableReason      --sizeMax 100

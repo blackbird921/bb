@@ -15,9 +15,9 @@
         <field:display field="sex" id="s_com_bb_domain_Customer_sex" object="${customer}" z="ZRQ3W6V1JDwkYkisyKcqDdyx+Ig="/>
         <field:display date="true" dateTimePattern="${customer_birthday_date_format}" field="birthday" id="s_com_bb_domain_Customer_birthday" object="${customer}" z="saQBtvDZliazMuhY9eHbZa7hx4E="/>
         <field:display field="bio" id="s_com_bb_domain_Customer_bio" object="${customer}" z="obfCUlGiEriEPMPwlu7q4UH2yGY="/>
-        <field:display date="true" dateTimePattern="${customer_registatrationdate_date_format}" field="registatrationDate" id="s_com_bb_domain_Customer_registatrationDate" object="${customer}" z="usNPgd7y1CUxdnMrc6Bc95/xkxo="/>
         <field:display date="true" dateTimePattern="${customer_disablestartdate_date_format}" field="disableStartDate" id="s_com_bb_domain_Customer_disableStartDate" object="${customer}" z="H/QeG1LIM/pYftTi7kSnZxCcOLA="/>
         <field:display date="true" dateTimePattern="${customer_disableenddate_date_format}" field="disableEndDate" id="s_com_bb_domain_Customer_disableEndDate" object="${customer}" z="0SOMUK5cR1o3KZC4OGAGlHVM6zk="/>
         <field:display field="disableReason" id="s_com_bb_domain_Customer_disableReason" object="${customer}" z="tNLqroSXh+cuLBoMUn95SJwJDUQ="/>
+        <field:display date="true" dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="s_com_bb_domain_Customer_registrationDate" object="${customer}" z="3VI2wFzCE1V4wTg1n8tBFCk11QA="/>
     </page:show>
 </div>
