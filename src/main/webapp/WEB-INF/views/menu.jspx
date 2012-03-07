@@ -55,16 +55,6 @@
             <menu:item id="i_card_new" messageCode="global_menu_new" url="/cards?form" z="HnX6WO2gXiGwDI4yZBEgcPY3V5w="/>
             <menu:item id="i_card_list" messageCode="global_menu_list" url="/cards?page=1&amp;size=${empty param.size ? 10 : param.size}" z="2BtnOpQF+yaD8dAIfbCuOD7pZD8="/>
         </menu:category>
-        <!--
-        <menu:category id="c_refpaymenttxtype" z="rs1VABYEOKAPQ1tWNNqqgdgKaFg=">
-            <menu:item id="i_refpaymenttxtype_new" messageCode="global_menu_new" url="/refpaymenttxtypes?form" z="mPVtW4NLRvuggWzP5OAVduHAs00="/>
-            <menu:item id="i_refpaymenttxtype_list" messageCode="global_menu_list" url="/refpaymenttxtypes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9Uym6aSfHoRp10CrZ3JWDVxh8uo="/>
-        </menu:category>
-        <menu:category id="c_refsex" z="2vH3ampnCWkqZHAiEhRkDUBasD8=">
-            <menu:item id="i_refsex_new" messageCode="global_menu_new" url="/refsexes?form" z="SNww9LLYRBehSZ8B/HN2fr6RSs8="/>
-            <menu:item id="i_refsex_list" messageCode="global_menu_list" url="/refsexes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="F+YZsKgnRzlWjWLFDLUYViqnlbg="/>
-        </menu:category>
-        -->
         <menu:category id="c_productcommit" z="m07fJrZ5+mB1CGOiR43jRRri8No=">
             <menu:item id="i_productcommit_new" messageCode="global_menu_new" url="/productcommits?form" z="wllvj0+7VRXX44neEDFOs9kzgxY="/>
             <menu:item id="i_productcommit_list" messageCode="global_menu_list" url="/productcommits?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9s2aTC7eYxttjmSsGuou/nnqIxM="/>
@@ -80,6 +70,10 @@
         <menu:category id="c_refpaymenttxtype" z="rs1VABYEOKAPQ1tWNNqqgdgKaFg=">
             <menu:item id="i_refpaymenttxtype_new" messageCode="global_menu_new" url="/refpaymenttxtypes?form" z="mPVtW4NLRvuggWzP5OAVduHAs00="/>
             <menu:item id="i_refpaymenttxtype_list" messageCode="global_menu_list" url="/refpaymenttxtypes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9Uym6aSfHoRp10CrZ3JWDVxh8uo="/>
+        </menu:category>
+        <menu:category id="c_refsex" z="2vH3ampnCWkqZHAiEhRkDUBasD8=">
+            <menu:item id="i_refsex_new" messageCode="global_menu_new" url="/refsexes?form" z="SNww9LLYRBehSZ8B/HN2fr6RSs8="/>
+            <menu:item id="i_refsex_list" messageCode="global_menu_list" url="/refsexes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="F+YZsKgnRzlWjWLFDLUYViqnlbg="/>
         </menu:category>
     </menu:menu>
 </div>

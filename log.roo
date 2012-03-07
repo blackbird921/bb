@@ -371,3 +371,12 @@ field date   --fieldName endDate --notNUll --type java.util.Date
 // script temp.roo
 // [failed] field reference --fieldName productCommit  --notNull --type ~.domain.ProductCommit
 web mvc all --package ~.web
+web mvc all --package ~.web
+web mvc scaffold --class ~.web.CustomerController --backingType ~.domain.Customer 
+web mvc scaffold --class ~.web.CustomerController --backingType ~.domain.Customer 
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-07 22:50:55
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-07 22:51:11
+hint
+hint
+web mvc scaffold --class ~.web.CustomerController --backingType ~.domain.Customer 
