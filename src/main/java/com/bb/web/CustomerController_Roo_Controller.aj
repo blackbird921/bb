@@ -25,17 +25,6 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect CustomerController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String CustomerController.create(@Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, customer);
-            return "customers/create";
-        }
-        uiModel.asMap().clear();
-        customer.persist();
-        return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
-    }
-    
     @RequestMapping(params = "form", produces = "text/html")
     public String CustomerController.createForm(Model uiModel) {
         populateEditForm(uiModel, new Customer());

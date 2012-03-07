@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+     xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_bb_domain_Customer" object="${customer}" path="/customers" z="mVN1DJKVCeiGrdw/NaygR0fvLfs=">
+        <spring:url value="/resources/images/upload/${customer.id}.png" var="imageUrl"/>
+        <img height="60" src="${imageUrl}" style="margin:3px;" width="60"/>
         <field:display field="username" id="s_com_bb_domain_Customer_username" object="${customer}" z="EOBLp1KPw4XJzed9sXi4YjJUAfI="/>
         <field:display field="password" id="s_com_bb_domain_Customer_password" object="${customer}" z="ZveFIG/fiTqO5AGPex17bRAXUoI="/>
         <field:display field="email" id="s_com_bb_domain_Customer_email" object="${customer}" z="ylqeq5TFb8QUCET+lAVZ3IRNIFQ="/>
@@ -19,5 +22,6 @@
         <field:display date="true" dateTimePattern="${customer_disableenddate_date_format}" field="disableEndDate" id="s_com_bb_domain_Customer_disableEndDate" object="${customer}" z="0SOMUK5cR1o3KZC4OGAGlHVM6zk="/>
         <field:display field="disableReason" id="s_com_bb_domain_Customer_disableReason" object="${customer}" z="tNLqroSXh+cuLBoMUn95SJwJDUQ="/>
         <field:display date="true" dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="s_com_bb_domain_Customer_registrationDate" object="${customer}" z="3VI2wFzCE1V4wTg1n8tBFCk11QA="/>
+        <field:display field="avatar" id="s_com_bb_domain_Customer_avatar" object="${customer}" z="pi4iPRg0S4jMkd4E+n7s6nvaDRs="/>
     </page:show>
 </div>

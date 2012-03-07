@@ -18,6 +18,7 @@
         <field:datetime dateTimePattern="${customer_disablestartdate_date_format}" field="disableStartDate" id="c_com_bb_domain_Customer_disableStartDate" z="Ap61W6JB2kxJ+35cWqIsDWcCx50="/>
         <field:datetime dateTimePattern="${customer_disableenddate_date_format}" field="disableEndDate" id="c_com_bb_domain_Customer_disableEndDate" z="yZchis6yqg84AB8gPYVLa3IdvEg="/>
         <field:textarea field="disableReason" id="c_com_bb_domain_Customer_disableReason" z="C7+VkdMG9tY212iWBEGul6RpM40="/>
-        <field:display date="true" dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="c_com_bb_domain_Customer_registrationDate" object="${customer}" z="xx"/>
+        <field:display date="true" dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="c_com_bb_domain_Customer_registrationDate" object="${customer}" z="user-managed"/>
+        <field:input field="avatar" id="c_com_bb_domain_Customer_avatar" z="Nfkpzlvg2aIHxnqodoYQdQUMaao="/>
     </form:update>
 </div>

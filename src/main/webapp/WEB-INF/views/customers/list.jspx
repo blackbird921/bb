@@ -8,8 +8,8 @@
             <table:column id="c_com_bb_domain_Customer_password" property="password" z="hMFUsgQA8eQFh3MPymaLrKu3D+s="/>
             <table:column id="c_com_bb_domain_Customer_email" property="email" z="ZB3+aGa8AQQwzRjqpp3JNtN7BXg="/>
             <table:column id="c_com_bb_domain_Customer_status" property="status" z="Om1U3UQ2h2O1BxhLA4z5vmrE9IU="/>
-            <table:column id="c_com_bb_domain_Customer_customerRole" property="customerRole" z="Ox3TYvov152EPLbHms7C1khgCQ4="/>
             <table:column date="true" dateTimePattern="${customer_registrationdate_date_format}" id="c_com_bb_domain_Customer_registrationDate" property="registrationDate" z="dmAii0OSRDdJ6D2rkKV7OF3vL2I="/>
+            <table:column id="c_com_bb_domain_Customer_avatar" property="avatar" z="p+wLnEhf2RxaWFPg703SfEmSPWg="/>
         </table:table>
     </page:list>
 </div>

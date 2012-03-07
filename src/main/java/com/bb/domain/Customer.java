@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -15,6 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @RooJavaBean
 @RooToString
@@ -78,9 +80,19 @@ public class Customer {
     @Size(max = 100)
     private String disableReason;
 
+    @Transient
+    private CommonsMultipartFile avatar;
+
+    public CommonsMultipartFile getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar( CommonsMultipartFile avatar ) {
+        this.avatar = avatar;
+    }
+
     public Date getRegistrationDate() {
         if ( this.registrationDate == null ) {
-            System.out.println("xxxxxxxxxxxxxxxxxxxxx");
             return new Date();
         }else {
             return this.registrationDate;
