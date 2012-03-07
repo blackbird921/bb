@@ -64,7 +64,7 @@ public class Customer {
     private String bio;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "M-")
+    @DateTimeFormat(style = "MM")
     private Date registrationDate;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -77,4 +77,13 @@ public class Customer {
 
     @Size(max = 100)
     private String disableReason;
+
+    public Date getRegistrationDate() {
+        if ( this.registrationDate == null ) {
+            System.out.println("xxxxxxxxxxxxxxxxxxxxx");
+            return new Date();
+        }else {
+            return this.registrationDate;
+        }
+    }
 }

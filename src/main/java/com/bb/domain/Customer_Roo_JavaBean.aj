@@ -107,10 +107,6 @@ privileged aspect Customer_Roo_JavaBean {
         this.bio = bio;
     }
     
-    public Date Customer.getRegistrationDate() {
-        return this.registrationDate;
-    }
-    
     public void Customer.setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }

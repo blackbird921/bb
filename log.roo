@@ -381,3 +381,4 @@ hint
 hint
 web mvc scaffold --class ~.web.CustomerController --backingType ~.domain.Customer 
 web mvc scaffold --class ~.web.CustomerController --backingType ~.domain.Customer 
+web mvc scaffold --class ~.web.CustomerController --backingType ~.domain.Customer 
