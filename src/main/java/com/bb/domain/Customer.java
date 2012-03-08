@@ -4,6 +4,7 @@ import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -25,6 +26,7 @@ public class Customer {
 
     @NotNull
     @Size(min = 1, max = 30)
+    @Column(unique = true)
     private String username;
 
     @NotNull
@@ -33,6 +35,7 @@ public class Customer {
 
     @NotNull
     @Size(min = 5, max = 30)
+    @Column(unique = true)
     private String email;
 
     @NotNull
