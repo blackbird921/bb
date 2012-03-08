@@ -388,3 +388,6 @@ finder add --finderName findCustomersByUsername --class ~.domain.Customer
 finder add --finderName findCustomersByEmail --class ~.domain.Customer
 finder add --finderName findCustomersByStatus --class ~.domain.Customer
 finder add --finderName findCustomersByCustomerRole --class ~.domain.Customer
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-08 23:54:06
+// [failed] field boolean --fieldName hasAvatar --class ~.domain.Customer
+entity jpa --class ~.domain.Customer

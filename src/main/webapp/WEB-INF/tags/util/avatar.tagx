@@ -1,0 +1,20 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:spring="http://www.springframework.org/tags" xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+  <jsp:output omit-xml-declaration="yes" />
+  
+  <jsp:directive.attribute name="id" type="java.lang.String" required="true" rtexprvalue="true" description="The identifier for this tag (do not change!)" />
+  <jsp:directive.attribute name="value" type="java.lang.Boolean" required="true" rtexprvalue="true" description="The identifier for this tag (do not change!)" />
+  <jsp:directive.attribute name="render" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicate if the contents of this tag and all enclosed tags should be rendered (default 'true')" />
+
+  <c:if test="${empty render or render}">
+      <c:if test="${not empty id}">
+        <c:if test="${not empty value and value}">
+          <spring:message code="error_${id}" var="message_value" htmlEscape="false" />
+          <c:out value="${message_value}"/>
+            <script type="text/javascript">dojo.require("dojox.form.Uploader");</script>
+            <spring:url value="/resources/images/upload/001.gif" var="imageUrl"/>
+            <img height="60" src="${imageUrl}" style="margin:3px;" width="60"/>
+            <input data-dojo-type="dojox.form.Uploader" id="avatar" label="Select Some Files" multiple="true" name="avatar" type="file"/>
+        </c:if>
+      </c:if>
+  </c:if>
+</jsp:root>
