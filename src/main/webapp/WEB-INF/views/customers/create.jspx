@@ -4,6 +4,9 @@
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require("dojox.form.Uploader");</script>
     <form:create id="fc_com_bb_domain_Customer" modelAttribute="customer" path="/customers" render="${empty dependencies}" z="DNXdP2126Ul6rEc/azzlMBiZZxk=" multipart="true">
+        <!--<div id="error_message" class="errors">-->
+            <!--test-->
+        <!--</div>-->
         <field:input field="username" id="c_com_bb_domain_Customer_username" max="30" min="1" required="true" z="g8lc5GP2QhoIkXAhb5qwgRfxeq4="/>
         <field:input field="password" id="c_com_bb_domain_Customer_password" max="15" min="4" required="true" z="m85pGvbzWxsKJt71sJA4uaIyqM0="/>
         <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email" z="yaUEIVCqoUJKOTy2AjZUw4e48bE="/>
