@@ -1,10 +1,17 @@
 package com.bb.domain;
 
+import com.bb.service.ValidationService;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.test.RooIntegrationTest;
 
-@RooIntegrationTest(entity = Customer.class)
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
+
+@RooIntegrationTest( entity = Customer.class )
 public class CustomerIntegrationTest {
+    @Autowired
+    ValidationService validationService;
 
     @Test
     public void testMarkerMethod() {
@@ -13,8 +20,7 @@ public class CustomerIntegrationTest {
         c1.setUsername( "aaa" );
         c1.persist();
 
-        Customer c2 = dod.getNewTransientCustomer( 2 );
-        c2.setUsername( "aaa" );
-        c2.persist();
+        assertTrue( validationService.existsUniqueValue( Customer.class, "username", "aaa" ) );
+        assertFalse( validationService.existsUniqueValue( Customer.class, "username", "bbb" ) );
     }
 }

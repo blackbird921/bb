@@ -21,7 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(sequenceName = "CUSTOMER_SEQ")
+@RooJpaActiveRecord(sequenceName = "CUSTOMER_SEQ", finders = { "findCustomersByUsername", "findCustomersByEmail", "findCustomersByStatus", "findCustomersByCustomerRole" })
 public class Customer {
 
     @NotNull
@@ -90,14 +90,14 @@ public class Customer {
         return avatar;
     }
 
-    public void setAvatar( CommonsMultipartFile avatar ) {
+    public void setAvatar(CommonsMultipartFile avatar) {
         this.avatar = avatar;
     }
 
     public Date getRegistrationDate() {
-        if ( this.registrationDate == null ) {
+        if (this.registrationDate == null) {
             return new Date();
-        }else {
+        } else {
             return this.registrationDate;
         }
     }

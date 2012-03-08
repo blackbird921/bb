@@ -9,6 +9,6 @@ import java.util.logging.Logger;
 @Service
 public interface ValidationService {
 
-    boolean existsUniqueValue( Class clazz, String fieldName );
+    boolean existsUniqueValue( Class clazz, String fieldName, String value );
 
 }
