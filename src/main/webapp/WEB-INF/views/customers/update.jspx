@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+     xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:springform="http://www.springframework.org/tags/form"
+     version="2.0" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+
+    <!--${customer.id} ${not empty customer.hasAvatar and customer.hasAvatar}-->
+    <!--<util:avatar id="my_avartar" big="false" hasUploadedAvatar="${not empty customer.hasAvatar and customer.hasAvatar}" customerId="2" showUploadButton="true"/>-->
+    <script type="text/javascript">
+        function myPopup() {
+            window.open( "http://localhost:8080/customers/updateAvatarForm/${customer.id}", "myWindow",
+                    "status = 1, height = 300, width = 300, resizable = 0" )
+        }
+    </script>
     <form:update id="fu_com_bb_domain_Customer" modelAttribute="customer" path="/customers" versionField="Version" z="0KOM89bYbze7zIuWz7F0csDoL30=">
+        <util:avatar id="my_avartar" big="false" hasUploadedAvatar="${customer.hasAvatar}" customerId="${customer.id}" showUploadButton="false"/>
+        <button id="progButtonNode" type="button" onClick="myPopup()">更新头像</button>
         <field:input field="username" id="c_com_bb_domain_Customer_username" max="30" min="1" required="true" z="g8lc5GP2QhoIkXAhb5qwgRfxeq4="/>
         <field:input field="password" id="c_com_bb_domain_Customer_password" max="15" min="4" required="true" z="m85pGvbzWxsKJt71sJA4uaIyqM0="/>
         <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email" z="yaUEIVCqoUJKOTy2AjZUw4e48bE="/>
@@ -19,7 +33,8 @@
         <field:datetime dateTimePattern="${customer_disableenddate_date_format}" field="disableEndDate" id="c_com_bb_domain_Customer_disableEndDate" z="yZchis6yqg84AB8gPYVLa3IdvEg="/>
         <field:textarea field="disableReason" id="c_com_bb_domain_Customer_disableReason" z="C7+VkdMG9tY212iWBEGul6RpM40="/>
         <field:display date="true" dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="c_com_bb_domain_Customer_registrationDate" object="${customer}" z="user-managed"/>
-        <field:input field="avatar" id="c_com_bb_domain_Customer_avatar" z="Nfkpzlvg2aIHxnqodoYQdQUMaao="/>
-        <field:checkbox field="hasAvatar" id="c_com_bb_domain_Customer_hasAvatar" z="HUtaKmiaRSIceIYO2I81Nq/oszk="/>
+        <field:input field="avatar" disabled="true" render="false" id="c_com_bb_domain_Customer_avatar" z="xxx="/>
+        <field:checkbox field="hasAvatar" render="false" id="c_com_bb_domain_Customer_hasAvatar" z="xxx="/>
+        <springform:hidden path="hasAvatar" id="my_com_bb_domain_Customer_hasAvatar"/>
     </form:update>
 </div>

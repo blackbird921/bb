@@ -11,8 +11,6 @@ import org.springframework.roo.addon.web.mvc.controller.converter.RooConversionS
  */
 @RooConversionService
 public class ApplicationConversionServiceFactoryBean extends FormattingConversionServiceFactoryBean {
-    @Autowired
-    InitService initService;
 
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {

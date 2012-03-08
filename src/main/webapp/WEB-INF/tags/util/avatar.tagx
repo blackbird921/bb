@@ -2,19 +2,26 @@
   <jsp:output omit-xml-declaration="yes" />
   
   <jsp:directive.attribute name="id" type="java.lang.String" required="true" rtexprvalue="true" description="The identifier for this tag (do not change!)" />
-  <jsp:directive.attribute name="value" type="java.lang.Boolean" required="true" rtexprvalue="true" description="The identifier for this tag (do not change!)" />
+  <jsp:directive.attribute name="big" type="java.lang.Boolean" required="true" rtexprvalue="true" description="big size" />
+  <jsp:directive.attribute name="hasUploadedAvatar" type="java.lang.Boolean" required="true" rtexprvalue="true" description="big size" />
+  <jsp:directive.attribute name="customerId" type="java.lang.String" required="true" rtexprvalue="true" description="big size" />
+  <jsp:directive.attribute name="showUploadButton" type="java.lang.Boolean" required="false" rtexprvalue="true" description="show uploadButton" />
   <jsp:directive.attribute name="render" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicate if the contents of this tag and all enclosed tags should be rendered (default 'true')" />
 
   <c:if test="${empty render or render}">
-      <c:if test="${not empty id}">
-        <c:if test="${not empty value and value}">
-          <spring:message code="error_${id}" var="message_value" htmlEscape="false" />
-          <c:out value="${message_value}"/>
-            <script type="text/javascript">dojo.require("dojox.form.Uploader");</script>
-            <spring:url value="/resources/images/upload/001.gif" var="imageUrl"/>
-            <img height="60" src="${imageUrl}" style="margin:3px;" width="60"/>
-            <input data-dojo-type="dojox.form.Uploader" id="avatar" label="Select Some Files" multiple="true" name="avatar" type="file"/>
-        </c:if>
+      <c:choose>
+          <c:when test="${not empty hasUploadedAvatar and hasUploadedAvatar}">
+              <c:set var="avatar_file_name" value="${customerId}"/>
+          </c:when>
+          <c:otherwise>
+              <c:set var="avatar_file_name" value="001"/>
+          </c:otherwise>
+      </c:choose>
+      <spring:url value="/resources/images/upload/${avatar_file_name}.png" var="imageUrl"/>
+      <img height="60" src="${imageUrl}" style="margin:3px;" width="60"/>
+      <c:if test="${showUploadButton}">
+          <input data-dojo-type="dojox.form.Uploader" id="avatar" label="Select Some Files" multiple="true" name="avatar" type="file"/>
       </c:if>
+
   </c:if>
 </jsp:root>
