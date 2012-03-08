@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+     xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+     xmlns:form="urn:jsptagdir:/WEB-INF/tags/form"
+     xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require("dojox.form.Uploader");</script>
     <form:create id="fc_com_bb_domain_Customer" modelAttribute="customer" path="/customers" render="${empty dependencies}" z="DNXdP2126Ul6rEc/azzlMBiZZxk=" multipart="true">
         <div id="error_message" class="errors">
-            <c:if test="${not empty usernameError}">
-                <spring:message code="error_usernameError" var="usernameError" htmlEscape="false" />
-                <c:out value="${usernameError}"/>
-            </c:if>
+            <util:text id="usernameUniqueError" value="${usernameUniqueError}"/>
+            <util:text id="emailUniqueError" value="${emailUniqueError}"/>
         </div>
         <br/>
         <field:input field="username" id="c_com_bb_domain_Customer_username" max="30" min="1" required="true" z="g8lc5GP2QhoIkXAhb5qwgRfxeq4="/>
         <field:input field="password" id="c_com_bb_domain_Customer_password" max="15" min="4" required="true" z="m85pGvbzWxsKJt71sJA4uaIyqM0="/>
-        <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email" z="yaUEIVCqoUJKOTy2AjZUw4e48bE="/>
+        <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email"
+                     validationRegex="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$"
+                     z="xxx"/>
         <field:select field="status" id="c_com_bb_domain_Customer_status" items="${customerstatuses}" path="customerstatuses" required="true" z="UV0g0yUASgZWX7/Fuu1mEyfCWhE="/>
         <field:select field="customerRole" id="c_com_bb_domain_Customer_customerRole" items="${customerroles}" path="customerroles" z="MSKPoQdGvqyHKEe6iwiuVAOBdbg="/>
         <field:input field="name" id="c_com_bb_domain_Customer_name" max="30" z="Bz3Vq0TFu8udneCdv+7pRTWKGYo="/>

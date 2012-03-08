@@ -30,16 +30,22 @@ public class CustomerController {
 
     @RequestMapping( method = RequestMethod.POST, produces = "text/html" )
     public String create( @Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest ) {
+        boolean hasError = false;
         if ( bindingResult.hasErrors() ) {
-            populateEditForm( uiModel, customer );
-            return "customers/create";
-        }else if ( validationService.existsUniqueValue( Customer.class, "username", customer.getUsername() ) ) {
-            System.out.println("username error..............................");
-            uiModel.addAttribute( "usernameError", Boolean.TRUE );
-            populateEditForm( uiModel, customer );
-            return "customers/create";
-        }else if ( validationService.existsUniqueValue( Customer.class, "email", customer.getEmail() ) ) {
-            uiModel.addAttribute( "emailError", Boolean.TRUE );
+            hasError = true;
+        }
+
+        if ( validationService.existsUniqueValue( Customer.class, "username", customer.getUsername() ) ) {
+            uiModel.addAttribute( "usernameUniqueError", Boolean.TRUE );
+            hasError = true;
+        }
+
+        if ( validationService.existsUniqueValue( Customer.class, "email", customer.getEmail() ) ) {
+            uiModel.addAttribute( "emailUniqueError", Boolean.TRUE );
+            hasError = true;
+        }
+
+        if ( hasError ) {
             populateEditForm( uiModel, customer );
             return "customers/create";
         }
