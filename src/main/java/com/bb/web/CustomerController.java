@@ -1,6 +1,7 @@
 package com.bb.web;
 
 import com.bb.domain.Customer;
+import com.bb.service.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
@@ -24,10 +25,21 @@ public class CustomerController {
 
     @Autowired
     private CommonsMultipartResolver multipartResolver;
+    @Autowired
+    private ValidationService validationService;
 
     @RequestMapping( method = RequestMethod.POST, produces = "text/html" )
     public String create( @Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest ) {
         if ( bindingResult.hasErrors() ) {
+            populateEditForm( uiModel, customer );
+            return "customers/create";
+        }else if ( validationService.existsUniqueValue( Customer.class, "username", customer.getUsername() ) ) {
+            System.out.println("username error..............................");
+            uiModel.addAttribute( "usernameError", Boolean.TRUE );
+            populateEditForm( uiModel, customer );
+            return "customers/create";
+        }else if ( validationService.existsUniqueValue( Customer.class, "email", customer.getEmail() ) ) {
+            uiModel.addAttribute( "emailError", Boolean.TRUE );
             populateEditForm( uiModel, customer );
             return "customers/create";
         }
