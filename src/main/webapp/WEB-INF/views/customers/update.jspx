@@ -20,5 +20,6 @@
         <field:textarea field="disableReason" id="c_com_bb_domain_Customer_disableReason" z="C7+VkdMG9tY212iWBEGul6RpM40="/>
         <field:display date="true" dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="c_com_bb_domain_Customer_registrationDate" object="${customer}" z="user-managed"/>
         <field:input field="avatar" id="c_com_bb_domain_Customer_avatar" z="Nfkpzlvg2aIHxnqodoYQdQUMaao="/>
+        <field:checkbox field="hasAvatar" id="c_com_bb_domain_Customer_hasAvatar" z="HUtaKmiaRSIceIYO2I81Nq/oszk="/>
     </form:update>
 </div>

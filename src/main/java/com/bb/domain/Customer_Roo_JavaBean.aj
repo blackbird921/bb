@@ -135,4 +135,12 @@ privileged aspect Customer_Roo_JavaBean {
         this.disableReason = disableReason;
     }
     
+    public Boolean Customer.getHasAvatar() {
+        return this.hasAvatar;
+    }
+    
+    public void Customer.setHasAvatar(Boolean hasAvatar) {
+        this.hasAvatar = hasAvatar;
+    }
+    
 }

@@ -86,6 +86,8 @@ public class Customer {
     @Transient
     private CommonsMultipartFile avatar;
 
+    private Boolean hasAvatar;
+
     public CommonsMultipartFile getAvatar() {
         return avatar;
     }

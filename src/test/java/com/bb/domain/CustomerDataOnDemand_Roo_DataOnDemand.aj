@@ -39,6 +39,7 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
         setDisableReason(obj, index);
         setDisableStartDate(obj, index);
         setEmail(obj, index);
+        setHasAvatar(obj, index);
         setName(obj, index);
         setPassword(obj, index);
         setPhone(obj, index);
@@ -107,6 +108,11 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
             email = new Random().nextInt(10) + email.substring(1, 30);
         }
         obj.setEmail(email);
+    }
+    
+    public void CustomerDataOnDemand.setHasAvatar(Customer obj, int index) {
+        Boolean hasAvatar = Boolean.TRUE;
+        obj.setHasAvatar(hasAvatar);
     }
     
     public void CustomerDataOnDemand.setName(Customer obj, int index) {

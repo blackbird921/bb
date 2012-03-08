@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core"
-     xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
-     xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
-     xmlns:form="urn:jsptagdir:/WEB-INF/tags/form"
-     xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <script type="text/javascript">dojo.require("dojox.form.Uploader");</script>
-    <form:create id="fc_com_bb_domain_Customer" modelAttribute="customer" path="/customers" render="${empty dependencies}" z="DNXdP2126Ul6rEc/azzlMBiZZxk=" multipart="true">
-        <div id="error_message" class="errors">
+    <form:create id="fc_com_bb_domain_Customer" modelAttribute="customer" multipart="true" path="/customers" render="${empty dependencies}" z="user-managed">
+        <div class="errors" id="error_message">
             <util:text id="usernameUniqueError" value="${usernameUniqueError}"/>
             <util:text id="emailUniqueError" value="${emailUniqueError}"/>
         </div>
         <br/>
         <field:input field="username" id="c_com_bb_domain_Customer_username" max="30" min="1" required="true" z="g8lc5GP2QhoIkXAhb5qwgRfxeq4="/>
         <field:input field="password" id="c_com_bb_domain_Customer_password" max="15" min="4" required="true" z="m85pGvbzWxsKJt71sJA4uaIyqM0="/>
-        <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email"
-                     validationRegex="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$"
-                     z="xxx"/>
+        <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email" validationRegex="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$" z="user-managed"/>
         <field:select field="status" id="c_com_bb_domain_Customer_status" items="${customerstatuses}" path="customerstatuses" required="true" z="UV0g0yUASgZWX7/Fuu1mEyfCWhE="/>
         <field:select field="customerRole" id="c_com_bb_domain_Customer_customerRole" items="${customerroles}" path="customerroles" z="MSKPoQdGvqyHKEe6iwiuVAOBdbg="/>
         <field:input field="name" id="c_com_bb_domain_Customer_name" max="30" z="Bz3Vq0TFu8udneCdv+7pRTWKGYo="/>
@@ -34,6 +28,8 @@
         <field:datetime dateTimePattern="${customer_disableenddate_date_format}" field="disableEndDate" id="c_com_bb_domain_Customer_disableEndDate" z="yZchis6yqg84AB8gPYVLa3IdvEg="/>
         <field:textarea field="disableReason" id="c_com_bb_domain_Customer_disableReason" z="C7+VkdMG9tY212iWBEGul6RpM40="/>
         <field:datetime dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="c_com_bb_domain_Customer_registrationDate" readonly="true" z="user-managed"/>
+        <field:input field="avatar" render="false" id="c_com_bb_domain_Customer_avatar" z="Nfkpzlvg2aIHxnqodoYQdQUMaao="/>
+        <field:checkbox field="hasAvatar" render="false" id="c_com_bb_domain_Customer_hasAvatar" z="HUtaKmiaRSIceIYO2I81Nq/oszk="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_bb_domain_Customer" render="${not empty dependencies}" z="BhdusrT2JXs7pn75TOopBdApCZ0="/>
 </div>
