@@ -1,0 +1,23 @@
+INSERT INTO CUSTOMER_PRODUCT
+(
+    ID
+  , END_DATE
+  , START_DATE
+  , VERSION
+  , CUSTOMER
+  , PRODUCT_COMMIT
+  , PRODUCT_STAKE
+)
+VALUES
+(
+    1
+  , NULL
+  , '2012-03-07 00:00:00'
+  , 0
+  , 1
+  , 1
+  , 1
+);
+
+
+COMMIT;

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
-     xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
-     xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
-     xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     ${customer.hasAvatar}                      ${customer.id}
     <page:show id="ps_com_bb_domain_Customer" object="${customer}" path="/customers" z="mVN1DJKVCeiGrdw/NaygR0fvLfs=">
-        <util:avatar id="my_avartar" big="false" hasUploadedAvatar="${customer.hasAvatar}" customerId="${customer.id}" showUploadButton="false"/>
+        <util:avatar big="false" customerId="${customer.id}" hasUploadedAvatar="${customer.hasAvatar}" id="my_avartar" showUploadButton="false"/>
         <field:display field="username" id="s_com_bb_domain_Customer_username" object="${customer}" z="EOBLp1KPw4XJzed9sXi4YjJUAfI="/>
         <field:display field="password" id="s_com_bb_domain_Customer_password" object="${customer}" z="ZveFIG/fiTqO5AGPex17bRAXUoI="/>
         <field:display field="email" id="s_com_bb_domain_Customer_email" object="${customer}" z="ylqeq5TFb8QUCET+lAVZ3IRNIFQ="/>
@@ -26,5 +23,6 @@
         <field:display date="true" dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="s_com_bb_domain_Customer_registrationDate" object="${customer}" z="3VI2wFzCE1V4wTg1n8tBFCk11QA="/>
         <field:display field="avatar" id="s_com_bb_domain_Customer_avatar" object="${customer}" render="false" z="user-managed"/>
         <field:display field="hasAvatar" id="s_com_bb_domain_Customer_hasAvatar" object="${customer}" render="false" z="user-managed"/>
+        <field:display field="customerAvatar" id="s_com_bb_domain_Customer_customerAvatar" object="${customer}" z="WQR9ryHBrDGIabWwmrnL4dUvyTE="/>
     </page:show>
 </div>

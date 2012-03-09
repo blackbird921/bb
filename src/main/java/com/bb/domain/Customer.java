@@ -88,6 +88,9 @@ public class Customer {
 
     private Boolean hasAvatar;
 
+    @ManyToOne
+    private CustomerAvatar customerAvatar;
+
     public CommonsMultipartFile getAvatar() {
         return avatar;
     }

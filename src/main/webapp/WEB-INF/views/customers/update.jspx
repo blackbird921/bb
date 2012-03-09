@@ -32,5 +32,6 @@
         <field:input disabled="true" field="avatar" id="c_com_bb_domain_Customer_avatar" render="false" z="user-managed"/>
         <field:checkbox field="hasAvatar" id="c_com_bb_domain_Customer_hasAvatar" render="false" z="user-managed"/>
         <springform:hidden id="my_com_bb_domain_Customer_hasAvatar" path="hasAvatar"/>
+        <field:select field="customerAvatar" id="c_com_bb_domain_Customer_customerAvatar" itemValue="id" items="${customeravatars}" path="/customeravatars" z="Qv+ebHGUOceCWpGKLt2KJS4PFto="/>
     </form:update>
 </div>

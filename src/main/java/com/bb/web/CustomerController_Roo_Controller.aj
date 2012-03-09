@@ -4,6 +4,7 @@
 package com.bb.web;
 
 import com.bb.domain.Customer;
+import com.bb.domain.CustomerAvatar;
 import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
@@ -78,6 +79,7 @@ privileged aspect CustomerController_Roo_Controller {
     void CustomerController.populateEditForm(Model uiModel, Customer customer) {
         uiModel.addAttribute("customer", customer);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("customeravatars", CustomerAvatar.findAllCustomerAvatars());
         uiModel.addAttribute("refsexes", RefSex.findAllRefSexes());
         uiModel.addAttribute("customerroles", Arrays.asList(CustomerRole.values()));
         uiModel.addAttribute("customerstatuses", Arrays.asList(CustomerStatus.values()));

@@ -411,3 +411,7 @@ web mvc scaffold --class ~.web.CustomerAvatarController --backingType ~.domain.C
 web mvc scaffold --class ~.web.CustomerAvatarController --backingType ~.domain.CustomerAvatar --disallowedOperations update
 web mvc scaffold --class ~.web.CustomerAvatarController --backingType ~.domain.CustomerAvatar --disallowedOperations update
 web mvc scaffold --class ~.web.CustomerAvatarController --backingType ~.domain.CustomerAvatar --disallowedOperations update
+entity jpa --class ~.domain.CustomerAvatar --sequenceName CUSTOMER_AVATAR_SEQ
+field string --fieldName fileName --class ~.domain.CustomerAvatar
+field reference --fieldName customerAvatar  --type ~.domain.CustomerAvatar --class ~.domain.Customer
+// script temp.roo
