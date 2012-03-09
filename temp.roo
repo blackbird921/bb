@@ -4,4 +4,6 @@
 entity jpa --class ~.domain.CustomerAvatar --sequenceName CUSTOMER_AVATAR_SEQ
 field string --fieldName fileName --class ~.domain.CustomerAvatar
 
-field reference --fieldName customerAvatar  --type ~.domain.CustomerAvatar --class ~.domain.CustomerProduct
+field reference --fieldName customerAvatar  --type ~.domain.CustomerAvatar --class ~.domain.Customer
+
+//web mvc scaffold --class ~.web.CustomerAvatarController --backingType ~.domain.CustomerAvatar --disallowedOperations update

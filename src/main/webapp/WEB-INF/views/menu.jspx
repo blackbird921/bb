@@ -75,5 +75,9 @@
             <menu:item id="i_refsex_new" messageCode="global_menu_new" url="/refsexes?form" z="SNww9LLYRBehSZ8B/HN2fr6RSs8="/>
             <menu:item id="i_refsex_list" messageCode="global_menu_list" url="/refsexes?page=1&amp;size=${empty param.size ? 10 : param.size}" z="F+YZsKgnRzlWjWLFDLUYViqnlbg="/>
         </menu:category>
+        <menu:category id="c_customeravatar" z="MaRKb+DCEsQVPn8RQgXMxZdkWgY=">
+            <menu:item id="i_customeravatar_new" messageCode="global_menu_new" url="/customeravatars?form" z="racV3N69LDTFkyISgbBxvNMtet8="/>
+            <menu:item id="i_customeravatar_list" messageCode="global_menu_list" url="/customeravatars?page=1&amp;size=${empty param.size ? 10 : param.size}" z="f9JHuFlVbXvyk9KmAhTQlV2PYKY="/>
+        </menu:category>
     </menu:menu>
 </div>

@@ -35,6 +35,4 @@ public class CustomerProduct {
     @DateTimeFormat(style = "M-")
     private Date endDate;
 
-    @ManyToOne
-    private CustomerAvatar customerAvatar;
 }

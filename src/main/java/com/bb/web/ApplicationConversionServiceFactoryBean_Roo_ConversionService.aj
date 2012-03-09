@@ -100,6 +100,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+
     public Converter<CustomerCard, String> ApplicationConversionServiceFactoryBean.getCustomerCardToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.bb.domain.CustomerCard, java.lang.String>() {
             public String convert(CustomerCard customerCard) {
