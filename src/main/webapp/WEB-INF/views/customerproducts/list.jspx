@@ -9,7 +9,6 @@
             <table:column id="c_com_bb_domain_CustomerProduct_productStake" property="productStake" z="eTex9s0pTQJeJYTT1js91ppQiHw="/>
             <table:column date="true" dateTimePattern="${customerProduct_startdate_date_format}" id="c_com_bb_domain_CustomerProduct_startDate" property="startDate" z="spQ+fyIjjbUw3MhXYF3vLWESThA="/>
             <table:column date="true" dateTimePattern="${customerProduct_enddate_date_format}" id="c_com_bb_domain_CustomerProduct_endDate" property="endDate" z="OEZArXHuZ+xfVmwU4MbYo/TWQpY="/>
-            <table:column id="c_com_bb_domain_CustomerProduct_customerAvatar" property="customerAvatar" z="nPgkrpJNJqUpzyDFbv88FiwzHUU="/>
         </table:table>
     </page:list>
 </div>

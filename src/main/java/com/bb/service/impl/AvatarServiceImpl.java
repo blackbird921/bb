@@ -42,6 +42,7 @@ public class AvatarServiceImpl implements AvatarService {
                 inputStream.close();
                 customer.setHasAvatar(true);
                 customer.setAvatar(null);
+
             }
         } catch (Exception e) {
             logger.error("Error in uploading avatar.", e);

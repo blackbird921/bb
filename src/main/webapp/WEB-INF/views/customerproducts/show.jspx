@@ -8,6 +8,5 @@
         <field:display field="productStake" id="s_com_bb_domain_CustomerProduct_productStake" object="${customerproduct}" z="t02YhYe5WbbaetlJ09T+oFpB6yU="/>
         <field:display date="true" dateTimePattern="${customerProduct_startdate_date_format}" field="startDate" id="s_com_bb_domain_CustomerProduct_startDate" object="${customerproduct}" z="dNjHKJ9BU/GCVg6tntx7WE4Yqqo="/>
         <field:display date="true" dateTimePattern="${customerProduct_enddate_date_format}" field="endDate" id="s_com_bb_domain_CustomerProduct_endDate" object="${customerproduct}" z="kYXDx/T72Ki+lh0oZ9fE84Zge0I="/>
-        <field:display field="customerAvatar" id="s_com_bb_domain_CustomerProduct_customerAvatar" object="${customerproduct}" z="atbISEz1wZwABQi7tcNfb67G68Q="/>
     </page:show>
 </div>

@@ -51,5 +51,4 @@ privileged aspect CustomerProduct_Roo_JavaBean {
         this.endDate = endDate;
     }
     
-
 }

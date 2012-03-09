@@ -6,7 +6,6 @@ package com.bb.web;
 import com.bb.domain.Card;
 import com.bb.domain.Company;
 import com.bb.domain.Customer;
-import com.bb.domain.CustomerAvatar;
 import com.bb.domain.CustomerCard;
 import com.bb.domain.CustomerCheckin;
 import com.bb.domain.CustomerPayment;
@@ -97,30 +96,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.Customer>() {
             public com.bb.domain.Customer convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Customer.class);
-            }
-        };
-    }
-    
-    public Converter<CustomerAvatar, String> ApplicationConversionServiceFactoryBean.getCustomerAvatarToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.CustomerAvatar, java.lang.String>() {
-            public String convert(CustomerAvatar customerAvatar) {
-                return new StringBuilder().append(customerAvatar.getFileName()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, CustomerAvatar> ApplicationConversionServiceFactoryBean.getIdToCustomerAvatarConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.CustomerAvatar>() {
-            public com.bb.domain.CustomerAvatar convert(java.lang.Long id) {
-                return CustomerAvatar.findCustomerAvatar(id);
-            }
-        };
-    }
-    
-    public Converter<String, CustomerAvatar> ApplicationConversionServiceFactoryBean.getStringToCustomerAvatarConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.CustomerAvatar>() {
-            public com.bb.domain.CustomerAvatar convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), CustomerAvatar.class);
             }
         };
     }
@@ -447,9 +422,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getCustomerToStringConverter());
         registry.addConverter(getIdToCustomerConverter());
         registry.addConverter(getStringToCustomerConverter());
-        registry.addConverter(getCustomerAvatarToStringConverter());
-        registry.addConverter(getIdToCustomerAvatarConverter());
-        registry.addConverter(getStringToCustomerAvatarConverter());
         registry.addConverter(getCustomerCardToStringConverter());
         registry.addConverter(getIdToCustomerCardConverter());
         registry.addConverter(getStringToCustomerCardConverter());

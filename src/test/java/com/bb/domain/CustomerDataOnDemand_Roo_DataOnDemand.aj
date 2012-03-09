@@ -4,7 +4,6 @@
 package com.bb.domain;
 
 import com.bb.domain.Customer;
-import com.bb.domain.CustomerAvatar;
 import com.bb.domain.CustomerDataOnDemand;
 import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
@@ -35,7 +34,6 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
         setBio(obj, index);
         setBirthday(obj, index);
         setCity(obj, index);
-        setCustomerAvatar(obj, index);
         setCustomerRole(obj, index);
         setDisableEndDate(obj, index);
         setDisableReason(obj, index);
@@ -79,11 +77,6 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
             city = city.substring(0, 30);
         }
         obj.setCity(city);
-    }
-    
-    public void CustomerDataOnDemand.setCustomerAvatar(Customer obj, int index) {
-        CustomerAvatar customerAvatar = null;
-        obj.setCustomerAvatar(customerAvatar);
     }
     
     public void CustomerDataOnDemand.setCustomerRole(Customer obj, int index) {

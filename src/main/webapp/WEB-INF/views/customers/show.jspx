@@ -23,6 +23,5 @@
         <field:display date="true" dateTimePattern="${customer_registrationdate_date_format}" field="registrationDate" id="s_com_bb_domain_Customer_registrationDate" object="${customer}" z="3VI2wFzCE1V4wTg1n8tBFCk11QA="/>
         <field:display field="avatar" id="s_com_bb_domain_Customer_avatar" object="${customer}" render="false" z="user-managed"/>
         <field:display field="hasAvatar" id="s_com_bb_domain_Customer_hasAvatar" object="${customer}" render="false" z="user-managed"/>
-        <field:display field="customerAvatar" id="s_com_bb_domain_Customer_customerAvatar" object="${customer}" z="WQR9ryHBrDGIabWwmrnL4dUvyTE="/>
     </page:show>
 </div>

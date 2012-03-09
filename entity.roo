@@ -180,11 +180,3 @@ field reference --fieldName transactionType --notNull --type ~.domain.ref.RefPay
 field date      --fieldName transactionDate --notNull --type java.util.Date
 field string    --fieldName transactionError          --sizeMax 200
 
-
-// #####################
-//   CustomerAvatar
-// #####################
-entity jpa --class ~.domain.CustomerAvatar --sequenceName CUSTOMER_AVATAR_SEQ
-field string --fieldName fileName --class ~.domain.CustomerAvatar
-
-field reference --fieldName customerAvatar  --type ~.domain.CustomerAvatar --class ~.domain.CustomerProduct

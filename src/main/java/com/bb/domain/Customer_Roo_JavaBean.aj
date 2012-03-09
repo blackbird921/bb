@@ -4,7 +4,6 @@
 package com.bb.domain;
 
 import com.bb.domain.Customer;
-import com.bb.domain.CustomerAvatar;
 import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
@@ -142,14 +141,6 @@ privileged aspect Customer_Roo_JavaBean {
     
     public void Customer.setHasAvatar(Boolean hasAvatar) {
         this.hasAvatar = hasAvatar;
-    }
-    
-    public CustomerAvatar Customer.getCustomerAvatar() {
-        return this.customerAvatar;
-    }
-    
-    public void Customer.setCustomerAvatar(CustomerAvatar customerAvatar) {
-        this.customerAvatar = customerAvatar;
     }
     
 }
