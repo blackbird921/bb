@@ -19,6 +19,7 @@ import java.util.Random;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
     
@@ -31,6 +32,7 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
     public Customer CustomerDataOnDemand.getNewTransientCustomer(int index) {
         Customer obj = new Customer();
         setAddress(obj, index);
+        setAvatar(obj, index);
         setBio(obj, index);
         setBirthday(obj, index);
         setCity(obj, index);
@@ -58,6 +60,11 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
         obj.setAddress(address);
     }
     
+    public void CustomerDataOnDemand.setAvatar(Customer obj, int index) {
+        CommonsMultipartFile avatar = null;
+        obj.setAvatar(avatar);
+    }
+    
     public void CustomerDataOnDemand.setBio(Customer obj, int index) {
         String bio = "bio_" + index;
         if (bio.length() > 500) {
@@ -80,7 +87,7 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
     }
     
     public void CustomerDataOnDemand.setCustomerRole(Customer obj, int index) {
-        CustomerRole customerRole = CustomerRole.class.getEnumConstants()[0];
+        CustomerRole customerRole = null;
         obj.setCustomerRole(customerRole);
     }
     
@@ -105,7 +112,7 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
     public void CustomerDataOnDemand.setEmail(Customer obj, int index) {
         String email = "foo" + index + "@bar.com";
         if (email.length() > 30) {
-            email = new Random().nextInt(10) + email.substring(1, 30);
+            email = email.substring(0, 30);
         }
         obj.setEmail(email);
     }
@@ -150,14 +157,14 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
     }
     
     public void CustomerDataOnDemand.setStatus(Customer obj, int index) {
-        CustomerStatus status = CustomerStatus.class.getEnumConstants()[0];
+        CustomerStatus status = null;
         obj.setStatus(status);
     }
     
     public void CustomerDataOnDemand.setUsername(Customer obj, int index) {
         String username = "username_" + index;
         if (username.length() > 30) {
-            username = new Random().nextInt(10) + username.substring(1, 30);
+            username = username.substring(0, 30);
         }
         obj.setUsername(username);
     }

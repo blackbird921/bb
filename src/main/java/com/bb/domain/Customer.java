@@ -84,7 +84,6 @@ public class Customer {
 
     private Boolean hasAvatar;
 
-
     public CommonsMultipartFile getAvatar() {
         return avatar;
     }
@@ -107,8 +106,6 @@ public class Customer {
         EntityManager em = Customer.entityManager();
         TypedQuery<Customer> q = em.createQuery("SELECT o FROM Customer AS o " +
                 "WHERE o." + field + " = :" + field + " AND o.id!= :id", Customer.class);
-        System.out.println("SELECT o FROM Customer AS o " +
-                "WHERE o." + field + " = :" + field + " AND o.id <> :id");
         q.setParameter(field, value);
         q.setParameter("id", id);
         return q;

@@ -13,7 +13,8 @@
     <definition extends="default" name="customers/update">
         <put-attribute name="body" value="/WEB-INF/views/customers/update.jspx"/>
     </definition>
-    <definition extends="default" name="customers/updateAvatarForm">
-        <put-attribute name="body" value="/WEB-INF/views/customers/updateAvatarForm.jsp"/>
+    <definition extends="blank" name="customers/updateAvatarForm">
+        <put-attribute name="body" value="/WEB-INF/views/customers/updateAvatarForm.jspx"/>
     </definition>
+
 </tiles-definitions>

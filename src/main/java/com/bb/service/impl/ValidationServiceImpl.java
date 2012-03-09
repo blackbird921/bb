@@ -24,10 +24,9 @@ public class ValidationServiceImpl implements ValidationService {
             result = ReflectionUtils.invokeByMethodName(clazz, "find" + clazz.getSimpleName() + "sByFieldExcludeById", fieldName, value, id);
         }
         if (result != null) {
-            TypedQuery<Customer> tq = (TypedQuery<Customer>) result;
+            TypedQuery tq = (TypedQuery) result;
             if (tq.getResultList() != null && tq.getResultList().size() > 0) {
                 return true;
-
             }
         }
         return false;

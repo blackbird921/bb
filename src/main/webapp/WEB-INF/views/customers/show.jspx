@@ -2,7 +2,6 @@
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    ${customer.hasAvatar}                      ${customer.id}
     <page:show id="ps_com_bb_domain_Customer" object="${customer}" path="/customers" z="mVN1DJKVCeiGrdw/NaygR0fvLfs=">
         <util:avatar big="false" customerId="${customer.id}" hasUploadedAvatar="${customer.hasAvatar}" id="my_avartar" showUploadButton="false"/>
         <field:display field="username" id="s_com_bb_domain_Customer_username" object="${customer}" z="EOBLp1KPw4XJzed9sXi4YjJUAfI="/>
