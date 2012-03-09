@@ -1,5 +1,6 @@
 package com.bb.domain;
 
+import com.bb.reference.CustomerStatus;
 import com.bb.service.ValidationService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,15 @@ public class CustomerIntegrationTest {
         CustomerDataOnDemand dod = new CustomerDataOnDemand();
         Customer c1 = dod.getNewTransientCustomer( 1 );
         c1.setUsername( "aaa" );
+        c1.setStatus(CustomerStatus.Trial);
         c1.persist();
 
-        assertTrue( validationService.existsUniqueValue( Customer.class, "username", "aaa" ) );
-        assertFalse( validationService.existsUniqueValue( Customer.class, "username", "bbb" ) );
+        assertFalse( validationService.existsUniqueValue( Customer.class, "username", "aaa", c1.getId() ) );
+        assertFalse( validationService.existsUniqueValue( Customer.class, "username", "bbb", c1.getId() ) );
+
+        Customer c2 = dod.getNewTransientCustomer( 2 );
+        c2.setUsername( "aaa" );
+        c2.setStatus(CustomerStatus.Trial);
+        assertTrue( validationService.existsUniqueValue( Customer.class, "username", "aaa", c2.getId() ) );
     }
 }

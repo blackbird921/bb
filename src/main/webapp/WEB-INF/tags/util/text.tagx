@@ -10,6 +10,7 @@
         <c:if test="${not empty value and value}">
           <spring:message code="error_${id}" var="message_value" htmlEscape="false" />
           <c:out value="${message_value}"/>
+          <br/>
         </c:if>
       </c:if>
   </c:if>

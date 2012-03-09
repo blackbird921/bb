@@ -37,18 +37,9 @@ public class CustomerController {
 
     @RequestMapping( method = RequestMethod.POST, produces = "text/html" )
     public String create( @Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest ) {
-        boolean hasError = false;
-        if ( bindingResult.hasErrors() ) {
-            hasError = true;
-        }
-        if ( validationService.existsUniqueValue( Customer.class, "username", customer.getUsername() ) ) {
-            uiModel.addAttribute( "usernameUniqueError", Boolean.TRUE );
-            hasError = true;
-        }
-        if ( validationService.existsUniqueValue( Customer.class, "email", customer.getEmail() ) ) {
-            uiModel.addAttribute( "emailUniqueError", Boolean.TRUE );
-            hasError = true;
-        }
+
+        boolean hasError  = doValidations(customer, bindingResult, uiModel);
+
         if ( hasError ) {
             populateEditForm( uiModel, customer );
             return "customers/create";
@@ -61,6 +52,23 @@ public class CustomerController {
         return "redirect:/customers/" + encodeUrlPathSegment( customer.getId().toString(), httpServletRequest );
     }
 
+    private boolean doValidations(Customer customer, BindingResult bindingResult, Model uiModel) {
+        boolean hasError = false;
+        if ( bindingResult.hasErrors() ) {
+            hasError = true;
+        }
+
+        if ( validationService.existsUniqueValue( Customer.class, "username", customer.getUsername(), customer.getId() ) ) {
+            uiModel.addAttribute( "usernameUniqueError", Boolean.TRUE );
+            hasError = true;
+        }
+        if ( validationService.existsUniqueValue( Customer.class, "email", customer.getEmail(), customer.getId() ) ) {
+            uiModel.addAttribute( "emailUniqueError", Boolean.TRUE );
+            hasError = true;
+        }
+        return hasError;
+    }
+
     @RequestMapping(value = "/updateAvatarForm/{id}", method = RequestMethod.GET, produces = "text/html")
     public String updateAvatarForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, Customer.findCustomer(id));
@@ -71,17 +79,17 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            for (ObjectError e : bindingResult.getAllErrors()) {
-                System.out.println(e.toString());
-            }
 
-            populateEditForm(uiModel, customer);
+        boolean hasError  = doValidations(customer, bindingResult, uiModel);
+
+        if ( hasError ) {
+            populateEditForm( uiModel, customer );
             return "customers/update";
         }
+
         uiModel.asMap().clear();
         System.out.println(customer.getHasAvatar());
-        avatarService.uploadAvatar(customer, httpServletRequest);
+//        avatarService.uploadAvatar(customer, httpServletRequest);
         customer.merge();
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
     }

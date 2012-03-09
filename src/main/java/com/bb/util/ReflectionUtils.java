@@ -135,4 +135,37 @@ public class ReflectionUtils {
 
         return null;
     }
+
+    public static Object invokeByMethodName( Class clazz, String methodName, String parameter1, String parameter2) {
+        // get an instance
+        try {
+            Object obj = clazz.newInstance();
+            for ( Method m : obj.getClass().getDeclaredMethods() ) {
+                if ( methodName != null && m.getName().equalsIgnoreCase( methodName ) ) {
+                    return m.invoke( obj, parameter1, parameter2);
+                }
+            }
+        } catch ( Exception e ) {
+            LOGGER.error( "Error accessing Property Getter", e );
+        }
+
+        return null;
+    }
+
+    public static Object invokeByMethodName( Class clazz, String methodName, Object parameter1, Object parameter2, Object parameter3) {
+        // get an instance
+        try {
+            Object obj = clazz.newInstance();
+            for ( Method m : obj.getClass().getDeclaredMethods() ) {
+                if ( methodName != null && m.getName().equalsIgnoreCase( methodName ) ) {
+                    return m.invoke( obj, parameter1, parameter2, parameter3);
+                }
+            }
+        } catch ( Exception e ) {
+            LOGGER.error( "Error accessing Property Getter", e );
+        }
+
+        return null;
+    }
+
 }

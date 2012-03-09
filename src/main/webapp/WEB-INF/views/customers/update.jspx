@@ -11,8 +11,12 @@
         }
     </script>
     <form:update id="fu_com_bb_domain_Customer" modelAttribute="customer" path="/customers" versionField="Version" z="0KOM89bYbze7zIuWz7F0csDoL30=">
+        <div class="errors" id="error_message">
+            <util:text id="usernameUniqueError" value="${usernameUniqueError}"/>
+            <util:text id="emailUniqueError" value="${emailUniqueError}"/>
+        </div>
         <util:avatar big="false" customerId="${customer.id}" hasUploadedAvatar="${customer.hasAvatar}" id="my_avartar" showUploadButton="false"/>
-        <button id="progButtonNode" onClick="myPopup()" type="button">????</button>
+        <button id="progButtonNode" onClick="myPopup()" type="button">Change</button>
         <field:input field="username" id="c_com_bb_domain_Customer_username" max="30" min="1" required="true" z="g8lc5GP2QhoIkXAhb5qwgRfxeq4="/>
         <field:input field="password" id="c_com_bb_domain_Customer_password" max="15" min="4" required="true" z="m85pGvbzWxsKJt71sJA4uaIyqM0="/>
         <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email" z="yaUEIVCqoUJKOTy2AjZUw4e48bE="/>
@@ -22,7 +26,7 @@
         <field:textarea field="address" id="c_com_bb_domain_Customer_address" z="2vg4PmmT+M5SrTp5f9TZ7LcyscU="/>
         <field:input field="city" id="c_com_bb_domain_Customer_city" max="30" z="o53VstJDEAwMjEWDD1UuH0J05Ko="/>
         <field:input field="phone" id="c_com_bb_domain_Customer_phone" max="30" z="S/m0ZhJttvjKHJNpnqdPouHr9KM="/>
-        <field:select field="sex" id="c_com_bb_domain_Customer_sex" itemValue="id" items="${refsexes}" path="/refsexes" z="SKRSdKTK5LqlqHn+r2MeBFHNLlU="/>
+        <field:input field="sex" id="c_com_bb_domain_Customer_sex" z="FIRQjhpKc6itUFc7UicnGpoe9qY="/>
         <field:datetime dateTimePattern="${customer_birthday_date_format}" field="birthday" id="c_com_bb_domain_Customer_birthday" past="true" z="D1Wx2MGX6FHU72/u9LcGJ85ysb8="/>
         <field:textarea field="bio" id="c_com_bb_domain_Customer_bio" z="PXxLGNN35vTh9yXiB23kXDf44ig="/>
         <field:datetime dateTimePattern="${customer_disablestartdate_date_format}" field="disableStartDate" id="c_com_bb_domain_Customer_disableStartDate" z="Ap61W6JB2kxJ+35cWqIsDWcCx50="/>

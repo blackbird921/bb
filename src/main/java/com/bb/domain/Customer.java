@@ -3,25 +3,21 @@ package com.bb.domain;
 import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+import java.util.Date;
+
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(sequenceName = "CUSTOMER_SEQ", finders = { "findCustomersByUsername", "findCustomersByEmail", "findCustomersByStatus", "findCustomersByCustomerRole" })
+@RooJpaActiveRecord(sequenceName = "CUSTOMER_SEQ", finders = {"findCustomersByUsername", "findCustomersByEmail", "findCustomersByStatus", "findCustomersByCustomerRole"})
 public class Customer {
 
     @NotNull
@@ -104,4 +100,18 @@ public class Customer {
             return this.registrationDate;
         }
     }
+
+    public static TypedQuery<Customer> findCustomersByFieldExcludeById(String field, String value, Long id) {
+        if (field == null || field.length() == 0)
+            throw new IllegalArgumentException("The " + field + " argument is required");
+        EntityManager em = Customer.entityManager();
+        TypedQuery<Customer> q = em.createQuery("SELECT o FROM Customer AS o " +
+                "WHERE o." + field + " = :" + field + " AND o.id!= :id", Customer.class);
+        System.out.println("SELECT o FROM Customer AS o " +
+                "WHERE o." + field + " = :" + field + " AND o.id <> :id");
+        q.setParameter(field, value);
+        q.setParameter("id", id);
+        return q;
+    }
+
 }
