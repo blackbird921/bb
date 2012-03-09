@@ -34,4 +34,7 @@ public class CustomerProduct {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date endDate;
+
+    @ManyToOne
+    private CustomerAvatar customerAvatar;
 }

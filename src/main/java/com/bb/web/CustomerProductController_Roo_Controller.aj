@@ -4,6 +4,7 @@
 package com.bb.web;
 
 import com.bb.domain.Customer;
+import com.bb.domain.CustomerAvatar;
 import com.bb.domain.CustomerProduct;
 import com.bb.domain.ProductCommit;
 import com.bb.domain.ProductStake;
@@ -113,6 +114,7 @@ privileged aspect CustomerProductController_Roo_Controller {
         uiModel.addAttribute("customerProduct", customerProduct);
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customers", Customer.findAllCustomers());
+        uiModel.addAttribute("customeravatars", CustomerAvatar.findAllCustomerAvatars());
         uiModel.addAttribute("productcommits", ProductCommit.findAllProductCommits());
         uiModel.addAttribute("productstakes", ProductStake.findAllProductStakes());
     }

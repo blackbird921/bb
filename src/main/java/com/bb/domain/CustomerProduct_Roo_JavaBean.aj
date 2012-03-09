@@ -4,6 +4,7 @@
 package com.bb.domain;
 
 import com.bb.domain.Customer;
+import com.bb.domain.CustomerAvatar;
 import com.bb.domain.CustomerProduct;
 import com.bb.domain.ProductCommit;
 import com.bb.domain.ProductStake;
@@ -49,6 +50,14 @@ privileged aspect CustomerProduct_Roo_JavaBean {
     
     public void CustomerProduct.setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+    
+    public CustomerAvatar CustomerProduct.getCustomerAvatar() {
+        return this.customerAvatar;
+    }
+    
+    public void CustomerProduct.setCustomerAvatar(CustomerAvatar customerAvatar) {
+        this.customerAvatar = customerAvatar;
     }
     
 }

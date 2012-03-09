@@ -1,9 +1,7 @@
 // #####################
-//   CustomerProduct
+//   CustomerAvatar
 // #####################
-entity jpa --class ~.domain.CustomerProduct --sequenceName CUSTOMER_PRODUCT_SEQ
-field reference --fieldName customer --notNull --type ~.domain.Customer
-field reference --fieldName productCommit  --notNull --type ~.domain.ProductCommit
-field reference --fieldName productStake   --notNull --type ~.domain.ProductStake
-field date   --fieldName startDate --notNUll --type java.util.Date
-field date   --fieldName endDate --notNUll --type java.util.Date
+entity jpa --class ~.domain.CustomerAvatar --sequenceName CUSTOMER_AVATAR_SEQ
+field string --fieldName fileName --class ~.domain.CustomerAvatar
+
+field reference --fieldName customerAvatar  --type ~.domain.CustomerAvatar --class ~.domain.CustomerProduct

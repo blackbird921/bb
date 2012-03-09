@@ -7,10 +7,13 @@ import com.bb.domain.Customer;
 import com.bb.domain.ref.RefSex;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
+import com.bb.web.CustomerController;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import javax.servlet.http.HttpServletRequest;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,19 +21,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
-
 privileged aspect CustomerController_Roo_Controller {
-
+    
     @RequestMapping(params = "form", produces = "text/html")
     public String CustomerController.createForm(Model uiModel) {
         populateEditForm(uiModel, new Customer());
         return "customers/create";
     }
-
+    
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String CustomerController.show(@PathVariable("id") Long id, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
@@ -38,7 +36,7 @@ privileged aspect CustomerController_Roo_Controller {
         uiModel.addAttribute("itemId", id);
         return "customers/show";
     }
-
+    
     @RequestMapping(produces = "text/html")
     public String CustomerController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
@@ -53,15 +51,13 @@ privileged aspect CustomerController_Roo_Controller {
         addDateTimeFormatPatterns(uiModel);
         return "customers/list";
     }
-
-
+    
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String CustomerController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        System.out.println("updateForm.................................");
         populateEditForm(uiModel, Customer.findCustomer(id));
         return "customers/update";
     }
-
+    
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String CustomerController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         Customer customer = Customer.findCustomer(id);
@@ -71,14 +67,14 @@ privileged aspect CustomerController_Roo_Controller {
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/customers";
     }
-
+    
     void CustomerController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("customer_registrationdate_date_format", DateTimeFormat.patternForStyle("MM", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("customer_birthday_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("customer_disablestartdate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("customer_disableenddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
-
+    
     void CustomerController.populateEditForm(Model uiModel, Customer customer) {
         uiModel.addAttribute("customer", customer);
         addDateTimeFormatPatterns(uiModel);
@@ -86,7 +82,7 @@ privileged aspect CustomerController_Roo_Controller {
         uiModel.addAttribute("customerroles", Arrays.asList(CustomerRole.values()));
         uiModel.addAttribute("customerstatuses", Arrays.asList(CustomerStatus.values()));
     }
-
+    
     String CustomerController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
@@ -94,9 +90,8 @@ privileged aspect CustomerController_Roo_Controller {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {
-        }
+        } catch (UnsupportedEncodingException uee) {}
         return pathSegment;
     }
-
+    
 }

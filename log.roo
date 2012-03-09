@@ -393,3 +393,14 @@ finder add --finderName findCustomersByCustomerRole --class ~.domain.Customer
 entity jpa --class ~.domain.Customer
 field boolean --fieldName hasAvatar --class ~.domain.Customer
 // [failed] field boolean --fieldName hasAvatar --class ~.domain.Customer
+
+entity jpa --class ~.domain.CustomerAvatar --sequenceName CUSTOMER_AVATAR_SEQ
+field boolean --fieldName fileName --class ~.domain.CustomerAvatar
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-09 11:12:10
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-09 11:12:30
+entity jpa --class ~.domain.CustomerAvatar --sequenceName CUSTOMER_AVATAR_SEQ
+// [failed] script temp.roo
+entity jpa --class ~.domain.CustomerAvatar --sequenceName CUSTOMER_AVATAR_SEQ
+field string --fieldName fileName --class ~.domain.CustomerAvatar
+field reference --fieldName customerAvatar  --type ~.domain.CustomerAvatar --class ~.domain.CustomerProduct
+// script temp.roo

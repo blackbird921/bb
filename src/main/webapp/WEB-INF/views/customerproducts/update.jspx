@@ -8,5 +8,6 @@
         <field:select field="productStake" id="c_com_bb_domain_CustomerProduct_productStake" itemValue="id" items="${productstakes}" path="/productstakes" required="true" z="r97DxAPioFNFDuwuCgBmx3ysuqM="/>
         <field:datetime dateTimePattern="${customerProduct_startdate_date_format}" field="startDate" id="c_com_bb_domain_CustomerProduct_startDate" z="nSIkLgwrSCQKDkaOqeqjqgqYC6Q="/>
         <field:datetime dateTimePattern="${customerProduct_enddate_date_format}" field="endDate" id="c_com_bb_domain_CustomerProduct_endDate" z="R3A7kj/ahdZSqMWe7owK1eReSQ0="/>
+        <field:select field="customerAvatar" id="c_com_bb_domain_CustomerProduct_customerAvatar" itemValue="id" items="${customeravatars}" path="/customeravatars" z="I02b20WFvY5p/R9HlBLzYchDbfw="/>
     </form:update>
 </div>
