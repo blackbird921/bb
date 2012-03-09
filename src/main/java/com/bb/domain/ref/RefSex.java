@@ -8,7 +8,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(sequenceName = "Ref_Sex_SEQ")
+@RooJpaActiveRecord(sequenceName = "Ref_Sex_SEQ", finders = { "findRefSexesByName" })
 public class RefSex {
 
     @NotNull

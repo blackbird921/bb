@@ -404,14 +404,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<String, RefSex> ApplicationConversionServiceFactoryBean.getStringToRefSexConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ref.RefSex>() {
-            public com.bb.domain.ref.RefSex convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), RefSex.class);
-            }
-        };
-    }
-    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getCardToStringConverter());
         registry.addConverter(getIdToCardConverter());

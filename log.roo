@@ -394,3 +394,5 @@ entity jpa --class ~.domain.Customer
 field boolean --fieldName hasAvatar --class ~.domain.Customer
 // [failed] field boolean --fieldName hasAvatar --class ~.domain.Customer
 
+finder add --finderName findRefSexsByName --class ~.domain.ref.RefSex
+finder add --finderName findRefSexesByName --class ~.domain.ref.RefSex
