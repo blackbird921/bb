@@ -37,11 +37,8 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println(1);
         boolean hasError = doValidations(customer, bindingResult, uiModel);
-        System.out.println(2);
         if (hasError) {
-            System.out.println(3);
             populateEditForm(uiModel, customer);
             return "customers/create";
         }

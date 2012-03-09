@@ -19,7 +19,7 @@
         <field:textarea field="address" id="c_com_bb_domain_Customer_address" z="2vg4PmmT+M5SrTp5f9TZ7LcyscU="/>
         <field:input field="city" id="c_com_bb_domain_Customer_city" max="30" z="o53VstJDEAwMjEWDD1UuH0J05Ko="/>
         <field:input field="phone" id="c_com_bb_domain_Customer_phone" max="30" z="S/m0ZhJttvjKHJNpnqdPouHr9KM="/>
-        <field:select field="sex" id="c_com_bb_domain_Customer_sex" items="${refsexes}" path="refsexes" z="user-managed"/>
+        <field:select field="sex" id="c_com_bb_domain_Customer_sex" items="${refsexes}" itemValue="id" path="refsexes" z="user-managed"/>
         <field:datetime dateTimePattern="${customer_birthday_date_format}" field="birthday" id="c_com_bb_domain_Customer_birthday" past="true" z="D1Wx2MGX6FHU72/u9LcGJ85ysb8="/>
         <field:textarea field="bio" id="c_com_bb_domain_Customer_bio" z="PXxLGNN35vTh9yXiB23kXDf44ig="/>
         <field:datetime dateTimePattern="${customer_disablestartdate_date_format}" field="disableStartDate" id="c_com_bb_domain_Customer_disableStartDate" z="Ap61W6JB2kxJ+35cWqIsDWcCx50="/>

@@ -76,14 +76,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<Customer, String> ApplicationConversionServiceFactoryBean.getCustomerToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.Customer, java.lang.String>() {
-            public String convert(Customer customer) {
-                return new StringBuilder().append(customer.getAvatar()).append(" ").append(customer.getRegistrationDate()).append(" ").append(customer.getUsername()).append(" ").append(customer.getPassword()).toString();
-            }
-        };
-    }
-    
     public Converter<Long, Customer> ApplicationConversionServiceFactoryBean.getIdToCustomerConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.Customer>() {
             public com.bb.domain.Customer convert(java.lang.Long id) {
@@ -400,6 +392,14 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ref.RefSex>() {
             public com.bb.domain.ref.RefSex convert(java.lang.Long id) {
                 return RefSex.findRefSex(id);
+            }
+        };
+    }
+    
+    public Converter<String, RefSex> ApplicationConversionServiceFactoryBean.getStringToRefSexConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ref.RefSex>() {
+            public com.bb.domain.ref.RefSex convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), RefSex.class);
             }
         };
     }

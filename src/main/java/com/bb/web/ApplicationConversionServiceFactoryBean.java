@@ -1,5 +1,6 @@
 package com.bb.web;
 
+import com.bb.domain.Customer;
 import com.bb.domain.ref.RefSex;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
@@ -20,17 +21,13 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
         // Register application converters and formatters
     }
 
-    public Converter<String, RefSex> getStringToRefSexConverter() {
-        return new org.springframework.core.convert.converter.Converter<String, RefSex>() {
-            public RefSex convert(String id) {
-                System.out.println(11);
-                TypedQuery<RefSex> list = RefSex.findRefSexesByName(id);
-                if (list.getSingleResult() != null) {
-                    return list.getSingleResult();
-                }
-                return null;
+    public Converter<Customer, String> getCustomerToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.bb.domain.Customer, java.lang.String>() {
+            public String convert(Customer customer) {
+                return new StringBuilder().append(customer.getUsername()).toString();
             }
         };
     }
+
 
 }
