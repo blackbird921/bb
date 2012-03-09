@@ -3,11 +3,14 @@ package com.bb.web;
 import com.bb.domain.Customer;
 import com.bb.service.AvatarService;
 import com.bb.service.ValidationService;
+import com.bb.util.AutowiredLogger;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,9 +24,10 @@ import javax.validation.Valid;
 @Controller
 @RooWebScaffold(path = "customers", formBackingObject = Customer.class)
 public class CustomerController {
+    
+    @AutowiredLogger
+    Logger logger;
 
-    @Autowired
-    private CommonsMultipartResolver multipartResolver;
     @Autowired
     private ValidationService validationService;
 
@@ -33,7 +37,7 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-
+        System.out.println("creating..............");
         boolean hasError = doValidations(customer, bindingResult, uiModel);
 
         if (hasError) {
@@ -48,20 +52,6 @@ public class CustomerController {
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
     }
 
-    @RequestMapping(value = "/updateAvatar", method = RequestMethod.POST, produces = "text/html")
-    public String updateAvatar(Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-
-        uiModel.asMap().clear();
-        CommonsMultipartFile avatar = customer.getAvatar();
-        customer = Customer.findCustomer(customer.getId());
-        customer.setAvatar(avatar);
-
-        avatarService.uploadAvatar(customer, httpServletRequest);
-        customer.merge();
-        System.out.println("updateAvatarResult to return");
-        uiModel.addAttribute("customer", customer);
-        return "customers/updateAvatarForm";
-    }
 
 
     private boolean doValidations(Customer customer, BindingResult bindingResult, Model uiModel) {
@@ -81,27 +71,22 @@ public class CustomerController {
         return hasError;
     }
 
-    @RequestMapping(value = "/updateAvatarForm/{id}", method = RequestMethod.GET, produces = "text/html")
-    public String updateAvatarForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, Customer.findCustomer(id));
-        System.out.println("its here.................................");
-        return "customers/updateAvatarForm";
-    }
 
-
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
+    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "text/html")
     public String update(@Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-
+        System.out.println(customer);
         boolean hasError = doValidations(customer, bindingResult, uiModel);
 
         if (hasError) {
-            System.out.println(111111);
+            for (ObjectError e : bindingResult.getAllErrors()) {
+                logger.info(e.toString());
+            }
             populateEditForm(uiModel, customer);
             return "customers/update";
         }
 
         uiModel.asMap().clear();
-        System.out.println(customer.getHasAvatar());
+        
         avatarService.uploadAvatar(customer, httpServletRequest);
         customer.merge();
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
