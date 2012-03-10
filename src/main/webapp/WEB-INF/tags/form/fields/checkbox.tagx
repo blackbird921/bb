@@ -30,7 +30,9 @@
         </c:otherwise>
       </c:choose>
       <script type="text/javascript">
-      	Spring.addDecoration(new Spring.ElementDecoration({elementId : '_${sec_field}_id', widgetType : 'dijit.form.CheckBox', widgetAttrs : {}}));
+          document.getElementById('_${sec_field}_id').setAttribute('data-dojo-type', 'dijit.form.CheckBox');
+          document.getElementById('_${sec_field}_id').setAttribute('data-dojo-props', "'dijit.form.CheckBox', widgetAttrs : {}");
+//        Spring.addDecoration(new Spring.ElementDecoration({elementId : '_${sec_field}_id', widgetType : 'dijit.form.CheckBox', widgetAttrs : {}}));
       </script>
     </div>
     <br />

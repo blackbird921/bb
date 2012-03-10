@@ -72,6 +72,7 @@
         <c:set var="sec_dateTimePattern">
           <spring:escapeBody javaScriptEscape="true">${dateTimePattern}</spring:escapeBody>
         </c:set>
+
         Spring.addDecoration(new Spring.ElementDecoration({
             elementId : '_${sec_field}_id',
             widgetType : 'dijit.form.DateTextBox',

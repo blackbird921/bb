@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
     <definition extends="default" name="faqs/list">
         <put-attribute name="body" value="/WEB-INF/views/faqs/list.jspx"/>
     </definition>
-<definition extends="default" name="faqs/show">
+    <definition extends="default" name="faqs/show">
         <put-attribute name="body" value="/WEB-INF/views/faqs/show.jspx"/>
     </definition>
-<definition extends="default" name="faqs/create">
+    <definition name="my" template="/WEB-INF/layouts/my.jsp">
+    </definition>
+    <definition extends="default" name="faqs/create">
         <put-attribute name="body" value="/WEB-INF/views/faqs/create.jspx"/>
     </definition>
-<definition extends="default" name="faqs/update">
+    <!--<definition extends="my" name="faqs/create">-->
+        <!--&lt;!&ndash;<put-attribute name="body" value="/WEB-INF/views/faqs/create.jspx"/>&ndash;&gt;-->
+    <!--</definition>-->
+    <definition extends="default" name="faqs/update">
         <put-attribute name="body" value="/WEB-INF/views/faqs/update.jspx"/>
     </definition>
 </tiles-definitions>
