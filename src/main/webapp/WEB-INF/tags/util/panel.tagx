@@ -24,18 +24,18 @@
             <spring:escapeBody javaScriptEscape="true">${title}</spring:escapeBody>
         </c:set>
 
-        <script type="text/javascript">
-            dojo.require('dijit.TitlePane');
-        </script>
+        <script type="text/javascript">dojo.require('dijit.TitlePane');</script>
 
         <div id="_title_${sec_id}_id">
             <script type="text/javascript">
-//                document.getElementById('_title_${sec_id}_id').setAttribute('data-dojo-type', 'dijit.TitlePane');
-//                document.getElementById('_title_${sec_id}_id').setAttribute('data-dojo-props', "title:'${sec_title}', open: ${sec_openPane}");
-                  Spring.addDecoration(new Spring.ElementDecoration({elementId:'_title_${sec_id}_id',
-                                widgetType:'dijit.TitlePane', widgetAttrs:{title:'${sec_title}', open: ${sec_openPane}}}));
-            </script>
+            document.getElementById('_title_${sec_id}_id').setAttribute('data-dojo-type', 'dijit.TitlePane');
+            document.getElementById('_title_${sec_id}_id').setAttribute('data-dojo-props', "title:'${sec_title}', open: ${sec_openPane}");
+            //                  Spring.addDecoration(new Spring.ElementDecoration({elementId:'_title_${sec_id}_id',
+            //                                widgetType:'dijit.TitlePane', widgetAttrs:{title:'${sec_title}', open: ${sec_openPane}}}));
+
+        </script>
             <jsp:doBody/>
         </div>
+        <script type="text/javascript">dojo.parser.parse();</script>
     </c:if>
 </jsp:root>

@@ -62,6 +62,7 @@
           <spring:message argumentSeparator="," arguments="${label}, " code="field_simple_validation" var="field_validation" htmlEscape="false" />
         </c:otherwise>
       </c:choose>
+        <script type="text/javascript">dojo.require('dijit.form.DateTextBox');</script>
       <script type="text/javascript">
         <c:set var="sec_field_validation">
           <spring:escapeBody javaScriptEscape="true">${field_validation}</spring:escapeBody>
@@ -72,18 +73,22 @@
         <c:set var="sec_dateTimePattern">
           <spring:escapeBody javaScriptEscape="true">${dateTimePattern}</spring:escapeBody>
         </c:set>
+        document.getElementById('_${sec_field}_id').setAttribute('data-dojo-type', 'dijit.form.DateTextBox');
+        document.getElementById('_${sec_field}_id').setAttribute('data-dojo-props', "promptMessage: '${sec_field_validation}',invalidMessage: '${sec_field_invalid}',required: ${required},constraints: {datePattern : '${sec_dateTimePattern}',required : ${required}},datePattern : '${sec_dateTimePattern}'}");
 
-        Spring.addDecoration(new Spring.ElementDecoration({
-            elementId : '_${sec_field}_id',
-            widgetType : 'dijit.form.DateTextBox',
-            widgetAttrs : {
-                promptMessage: '${sec_field_validation}',
-                invalidMessage: '${sec_field_invalid}',
-                required: ${required},
-                constraints: {
-                    datePattern : '${sec_dateTimePattern}',
-                    required : ${required}},
-                datePattern : '${sec_dateTimePattern}'}})); </script>
+//        Spring.addDecoration(new Spring.ElementDecoration({
+//            elementId : '_${sec_field}_id',
+//            -widgetType : 'dijit.form.DateTextBox',
+//            widgetAttrs : {
+//        promptMessage: '${sec_field_validation}',
+//                invalidMessage: '${sec_field_invalid}',
+//                required: ${required},
+//        constraints: {
+//            datePattern : '${sec_dateTimePattern}',
+//                    required : ${required}},
+//        datePattern : '${sec_dateTimePattern}'}
+//                }));
+      </script>
     </div>
     <br />
   </c:if>
