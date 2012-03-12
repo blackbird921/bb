@@ -10,7 +10,7 @@
     <spring:url value="/resources/spring/Spring.js" var="spring_url" />
     <spring:url value="/resources/spring/Spring-Dojo.js" var="spring_dojo_url" />
     <spring:url value="/resources/images/favicon.ico" var="favicon" />
-    <spring:url value="/resources/scripts/jquery.js" var="jquery_url" />
+    <spring:url value="/resources/scripts/jquery-1.7.1.js" var="jquery_url" />
     <spring:url value="/resources/scripts/jquery-ui.min.js" var="jquery_ui_url" />
     <spring:url value="/resources/scripts/main.js" var="main_url" />
     <link rel="stylesheet" type="text/css" href="${tundra_url}" />
@@ -24,13 +24,19 @@
     </c:set>
 
     <script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: '${fn:toLowerCase(userLocale)}'};</script>
+    <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/themes/base/jquery.ui.all.css"/>
+    <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/demos/demos.css"/>
 
     <script src="${dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
     <!--<script src="${spring_url}" type="text/javascript">&lt;!&ndash; /required for FF3 and Opera &ndash;&gt;</script>-->
     <!--<script src="${spring_dojo_url}" type="text/javascript">&lt;!&ndash; required for FF3 and Opera &ndash;&gt;</script>-->
-    <!--<script src="${jquery_url}" type="text/javascript"></script>-->
-    <!--<script src="${jquery_ui_url}" type="text/javascript"></script>-->
+    <script src="${jquery_url}" type="text/javascript"><!--jquery--></script>
+    <script src="${jquery_ui_url}" type="text/javascript"><!--jquery ui--></script>
     <!--<script src="${main_url}" type="text/javascript"></script>-->
     <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
+    <!--<script src="/resources/scripts/jquery-ui/development-bundle/ui/jquery.ui.core.js"></script>-->
+    <!--<script src="/resources/scripts/jquery-ui/development-bundle/ui/jquery.ui.widget.js"></script>-->
+    <!--<script src="/resources/scripts/jquery-ui/development-bundle/ui/jquery.ui.datepicker.js"></script>-->
+
 
 </jsp:root>

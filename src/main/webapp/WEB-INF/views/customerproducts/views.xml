@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
     <definition extends="default" name="customerproducts/list">
         <put-attribute name="body" value="/WEB-INF/views/customerproducts/list.jspx"/>
     </definition>
-<definition extends="default" name="customerproducts/show">
+    <definition extends="default" name="customerproducts/show">
         <put-attribute name="body" value="/WEB-INF/views/customerproducts/show.jspx"/>
     </definition>
-<definition extends="default" name="customerproducts/create">
-        <put-attribute name="body" value="/WEB-INF/views/customerproducts/create.jspx"/>
+    <definition extends="default" name="customerproducts/create">
+    <put-attribute name="body" value="/WEB-INF/views/customerproducts/create.jspx"/>
     </definition>
-<definition extends="default" name="customerproducts/update">
+    <!--<definition name="customerproducts/create" template="/WEB-INF/views/customerproducts/create.jspx">-->
+    <!--</definition>-->
+    <definition extends="default" name="customerproducts/update">
         <put-attribute name="body" value="/WEB-INF/views/customerproducts/update.jspx"/>
     </definition>
 </tiles-definitions>
