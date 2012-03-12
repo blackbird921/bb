@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_bb_domain_CustomerProduct" modelAttribute="customerProduct" path="/customerproducts" render="${empty dependencies}" z="qlV31x8bk8YqAR+dG4jwPP0dqb8=">
         <field:select field="customer" id="c_com_bb_domain_CustomerProduct_customer" itemValue="id" items="${customers}" path="/customers" required="true" z="tvN8V1yTH6m33RDmYBwaKHI2laQ="/>
         <field:select field="productCommit" id="c_com_bb_domain_CustomerProduct_productCommit" itemValue="id" items="${productcommits}" path="/productcommits" required="true" z="gBSeCEjaAOdGpPfEN0b+cojzaQg="/>
         <field:select field="productStake" id="c_com_bb_domain_CustomerProduct_productStake" itemValue="id" items="${productstakes}" path="/productstakes" required="true" z="r97DxAPioFNFDuwuCgBmx3ysuqM="/>
-        <field:datetime dateTimePattern="${customerProduct_startdate_date_format}" field="startDate" id="c_com_bb_domain_CustomerProduct_startDate" z="nSIkLgwrSCQKDkaOqeqjqgqYC6Q="/>
-        <field:datetime dateTimePattern="${customerProduct_enddate_date_format}" field="endDate" id="c_com_bb_domain_CustomerProduct_endDate" z="R3A7kj/ahdZSqMWe7owK1eReSQ0="/>
+        <field:datetime render="false" dateTimePattern="${customerProduct_startdate_date_format}" field="startDate" id="c_com_bb_domain_CustomerProduct_startDate" z="nSIkLgwrSCQKDkaOqeqjqgqYC6Q="/>
+        <spring:message code="label_${fn:toLowerCase(fn:substringAfter('c_com_bb_domain_CustomerProduct_startDate','_'))}" var="label" htmlEscape="false" />
+        <label for="c_com_bb_domain_CustomerProduct_startDate"><c:out value="${label}" />:</label>
+        <input id="c_com_bb_domain_CustomerProduct_startDate" name="startDate" type="text" value=""/><br/>
         <script src="/resources/scripts/jquery-ui/development-bundle/ui/i18n/jquery.ui.datepicker-zh-CN.js" type="text/javascript"><!--jquery ui--></script>
         <script>
             $(function() {
-                $( "#datepicker" ).datepicker();
+                $( "#c_com_bb_domain_CustomerProduct_startDate" ).datepicker({
+                    dateFormat: "yyyy-mm-dd",
+                    numberOfMonths: 1,
+                    showButtonPanel: true,
+                    minDate: -0, maxDate: '+12M',
+                    beforeShowDay: function(date){ return [date.getDay() == 1,""]}
+                });
             });
         </script>
-        <p>Date: <input type="text" id="datepicker"/></p>
+        <field:datetime render="false" dateTimePattern="${customerProduct_enddate_date_format}" field="endDate" id="c_com_bb_domain_CustomerProduct_endDate" z="R3A7kj/ahdZSqMWe7owK1eReSQ0="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_bb_domain_CustomerProduct" render="${not empty dependencies}" z="4Q+zFx0jHoEsIRWLPrBAbZmSchg="/>
 </div>
