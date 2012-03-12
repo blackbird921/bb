@@ -26,8 +26,8 @@
     <script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: '${fn:toLowerCase(userLocale)}'};</script>
 
     <script src="${dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
-    <script src="${spring_url}" type="text/javascript"><!-- /required for FF3 and Opera --></script>
-    <script src="${spring_dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+    <!--<script src="${spring_url}" type="text/javascript">&lt;!&ndash; /required for FF3 and Opera &ndash;&gt;</script>-->
+    <!--<script src="${spring_dojo_url}" type="text/javascript">&lt;!&ndash; required for FF3 and Opera &ndash;&gt;</script>-->
     <!--<script src="${jquery_url}" type="text/javascript"></script>-->
     <!--<script src="${jquery_ui_url}" type="text/javascript"></script>-->
     <!--<script src="${main_url}" type="text/javascript"></script>-->

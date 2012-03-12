@@ -44,7 +44,7 @@
       </label>
       <c:choose>
         <c:when test="${disableFormBinding}">
-          <input id="_${sec_field}_id" name="${sec_field}" />
+          <input id="_${sec_field}_id" name="${sec_field}"/>
         </c:when>
         <c:otherwise>
           <form:input id="_${sec_field}_id" path="${sec_field}" disabled="${disabled}" readonly="${readonly}"/>
@@ -74,11 +74,11 @@
           <spring:escapeBody javaScriptEscape="true">${dateTimePattern}</spring:escapeBody>
         </c:set>
         document.getElementById('_${sec_field}_id').setAttribute('data-dojo-type', 'dijit.form.DateTextBox');
-        document.getElementById('_${sec_field}_id').setAttribute('data-dojo-props', "promptMessage: '${sec_field_validation}',invalidMessage: '${sec_field_invalid}',required: ${required},constraints: {datePattern : '${sec_dateTimePattern}',required : ${required}},datePattern : '${sec_dateTimePattern}'}");
-
+        document.getElementById('_${sec_field}_id').setAttribute('data-dojo-props', "promptMessage: '${sec_field_validation}',invalidMessage: '${sec_field_invalid}',required: ${required}");
+//        ,constraints: {datePattern : '${sec_dateTimePattern}',required : ${required}},datePattern : '${sec_dateTimePattern}'}
 //        Spring.addDecoration(new Spring.ElementDecoration({
 //            elementId : '_${sec_field}_id',
-//            -widgetType : 'dijit.form.DateTextBox',
+//            widgetType : 'dijit.form.DateTextBox',
 //            widgetAttrs : {
 //        promptMessage: '${sec_field_validation}',
 //                invalidMessage: '${sec_field_invalid}',
@@ -90,6 +90,7 @@
 //                }));
       </script>
     </div>
+      <script type="text/javascript">dojo.parser.parse();</script>
     <br />
   </c:if>
 </jsp:root>
