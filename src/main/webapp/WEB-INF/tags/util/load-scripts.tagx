@@ -32,6 +32,7 @@
     <!--<script src="${spring_dojo_url}" type="text/javascript">&lt;!&ndash; required for FF3 and Opera &ndash;&gt;</script>-->
     <script src="${jquery_url}" type="text/javascript"><!--jquery--></script>
     <script src="${jquery_ui_url}" type="text/javascript"><!--jquery ui--></script>
+    <script src="${jquery_ui_url}" type="text/javascript"><!--jquery ui--></script>
     <script src="${main_url}" type="text/javascript"><!--user defined javascripts--></script>
     <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
 

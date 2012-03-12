@@ -8,11 +8,11 @@
     <definition extends="default" name="customerproducts/show">
         <put-attribute name="body" value="/WEB-INF/views/customerproducts/show.jspx"/>
     </definition>
-    <definition extends="default" name="customerproducts/create">
-    <put-attribute name="body" value="/WEB-INF/views/customerproducts/create.jspx"/>
-    </definition>
-    <!--<definition name="customerproducts/create" template="/WEB-INF/views/customerproducts/create.jspx">-->
+    <!--<definition extends="default" name="customerproducts/create">-->
+        <!--<put-attribute name="body" value="/WEB-INF/views/customerproducts/create.jspx"/>-->
     <!--</definition>-->
+    <definition name="customerproducts/create" template="/WEB-INF/views/customerproducts/create.jsp">
+    </definition>
     <definition extends="default" name="customerproducts/update">
         <put-attribute name="body" value="/WEB-INF/views/customerproducts/update.jspx"/>
     </definition>
