@@ -89,7 +89,7 @@ a{
 #exceptFooter .centerWrap,
 #footer .centerWrap
 {
-    max-width:1230px;
+    max-width:960px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -844,7 +844,7 @@ a.bigButton
 
 #codeStrip .description
 {
-    padding: 10px 20px 20px;
+    padding: 1px 20px 20px;
     line-height: 1.6;
 }
 
