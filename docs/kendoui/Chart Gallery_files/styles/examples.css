@@ -109,13 +109,13 @@ a{
 
 #main
 {
-    min-width:760px;
+    min-width:600px;
 }
 
 .hasNavigation #main
 {
-    float:right;
-    width:79%;
+    float:left;
+    width:60%;
 }
 
 #footer
@@ -227,7 +227,7 @@ a.bigButton,
     color:#fff;
 }
 
-#navi a#download
+#navi a#i
 {
     border-top: 1px solid #999;
     padding:8px 19px 9px 18px;
@@ -518,6 +518,7 @@ a.bigButton
 #navWrap .k-link
 {
     font: 16px bold Arial, Helvetica, sans-serif;
+    font-weight: bold;
     color: #2175bd;
     background: none;
     border: 0;
@@ -529,6 +530,7 @@ a.bigButton
 #navWrap li li .k-link
 {
     font-size: 12px;
+    font-weight: bold;
     line-height: 18px;
     padding: 1px 1px 1px 21px;
 }
@@ -856,3 +858,32 @@ a.bigButton
     padding: 20px;
 }
 
+.code-sample
+{
+    margin: 6px 0;
+    border: 3px solid #dedede;
+    background: #f9f9f9;
+    color: #000;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.code-title
+{
+    margin: 0;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: normal;
+    background: -moz-linear-gradient(top, #ebebeb 0%, #dedede 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebebeb), color-stop(100%,#dedede));
+    background: -webkit-linear-gradient(top, #ebebeb 0%,#dedede 100%);
+    background: -o-linear-gradient(top, #ebebeb 0%,#dedede 100%);
+    background: -ms-linear-gradient(top, #ebebeb 0%,#dedede 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#dedede',GradientType=0 );
+    background: linear-gradient(top, #ebebeb 0%,#dedede 100%);
+}
+
+.code{
+    background: #f9f9f9;
+}

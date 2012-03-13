@@ -3,8 +3,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Chart Gallery</title>
-    <link href="./Chart Gallery_files/kendo.common.min.css" rel="stylesheet">
+    <title>我的空间</title>
+    <link href="./Chart Gallery_files/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="./Chart Gallery_files/styles/kendo.default.min.css" rel="stylesheet">
     <!--<link href="http://demos.kendoui.com/beta/content/shared/styles/examples.css" rel="stylesheet">-->
     <link href="./Chart Gallery_files/styles/examples.css" rel="stylesheet">
     <script src="./Chart Gallery_files/jquery-1.7.1.min.js"></script>
@@ -42,28 +43,37 @@
                 <ul class="nav k-widget k-reset k-header k-panelbar" data-role="panelbar">
                     <li class="k-state-active k-state-highlighted k-item k-first">
                         <span class="k-link k-header">
-                            <span class="k-sprite topIcon"></span>
-                            Overview
+                            <span class="k-sprite integrationIcon"></span>
+                            动则赢
                             <span class="k-icon k-arrow-up k-panelbar-collapse"></span>
                         </span>
                         <ul class="k-group">
-                            <li class="k-item k-state-default k-first">
-                                <a class="k-link chosen" href="">Chart Gallery</a>
+                            <li class="k-item k-state-active k-first">
+                                <a class="k-link chosen" href="">我的动则赢</a>
+                            </li>
+                            <li class="k-item k-state-default">
+                                <a class="k-link" href="">修改计划</a>
+                            </li>
+                            <li class="k-item k-state-default">
+                                <a class="k-link" href="">历史记录</a>
                             </li>
                             <li class="k-item k-state-default k-last">
-                                <a class="k-link" href="">High performance</a>
+                                <a class="k-link" href="">体验卡</a>
                             </li>
                         </ul>
                     </li>
                     <li class="k-item k-state-default">
                         <span class="k-link k-header">
-                            <span class="k-sprite chartIcon"></span>
-                            Customization
+                            <span class="k-sprite integrationIcon"></span>
+                            我的帐户
                             <span class="k-icon k-arrow-down k-panelbar-expand"></span>
                         </span>
                         <ul class="k-group" style="display: none; ">
-                            <li class="k-item k-state-default k-first k-last">
-                                <a class="k-link" href="">PlotBands</a>
+                            <li class="k-item k-state-default k-first">
+                                <a class="k-link" href="">个人信息</a>
+                            </li>
+                            <li class="k-item k-state-default k-last">
+                                <a class="k-link" href="">支付信息</a>
                             </li>
                         </ul>
                     </li>
@@ -84,25 +94,21 @@
                                 <li>Methods</li>
                             </ul>
                             <div class="description">
+                                <a class="k-button" id="bookmarklet" href="">保存</a>
                                 <p>Supported chart types:</p>
                                 <ul>
                                     <li>Bar / Column</li>
                                     <li>Line / Vertical Line</li>
                                 </ul>
                                 <h3>Getting Started</h3>
+                                <h1 style="color:#ef652a;">本周剩余5天，还须出勤2次</h1>
+
                                 <div class="code-sample">
-                                    <h4 class="code-title">xxx</h4>
-                                    <pre class="code prettyprint"><code>11111</code></pre></div>
-                        </div>
-                        <script>
-                            $("#codeStrip").kendoTabStrip({
-                                contentUrls: [
-                                    null,
-                                    ""
-                                    ,""
-                                ]
-                            });
-                        </script>
+                                    <h4 class="code-title">本周出勤计划</h4>
+                                    <p class="code">承诺出勤次数：6次</p>
+                                    <p class="code">每次缺勤罚金：10元</p>
+                                </div>
+                            </div>
                     </div>
                     </div>
                 </div>
