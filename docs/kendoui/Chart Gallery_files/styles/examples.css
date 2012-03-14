@@ -27,7 +27,7 @@ html
     font:75% arial,helvetica,sans-serif;
 }
 
-a{
+a, h1{
     font-weight: bold;
 }
 
@@ -630,6 +630,7 @@ a.bigButton
 #exampleTitle
 {
     font: 18px arial,helvetica,sans-serif;
+    font-weight: bold;
     background: transparent;
     margin-left: 21px;
     margin-top: 40px;
@@ -873,7 +874,7 @@ a.bigButton
 {
     margin: 0;
     padding: 8px 10px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     background: -moz-linear-gradient(top, #ebebeb 0%, #dedede 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebebeb), color-stop(100%,#dedede));
