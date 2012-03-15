@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://demos.kendoui.com/beta/dataviz/overview/index.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Chart Gallery</title>
+    <link href="./scripts/kendo/kendo.common.min.css" rel="stylesheet">
+    <!--<link href="http://demos.kendoui.com/beta/content/shared/styles/examples.css" rel="stylesheet">-->
+    <link href="./scripts/kendo/styles/examples.css" rel="stylesheet">
+    <script src="./scripts/jquery-1.7.1.min.js"></script>
+    <script src="scripts/kendo/js/kendo.all.min.js"></script>
+</head>
+<body>
+<div id="exceptFooterWrap">
+    <div id="exceptFooter">
+        <div id="header">
+            <div class="floatWrap centerWrap">
+                <h1><a id="logo" href="">Kendo</a></h1>
+                <ul>
+                    <li><a href="">首页</a></li>
+                    <li class="active"><a href="">动则赢</a></li>
+                    <li><a href="">关于我们</a></li>
+                    <li><a href="">登录/注册</a></li>
+                    <li><a id="download" href="">下载手机应用</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="flowerWrap">
+            <div class="flowers"></div>
+            <div id="topnavWrap" class="centerWrap">
+                <ul id="topnav">
+                    <li><a id="web" class="first selected" href=""><b>我的空间</b></a></li>
+                    <li><a id="dataviz" class="" href=""><b>了解动则赢</b></a></li>
+                    <li><a id="mobile" class="last" href="">排行榜</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="navmainWrap" class="floatWrap centerWrap hasNavigation">
+            <div id="navWrap">
+                <ul class="nav k-widget k-reset k-header k-panelbar" data-role="panelbar">
+                    <li class="k-state-active k-state-highlighted k-item k-first">
+                        <span class="k-link k-header">
+                            <span class="k-sprite topIcon"></span>
+                            Overview
+                            <span class="k-icon k-arrow-up k-panelbar-collapse"></span>
+                        </span>
+                        <ul class="k-group">
+                            <li class="k-item k-state-default k-first">
+                                <a class="k-link chosen" href="">Chart Gallery</a>
+                            </li>
+                            <li class="k-item k-state-default k-last">
+                                <a class="k-link" href="">High performance</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="k-item k-state-default">
+                        <span class="k-link k-header">
+                            <span class="k-sprite chartIcon"></span>
+                            Customization
+                            <span class="k-icon k-arrow-down k-panelbar-expand"></span>
+                        </span>
+                        <ul class="k-group" style="display: none; ">
+                            <li class="k-item k-state-default k-first k-last">
+                                <a class="k-link" href="">PlotBands</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="main">
+                <h1 id="exampleTitle" class="k-content">
+                    <span class="exampleIcon overviewIcon"></span>
+                    Chart Gallery
+                </h1>
+                <div id="exampleWrap" style="visibility: visible; ">
+                    <div id="example" class="k-content">
+                        <div id="codeStrip">
+                            <ul>
+                                <li class="k-state-active">Description</li>
+                                <li>View Code</li>
+                                <li>Methods</li>
+                            </ul>
+                            <div class="description">
+                                <p>Supported chart types:</p>
+                                <ul>
+                                    <li>Bar / Column</li>
+                                    <li>Line / Vertical Line</li>
+                                </ul>
+                                <h3>Getting Started</h3>
+                                <div class="code-sample">
+                                    <h4 class="code-title">xxx</h4>
+                                    <pre class="code prettyprint"><code>11111</code></pre></div>
+                        </div>
+                        <script>
+                            $("#codeStrip").kendoTabStrip({
+                                contentUrls: [
+                                    null,
+                                    ""
+                                    ,""
+                                ]
+                            });
+                        </script>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / exceptFooter -->
+</div>
+<!-- / exceptFooterWrap -->
+
+<div id="footer">
+    <div class="floatWrap centerWrap">
+        <ul>
+            <li><a href="http://www.kendoui.com/">Home</a></li>
+            <li><a href="http://www.kendoui.com/web">Web</a></li>
+        </ul>
+        <p id="copy">Copyright © 2011 Telerik Inc. All rights reserved.</p>
+    </div>
+</div>
+
+<script>
+    $(".nav").kendoPanelBar({
+        animation:{ open:{ effects:"fadeIn expandVertical" } },
+        expand:function () {
+            $(this.element).closest(".nav").siblings(".k-panelbar").each(function () {
+                $(this).find(".k-link").removeClass("k-state-selected k-state-highlighted");
+            });
+        },
+        expandMode:"single"
+    });
+</script>
+</body>
+</html>

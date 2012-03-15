@@ -15,7 +15,7 @@
         <script>
             $(function() {
                 $( "#c_com_bb_domain_CustomerProduct_startDate" ).datepicker({
-                    dateFormat: "yyyy-mm-dd",
+                    dateFormat: "yy-mm-dd",
                     numberOfMonths: 1,
                     showButtonPanel: true,
                     minDate: -0, maxDate: '+12M',
