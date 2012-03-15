@@ -29,7 +29,7 @@ body {
 	display:block;
 }
 
-/* header and footer elements */
+/* header and roofooter elements */
 
 #main {
 	overflow:hidden;
@@ -83,18 +83,18 @@ body {
 	background: #fff;
 }
 
-#footer {
+#roofooter {
 	background:#fff;
 	border:none;
 	margin-top:15px;
 	border-top:1px solid #999999;
 }
 
-#footer .new {
+#roofooter .new {
 	float:left;
 }
 
-#footer a:link {color: #7db223;}
+#roofooter a:link {color: #7db223;}
 
 .quicklinks {
 	clear:both; 

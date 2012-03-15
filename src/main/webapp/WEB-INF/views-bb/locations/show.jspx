@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_bb_domain_Location" object="${location}" path="/locations" z="SPdkD1ceCrD5OBFdjLu20KCjF/o=">
+        <field:display field="name" id="s_com_bb_domain_Location_name" object="${location}" z="xjSOsYAIPeXKu37hkhJme41YP1U="/>
+        <field:display field="address" id="s_com_bb_domain_Location_address" object="${location}" z="YONk0npgaKOgFs+cgjeRaGP3bcE="/>
+        <field:display field="city" id="s_com_bb_domain_Location_city" object="${location}" z="zbCq2AMDPRdQPHfQAIXlg3/KaUQ="/>
+        <field:display field="gpsInfo" id="s_com_bb_domain_Location_gpsInfo" object="${location}" z="ShRJJTs7WRz8wJDMkwGojb1N3yM="/>
+        <field:display field="phone" id="s_com_bb_domain_Location_phone" object="${location}" z="UOsA6YDSh/T0Wghh/cQUT6JS4RY="/>
+        <field:display field="contactName" id="s_com_bb_domain_Location_contactName" object="${location}" z="dQ0f4+rcYaJ6dTqkL95LhMToKtU="/>
+        <field:display field="status" id="s_com_bb_domain_Location_status" object="${location}" z="H9nx1b5EFW89U12TiL4369j7POQ="/>
+        <field:display field="rejectionReason" id="s_com_bb_domain_Location_rejectionReason" object="${location}" z="Qdcu7gfOjp6Vei0OU/dNUuCU02s="/>
+        <field:display date="true" dateTimePattern="${location_create_date_date_format}" field="create_date" id="s_com_bb_domain_Location_create_date" object="${location}" z="Iwj2Gt+e96j+I6t92Y+Qg+8mFtc="/>
+        <field:display field="customer" id="s_com_bb_domain_Location_customer" object="${location}" z="0jFa84c5VhOvJrRkwH/68mAElTw="/>
+    </page:show>
+</div>

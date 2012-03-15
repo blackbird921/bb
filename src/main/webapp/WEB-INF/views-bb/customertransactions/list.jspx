@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_CustomerTransaction" items="${customertransactions}" z="JJWwX4O3loury2yGKrac7uD1TwA=">
+        <table:table data="${customertransactions}" id="l_com_bb_domain_CustomerTransaction" path="/customertransactions" z="jAgi+pTzhgKcaTSb0iZwpOsgG/w=">
+            <table:column id="c_com_bb_domain_CustomerTransaction_customer" property="customer" z="uJALXn10KHU1ZrahlKlwgCY3ruU="/>
+            <table:column id="c_com_bb_domain_CustomerTransaction_customerPayment" property="customerPayment" z="GMGZOoWz8qwVQDw4JW5b/0oDNHo="/>
+            <table:column id="c_com_bb_domain_CustomerTransaction_amount" property="amount" z="NH+FoZTtK8GshzcFSGVSOLBcLpk="/>
+            <table:column id="c_com_bb_domain_CustomerTransaction_transactionType" property="transactionType" z="WJRDp1LBrAFb1770V4g8zve5Rhs="/>
+            <table:column date="true" dateTimePattern="${customerTransaction_transactiondate_date_format}" id="c_com_bb_domain_CustomerTransaction_transactionDate" property="transactionDate" z="pJkf6Lucuq+SW68omeAc7gciq0w="/>
+            <table:column id="c_com_bb_domain_CustomerTransaction_transactionError" property="transactionError" z="FWGSLV8PzLIGOdWfWt3EAkFHRcg="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_bb_domain_Location" items="${locations}" z="Ijb+swpjVWcVcKpYTPdnP6dIpzo=">
+        <table:table data="${locations}" id="l_com_bb_domain_Location" path="/locations" z="i00408AH7baxke2kZZ2kd+6fy38=">
+            <table:column id="c_com_bb_domain_Location_name" property="name" z="VqdYfI+TIw16oxDFNClThImq768="/>
+            <table:column id="c_com_bb_domain_Location_address" property="address" z="SkC52CUyQd+V8a9RJdcyHQegTPI="/>
+            <table:column id="c_com_bb_domain_Location_city" property="city" z="U+wt8EZ3rj021OrVkC0hJDCYbUY="/>
+            <table:column id="c_com_bb_domain_Location_gpsInfo" property="gpsInfo" z="9VIPoSnHq80/A88altOkw2JvIXQ="/>
+            <table:column id="c_com_bb_domain_Location_phone" property="phone" z="vPIJPnoSL84w0gWxZua/XDiWIL0="/>
+            <table:column id="c_com_bb_domain_Location_contactName" property="contactName" z="qHRDblCtVSRshH7lv5P7IVnaMds="/>
+        </table:table>
+    </page:list>
+</div>

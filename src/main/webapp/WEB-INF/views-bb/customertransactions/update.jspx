@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_bb_domain_CustomerTransaction" modelAttribute="customerTransaction" path="/customertransactions" versionField="Version" z="yml8Zadbv9xx0AmAD4234AS5bpA=">
+        <field:select field="customer" id="c_com_bb_domain_CustomerTransaction_customer" itemValue="id" items="${customers}" path="/customers" required="true" z="YM83r43oqd7uNHNuAEjkD4MP1dI="/>
+        <field:select field="customerPayment" id="c_com_bb_domain_CustomerTransaction_customerPayment" itemValue="id" items="${customerpayments}" path="/customerpayments" required="true" z="MCjcWhgg119eikxB8z6gB5Mxxew="/>
+        <field:input field="amount" id="c_com_bb_domain_CustomerTransaction_amount" validationMessageCode="field_invalid_integer" z="HdYTmKef9IGJPi73lmvdjo5mwBQ="/>
+        <field:select field="transactionType" id="c_com_bb_domain_CustomerTransaction_transactionType" itemValue="id" items="${refpaymenttxtypes}" path="/refpaymenttxtypes" required="true" z="w/3Ot9XPrj5s5e0vFneh2MwV0TE="/>
+        <field:datetime dateTimePattern="${customerTransaction_transactiondate_date_format}" field="transactionDate" id="c_com_bb_domain_CustomerTransaction_transactionDate" z="MatUR52YqrPZBudib2WVgkLGu0Q="/>
+        <field:input field="transactionError" id="c_com_bb_domain_CustomerTransaction_transactionError" max="200" z="user-managed"/>
+    </form:update>
+</div>

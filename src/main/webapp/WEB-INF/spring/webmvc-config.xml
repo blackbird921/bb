@@ -75,9 +75,9 @@ Also registers default Formatters and Validators for use across all @Controllers
     <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" id="tilesConfigurer">
         <property name="definitions">
             <list>
-                <value>/WEB-INF/layouts/layouts.xml</value>
+                <value>/WEB-INF/layouts-bb/layouts.xml</value>
                 <!-- Scan views directory for Tiles configurations -->
-                <value>/WEB-INF/views/**/views.xml</value>
+                <value>/WEB-INF/views-bb/**/views.xml</value>
             </list>
         </property>
     </bean>

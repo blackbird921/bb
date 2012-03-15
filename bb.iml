@@ -50,7 +50,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/layouts" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/views" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

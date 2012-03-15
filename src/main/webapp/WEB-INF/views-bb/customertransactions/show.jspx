@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_bb_domain_CustomerTransaction" object="${customertransaction}" path="/customertransactions" z="dUDO9ZKU8aDNpWdlG6PB+hJ5HQ8=">
+        <field:display field="customer" id="s_com_bb_domain_CustomerTransaction_customer" object="${customertransaction}" z="gBPXEoeKGeWT88ri1TzuwEa191M="/>
+        <field:display field="customerPayment" id="s_com_bb_domain_CustomerTransaction_customerPayment" object="${customertransaction}" z="EPjyedPwDtR2euDOwuy5nhU+kP8="/>
+        <field:display field="amount" id="s_com_bb_domain_CustomerTransaction_amount" object="${customertransaction}" z="R+IbGCUl2UbX6JXHSB4XMJh4h3Q="/>
+        <field:display field="transactionType" id="s_com_bb_domain_CustomerTransaction_transactionType" object="${customertransaction}" z="yPd3rPG3uZ2tyci9ByrAAV5uWZo="/>
+        <field:display date="true" dateTimePattern="${customerTransaction_transactiondate_date_format}" field="transactionDate" id="s_com_bb_domain_CustomerTransaction_transactionDate" object="${customertransaction}" z="HHnUKau8fHJtAc9gVRlU46TNcwQ="/>
+        <field:display field="transactionError" id="s_com_bb_domain_CustomerTransaction_transactionError" object="${customertransaction}" z="KWsF1A+RYZDPeLWUR/h17oiKyyI="/>
+    </page:show>
+</div>

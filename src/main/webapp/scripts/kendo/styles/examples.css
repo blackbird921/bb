@@ -132,6 +132,7 @@ a, h1{
     position:relative;
     height:71px;
     margin-top:-72px;
+    /*margin-bottom: 0px;*/
 }
 
 /*header*/
@@ -911,3 +912,13 @@ a.bigButton
 #exampleWrap .center-text{
     text-align: center;
 }
+
+
+.container {padding-left:10px;}
+.shadow {float:left;margin-bottom: 10px;}
+.frame {position:relative; background:#fff; padding:10px; display:block;
+    -moz-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+}
+.clear {clear:left;}

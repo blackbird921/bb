@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_bb_domain_CustomerProduct" modelAttribute="customerProduct" path="/customerproducts" versionField="Version" z="tXGbjniBAOW9I55SMK7PCIxXFe4=">
+        <field:select field="customer" id="c_com_bb_domain_CustomerProduct_customer" itemValue="id" items="${customers}" path="/customers" required="true" z="tvN8V1yTH6m33RDmYBwaKHI2laQ="/>
+        <field:select field="productCommit" id="c_com_bb_domain_CustomerProduct_productCommit" itemValue="id" items="${productcommits}" path="/productcommits" required="true" z="gBSeCEjaAOdGpPfEN0b+cojzaQg="/>
+        <field:select field="productStake" id="c_com_bb_domain_CustomerProduct_productStake" itemValue="id" items="${productstakes}" path="/productstakes" required="true" z="r97DxAPioFNFDuwuCgBmx3ysuqM="/>
+        <field:datetime dateTimePattern="${customerProduct_startdate_date_format}" field="startDate" id="c_com_bb_domain_CustomerProduct_startDate" z="nSIkLgwrSCQKDkaOqeqjqgqYC6Q="/>
+        <field:datetime dateTimePattern="${customerProduct_enddate_date_format}" field="endDate" id="c_com_bb_domain_CustomerProduct_endDate" z="R3A7kj/ahdZSqMWe7owK1eReSQ0="/>
+    </form:update>
+</div>

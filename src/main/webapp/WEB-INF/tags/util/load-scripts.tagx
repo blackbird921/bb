@@ -7,14 +7,18 @@
     <!--<spring:url value="/resources/dojo/dojo.js" var="dojo_url" />-->
     <spring:url value="/resources/scripts/dojo172/dojo/dojo.js" var="dojo_url" />
     <spring:url value="/resources/dijit/themes/tundra/tundra.css" var="tundra_url" />
-    <spring:url value="/resources/spring/Spring.js" var="spring_url" />
-    <spring:url value="/resources/spring/Spring-Dojo.js" var="spring_dojo_url" />
+    <!--<spring:url value="/resources/spring/Spring.js" var="spring_url" />-->
+    <!--<spring:url value="/resources/spring/Spring-Dojo.js" var="spring_dojo_url" />-->
     <spring:url value="/resources/images/favicon.ico" var="favicon" />
-    <spring:url value="/resources/scripts/jquery-1.7.1.min.js" var="jquery_url" />
-    <spring:url value="/resources/scripts/jquery-ui.min.js" var="jquery_ui_url" />
-    <spring:url value="/resources/scripts/main.js" var="main_url" />
-    <link rel="stylesheet" type="text/css" href="${tundra_url}" />
-    <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />
+
+    <!--<link rel="stylesheet" type="text/css" href="${tundra_url}" />-->
+    <!--<link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />-->
+    <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/themes/base/jquery.ui.all.css"/>
+    <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/demos/demos.css"/>
+    <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.default.min.css"/>
+    <link rel="stylesheet" href="/resources/scripts/kendo/styles/examples.css"/>
+
     <link rel="SHORTCUT ICON" href="${favicon}" />
 
     <!-- Get the user local from the page context (it was set by Spring MVC's locale resolver) -->
@@ -23,18 +27,24 @@
         <c:out value="${fn:replace(plocale, '_', '-')}" default="en" />
     </c:set>
 
-    <script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: '${fn:toLowerCase(userLocale)}'};</script>
-    <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/themes/base/jquery.ui.all.css"/>
-    <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/demos/demos.css"/>
+    <!--<script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: '${fn:toLowerCase(userLocale)}'};</script>-->
 
-    <script src="${dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+    <!--<script src="${dojo_url}" type="text/javascript">&lt;!&ndash; required for FF3 and Opera &ndash;&gt;</script>-->
     <!--<script src="${spring_url}" type="text/javascript">&lt;!&ndash; /required for FF3 and Opera &ndash;&gt;</script>-->
     <!--<script src="${spring_dojo_url}" type="text/javascript">&lt;!&ndash; required for FF3 and Opera &ndash;&gt;</script>-->
-    <script src="${jquery_url}" type="text/javascript"><!--jquery--></script>
-    <script src="${jquery_ui_url}" type="text/javascript"><!--jquery ui--></script>
-    <script src="${jquery_ui_url}" type="text/javascript"><!--jquery ui--></script>
-    <script src="${main_url}" type="text/javascript"><!--user defined javascripts--></script>
-    <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
+    <script src="/resources/scripts/jquery-1.7.1.min.js" type="text/javascript"><!--jquery--></script>
+    <script src="/resources/scripts/jquery-ui.min.js" type="text/javascript"><!--jquery ui--></script>
+    <script src="/resources/scripts/kendo/js/kendo.all.min.js" type="text/javascript"><!--kendo ui--></script>
+    <script src="/resources/scripts/main.js" type="text/javascript"><!--user defined javascripts--></script>
 
+    <!--<script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>-->
+
+    <!--[if IE]>
+    <style type="text/css">
+        .container {padding-left:14px;}
+        .frame {left:4px; top:4px;}
+        .shadow {background:#000; margin:-4px -4px; filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5', MakeShadow='true', ShadowOpacity='0.60');}
+    </style>
+    <![endif]-->
 
 </jsp:root>
