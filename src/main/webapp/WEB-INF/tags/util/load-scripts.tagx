@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />
     <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/themes/base/jquery.ui.all.css"/>
     <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/demos/demos.css"/>
-    <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.common.min.css"/>
-    <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.default.min.css"/>
+    <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.common.css"/>
+    <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.default.css"/>
     <link rel="stylesheet" href="/resources/scripts/kendo/styles/examples.css"/>
 
     <link rel="SHORTCUT ICON" href="${favicon}" />
