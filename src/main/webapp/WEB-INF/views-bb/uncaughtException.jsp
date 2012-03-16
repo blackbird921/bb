@@ -1,6 +1,16 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:spring="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-  <jsp:directive.page contentType="text/html;charset=UTF-8" />
-  <jsp:output omit-xml-declaration="yes" />
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%--<%@ taglib prefix="jsp" uri="http://java.sun.com/JSP/Page" %>--%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="util" tagdir="/WEB-INF/tags/util" %>
+
+
+<div>
   <spring:message var="title" code="error_uncaughtexception_title" htmlEscape="false" />
   <util:panel id="title" title="${title}">
     <h2>${fn:escapeXml(title)}</h2>

@@ -642,9 +642,10 @@ a.bigButton
     font-weight: bold;
     background: transparent;
     margin-left: 21px;
-    margin-top: 40px;
+    margin-top: 30px;
     position: absolute;
     z-index: 1;
+    /*border-bottom: 1px solid #ccc;*/
 }
 
 .exampleIcon
@@ -909,7 +910,7 @@ a.bigButton
     margin-right: 40px;
 }
 
-#exampleWrap .center-text{
+#example .center-text{
     text-align: center;
 }
 
@@ -929,4 +930,9 @@ label{
     margin-right: 4px;
     margin-top: 3px;
     text-align: right;
+    font-weight: bold;
+}
+
+.invalid {
+    color: red;
 }
