@@ -18,4 +18,9 @@ public class ProductCommit {
     private Long commits;
 
     private Boolean isActive;
+
+    @Override
+    public String toString() {
+        return commits.toString();
+    }
 }

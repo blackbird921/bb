@@ -18,4 +18,10 @@ public class ProductStake {
     private Long stakes;
 
     private Boolean isActive;
+
+    @Override
+    public String toString() {
+        return stakes.toString();
+    }
+
 }

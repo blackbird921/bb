@@ -6,6 +6,7 @@ import com.bb.domain.ProductCommit;
 import com.bb.domain.ProductStake;
 import com.bb.reference.WeekStatus;
 import com.bb.service.CustomerCheckinService;
+import com.bb.service.CustomerProductService;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -33,6 +34,9 @@ public class CustomerProductController {
 
     @Autowired
     private CustomerCheckinService customerCheckinService;
+
+    @Autowired
+    private CustomerProductService customerProductService;
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid CustomerProduct customerProduct, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -65,7 +69,7 @@ public class CustomerProductController {
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
-        CustomerProduct cp = CustomerProduct.findCustomerProduct(id);
+        CustomerProduct cp = customerProductService.getCurrentProduct(id);
         WeekStatus weekStatus = customerCheckinService.getCurrentWeekStatus(id);
         if (cp != null) {
             weekStatus.setDaysToComplete(cp.getProductCommit().getCommits().intValue() - weekStatus.getDaysCompleted());
@@ -104,7 +108,9 @@ public class CustomerProductController {
 
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, CustomerProduct.findCustomerProduct(id));
+        CustomerProduct cp = customerProductService.getCurrentProduct(id);
+        populateEditForm(uiModel, cp);
+        uiModel.addAttribute("futurecustomerproduct", customerProductService.getFutureProduct(id));
         return "customerproducts/update";
     }
 
@@ -124,7 +130,7 @@ public class CustomerProductController {
     }
 
     void populateEditForm(Model uiModel, CustomerProduct customerProduct) {
-        uiModel.addAttribute("customerProduct", customerProduct);
+        uiModel.addAttribute("customerproduct", customerProduct);
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customers", Customer.findAllCustomers());
         uiModel.addAttribute("productcommits", ProductCommit.findAllProductCommits());
