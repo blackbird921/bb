@@ -1,179 +1,238 @@
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <title>我的空间</title>
-    <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.common.min.css"/>
-    <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.default.min.css"/>
-    <link rel="stylesheet" href="/resources/scripts/kendo/styles/examples.css"/>
-    <script src="/resources/scripts/jquery-1.7.1.min.js"></script>
-    <script src="/resources/scripts/kendo/js/kendo.all.min.js"></script>
-    <style type="text/css">
-        .container {
-            padding-left: 10px;
-        }
+    <meta http-equiv="Content-Type" content="text/html;Charset='UTF-8'"/>
 
-        .shadow {
-            float: left;
-            margin-bottom: 10px;
-        }
+    <title>Welcome to Bb</title>
+    <link href="/resources/dijit/themes/tundra/tundra.css" type="text/css" rel="stylesheet"/><link href="/resources/styles/standard.css" media="screen" type="text/css" rel="stylesheet"/><link href="/resources/scripts/jquery-ui/development-bundle/themes/base/jquery.ui.all.css" rel="stylesheet"/><link href="/resources/scripts/jquery-ui/development-bundle/demos/demos.css" rel="stylesheet"/><link href="/resources/scripts/kendo/styles/kendo.common.css" rel="stylesheet"/><link href="/resources/scripts/kendo/styles/kendo.default.css" rel="stylesheet"/><link href="/resources/scripts/kendo/styles/examples.css" rel="stylesheet"/><link href="/resources/images/favicon.ico" rel="SHORTCUT ICON"/><script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: 'zh-cn'};</script><script type="text/javascript" src="/resources/scripts/dojo172/dojo/dojo.js"></script><script type="text/javascript" src="/resources/scripts/jquery-1.7.1.min.js"></script><script type="text/javascript" src="/resources/scripts/jquery-ui.min.js"></script><script type="text/javascript" src="/resources/scripts/kendo/js/kendo.all.min.js"></script><script type="text/javascript" src="/resources/scripts/main.js"></script><script type="text/javascript" language="JavaScript">dojo.require("dojo.parser");</script>
 
-        .frame {
-            position: relative;
-            background: #fff;
-            padding: 10px;
-            display: block;
-            -moz-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
-            -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
-        }
-
-        .clear {
-            clear: left;
-        }
-    </style>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".grid").kendoGrid({
-                groupable:false,
-                scrollable:false,
-                sortable:false,
-                pageable:false
-            });
-
-        });
-    </script>
 </head>
-<body>
+<body class="tundra spring">
 <div id="exceptFooterWrap">
     <div id="exceptFooter">
+
+
         <div id="header">
-            <div class="floatWrap centerWrap"><h1><a href="" id="logo">Kendo</a></h1>
+            <div class="floatWrap centerWrap">
+                <h1><a id="logo" href="">Kendo</a></h1>
                 <ul>
-                    <li><a href="">首页1</a></li>
+                    <li><a href="">首页</a></li>
                     <li class="active"><a href="">动则赢</a></li>
                     <li><a href="">关于我们</a></li>
                     <li><a href="">登录/注册</a></li>
-                    <li><a href="" id="download">下载手机应用</a></li>
+                    <li><a id="download" href="">下载手机应用</a></li>
                 </ul>
             </div>
         </div>
-        <div id="flowerWrap">
-            <div class="flowers"/>
-            <div class="centerWrap" id="topnavWrap">
-                <ul id="topnav">
-                    <li><a href="" class="first selected" id="web"><b>我的空间</b></a></li>
-                    <li><a href="" class="" id="dataviz"><b>了解动则赢</b></a></li>
-                    <li><a href="" class="last" id="mobile">排行榜</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="floatWrap centerWrap hasNavigation container_12" id="navmainWrap">
-            <div id="navWrap">
-                <ul data-role="panelbar" class="nav k-widget k-reset k-header k-panelbar">
-                    <li class="k-state-active k-state-highlighted k-item k-first"><span class="k-link k-header"><span class="k-sprite integrationIcon"/>
-                            动则赢
-                            <span class="k-icon k-arrow-up k-panelbar-collapse"/></span>
-                        <ul class="k-group">
-                            <li class="k-item k-state-active k-first"><a href="" class="k-link chosen">我的动则赢</a></li>
-                            <li class="k-item k-state-default"><a href="" class="k-link">修改计划</a></li>
-                            <li class="k-item k-state-default"><a href="" class="k-link">历史记录</a></li>
-                            <li class="k-item k-state-default k-last"><a href="" class="k-link">体验卡</a></li>
-                        </ul>
-                    </li>
-                    <li class="k-item k-state-default"><span class="k-link k-header"><span class="k-sprite integrationIcon"/>
-                            我的帐户
-                            <span class="k-icon k-arrow-down k-panelbar-expand"/></span>
-                        <ul style="display: none; " class="k-group">
-                            <li class="k-item k-state-default k-first"><a href="" class="k-link">个人信息</a></li>
-                            <li class="k-item k-state-default k-last"><a href="" class="k-link">支付信息</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div id="main"><h1 class="k-content" id="exampleTitle"><span class="exampleIcon overviewIcon"/>
-                我的动则赢
-            </h1>
 
-                <div style="visibility: visible; " id="exampleWrap">
-                    <div class="k-content" id="example">
-                        <div class="description">
-                            <div style="text-align: center;"><h1 style="color:#ef652a;">
-                                本周剩余<span style="font-size:40px;margin-left:4px;margin-right:4px;">5</span>天，还须出勤<span style="font-size:40px;margin-left:4px;margin-right:4px;">2</span>天
-                            </h1></div>
-                            <h4>本周出勤计划:</h4>
-                            <table class="grid center-text">
-                                <thead>
-                                <tr>
-                                    <th width="50%" data-field="title" class="center-text">出勤承诺天数</th>
-                                    <th data-field="year" class="center-text">缺勤每天罚金</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>6天</td>
-                                    <td>10元</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <h4>本周进度:</h4>
-                            <table class="grid center-text">
-                                <thead>
-                                <tr>
-                                    <th width="25%" data-field="title" class="center-text">开始日期</th>
-                                    <th width="25%" data-field="title" class="center-text">结束日期</th>
-                                    <th width="25%" data-field="title" class="center-text">已完成</th>
-                                    <th data-field="year" class="center-text">待完成</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>2012-01-02</td>
-                                    <td>2012-01-08</td>
-                                    <td>4天</td>
-                                    <td>2天</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <h4>我的战果:</h4>
-                            <table class="grid center-text">
-                                <thead>
-                                <tr>
-                                    <th width="25%" data-field="title" class="center-text">奖金总额</th>
-                                    <th width="25%" data-field="title" class="center-text">奖金排名</th>
-                                    <th width="25%" data-field="title" class="center-text">完成率</th>
-                                    <th data-field="year" class="center-text">完成率排名</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1350元</td>
-                                    <td>第38位</td>
-                                    <td>90%</td>
-                                    <td>第99位</td>
-                                </tr>
-                                </tbody>
-                            </table>
+        <div id="flowerWrap">
+            <div class="flowers"></div>
+            <div id="topnavWrap" class="centerWrap">
+                <ul id="topnav">
+                    <li><a id="web" class="first selected" href=""><b>我的空间</b></a></li>
+                    <li><a id="dataviz" class="" href=""><b>了解动则赢</b></a></li>
+                    <li><a id="mobile" class="last" href="">排行榜</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="navmainWrap" class="floatWrap centerWrap hasNavigation container_12">
+
+            <div id="navWrap">
+                <ul class="nav k-widget k-reset k-header k-panelbar" data-role="panelbar">
+                    <li class="k-state-active k-state-highlighted k-item k-first">
+                        <span class="k-link k-header">
+                            <span class="k-sprite integrationIcon"></span>
+                            动则赢
+                            <span class="k-icon k-arrow-up k-panelbar-collapse"></span>
+                        </span>
+                        <ul class="k-group">
+                            <li class="k-item k-state-active k-first">
+                                <a class="k-link chosen" href="/customerproducts/1">我的动则赢</a>
+                            </li>
+                            <li class="k-item k-state-default">
+                                <a class="k-link" href="/customerproducts/1?form">修改计划</a>
+                            </li>
+                            <li class="k-item k-state-default">
+                                <a class="k-link" href="">历史记录</a>
+                            </li>
+                            <li class="k-item k-state-default k-last">
+                                <a class="k-link" href="">体验卡</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="k-item k-state-default">
+                        <span class="k-link k-header">
+                            <span class="k-sprite integrationIcon"></span>
+                            我的帐户
+                            <span class="k-icon k-arrow-down k-panelbar-expand"></span>
+                        </span>
+                        <ul class="k-group" style="display: none; ">
+                            <li class="k-item k-state-default k-first">
+                                <a class="k-link" href="">个人信息</a>
+                            </li>
+                            <li class="k-item k-state-default k-last">
+                                <a class="k-link" href="">支付信息</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <style scoped>
+                #tickets ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                #tickets li {
+                    margin: 10px 0 0 0;
+                }
+
+                label {
+                    display: inline-block;
+                    width: 90px;
+                    text-align: right;
+                    font-weight: bold;
+                }
+
+                .required {
+                    font-weight: bold;
+                }
+
+                .accept, .status {
+                    padding-left: 90px;
+                }
+
+                .valid {
+                    color: green;
+                }
+
+                .invalid {
+                    color: red;
+                }
+            </style>
+
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    var validator = $("#title_fu_com_bb_domain_CustomerProduct_id").kendoValidator({
+                        messages: {
+                            required: "必填内容"
+                        }
+                    }).data("kendoValidator");
+
+                    var status = $(".status");
+
+                    $("button").click(function() {
+                        if (validator.validate()) {
+                            status.text("Hooray! Your tickets has been booked!").addClass("valid");
+                        } else {
+                            status.text("Oops! There is invalid data in the form.").addClass("invalid");
+                        }
+                    });
+                });
+            </script>
+
+            <div id="main">
+                <h1 id="exampleTitle" class="k-content">
+                    <span class="exampleIcon overviewIcon"></span>
+                    修改计划
+                </h1>
+
+                <div id="exampleWrap" style="visibility: visible; ">
+                    <div id="example" class="k-content">
+                        <div id="title_fu_com_bb_domain_CustomerProduct_id"><form id="customerProduct" action="/customerproducts" method="post" enctype="application/x-www-form-urlencoded"><input type="hidden" name="_method" value="PUT"/><ul>
+                            <li><label for="productCommit_id">每周出勤次数
+                                :
+                            </label><select id="productCommit_id" name="productCommit"><option value="1" selected="selected">ProductCommit[commits=1,isActive=true,id=1,version=0]</option><option value="2">ProductCommit[commits=2,isActive=true,id=2,version=0]</option><option value="3">ProductCommit[commits=3,isActive=true,id=3,version=0]</option><option value="4">ProductCommit[commits=4,isActive=true,id=4,version=0]</option><option value="5">ProductCommit[commits=5,isActive=true,id=5,version=0]</option><option value="6">ProductCommit[commits=6,isActive=true,id=6,version=0]</option><option value="7">ProductCommit[commits=7,isActive=true,id=7,version=0]</option>select><br/><script type="text/javascript">
+                                $("#productCommit_id").kendoComboBox();
+                            </script></li><br/>
+                            <li><label for="productStake_id">每次缺勤罚金
+                                :
+                            </label><select id="productStake_id" name="productStake"><option value="1" selected="selected">ProductStake[stakes=5,isActive=true,id=1,version=0]</option><option value="2">ProductStake[stakes=10,isActive=true,id=2,version=0]</option><option value="3">ProductStake[stakes=15,isActive=true,id=3,version=0]</option><option value="4">ProductStake[stakes=20,isActive=true,id=4,version=0]</option><option value="5">ProductStake[stakes=25,isActive=true,id=5,version=0]</option><option value="6">ProductStake[stakes=30,isActive=true,id=6,version=0]</option><option value="7">ProductStake[stakes=40,isActive=true,id=7,version=0]</option><option value="8">ProductStake[stakes=50,isActive=true,id=8,version=0]</option></select><br/><script type="text/javascript">
+                                $("#productStake_id").kendoComboBox();
+                            </script></li><br/>
+                            <input id="_id_id" name="id" type="hidden" value="1"/><input id="_Version_id" name="Version" type="hidden" value="0"/><li class="accept"><button type="submit" class="k-button">Submit</button></li><li class="status"/></ul></form></div>
+
+                        <div id="tickets">
+
+                            <li>
+                                <label for="fullname" class="required">姓名</label>
+                                <input type="text" id="fullname" name="fullname" class="k-textbox" required/>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+                            <script src="/resources/scripts/jquery-ui/development-bundle/ui/i18n/jquery.ui.datepicker-zh-CN.js" type="text/javascript">
+                                <!--jquery ui-->
+                            </script>
+                            <script>
+                                $(function() {
+                                    $( "#c_com_bb_domain_CustomerProduct_startDate" ).datepicker({
+                                        dateFormat: "yy-mm-dd",
+                                        numberOfMonths: 1,
+                                        showButtonPanel: true,
+                                        minDate: -0, maxDate: '+12M',
+                                        beforeShowDay: function(date){ return [date.getDay() == 1,""]}
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
             </div>
-            <div style="float: left;margin: 2em; text-align: center;" id="">
-                <div class="shadow"><img alt="" height="120px" width="120px" src="images/1.png" class="frame"/></div>
-                <div style="margin-bottom: 10px;">张三</div>
-                <div class="k-button">更换头像</div>
-                <div class="k-button">邀请我的朋友</div>
-            </div>
+
+
+
         </div>
     </div>
 </div>
+
+
 <div id="footer">
     <div class="floatWrap centerWrap">
         <ul>
             <li><a href="http://www.kendoui.com/">Home</a></li>
             <li><a href="http://www.kendoui.com/web">Web</a></li>
         </ul>
-        <p id="copy">Copyright © 2011 Telerik Inc. All rights reserved.</p></div>
+        <p id="copy">Copyright © 2012 联信脉动 Inc. All rights reserved.</p>
+    </div>
 </div>
+
 <script>
     $(".nav").kendoPanelBar({
         animation:{ open:{ effects:"fadeIn expandVertical" } },
@@ -185,5 +244,6 @@
         expandMode:"single"
     });
 </script>
+
 </body>
 </html>
