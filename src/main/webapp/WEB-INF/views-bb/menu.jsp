@@ -50,10 +50,10 @@
                         </span>
             <ul class="k-group">
                 <li class="k-item k-state-active k-first">
-                    <a class="k-link chosen" href="">我的动则赢</a>
+                    <a class="k-link chosen" href="/customerproducts/1">我的动则赢</a>
                 </li>
                 <li class="k-item k-state-default">
-                    <a class="k-link" href="">修改计划</a>
+                    <a class="k-link" href="/customerproducts/1?form">修改计划</a>
                 </li>
                 <li class="k-item k-state-default">
                     <a class="k-link" href="">历史记录</a>

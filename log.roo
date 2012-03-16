@@ -397,3 +397,6 @@ field boolean --fieldName hasAvatar --class ~.domain.Customer
 finder add --finderName findRefSexsByName --class ~.domain.ref.RefSex
 finder add --finderName findRefSexesByName --class ~.domain.ref.RefSex
 addon search
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-16 02:12:06
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-16 02:12:26

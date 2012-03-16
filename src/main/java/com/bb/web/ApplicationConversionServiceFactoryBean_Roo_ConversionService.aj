@@ -14,11 +14,6 @@ import com.bb.domain.CustomerProfit;
 import com.bb.domain.CustomerTransaction;
 import com.bb.domain.Faq;
 import com.bb.domain.Location;
-import com.bb.domain.ProductCommit;
-import com.bb.domain.ProductStake;
-import com.bb.domain.ref.RefPaymentTxType;
-import com.bb.domain.ref.RefPaymentType;
-import com.bb.domain.ref.RefSex;
 import com.bb.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -284,126 +279,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<ProductCommit, String> ApplicationConversionServiceFactoryBean.getProductCommitToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.ProductCommit, java.lang.String>() {
-            public String convert(ProductCommit productCommit) {
-                return new StringBuilder().append(productCommit.getCommits()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, ProductCommit> ApplicationConversionServiceFactoryBean.getIdToProductCommitConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ProductCommit>() {
-            public com.bb.domain.ProductCommit convert(java.lang.Long id) {
-                return ProductCommit.findProductCommit(id);
-            }
-        };
-    }
-    
-    public Converter<String, ProductCommit> ApplicationConversionServiceFactoryBean.getStringToProductCommitConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ProductCommit>() {
-            public com.bb.domain.ProductCommit convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), ProductCommit.class);
-            }
-        };
-    }
-    
-    public Converter<ProductStake, String> ApplicationConversionServiceFactoryBean.getProductStakeToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.ProductStake, java.lang.String>() {
-            public String convert(ProductStake productStake) {
-                return new StringBuilder().append(productStake.getStakes()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, ProductStake> ApplicationConversionServiceFactoryBean.getIdToProductStakeConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ProductStake>() {
-            public com.bb.domain.ProductStake convert(java.lang.Long id) {
-                return ProductStake.findProductStake(id);
-            }
-        };
-    }
-    
-    public Converter<String, ProductStake> ApplicationConversionServiceFactoryBean.getStringToProductStakeConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ProductStake>() {
-            public com.bb.domain.ProductStake convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), ProductStake.class);
-            }
-        };
-    }
-    
-    public Converter<RefPaymentTxType, String> ApplicationConversionServiceFactoryBean.getRefPaymentTxTypeToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.ref.RefPaymentTxType, java.lang.String>() {
-            public String convert(RefPaymentTxType refPaymentTxType) {
-                return new StringBuilder().append(refPaymentTxType.getName()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, RefPaymentTxType> ApplicationConversionServiceFactoryBean.getIdToRefPaymentTxTypeConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ref.RefPaymentTxType>() {
-            public com.bb.domain.ref.RefPaymentTxType convert(java.lang.Long id) {
-                return RefPaymentTxType.findRefPaymentTxType(id);
-            }
-        };
-    }
-    
-    public Converter<String, RefPaymentTxType> ApplicationConversionServiceFactoryBean.getStringToRefPaymentTxTypeConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ref.RefPaymentTxType>() {
-            public com.bb.domain.ref.RefPaymentTxType convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), RefPaymentTxType.class);
-            }
-        };
-    }
-    
-    public Converter<RefPaymentType, String> ApplicationConversionServiceFactoryBean.getRefPaymentTypeToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.ref.RefPaymentType, java.lang.String>() {
-            public String convert(RefPaymentType refPaymentType) {
-                return new StringBuilder().append(refPaymentType.getName()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, RefPaymentType> ApplicationConversionServiceFactoryBean.getIdToRefPaymentTypeConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ref.RefPaymentType>() {
-            public com.bb.domain.ref.RefPaymentType convert(java.lang.Long id) {
-                return RefPaymentType.findRefPaymentType(id);
-            }
-        };
-    }
-    
-    public Converter<String, RefPaymentType> ApplicationConversionServiceFactoryBean.getStringToRefPaymentTypeConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ref.RefPaymentType>() {
-            public com.bb.domain.ref.RefPaymentType convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), RefPaymentType.class);
-            }
-        };
-    }
-    
-    public Converter<RefSex, String> ApplicationConversionServiceFactoryBean.getRefSexToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.ref.RefSex, java.lang.String>() {
-            public String convert(RefSex refSex) {
-                return new StringBuilder().append(refSex.getName()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, RefSex> ApplicationConversionServiceFactoryBean.getIdToRefSexConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.ref.RefSex>() {
-            public com.bb.domain.ref.RefSex convert(java.lang.Long id) {
-                return RefSex.findRefSex(id);
-            }
-        };
-    }
-    
-    public Converter<String, RefSex> ApplicationConversionServiceFactoryBean.getStringToRefSexConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.ref.RefSex>() {
-            public com.bb.domain.ref.RefSex convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), RefSex.class);
-            }
-        };
-    }
-    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getCardToStringConverter());
         registry.addConverter(getIdToCardConverter());
@@ -438,21 +313,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getLocationToStringConverter());
         registry.addConverter(getIdToLocationConverter());
         registry.addConverter(getStringToLocationConverter());
-        registry.addConverter(getProductCommitToStringConverter());
-        registry.addConverter(getIdToProductCommitConverter());
-        registry.addConverter(getStringToProductCommitConverter());
-        registry.addConverter(getProductStakeToStringConverter());
-        registry.addConverter(getIdToProductStakeConverter());
-        registry.addConverter(getStringToProductStakeConverter());
-        registry.addConverter(getRefPaymentTxTypeToStringConverter());
-        registry.addConverter(getIdToRefPaymentTxTypeConverter());
-        registry.addConverter(getStringToRefPaymentTxTypeConverter());
-        registry.addConverter(getRefPaymentTypeToStringConverter());
-        registry.addConverter(getIdToRefPaymentTypeConverter());
-        registry.addConverter(getStringToRefPaymentTypeConverter());
-        registry.addConverter(getRefSexToStringConverter());
-        registry.addConverter(getIdToRefSexConverter());
-        registry.addConverter(getStringToRefSexConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

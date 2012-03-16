@@ -11,8 +11,6 @@
     <definition extends="default" name="customerproducts/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/create.jsp"/>
     </definition>
-    <!--<definition name="customerproducts/create" template="/WEB-INF/views-bb/customerproducts/create.jsp">-->
-    <!--</definition>-->
     <definition extends="default" name="customerproducts/update">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/update.jsp"/>
     </definition>

@@ -11,8 +11,8 @@
     <!--<spring:url value="/resources/spring/Spring-Dojo.js" var="spring_dojo_url" />-->
     <spring:url value="/resources/images/favicon.ico" var="favicon" />
 
-    <!--<link rel="stylesheet" type="text/css" href="${tundra_url}" />-->
-    <!--<link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />-->
+    <link rel="stylesheet" type="text/css" href="${tundra_url}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="${roo_css_url}" />
     <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/themes/base/jquery.ui.all.css"/>
     <link rel="stylesheet" href="/resources/scripts/jquery-ui/development-bundle/demos/demos.css"/>
     <link rel="stylesheet" href="/resources/scripts/kendo/styles/kendo.common.min.css"/>
@@ -27,9 +27,9 @@
         <c:out value="${fn:replace(plocale, '_', '-')}" default="en" />
     </c:set>
 
-    <!--<script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: '${fn:toLowerCase(userLocale)}'};</script>-->
+    <script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: '${fn:toLowerCase(userLocale)}'};</script>
 
-    <!--<script src="${dojo_url}" type="text/javascript">&lt;!&ndash; required for FF3 and Opera &ndash;&gt;</script>-->
+    <script src="${dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
     <!--<script src="${spring_url}" type="text/javascript">&lt;!&ndash; /required for FF3 and Opera &ndash;&gt;</script>-->
     <!--<script src="${spring_dojo_url}" type="text/javascript">&lt;!&ndash; required for FF3 and Opera &ndash;&gt;</script>-->
     <script src="/resources/scripts/jquery-1.7.1.min.js" type="text/javascript"><!--jquery--></script>
@@ -37,7 +37,7 @@
     <script src="/resources/scripts/kendo/js/kendo.all.min.js" type="text/javascript"><!--kendo ui--></script>
     <script src="/resources/scripts/main.js" type="text/javascript"><!--user defined javascripts--></script>
 
-    <!--<script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>-->
+    <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
 
     <!--[if IE]>
     <style type="text/css">

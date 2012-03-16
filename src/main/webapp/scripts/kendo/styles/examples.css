@@ -922,3 +922,11 @@ a.bigButton
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
 }
 .clear {clear:left;}
+
+label{
+    width: 100px;
+    display:inline-block;
+    margin-right: 4px;
+    margin-top: 3px;
+    text-align: right;
+}

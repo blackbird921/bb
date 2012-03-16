@@ -2,11 +2,10 @@ package com.bb.domain;
 
 import com.bb.reference.CustomerCheckinEndType;
 import java.util.Date;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.bb.reference.CustomerRole;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
@@ -39,4 +38,22 @@ public class CustomerCheckin {
     private CustomerCheckinEndType endType;
 
     private Boolean isApproved;
+
+    public static TypedQuery<CustomerCheckin> findCustomerCheckinsByCustomerAndDate(Long customerId, Date start, Date end ) {
+        if (customerId == null) throw new IllegalArgumentException("The customerId argument is required");
+        EntityManager em = CustomerCheckin.entityManager();
+        TypedQuery<CustomerCheckin> q = em.createQuery("SELECT o FROM CustomerCheckin AS o WHERE o.customer.id = :customerId and o.isApproved=true", CustomerCheckin.class);
+        q.setParameter("customerId", customerId);
+        return q;
+    }
+
+    public static TypedQuery<CustomerCheckin> findCustomerCheckinsByCustomerAndApproved(Long customerId) {
+        if (customerId == null) throw new IllegalArgumentException("The customerId argument is required");
+        EntityManager em = CustomerCheckin.entityManager();
+        TypedQuery<CustomerCheckin> q = em.createQuery("SELECT o FROM CustomerCheckin AS o WHERE o.customer.id = :customerId and o.isApproved=true", CustomerCheckin.class);
+        q.setParameter("customerId", customerId);
+        return q;
+    }
+
+
 }
