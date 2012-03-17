@@ -400,3 +400,17 @@ addon search
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-16 02:12:06
 quit
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-03-16 02:12:26
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-18 01:15:17
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+field string    --fieldName name          --sizeMax 200
+// [failed] field string    --fieldName value         --sizeMax 200
+// [failed] script temp.roo
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+// [failed] script temp.roo
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+field string    --fieldName name    --notNull --permitReservedWords     --sizeMax 200
+field string    --fieldName value     --notNull --permitReservedWords      --sizeMax 200
+field string    --fieldName group     --notNull --permitReservedWords      --sizeMax 25
+// script temp.roo
+finder add --finderName findConfigurationsByName --class ~.domain.Configuration
+// script temp.roo

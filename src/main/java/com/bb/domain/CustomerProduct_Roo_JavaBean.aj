@@ -51,4 +51,12 @@ privileged aspect CustomerProduct_Roo_JavaBean {
         this.endDate = endDate;
     }
     
+    public boolean CustomerProduct.isIsShowStartDate() {
+        return this.isShowStartDate;
+    }
+    
+    public void CustomerProduct.setIsShowStartDate(boolean isShowStartDate) {
+        this.isShowStartDate = isShowStartDate;
+    }
+    
 }

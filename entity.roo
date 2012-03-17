@@ -180,10 +180,18 @@ field reference --fieldName transactionType --notNull --type ~.domain.ref.RefPay
 field date      --fieldName transactionDate --notNull --type java.util.Date
 field string    --fieldName transactionError          --sizeMax 200
 
+finder add --finderName findCustomersByUsername --class ~.domain.Cutomer
+finder add --finderName findCustomersByUsername --class ~.domain.Customer
+finder add --finderName findCustomersByEmail --class ~.domain.Customer
+finder add --finderName findCustomersByStatus --class ~.domain.Customer
+finder add --finderName findCustomersByCustomerRole --class ~.domain.Customer
+
 // #####################
 //   Configuration
 // #####################
 entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
-field string    --fieldName name          --sizeMax 200
-field string    --fieldName value         --sizeMax 200
-field string    --fieldName group         --sizeMax 25
+field string    --fieldName name    --notNull --permitReservedWords     --sizeMax 200
+field string    --fieldName value     --notNull --permitReservedWords      --sizeMax 200
+field string    --fieldName group     --notNull --permitReservedWords      --sizeMax 25
+
+finder add --finderName findConfigurationsByName --class ~.domain.Configuration

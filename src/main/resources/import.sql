@@ -45,5 +45,14 @@ INSERT INTO CUSTOMER_PROFIT ( ID, AMOUNT, END_DATE, START_DATE, VERSION, CUSTOME
 
 INSERT INTO CUSTOMER_TRANSACTION ( ID, AMOUNT, TRANSACTION_DATE, TRANSACTION_ERROR, VERSION, CUSTOMER, CUSTOMER_PAYMENT, TRANSACTION_TYPE ) VALUES ( 1, 10, '2012-03-07 00:00:00', '', 0, 1, 1, 1 );
 
+INSERT INTO CONFIGURATIONS values(1,'mail_from', 'wheel4_team@126.com', 'MAIL');
+INSERT INTO CONFIGURATIONS values(2,'mail_smtp_port', '25', 'MAIL');
+INSERT INTO CONFIGURATIONS values(3,'mail_smtp_host', 'smtp.126.com', 'MAIL');
+INSERT INTO CONFIGURATIONS values(4,'mail_smtp_userName', 'wheel4_team', 'MAIL');
+INSERT INTO CONFIGURATIONS values(5,'mail_smtp_password', 'wheel4', 'MAIL');
+INSERT INTO CONFIGURATIONS values(6,'mail_smtp_auth', 'true', 'MAIL');
+INSERT INTO CONFIGURATIONS values(7,'web_host', 'http://124.237.77.248:8080/wheel4', 'WEB_HOST');
+INSERT INTO CONFIGURATIONS values(8,'mail_content_file_path', '/WEB-INF/classes/emails', 'MAIL');
+INSERT INTO CONFIGURATIONS values(9,'mail_content_file', 'emailContent.vm', 'MAIL');
 
 
