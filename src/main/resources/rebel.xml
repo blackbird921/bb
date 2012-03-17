@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com"
-             xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
+             xsi:schemaLocation="http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
 
 	<classpath>
 		<dir name="D:/prj-teemeet/bb/src/main/webapp/WEB-INF/classes">
@@ -9,12 +9,6 @@
             <!-- Exclude the unimportant subpackage of package1-->
             <exclude name="com/bb/domain/**"/>
             <exclude name="com/bb/reference/**"/>
-            <exclude name="com/bb/domain/web/Faq*"/>
-            <exclude name="com/bb/domain/web/Location*"/>
-            <exclude name="com/bb/domain/web/Product*"/>
-            <exclude name="com/bb/domain/web/Ref*"/>
-            <exclude name="com/bb/domain/web/Card*"/>
-            <exclude name="com/bb/domain/web/Company*"/>
 		</dir>
 	</classpath>
 

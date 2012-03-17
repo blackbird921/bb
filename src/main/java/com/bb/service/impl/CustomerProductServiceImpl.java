@@ -19,7 +19,7 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         CustomerProduct product = null;
         Date now = Calendar.getInstance().getTime();
         for (CustomerProduct cp : all) {
-            if (cp.getStartDate().before(now) && (cp.getEndDate().after(now) || cp.getEndDate() == null)) {
+            if (cp.getStartDate() != null && cp.getStartDate().before(now) && (cp.getEndDate() == null || cp.getEndDate().after(now))) {
                 product = cp;
             }
         }
@@ -33,19 +33,39 @@ public class CustomerProductServiceImpl implements CustomerProductService {
         CustomerProduct currentProduct = null;
         Date now = Calendar.getInstance().getTime();
         for (CustomerProduct cp : all) {
-            if (cp.getStartDate().after(now)) {
+            if (cp.getStartDate() != null && cp.getStartDate().after(now)) {
                 futureProduct = cp;
-            } else if (cp.getStartDate().before(now) && (cp.getEndDate().after(now) || cp.getEndDate() == null)) {
+            } else if (cp.getStartDate() != null && cp.getStartDate().before(now) && (cp.getEndDate() == null || cp.getEndDate().after(now))) {
                 currentProduct = cp;
             }
 
         }
         if (futureProduct == null) {
             futureProduct = currentProduct;
+            futureProduct.setShowStartDate(false);
         }
         return futureProduct;
     }
 
+    @Override
+    public void updateFutureProduct(CustomerProduct customerProduct) {
+        System.out.println("updateFutureProduct.........");
+        CustomerProduct current = getCurrentProduct(customerProduct.getCustomer().getId());
+        System.out.println("customerId=" + customerProduct.getCustomer().getId());
+        if (current.getId().equals(customerProduct.getId())) {
+            System.out.println("is Current");
+            CustomerProduct future = new CustomerProduct();
+            future.setCustomer(customerProduct.getCustomer());
+            future.setProductCommit(customerProduct.getProductCommit());
+            future.setProductStake(customerProduct.getProductStake());
+            future.setStartDate(customerProduct.getStartDate());
+            future.persist();
+            System.out.println("saved");
+        } else {
+            System.out.println("is future");
+            customerProduct.merge();
+        }
+    }
 
     public static void main(String[] args) {
 //        System.out.println(new CustomerProductServiceImpl().(0L).getDaysLeft());

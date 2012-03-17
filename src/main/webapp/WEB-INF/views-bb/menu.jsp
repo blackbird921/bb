@@ -15,7 +15,7 @@
                     <a class="k-link" href="/customerproducts/1?form">修改计划</a>
                 </li>
                 <li class="k-item k-state-default">
-                    <a class="k-link" href="">历史记录</a>
+                    <a class="k-link" href="/customerproducts/hist/1">历史记录</a>
                 </li>
                 <li class="k-item k-state-default k-last">
                     <a class="k-link" href="">体验卡</a>

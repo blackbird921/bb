@@ -96,22 +96,32 @@ public class CustomerProductController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String update(@Valid CustomerProduct customerProduct, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String update(@Valid CustomerProduct futurecustomerproduct, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        System.out.println(futurecustomerproduct);
         if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, customerProduct);
+            System.out.println(bindingResult.getAllErrors());
+            populateEditForm(uiModel, futurecustomerproduct);
             return "customerproducts/update";
         }
         uiModel.asMap().clear();
-        customerProduct.merge();
-        return "redirect:/customerproducts/" + encodeUrlPathSegment(customerProduct.getId().toString(), httpServletRequest);
+        customerProductService.updateFutureProduct(futurecustomerproduct);
+        return "redirect:/customerproducts/" + encodeUrlPathSegment(futurecustomerproduct.getId().toString(), httpServletRequest);
     }
 
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        System.out.println("updateForm.......");
         CustomerProduct cp = customerProductService.getCurrentProduct(id);
         populateEditForm(uiModel, cp);
         uiModel.addAttribute("futurecustomerproduct", customerProductService.getFutureProduct(id));
         return "customerproducts/update";
+    }
+
+    @RequestMapping(value = "/hist/{id}", method = RequestMethod.GET, produces = "text/html")
+    public String history(@PathVariable("id") Long id, Model uiModel) {
+        System.out.println("history.......");
+        uiModel.addAttribute("customerproducts", CustomerProduct.findAllByCustomerId(id));
+        return "customerproducts/history";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")

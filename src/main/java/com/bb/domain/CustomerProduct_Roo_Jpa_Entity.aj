@@ -15,31 +15,31 @@ import javax.persistence.Version;
 privileged aspect CustomerProduct_Roo_Jpa_Entity {
     
     declare @type: CustomerProduct: @Entity;
-    
+
     @Id
     @SequenceGenerator(name = "customerProductGen", sequenceName = "CUSTOMER_PRODUCT_SEQ")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "customerProductGen")
     @Column(name = "id")
     private Long CustomerProduct.id;
-    
+
     @Version
     @Column(name = "version")
     private Integer CustomerProduct.version;
-    
+
     public Long CustomerProduct.getId() {
         return this.id;
     }
-    
+
     public void CustomerProduct.setId(Long id) {
         this.id = id;
     }
-    
+
     public Integer CustomerProduct.getVersion() {
         return this.version;
     }
-    
+
     public void CustomerProduct.setVersion(Integer version) {
         this.version = version;
     }
-    
+
 }

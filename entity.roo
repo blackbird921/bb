@@ -180,3 +180,10 @@ field reference --fieldName transactionType --notNull --type ~.domain.ref.RefPay
 field date      --fieldName transactionDate --notNull --type java.util.Date
 field string    --fieldName transactionError          --sizeMax 200
 
+// #####################
+//   Configuration
+// #####################
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+field string    --fieldName name          --sizeMax 200
+field string    --fieldName value         --sizeMax 200
+field string    --fieldName group         --sizeMax 25

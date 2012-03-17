@@ -11,4 +11,6 @@ public interface CustomerProductService {
 
     CustomerProduct getFutureProduct(Long cid);
 
+    void updateFutureProduct(CustomerProduct customerProduct);
+
 }
