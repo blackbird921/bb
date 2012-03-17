@@ -1,4 +1,6 @@
-email sender setup --hostServer smtp.126.com --port 25 --encoding utf-8 --username wheel4_team --password wheel4
-email template setup --from wheel4_team@126.com
-field email template
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+field string    --fieldName configName    --notNull      --sizeMax 200
+field string    --fieldName configValue     --notNull       --sizeMax 200
+field string    --fieldName configType     --notNull       --sizeMax 25
 
+finder add --finderName findConfigurationsByConfigName --class ~.domain.Configuration

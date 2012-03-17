@@ -45,7 +45,7 @@ public class CustomerController {
 
         uiModel.asMap().clear();
         customer.persist();
-        avatarService.uploadAvatar(customer, httpServletRequest);
+        avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
         customer.merge();
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
     }
@@ -84,7 +84,7 @@ public class CustomerController {
 
         uiModel.asMap().clear();
         
-        avatarService.uploadAvatar(customer, httpServletRequest);
+        avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
         customer.merge();
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
     }

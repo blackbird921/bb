@@ -1,57 +1,50 @@
 <html>
 <head>
-##*******¼¤»îÓÊ¼þÏÔÊ¾ÕâÀïÄÚÈÝ********
-	#if($activateEmail) 
-		<title>wheel4×¢²áÓÃ»§¼¤»î</title>
+	#if($activateEmail)
+		<title>wheel4æ³¨å†Œæ¿€æ´»</title>
 	#end
 	
-##*******ÃÜÂëÖØÖÃÏÔÊ¾ÕâÀïÄÚÈÝ********
-	#if($resetPwd) 
-		<title>[wheel4]ÕÒ»ØÄúµÄÕÊ»§ÃÜÂë</title>
+	#if($resetPwd)
+		<title>[wheel4]æ‰¾å›žæ‚¨çš„å¸æˆ·å¯†ç </title>
 	#end
 </head>
 <body>
-	<p>Ç×°®µÄÓÃ»§$email,ÄúºÃ!</p>
+	<p>äº²çˆ±çš„ç”¨æˆ·$email,æ‚¨å¥½!</p>
 	
-##*******¼¤»îÓÊ¼þÏÔÊ¾ÕâÀïÄÚÈÝ********
-	#if($activateEmail) 
-		<p>ÄúµÄwheel4ÕË»§ÂíÉÏ¾ÍÒª±»¼¤»îÁË£¬ÔÚ´ËÖ®Ç°ÇëÏÈ¶ÔÄãµÄ×¢²á½øÐÐÈ·ÈÏ¡£</p>
+	#if($activateEmail)
+		<p>æ‚¨çš„wheel4è´¦æˆ·é©¬ä¸Šå°±è¦è¢«æ¿€æ´»äº†ï¼Œåœ¨æ­¤ä¹‹å‰è¯·å…ˆå¯¹ä½ çš„æ³¨å†Œè¿›è¡Œç¡®è®¤ã€‚</p>
 	#end
 	
-##*******ÃÜÂëÖØÖÃÏÔÊ¾ÕâÀïÄÚÈÝ********
-	#if($resetPwd) 
+	#if($resetPwd)
 		<p>
-			ÄúÊÕµ½Õâ·âÕâ·âµç×ÓÓÊ¼þÊÇÒòÎªÄú (Ò²¿ÉÄÜÊÇÄ³ÈËÃ°³äÄúµÄÃûÒå) ÉêÇëÁËÒ»¸öÐÂµÄÃÜÂë¡£
-			¼ÙÈçÕâ²»ÊÇÄú±¾ÈËËùÉêÇë, Çë²»ÓÃÀí»áÕâ·âµç×ÓÓÊ¼þ, µ«ÊÇÈç¹ûÄú³ÖÐøÊÕµ½ÕâÀàµÄÐÅ¼þÉ§ÈÅ, ÇëÄú¾¡¿ìÁªÂç¹ÜÀíÔ±
+            æ‚¨æ”¶åˆ°è¿™å°è¿™å°ç”µå­é‚®ä»¶æ˜¯å› ä¸ºæ‚¨ (ä¹Ÿå¯èƒ½æ˜¯æŸäººå†’å……æ‚¨çš„åä¹‰) ç”³è¯·äº†ä¸€ä¸ªæ–°çš„å¯†ç ã€‚ å‡å¦‚è¿™ä¸æ˜¯æ‚¨æœ¬äººæ‰€ç”³è¯·,
+            è¯·ä¸ç”¨ç†ä¼šè¿™å°ç”µå­é‚®ä»¶, ä½†æ˜¯å¦‚æžœæ‚¨æŒç»­æ”¶åˆ°è¿™ç±»çš„ä¿¡ä»¶éªšæ‰°, è¯·æ‚¨å°½å¿«è”ç»œç®¡ç†å‘˜ã€‚
 		</p>
 	#end
 	
 	<p>
-##********ÃÜÂëÖØÖÃÏÔÊ¾ÕâÀïÄÚÈÝ********
 		#if($resetPwd)
-			<a href="$link">ÒªÊ¹ÓÃÐÂµÄÃÜÂë, Çëµã»÷´ËÁ´½ÓÆôÓÃÃÜÂë</a>
+			<a href="$link">è¦ä½¿ç”¨æ–°çš„å¯†ç , è¯·ç‚¹å‡»æ­¤é“¾æŽ¥å¯ç”¨å¯†ç ï¼</a>
 		#end
 		
-##********¼¤»îÓÊ¼þÏÔÊ¾ÕâÀïÄÚÈÝ********
 		#if($activateEmail)
-			<a href="$link">µã»÷ÕâÀïÈ·ÈÏÄãµÄ×¢²á£¡</a>
+			<a href="$link">ç‚¹å‡»è¿™é‡Œç¡®è®¤ä½ çš„æ³¨å†Œï¼</a>
 		#end
 	</p>
-	<p>Èç¹ûÄãÎÞ·¨µã»÷ÉÏÃæµÄÁ´½Ó£¬Çë¸´ÖÆ²¢Õ³Ìù´ËÍøÖ·µ½ä¯ÀÀÆ÷µÄµØÖ·À¸ÉÏ£º</p>
+	<p>å¦‚æžœä½ æ— æ³•ç‚¹å‡»ä¸Šé¢çš„é“¾æŽ¥ï¼Œè¯·å¤åˆ¶å¹¶ç²˜è´´æ­¤ç½‘å€åˆ°æµè§ˆå™¨çš„åœ°å€æ ä¸Šï¼š</p>
 	<p>
 		<a href="$link">
 			$link
 		</a>
 	</p>
-##********¼¤»îÓÊ¼þÏÔÊ¾ÕâÀïÄÚÈÝ********
 	#if($activateEmail)
 		<p>
-			ÌÈÈôÄã´ÓÎ´×¢²á¹ý<a href="http://www.wheel4.com">http://www.wheel4.com</a>£¬Çë²»Òªµ£ÐÄ£¬Ö»ÐèºöÂÔ´ËÓÊ¼þ¼´¿É¡£
+            å€˜è‹¥ä½ ä»Žæœªæ³¨å†Œè¿‡<a href="http://www.wheel4.com">http://www.wheel4.com</a>ï¼Œè¯·ä¸è¦æ‹…å¿ƒï¼Œåªéœ€å¿½ç•¥æ­¤é‚®ä»¶å³å¯ã€‚
 		</p>
 	#end
 	<p>
-		ÎÒÃÇ½«Ò»Èç¼ÈÍù¡¢ÈÈ³ÀµÄÎªÄú·þÎñ£¡
+        æˆ‘ä»¬å°†ä¸€å¦‚æ—¢å¾€ã€çƒ­å¿±çš„ä¸ºæ‚¨æœåŠ¡ï¼
 	</p>
-	<p>wheel4ÍÅ¶Ó</p>
+	<p>wheel4å›¢é˜Ÿ</p>
 </body>
 </html>

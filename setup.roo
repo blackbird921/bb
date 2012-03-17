@@ -44,3 +44,8 @@ web mvc finder all
 security setup
 
 logging setup --level INFO
+
+email sender setup --hostServer smtp.126.com --port 25 --encoding utf-8 --username wheel4_team --password wheel4
+email template setup --from wheel4_team@126.com
+field email template
+

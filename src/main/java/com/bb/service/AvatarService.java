@@ -19,7 +19,7 @@ public class AvatarService {
     Logger logger;
 
 
-    public String uploadAvatar(Customer customer, HttpServletRequest request) {
+    public String uploadAvatar(Customer customer, String realPath) {
         String fullPathName = null;
         try {
             MultipartFile file = customer.getAvatar();
@@ -29,7 +29,7 @@ public class AvatarService {
             logger.info("method of uploadAvatar...........");
             if (file != null && file.getSize() > 0) {
                 String fileNewName = customer.getId() + FILE_SUFFIX;
-                fullPathName = request.getSession().getServletContext().getRealPath("/images/upload") + "/" + fileNewName;
+                fullPathName = realPath + "/" + fileNewName;
                 logger.info(fullPathName);
                 inputStream = file.getInputStream();
                 outputStream = new FileOutputStream(fullPathName);

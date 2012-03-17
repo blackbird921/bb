@@ -418,3 +418,27 @@ email sender setup --hostServer smtp.126.com --port 25 --encoding utf-8 --userna
 // [failed] script temp.roo
 email template setup --from wheel4_team@126.com
 field email template
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+field string    --fieldName name    --notNull --permitReservedWords     --sizeMax 200
+field string    --fieldName value     --notNull --permitReservedWords      --sizeMax 200
+field string    --fieldName configType     --notNull --permitReservedWords      --sizeMax 25
+finder add --finderName findConfigurationsByName --class ~.domain.Configuration
+// script temp.roo
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+field string    --fieldName configName    --notNull      --sizeMax 200
+field string    --fieldName configValue     --notNull       --sizeMax 200
+field string    --fieldName configType     --notNull       --sizeMax 25
+finder add --finderName findConfigurationsByName --class ~.domain.Configuration
+// script temp.roo
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+field string    --fieldName configName    --notNull      --sizeMax 200
+field string    --fieldName configValue     --notNull       --sizeMax 200
+field string    --fieldName configType     --notNull       --sizeMax 25
+finder add --finderName findConfigurationsByName --class ~.domain.Configuration
+// script temp.roo
+entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
+field string    --fieldName configName    --notNull      --sizeMax 200
+field string    --fieldName configValue     --notNull       --sizeMax 200
+field string    --fieldName configType     --notNull       --sizeMax 25
+finder add --finderName findConfigurationsByConfigName --class ~.domain.Configuration
+// script temp.roo

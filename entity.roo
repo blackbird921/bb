@@ -190,8 +190,8 @@ finder add --finderName findCustomersByCustomerRole --class ~.domain.Customer
 //   Configuration
 // #####################
 entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
-field string    --fieldName name    --notNull --permitReservedWords     --sizeMax 200
-field string    --fieldName value     --notNull --permitReservedWords      --sizeMax 200
-field string    --fieldName group     --notNull --permitReservedWords      --sizeMax 25
+field string    --fieldName configName    --notNull      --sizeMax 200
+field string    --fieldName configValue     --notNull       --sizeMax 200
+field string    --fieldName configType     --notNull       --sizeMax 25
 
-finder add --finderName findConfigurationsByName --class ~.domain.Configuration
+finder add --finderName findConfigurationsByConfigName --class ~.domain.Configuration
