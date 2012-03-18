@@ -2,16 +2,22 @@ package com.bb.service;
 
 import com.bb.domain.Customer;
 import com.bb.util.AutowiredLogger;
+import com.bb.util.StringHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,22 +27,31 @@ public class MailService {
     public static final String RESET_PASSWORD = "forgotPwd";
     public static final String WEB_HOST = "http://localhost:8080";
     public static final String REG_MAIL_TPL = "emails/emailContent.vm";
+    public static final String REG_MAIL_SUBJECT_TPL = "emails/emailSubject.vm";
 
     @AutowiredLogger
     private Logger logger;
     @Autowired
-    private MailSender mailSender;
+    private JavaMailSender mailSender;
     @Autowired
     private VelocityService velocityService;
     @Autowired
     private transient SimpleMailMessage templateMessage;
 
     public void sendEmail(String mailTo, String subject, String message) {
-        org.springframework.mail.SimpleMailMessage mailMessage = new org.springframework.mail.SimpleMailMessage(templateMessage);
-        mailMessage.setTo(mailTo);
-        mailMessage.setSubject(subject);
-        mailMessage.setText(message);
-        mailSender.send(mailMessage);
+        MimeMessage msg = mailSender.createMimeMessage();
+        try {
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailTo, false));
+            msg.setFrom(new InternetAddress(templateMessage.getFrom()));
+//            msg.setSubject(StringHelper.parseUtf8String(subject, "windows-1252", "utf-8"));
+            msg.setSubject(subject);
+            msg.setSentDate(new Date());
+            msg.setContent(message, "text/html;charset=utf-8");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        mailSender.send(msg);
     }
 
     public void sendEmail(String mailTo, String mailType) {
@@ -51,7 +66,9 @@ public class MailService {
 
         Customer customer = null;
         try {
-            customer = Customer.findCustomersByEmail(email).getSingleResult();
+//            customer = Customer.findCustomersByEmail(email).getSingleResult();
+            customer = new Customer();
+            customer.setEmail("sean.zeng@logicsolutions.com");
         } catch (Exception e) {
             e.printStackTrace();
             return;
@@ -59,13 +76,14 @@ public class MailService {
         if (customer == null) {
             return;
         }
-        if (SEND_MAIL_AGAIN.equals(mailType)) {
-            subject = "wheel4 注册激活";
-        } else if (RESET_PASSWORD.equals(mailType)) {
-            subject = "[wheel4]找回您的帐户密码";
-        }
+//        if (SEND_MAIL_AGAIN.equals(mailType)) {
+//            subject = "wheel4 注册激活";
+//        } else if (RESET_PASSWORD.equals(mailType)) {
+//            subject = "wheel4 密码重置";
+//        }
 
         try {
+            subject = this.readEmailSubject(mailType);
             emailContent = this.readEmailContent(customer, mailType);
         } catch (IOException e) {
             this.logger.error("Error send email ", e);
@@ -81,7 +99,7 @@ public class MailService {
 
         StringBuilder url = new StringBuilder();
         String email = customer.getEmail();
-        String activationCode = "";
+        String activationCode = "xfdfdefreieifeiio";
 
 //        activationCode = customer.getActivationCode();
 
@@ -103,6 +121,19 @@ public class MailService {
 
         return velocityService.format(REG_MAIL_TPL, ctx);
     }
+
+    public String readEmailSubject(String mailType) throws IOException {
+        Map<String, Object> ctx = new HashMap<String, Object>();
+        if (SEND_MAIL_AGAIN.equals(mailType)) {
+            ctx.put("activateEmail", true);
+            ctx.put("resetPwd", false);
+        } else if (RESET_PASSWORD.equals(mailType)) {
+            ctx.put("activateEmail", false);
+            ctx.put("resetPwd", true);
+        }
+        return velocityService.format(REG_MAIL_SUBJECT_TPL, ctx);
+    }
+
 
 
     private class SendMailThread implements Runnable {
@@ -135,6 +166,7 @@ public class MailService {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/applicationContext.xml");
         MailService mailService = (MailService) context.getBean("mailService");
-        mailService.sendEmail("zq72@yahoo.com", SEND_MAIL_AGAIN);
+        mailService.sendEmail("wheel4_team@126.com", RESET_PASSWORD);
+        mailService.sendEmail("wheel4_team@126.com", SEND_MAIL_AGAIN);
     }
 }

@@ -27,6 +27,9 @@ public class VelocityService {
         p.setProperty("file.resource.loader.modificationCheckInterval", "0");
         p.setProperty("class.resource.loader.description", "Velocity Classpath Resource Loader");
         p.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+        p.setProperty(Velocity.ENCODING_DEFAULT, "UTF-8");
+        p.setProperty(Velocity.INPUT_ENCODING, "UTF-8");
+        p.setProperty(Velocity.OUTPUT_ENCODING, "UTF-8");
 
         Velocity.init(p);
     }
