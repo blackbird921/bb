@@ -31,6 +31,7 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
     
     public Customer CustomerDataOnDemand.getNewTransientCustomer(int index) {
         Customer obj = new Customer();
+        setActivationCode(obj, index);
         setAddress(obj, index);
         setAvatar(obj, index);
         setBio(obj, index);
@@ -50,6 +51,14 @@ privileged aspect CustomerDataOnDemand_Roo_DataOnDemand {
         setStatus(obj, index);
         setUsername(obj, index);
         return obj;
+    }
+    
+    public void CustomerDataOnDemand.setActivationCode(Customer obj, int index) {
+        String activationCode = "activationCode_" + index;
+        if (activationCode.length() > 50) {
+            activationCode = activationCode.substring(0, 50);
+        }
+        obj.setActivationCode(activationCode);
     }
     
     public void CustomerDataOnDemand.setAddress(Customer obj, int index) {

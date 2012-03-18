@@ -60,6 +60,7 @@ field date   --fieldName registrationDate --type java.util.Date
 field date   --fieldName disableStartDate   --type java.util.Date
 field date   --fieldName disableEndDate     --type java.util.Date
 field string --fieldName disableReason      --sizeMax 100
+field string --fieldName activationCode      --sizeMax 50 --class ~.domain.Customer
 
 // #####################
 //   ProductCommit

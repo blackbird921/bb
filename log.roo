@@ -442,3 +442,4 @@ field string    --fieldName configValue     --notNull       --sizeMax 200
 field string    --fieldName configType     --notNull       --sizeMax 25
 finder add --finderName findConfigurationsByConfigName --class ~.domain.Configuration
 // script temp.roo
+field string --fieldName activationCode      --sizeMax 50 --class ~.domain.Customer

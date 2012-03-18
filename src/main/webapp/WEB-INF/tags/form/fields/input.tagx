@@ -55,37 +55,43 @@
       <spring:escapeBody javaScriptEscape="true" >${field}</spring:escapeBody>
     </c:set>
     
-    <div id="_${fn:escapeXml(id)}_id">
-      <label for="_${sec_field}_id">
+    <div id="div_${fn:escapeXml(id)}_id">
+        <li>
+      <label for="${sec_field}_id">
         <c:out value="${fn:escapeXml(label)}" />
         :
       </label>
       <c:choose>
         <c:when test="${disableFormBinding}">
-          <input id="_${sec_field}_id" name="${sec_field}" type="${fn:escapeXml(type)}" />
+          <input id="${sec_field}_id" name="${sec_field}" type="${fn:escapeXml(type)}"/>
         </c:when>
         <c:otherwise>
           <c:choose>
             <c:when test="${type eq 'password'}">
-              <form:password id="_${sec_field}_id" path="${sec_field}" disabled="${disabled}" />
+              <form:password id="${sec_field}_id" path="${sec_field}" disabled="${disabled}" />
             </c:when>
+            <c:when test="${type eq 'email'}">
+                <input id="${sec_field}_id" name="${sec_field}" type="${fn:escapeXml(type)}" data-email-msg="${field_invalid}"/>
+              </c:when>
             <c:otherwise>
-              <form:input id="_${sec_field}_id" path="${sec_field}" disabled="${disabled}" />
+              <form:input id="${sec_field}_id" path="${sec_field}" disabled="${disabled}" />
             </c:otherwise>
           </c:choose>
           <br />
-          <form:errors cssClass="errors" id="_${sec_field}_error_id" path="${sec_field}" />
+          <form:errors cssClass="errors" id="${sec_field}_error_id" path="${sec_field}" />
         </c:otherwise>
       </c:choose>
       <c:choose>
         <c:when test="${required}">
-          <spring:message code="field_required" var="field_required" htmlEscape="false" />
-          <spring:message argumentSeparator="," arguments="${label},(${field_required})" code="field_simple_validation" var="field_validation" htmlEscape="false" />
+            <script type="text/javascript">
+                document.getElementById('${sec_field}_id').setAttribute('required', 'true');
+            </script>
         </c:when>
         <c:otherwise>
           <spring:message argumentSeparator="," arguments="${label}, " code="field_simple_validation" var="field_validation" htmlEscape="false" />
         </c:otherwise>
       </c:choose>
+        </li>
       <c:set var="sec_field_validation">
         <spring:escapeBody javaScriptEscape="true">${field_validation}</spring:escapeBody>
       </c:set>
@@ -99,20 +105,9 @@
       <c:if test="${!empty validationRegex}">
         <c:set var="sec_validation_regex" value="regExp : '${validationRegex}', " />
       </c:if>
-      <script type="text/javascript">
-          document.getElementById('_${sec_field}_id').setAttribute('data-dojo-type', 'dijit.form.ValidationTextBox');
-          document.getElementById('_${sec_field}_id').setAttribute('data-dojo-props', "promptMessage: '${sec_field_validation}',invalidMessage: '${sec_field_invalid}',required : ${required},${sec_validation_regex} missingMessage : '${sec_field_required}'");
-//        Spring.addDecoration(new Spring.ElementDecoration({
-//            elementId : '_${sec_field}_id',
-//            widgetType : 'dijit.form.ValidationTextBox',
-//            widgetAttrs : {
-//                promptMessage: '${sec_field_validation}',
-//                invalidMessage: '${sec_field_invalid}',
-//                required : ${required},
-//                ${sec_validation_regex}
-//                missingMessage : '${sec_field_required}' }
-//        }));
-      </script>
+        <script type="text/javascript">
+            $('#${sec_field}_id').addClass('k-textbox');
+        </script>
     </div>
     <br />
   </c:if>

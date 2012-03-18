@@ -2,7 +2,6 @@ package com.bb.service;
 
 import com.bb.domain.Customer;
 import com.bb.util.AutowiredLogger;
-import com.bb.util.StringHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,21 +145,21 @@ public class MailService {
         SendMailThread(String email, String from, String subject, String emailContent) {
             this.email = email;
             this.from = from;
-            this.subject = subject;
-            this.emailContent = emailContent;
-        }
-
-        @Override
-        public void run() {
-            logger.info("send mail to " + this.email + " start ");
-            sendMail();
-            logger.info("send mail to " + this.email + " finish ");
-        }
-
-        private void sendMail() {
-            sendEmail(email, subject, emailContent);
-        }
+        this.subject = subject;
+        this.emailContent = emailContent;
     }
+
+    @Override
+    public void run() {
+        logger.info("send mail to " + this.email + " start ");
+        sendMail();
+        logger.info("send mail to " + this.email + " finish ");
+    }
+
+    private void sendMail() {
+        sendEmail(email, subject, emailContent);
+    }
+}
 
 
     public static void main(String[] args) {

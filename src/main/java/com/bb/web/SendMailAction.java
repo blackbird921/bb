@@ -23,15 +23,15 @@ public class SendMailAction {
     private MailService mailService;
 
 
-    @RequestMapping(value="/sendMail.do",method = RequestMethod.GET)
+    @RequestMapping(value="/sendMail",method = RequestMethod.GET)
     public ModelAndView sendMail(HttpServletRequest request, HttpServletResponse response) {
         this.logger.info("send mail start..");
         ModelAndView view = new ModelAndView();
 
         String email = request.getParameter("email");
         String json = "";
-        String failureURL = request.getContextPath()+"/verifyRegistration.do?email=" + request.getParameter("email");
-        String successURL = request.getContextPath()+"/showSendMailSuccessPage.do?email=" + request.getParameter("email");
+        String failureURL = request.getContextPath()+"/verifyRegistration?email=" + request.getParameter("email");
+        String successURL = request.getContextPath()+"/showSendMailSuccessPage?email=" + request.getParameter("email");
         String mailType = request.getParameter("mailType");
         this.logger.info("mail type : " + mailType);
 
@@ -56,7 +56,7 @@ public class SendMailAction {
 
     }
 
-    @RequestMapping(value="/showSendMailSuccessPage.do",method = RequestMethod.GET)
+    @RequestMapping(value="/showSendMailSuccessPage",method = RequestMethod.GET)
     public ModelAndView showSendMailSuccessPage(HttpServletRequest request, HttpServletResponse response) {
         this.logger.info("show page of send mail successed ");
 
@@ -64,7 +64,7 @@ public class SendMailAction {
         return view;
     }
 
-    @RequestMapping(value = "/showSendMailAgain.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/showSendMailAgain", method = RequestMethod.GET)
     public ModelAndView showSendMailAgain(HttpServletRequest request, HttpServletResponse response) {
         this.logger.info("show page of send mail again ");
 

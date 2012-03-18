@@ -143,4 +143,12 @@ privileged aspect Customer_Roo_JavaBean {
         this.hasAvatar = hasAvatar;
     }
     
+    public String Customer.getActivationCode() {
+        return this.activationCode;
+    }
+    
+    public void Customer.setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
+    
 }

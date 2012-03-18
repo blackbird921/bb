@@ -1,11 +1,16 @@
 package com.bb.web;
 
 import com.bb.domain.Customer;
+import com.bb.domain.ref.RefSex;
+import com.bb.reference.CustomerRole;
+import com.bb.reference.CustomerStatus;
 import com.bb.service.AvatarService;
 import com.bb.service.ValidationService;
 import com.bb.util.AutowiredLogger;
+import org.joda.time.format.DateTimeFormat;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,17 +19,21 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriUtils;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.Calendar;
 
 @RequestMapping("/customers")
 @Controller
 @RooWebScaffold(path = "customers", formBackingObject = Customer.class)
 public class CustomerController {
-    
+
     @AutowiredLogger
     Logger logger;
 
@@ -43,13 +52,14 @@ public class CustomerController {
             return "customers/create";
         }
 
+        customer.setStatus(CustomerStatus.Trial);
+        customer.setRegistrationDate(Calendar.getInstance().getTime());
         uiModel.asMap().clear();
         customer.persist();
-        avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
-        customer.merge();
+//        avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
+//        customer.merge();
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
     }
-
 
 
     private boolean doValidations(Customer customer, BindingResult bindingResult, Model uiModel) {
@@ -83,10 +93,84 @@ public class CustomerController {
         }
 
         uiModel.asMap().clear();
-        
+
         avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
         customer.merge();
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
     }
+
+    @RequestMapping(params = "form", produces = "text/html")
+    public String createForm(Model uiModel) {
+        populateEditForm(uiModel, new Customer());
+        System.out.println("it's ok here");
+        return "customers/create";
+    }
+
+    @RequestMapping(value = "/{id}", produces = "text/html")
+    public String show(@PathVariable("id") Long id, Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("customer", Customer.findCustomer(id));
+        uiModel.addAttribute("itemId", id);
+        return "customers/show";
+    }
+
+    @RequestMapping(produces = "text/html")
+    public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+        if (page != null || size != null) {
+            int sizeNo = size == null ? 10 : size.intValue();
+            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
+            uiModel.addAttribute("customers", Customer.findCustomerEntries(firstResult, sizeNo));
+            float nrOfPages = (float) Customer.countCustomers() / sizeNo;
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+        } else {
+            uiModel.addAttribute("customers", Customer.findAllCustomers());
+        }
+        addDateTimeFormatPatterns(uiModel);
+        return "customers/list";
+    }
+
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        populateEditForm(uiModel, Customer.findCustomer(id));
+        return "customers/update";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
+    public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+        Customer customer = Customer.findCustomer(id);
+        customer.remove();
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/customers";
+    }
+
+    void addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("customer_registrationdate_date_format", DateTimeFormat.patternForStyle("MM", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("customer_birthday_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("customer_disablestartdate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("customer_disableenddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+    }
+
+    void populateEditForm(Model uiModel, Customer customer) {
+        uiModel.addAttribute("customer", customer);
+        addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("refsexes", RefSex.findAllRefSexes());
+        uiModel.addAttribute("customerroles", Arrays.asList(CustomerRole.values()));
+        uiModel.addAttribute("customerstatuses", Arrays.asList(CustomerStatus.values()));
+    }
+
+    String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
+        if (enc == null) {
+            enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
+        }
+        try {
+            pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
+        } catch (UnsupportedEncodingException uee) {
+        }
+        return pathSegment;
+    }
+
 
 }

@@ -7,7 +7,8 @@
             <li><a href="">首页</a></li>
             <li class="active"><a href="">动则赢</a></li>
             <li><a href="">关于我们</a></li>
-            <li><a href="">登录/注册</a></li>
+            <li><a href="/customers?form">注册</a></li>
+            <li><a href="">登录</a></li>
             <li><a id="download" href="">下载手机应用</a></li>
         </ul>
     </div>
