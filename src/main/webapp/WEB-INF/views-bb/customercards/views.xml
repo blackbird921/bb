@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
     <definition extends="default" name="customercards/list">
         <put-attribute name="body" value="/WEB-INF/views-bb/customercards/list.jsp"/>
     </definition>
-<definition extends="default" name="customercards/show">
+    <definition extends="default" name="customercards/show">
         <put-attribute name="body" value="/WEB-INF/views-bb/customercards/show.jsp"/>
     </definition>
-<definition extends="default" name="customercards/create">
+    <definition extends="default" name="customercards/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/customercards/create.jsp"/>
+        <put-attribute name="header" value="/WEB-INF/views-bb/customercards/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views-bb/customers/blank.jsp"/>
     </definition>
-<definition extends="default" name="customercards/update">
+    <definition extends="default" name="customercards/update">
         <put-attribute name="body" value="/WEB-INF/views-bb/customercards/update.jsp"/>
     </definition>
 </tiles-definitions>

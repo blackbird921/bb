@@ -52,7 +52,9 @@ public class CustomerProductController {
         }
         uiModel.asMap().clear();
         futurecustomerproduct.persist();
-        return "redirect:/customerproducts/" + encodeUrlPathSegment(futurecustomerproduct.getCustomer().getId().toString(), httpServletRequest);
+        String redirect = "redirect:/customercards/" + futurecustomerproduct.getCustomer().getId().toString() + "/create";
+        logger.info("{}", redirect);
+        return redirect;
     }
 
     @RequestMapping(value = "/{id}/create", produces = "text/html")
@@ -61,7 +63,7 @@ public class CustomerProductController {
         CustomerProduct cp = new CustomerProduct();
         cp.setCustomer(Customer.findCustomer(id));
         uiModel.addAttribute("futurecustomerproduct", cp);
-        System.out.println(cp.getCustomer());
+        logger.info("{}", cp);
         populateEditForm(uiModel, cp);
         List<String[]> dependencies = new ArrayList<String[]>();
         if (Customer.countCustomers() == 0) {

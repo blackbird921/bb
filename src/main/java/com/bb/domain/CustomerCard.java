@@ -1,9 +1,8 @@
 package com.bb.domain;
 
 import java.util.Date;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.List;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -23,8 +22,14 @@ public class CustomerCard {
     @ManyToOne
     private Card card;
 
-    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date usedDate;
+
+    public static List<CustomerCard> findCustomerCardsByCustomerId(Long cid) {
+        TypedQuery<CustomerCard> query = entityManager().createQuery("SELECT o FROM CustomerCard o WHERE o.customer.id=:cid", CustomerCard.class);
+        query.setParameter("cid", cid);
+        return query.getResultList();
+    }
+
 }

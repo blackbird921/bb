@@ -127,7 +127,7 @@ field date   --fieldName createDate         --type java.util.Date
 entity jpa --class ~.domain.CustomerCard --sequenceName CUSTOMER_CARD_SEQ
 field reference --fieldName customer --notNull --type ~.domain.Customer
 field reference --fieldName card  --notNull --type ~.domain.Card
-field date   --fieldName usedDate     --notNull    --type java.util.Date
+field date   --fieldName usedDate         --type java.util.Date
 
 
 // #####################
