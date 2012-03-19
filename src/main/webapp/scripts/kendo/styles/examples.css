@@ -382,7 +382,7 @@ a.bigButton:hover,
 
 #flowerWrap img
 {
-    margin: 30px 0 0 55px;
+    /*margin: 30px 0 0 55px;*/
 }
 
 .learnBlock
@@ -476,6 +476,13 @@ a.bigButton
 #topnav a.last
 {
     border-right-width: 1px;
+}
+
+#topnav img{
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
 }
 
 /*left navigation*/
@@ -625,7 +632,7 @@ a.bigButton
 #example
 {
     font-family: Arial, Helvetica, sans-serif;
-    margin:1em 0 0;
+    /*margin:1em 0 0;*/
     padding: 50px 20px 20px;
     border: 1px solid #dedede;
     -webkit-border-radius: 5px;
@@ -646,6 +653,14 @@ a.bigButton
     position: absolute;
     z-index: 1;
     /*border-bottom: 1px solid #ccc;*/
+}
+
+.content-title{
+    font: 18px arial,helvetica,sans-serif;
+    margin-top: -25px;
+    font-weight: bold;
+    background: transparent;
+    z-index: 1;
 }
 
 .exampleIcon
@@ -933,6 +948,6 @@ label{
     font-weight: bold;
 }
 
-.invalid {
+.invalid, .errors {
     color: red;
 }

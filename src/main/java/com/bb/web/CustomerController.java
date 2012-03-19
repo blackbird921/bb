@@ -35,7 +35,7 @@ import java.util.Calendar;
 public class CustomerController {
 
     @AutowiredLogger
-    Logger logger;
+    private Logger logger;
 
     @Autowired
     private ValidationService validationService;
@@ -45,20 +45,26 @@ public class CustomerController {
 
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String create(@Valid Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String create(Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        logger.info("create...");
+        customer.setStatus(CustomerStatus.Trial);
+        customer.setRegistrationDate(Calendar.getInstance().getTime());
+
         boolean hasError = doValidations(customer, bindingResult, uiModel);
         if (hasError) {
+            logger.info("hasError......{}", bindingResult);
             populateEditForm(uiModel, customer);
             return "customers/create";
         }
 
-        customer.setStatus(CustomerStatus.Trial);
-        customer.setRegistrationDate(Calendar.getInstance().getTime());
         uiModel.asMap().clear();
         customer.persist();
+        logger.info("customer save:{}", customer);
 //        avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
 //        customer.merge();
-        return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
+        String redirect = "redirect:/customerproducts/" + customer.getId().toString() + "/create";
+        logger.info("{}", redirect);
+        return redirect;
     }
 
 

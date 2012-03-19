@@ -9,6 +9,8 @@
     </definition>
     <definition extends="default" name="customers/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/create.jsp"/>
+        <put-attribute name="header" value="/WEB-INF/views-bb/customers/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views-bb/customers/blank.jsp"/>
     </definition>
     <definition extends="default" name="customers/update">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/update.jsp"/>

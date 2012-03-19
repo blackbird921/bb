@@ -157,10 +157,14 @@ span.k-numeric-wrap.k-state-active,
 .k-grouping-header,
 .k-tooltip,
 .k-grid-pager,
-.k-button,
 .k-draghandle {
   background-color: #e3e3e3;
 }
+
+.k-button{
+    background-color: #ef652a;
+}
+
 /* icons */
 .k-icon {
   opacity: .8;
@@ -189,9 +193,7 @@ span.k-numeric-wrap.k-state-active,
 .k-loading-color {
   background-color: #ffffff;
 }
-.k-button {
-  color: #2e2e2e;
-}
+
 .k-button,
 .k-button.k-state-disabled:hover,
 .k-state-disabled .k-button:hover,
@@ -199,6 +201,7 @@ span.k-numeric-wrap.k-state-active,
   border-color: #c5c5c5;
   background-color: #e3e3e3;
 }
+
 .k-button:hover, .k-draghandle:hover {
   border-color: #a99f9a;
   background-color: #a99f9a;
@@ -436,3 +439,5 @@ span.k-numeric-wrap.k-state-active,
   -webkit-border-radius: 7px;
   border-radius: 7px;
 }
+
+/*my settings*/

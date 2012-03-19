@@ -7,7 +7,9 @@ import com.bb.domain.ProductStake;
 import com.bb.reference.WeekStatus;
 import com.bb.service.CustomerCheckinService;
 import com.bb.service.CustomerProductService;
+import com.bb.util.AutowiredLogger;
 import org.joda.time.format.DateTimeFormat;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -32,6 +34,8 @@ import java.util.List;
 @RooWebScaffold(path = "customerproducts", formBackingObject = CustomerProduct.class)
 public class CustomerProductController {
 
+    @AutowiredLogger
+    Logger logger;
     @Autowired
     private CustomerCheckinService customerCheckinService;
 
@@ -39,19 +43,26 @@ public class CustomerProductController {
     private CustomerProductService customerProductService;
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String create(@Valid CustomerProduct customerProduct, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String create(@Valid CustomerProduct futurecustomerproduct, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        logger.info("create.....");
+        System.out.println(futurecustomerproduct);
         if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, customerProduct);
+            populateEditForm(uiModel, futurecustomerproduct);
             return "customerproducts/create";
         }
         uiModel.asMap().clear();
-        customerProduct.persist();
-        return "redirect:/customerproducts/" + encodeUrlPathSegment(customerProduct.getId().toString(), httpServletRequest);
+        futurecustomerproduct.persist();
+        return "redirect:/customerproducts/" + encodeUrlPathSegment(futurecustomerproduct.getCustomer().getId().toString(), httpServletRequest);
     }
 
-    @RequestMapping(params = "form", produces = "text/html")
-    public String createForm(Model uiModel) {
-        populateEditForm(uiModel, new CustomerProduct());
+    @RequestMapping(value = "/{id}/create", produces = "text/html")
+    public String createForm(@PathVariable("id") Long id, Model uiModel) {
+        logger.info("createForm.......");
+        CustomerProduct cp = new CustomerProduct();
+        cp.setCustomer(Customer.findCustomer(id));
+        uiModel.addAttribute("futurecustomerproduct", cp);
+        System.out.println(cp.getCustomer());
+        populateEditForm(uiModel, cp);
         List<String[]> dependencies = new ArrayList<String[]>();
         if (Customer.countCustomers() == 0) {
             dependencies.add(new String[] { "customer", "customers" });
@@ -105,7 +116,7 @@ public class CustomerProductController {
         }
         uiModel.asMap().clear();
         customerProductService.updateFutureProduct(futurecustomerproduct);
-        return "redirect:/customerproducts/" + encodeUrlPathSegment(futurecustomerproduct.getId().toString(), httpServletRequest);
+        return "redirect:/customerproducts/" + encodeUrlPathSegment(futurecustomerproduct.getCustomer().getId().toString(), httpServletRequest);
     }
 
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
@@ -142,7 +153,7 @@ public class CustomerProductController {
     void populateEditForm(Model uiModel, CustomerProduct customerProduct) {
         uiModel.addAttribute("customerproduct", customerProduct);
         addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("customers", Customer.findAllCustomers());
+        uiModel.addAttribute("customer", customerProduct.getCustomer());
         uiModel.addAttribute("productcommits", ProductCommit.findAllProductCommits());
         uiModel.addAttribute("productstakes", ProductStake.findAllProductStakes());
     }
