@@ -22,15 +22,18 @@
                 </li>
             </ul>
         </li>
-        <li class="k-item k-state-default">
+        <li class="k-state-active  k-state-highlighted k-item k-state-default">
                         <span class="k-link k-header">
                             <span class="k-sprite integrationIcon"></span>
                             我的帐户
                             <span class="k-icon k-arrow-down k-panelbar-expand"></span>
                         </span>
-            <ul class="k-group" style="display: none; ">
+            <ul class="k-group">
                 <li class="k-item k-state-default k-first">
-                    <a class="k-link" href="">个人信息</a>
+                    <a class="k-link" href="/customers/1">个人信息</a>
+                </li>
+                <li class="k-item k-state-default">
+                    <a class="k-link" href="/customers/1?vacationform">请假</a>
                 </li>
                 <li class="k-item k-state-default k-last">
                     <a class="k-link" href="">支付信息</a>

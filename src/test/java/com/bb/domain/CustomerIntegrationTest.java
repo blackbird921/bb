@@ -1,6 +1,8 @@
 package com.bb.domain;
 
+import com.bb.reference.CustomerStats;
 import com.bb.reference.CustomerStatus;
+import com.bb.service.ReportService;
 import com.bb.service.ValidationService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,11 @@ import static junit.framework.Assert.assertTrue;
 public class CustomerIntegrationTest {
     @Autowired
     ValidationService validationService;
+    @Autowired
+    ReportService reportService;
 
     @Test
-    public void testMarkerMethod() {
+    public void testCustomerCrud() {
         CustomerDataOnDemand dod = new CustomerDataOnDemand();
         Customer c1 = dod.getNewTransientCustomer( 1 );
         c1.setUsername( "aaa" );
@@ -30,4 +34,14 @@ public class CustomerIntegrationTest {
         c2.setStatus(CustomerStatus.Trial);
         assertTrue( validationService.existsUniqueValue( Customer.class, "username", "aaa", c2.getId() ) );
     }
+
+    @Test
+    public void getCustomerStats() {
+        CustomerStats customerStats = reportService.getCustomerStats(1L);
+        System.out.println("bonusTotal="+customerStats.getBonusTotal());
+        System.out.println("bonusRank="+customerStats.getBonusRank());
+        System.out.println("checkinPercentage="+customerStats.getCheckinPercentage());
+        System.out.println("checkinRank="+customerStats.getCheckinRank());
+    }
 }
+

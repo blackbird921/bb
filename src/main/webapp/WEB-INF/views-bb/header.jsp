@@ -5,7 +5,7 @@
         <h1><a id="logo" href="">Kendo</a></h1>
         <ul>
             <li><a href="">首页</a></li>
-            <li class="active"><a href="customerproducts?form">动则赢</a></li>
+            <li class="active"><a href="/customerproducts/1">动则赢</a></li>
             <li><a href="">关于我们</a></li>
             <li><a href="/customers?form">注册</a></li>
             <li><a href="">登录</a></li>

@@ -16,6 +16,7 @@
         <div id="navmainWrap" class="floatWrap centerWrap hasNavigation container_12">
             <tiles:insertAttribute name="menu" ignore="true"/>
             <tiles:insertAttribute name="body"/>
+            <tiles:insertAttribute name="right-sidebar"/>
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 package com.bb.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -49,6 +50,23 @@ public class CustomerProduct {
         TypedQuery<CustomerProduct> query = entityManager().createQuery("SELECT o FROM CustomerProduct o WHERE o.customer.id=:cid", CustomerProduct.class);
         query.setParameter("cid", cid);
         return query.getResultList();
+    }
+
+    public static Integer getAllCommitsByCustomerId(Long cid) {
+        List<CustomerProduct> allProducts = findAllByCustomerId(cid);
+        int count = 0;
+        Date today = Calendar.getInstance().getTime();
+        for (CustomerProduct cp : allProducts) {
+            if (cp.endDate == null) {
+                cp.endDate=today;
+            }
+            long weekCount = (cp.endDate.getTime() - cp.startDate.getTime()) / 1000 / 60 / 60 / 24 / 7;
+//            System.out.println("weekcount="+weekCount);
+//            System.out.println(cp.getProductCommit().getCommits());
+            count += cp.getProductCommit().getCommits() * weekCount;
+        }
+        return count;
+
     }
 
 }

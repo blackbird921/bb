@@ -7,6 +7,7 @@ import com.bb.domain.ProductStake;
 import com.bb.reference.WeekStatus;
 import com.bb.service.CustomerCheckinService;
 import com.bb.service.CustomerProductService;
+import com.bb.service.ReportService;
 import com.bb.util.AutowiredLogger;
 import org.joda.time.format.DateTimeFormat;
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @RequestMapping("/customerproducts")
@@ -38,9 +40,10 @@ public class CustomerProductController {
     Logger logger;
     @Autowired
     private CustomerCheckinService customerCheckinService;
-
     @Autowired
     private CustomerProductService customerProductService;
+    @Autowired
+    private ReportService reportService;
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid CustomerProduct futurecustomerproduct, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -81,12 +84,25 @@ public class CustomerProductController {
 
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
+        logger.info("show .....");
         addDateTimeFormatPatterns(uiModel);
         CustomerProduct cp = customerProductService.getCurrentProduct(id);
         WeekStatus weekStatus = customerCheckinService.getCurrentWeekStatus(id);
         if (cp != null) {
             weekStatus.setDaysToComplete(cp.getProductCommit().getCommits().intValue() - weekStatus.getDaysCompleted());
         }
+
+        Customer customer = Customer.findCustomer(id);
+        cp.setCustomer(customer);
+        logger.info("{}", cp.getCustomer().getDisableStartDate());
+        logger.info("{}", cp.getCustomer().getDisableEndDate());
+        logger.info("{}", Calendar.getInstance());
+        if ((cp.getCustomer().getDisableStartDate() != null && cp.getCustomer().getDisableStartDate().before(Calendar.getInstance().getTime()))
+                && (cp.getCustomer().getDisableEndDate() == null || cp.getCustomer().getDisableEndDate().after((Calendar.getInstance().getTime())))) {
+            logger.info("is on vacation...");
+            uiModel.addAttribute("isOnVacation", true);
+        }
+        uiModel.addAttribute("customerreport", reportService.getCustomerStats(id));
         uiModel.addAttribute("customerproduct", cp);
         uiModel.addAttribute("weekstatus", weekStatus);
         uiModel.addAttribute("itemId", id);

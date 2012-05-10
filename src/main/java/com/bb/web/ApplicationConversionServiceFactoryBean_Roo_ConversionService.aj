@@ -14,7 +14,6 @@ import com.bb.domain.CustomerProfit;
 import com.bb.domain.CustomerTransaction;
 import com.bb.domain.Faq;
 import com.bb.domain.Location;
-import com.bb.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
@@ -54,7 +53,8 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
             }
         };
     }
-    
+
+
     public Converter<Long, Company> ApplicationConversionServiceFactoryBean.getIdToCompanyConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.Company>() {
             public com.bb.domain.Company convert(java.lang.Long id) {

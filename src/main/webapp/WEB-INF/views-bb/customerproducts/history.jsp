@@ -42,18 +42,14 @@
 
 
     $(document).ready(function () {
-//        $(".grid").kendoGrid({
-//            height:360,
-//            pageSize:5,
-//            groupable:true,
-//            scrollable:false,
-//            sortable:{
-//                mode:"single",
-//                allowUnsort:false
-//            },
-//            pageable:true
-//        });
-//
+        $("#tabstrip").kendoTabStrip({
+            animation:	{
+                open: {
+                    effects: "fadeIn"
+                }
+            }
+
+        });
     });
 </script>
 
@@ -64,43 +60,31 @@
     </h1>
 
     <div id="example" class="k-content" style="width:700px;">
-        <h4>当前出勤计划:</h4>
-        <table class="grid center-text">
-            <thead>
-            <tr>
-                <th class="center-text">周期</th>
-                <th class="center-text">承诺出勤</th>
-                <th class="center-text">实际出勤</th>
-                <th class="center-text">缺勤每天罚金</th>
-                <th class="center-text">奖罚收入</th>
-                <th class="center-text">累积收入</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>2012-01-02 ~ 2012-01-09</td>
-                <td>4天</td>
-                <td>2天</td>
-                <td>10元</td>
-                <td>-20元</td>
-                <td>-84元</td>
-            </tr>
-            </tbody>
-        </table>
+        <div style="margin-bottom: 10px;"></div>
+        <div id="tabstrip">
+            <ul>
+                <li class="k-state-active">
+                    出勤历史记录
+                </li>
+                <li>
+                    每周动则赢统计
+                </li>
+            </ul>
 
-
-        <div id="clientsDb">
-
-            <div id="grid"></div>
-
+            <div class="gridWrapper">
+                <div id="grid"></div>
+            </div>
+            <div class="gridWrapper">
+                <div id="grid2">aaaaaaaaaaa</div>
+            </div>
         </div>
 
         <style scoped>
-            #clientsDb {
-                width: 692px;
-                height: 393px;
-                margin: 30px auto;
-                padding: 51px 4px 0 4px;
+            .gridWrapper {
+                /*width: 670px;*/
+                /*min-height: 200px;*/
+                /*padding: 10px 4px 0 4px;*/
+                /*margin-bottom: 10px;*/
                 /*background: url('../content/grid/clientsDb.png') no-repeat 0 0;*/
             }
         </style>

@@ -7,6 +7,7 @@
     </definition>
     <definition extends="default" name="customerproducts/show">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/show.jsp"/>
+        <put-attribute name="right-sidebar" value="/WEB-INF/views-bb/right-avatar.jsp"/>
     </definition>
     <definition extends="default" name="customerproducts/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/create.jsp"/>

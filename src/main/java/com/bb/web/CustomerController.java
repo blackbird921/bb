@@ -76,10 +76,12 @@ public class CustomerController {
 
         if (validationService.existsUniqueValue(Customer.class, "username", customer.getUsername(), customer.getId())) {
             uiModel.addAttribute("usernameUniqueError", Boolean.TRUE);
+            logger.info("usernameUniqueError");
             hasError = true;
         }
         if (validationService.existsUniqueValue(Customer.class, "email", customer.getEmail(), customer.getId())) {
             uiModel.addAttribute("emailUniqueError", Boolean.TRUE);
+            logger.info("emailUniqueError");
             hasError = true;
         }
         return hasError;
@@ -99,7 +101,7 @@ public class CustomerController {
         }
 
         uiModel.asMap().clear();
-
+        logger.info("disableStartDate:{}", customer.getDisableStartDate());
         avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
         customer.merge();
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
@@ -114,6 +116,7 @@ public class CustomerController {
 
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
+        logger.info("show.....");
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customer", Customer.findCustomer(id));
         uiModel.addAttribute("itemId", id);
@@ -137,9 +140,18 @@ public class CustomerController {
 
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+        logger.info("update form...");
         populateEditForm(uiModel, Customer.findCustomer(id));
         return "customers/update";
     }
+
+    @RequestMapping(value = "/{id}", params = "vacationform", produces = "text/html")
+    public String updateFormVacation(@PathVariable("id") Long id, Model uiModel) {
+        logger.info("update updateFormVacation...");
+        populateEditForm(uiModel, Customer.findCustomer(id));
+        return "customers/updatevacation";
+    }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
@@ -153,7 +165,7 @@ public class CustomerController {
 
     void addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("customer_registrationdate_date_format", DateTimeFormat.patternForStyle("MM", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("customer_birthday_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("customer_birthdVacationay_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("customer_disablestartdate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("customer_disableenddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
