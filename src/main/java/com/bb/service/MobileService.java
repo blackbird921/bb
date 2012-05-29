@@ -24,12 +24,29 @@ public class MobileService {
         return list;
     }
 
-    public boolean checkin(Long cid, String gpsInfo){
-        boolean result = false;
+    public boolean checkinStart(Long cid, Float lat, Float lon){
+        boolean result = true;
 
 
         return result;
     }
+
+    public boolean checkinKeepalive(Long cid, Float lat, Float lon, Long locationId){
+        boolean result = true;
+
+
+        return result;
+    }
+
+    public boolean checkinEnd(Long cid, Float lat, Float lon, Long locationId){
+        boolean result = true;
+
+
+        return result;
+    }
+
+
+
 
     public static void main(String[] args) {
 //        System.out.println(new CustomerProfitServiceImpl().(0L).getDaysLeft());

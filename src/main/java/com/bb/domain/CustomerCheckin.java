@@ -70,8 +70,8 @@ public class CustomerCheckin {
     public static Integer getCompletionRateByCustomer(Long customerId) {
         int checkin = findCustomerCheckinsByCustomerAndApproved(customerId).getResultList().size();
         int commits = CustomerProduct.getAllCommitsByCustomerId(customerId);
-//        System.out.println(checkin+" "+commits);
-//        System.out.println("xxx"+ (int)( ((float)checkin / (float)commits)*100));
+//        System.out.println(checkinStart+" "+commits);
+//        System.out.println("xxx"+ (int)( ((float)checkinStart / (float)commits)*100));
         return (int) (((float) checkin / (float) commits) * 100);
     }
 

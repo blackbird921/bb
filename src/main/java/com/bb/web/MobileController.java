@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/mobile")
@@ -256,102 +258,98 @@ public class MobileController {
     public
     @ResponseBody
     String checkinStart(@RequestParam Long cid,
-                        @RequestParam String gpsInfo,
+                        @RequestParam Float lat, @RequestParam Float lon,
                         Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/checkin/start..............");
+        System.out.println("/checkinStart/start..............");
 
         try {
-
+            if (mobileService.checkinStart(cid, lat, lon)) {
+                return "success";
+            } else {
+                return "failure";
+            }
         } catch (Exception e) {
             return "failure";
         }
 
-        return "success";
     }
 
     @RequestMapping(value = "/checkin/keepalive", method = RequestMethod.GET)
     public
     @ResponseBody
     String checkinKeepalive(@RequestParam Long cid,
-                        @RequestParam String gpsInfo,
-                        Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/checkin/keepalive..............");
+                            @RequestParam Float lat, @RequestParam Float lon,
+                            @RequestParam Long locationId,
+                            Model uiModel, HttpServletRequest httpServletRequest) {
+        System.out.println("/checkinStart/keepalive..............");
 
         try {
-
+            if (mobileService.checkinKeepalive(cid, lat, lon, locationId)) {
+                return "success";
+            } else {
+                return "failure";
+            }
         } catch (Exception e) {
             return "failure";
         }
-
-        return "success";
     }
 
     @RequestMapping(value = "/checkin/end", method = RequestMethod.GET)
     public
     @ResponseBody
     String checkinEnd(@RequestParam Long cid,
-                        @RequestParam String gpsInfo,
-                        Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/checkin/end..............");
+                      @RequestParam Float lat, @RequestParam Float lon,
+                      @RequestParam Long locationId,
+                      Model uiModel, HttpServletRequest httpServletRequest) {
+        System.out.println("/checkinStart/end..............");
 
         try {
-
+            if (mobileService.checkinEnd(cid, lat, lon, locationId)) {
+                return "success";
+            } else {
+                return "failure";
+            }
         } catch (Exception e) {
             return "failure";
         }
-
-        return "success";
     }
 
     @RequestMapping(value = "/location/list", method = RequestMethod.GET)
     public
     @ResponseBody
-    String locationList(@RequestParam Long cid,
-                      @RequestParam String gpsInfo,
-                      Model uiModel, HttpServletRequest httpServletRequest) {
+    List<MobileLocationListItem> locationList(@RequestParam Long cid,
+                        @RequestParam Float lat, @RequestParam Float lon,
+                        @RequestParam Long radiusInMeter,
+                        Model uiModel, HttpServletRequest httpServletRequest) {
         System.out.println("/location/list..............");
-
+        List<MobileLocationListItem> list = new ArrayList<MobileLocationListItem>();
         try {
 
         } catch (Exception e) {
-            return "failure";
+            return list;
         }
 
-        return "success";
+        return list;
     }
 
     @RequestMapping(value = "/location/add", method = RequestMethod.GET)
     public
     @ResponseBody
-    String locationAdd(@RequestParam Long cid,
-                        @RequestParam String gpsInfo,
-                        Model uiModel, HttpServletRequest httpServletRequest) {
+    Location locationAdd(@RequestParam Long cid,
+                       @RequestParam Float lat, @RequestParam Float lon,
+                       @RequestParam String name, @RequestParam String address,
+                       Model uiModel, HttpServletRequest httpServletRequest) {
         System.out.println("/location/add..............");
-
+        Location location = new Location();
+        
         try {
 
         } catch (Exception e) {
-            return "failure";
+            return location;
         }
 
-        return "success";
+        return location;
     }
 
-    @RequestMapping(value = "/location/update", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    String locationUpdate(@RequestParam Long cid,
-                        @RequestParam String gpsInfo,
-                        Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/location/update..............");
-
-        try {
-
-        } catch (Exception e) {
-            return "failure";
-        }
-
-        return "success";
-    }
 
 }
