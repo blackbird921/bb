@@ -5,9 +5,9 @@ package com.bb.domain;
 
 import com.bb.domain.Customer;
 import com.bb.domain.CustomerCheckin;
-import com.bb.domain.Date;
 import com.bb.domain.Location;
 import com.bb.reference.CustomerCheckinEndType;
+import java.util.Date;
 
 privileged aspect CustomerCheckin_Roo_JavaBean {
     
