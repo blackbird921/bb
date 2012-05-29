@@ -1,10 +1,14 @@
 package com.bb.reference;
 
 public class MobileSpaceList {
+    //Boolean type
     private Object isOnVacation;
     private String avatarUrl;
+    //com.bb.domain.CustomerProduct object
     private Object currentCustomerProduct;
+    //com.bb.domain.CustomerProduct object
     private Object futureCustomerProduct;
+    //com.bb.reference.WeekStatus object
     private Object weekStatus;
 
     public Object getOnVacation() {

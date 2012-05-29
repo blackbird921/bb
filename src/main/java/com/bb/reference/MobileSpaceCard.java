@@ -1,7 +1,9 @@
 package com.bb.reference;
 
 public class MobileSpaceCard {
+    //List of  com.bb.domain.CustomerCard objects
     private Object customerCards;
+    //List of  com.bb.domain.CustomerCard objects
     private Object cardsToAdd;
 
     public Object getCustomerCards() {
