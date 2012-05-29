@@ -460,3 +460,33 @@ field date   --fieldName issuedDate   --notNull    --type java.util.Date
 field string   --fieldName status     --notNull    --sizeMax 50
 // script temp.roo
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-23 17:13:15
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-29 17:11:36
+hint
+hint
+hint
+entity jpa --class ~.domain.Location --sequenceName LOCATION_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Location
+field string --fieldName address --notNull           --sizeMax 100
+field string --fieldName city    --notNull           --sizeMax 30
+field number --fieldName latitude             --type java.lang.Float
+field number --fieldName longitude             --type java.lang.Float
+field string --fieldName phone              --sizeMax 30
+field string --fieldName contactName               --sizeMax 30
+field enum   --fieldName status  --notNull             --type ~.reference.LocationStatus
+field string --fieldName rejectionReason               --sizeMax 200
+field date   --fieldName create_date           --type java.util.Date
+field reference --fieldName customer  --type ~.domain.Customer
+// script temp.roo
+entity jpa --class ~.domain.Location --sequenceName LOCATION_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Location
+field string --fieldName address --notNull           --sizeMax 100
+field string --fieldName city    --notNull           --sizeMax 30
+field number --fieldName latitude             --type java.lang.Float
+field number --fieldName longitude             --type java.lang.Float
+field string --fieldName phone              --sizeMax 30
+field string --fieldName contactName               --sizeMax 30
+field enum   --fieldName status  --notNull             --type ~.reference.LocationStatus
+field string --fieldName rejectionReason               --sizeMax 200
+field date   --fieldName create_date           --type java.util.Date
+field reference --fieldName customer  --type ~.domain.Customer
+// script temp.roo

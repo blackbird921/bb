@@ -30,8 +30,9 @@ public class Location {
     @Size(max = 30)
     private String city;
 
-    @Size(max = 30)
-    private String gpsInfo;
+    private Float latitude;
+
+    private Float longitude;
 
     @Size(max = 30)
     private String phone;

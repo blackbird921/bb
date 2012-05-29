@@ -34,12 +34,20 @@ privileged aspect Location_Roo_JavaBean {
         this.city = city;
     }
     
-    public String Location.getGpsInfo() {
-        return this.gpsInfo;
+    public Float Location.getLatitude() {
+        return this.latitude;
     }
     
-    public void Location.setGpsInfo(String gpsInfo) {
-        this.gpsInfo = gpsInfo;
+    public void Location.setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+    
+    public Float Location.getLongitude() {
+        return this.longitude;
+    }
+    
+    public void Location.setLongitude(Float longitude) {
+        this.longitude = longitude;
     }
     
     public String Location.getPhone() {

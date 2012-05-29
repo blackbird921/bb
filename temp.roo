@@ -1,16 +1,15 @@
 // #####################
-//   Payment
+//   Location
 // #####################
-entity jpa --class ~.domain.Payment --sequenceName Payment_SEQ
-field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Payment
-
-
-// #####################
-//   CustomerPayment
-// #####################
-entity jpa --class ~.domain.CustomerPayment --sequenceName CUSTOMER_PAYMENT_SEQ
-field reference --fieldName customer --notNull --type ~.domain.Customer
-field reference --fieldName paymentType --notNull --type ~.domain.ref.RefPaymentType
-field string --fieldName accountId  --notNull --sizeMax 30 --sizeMin 2
-field date   --fieldName startDate --notNUll --type java.util.Date
-field date   --fieldName endDate --notNUll --type java.util.Date
+entity jpa --class ~.domain.Location --sequenceName LOCATION_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Location
+field string --fieldName address --notNull           --sizeMax 100
+field string --fieldName city    --notNull           --sizeMax 30
+field number --fieldName latitude             --type java.lang.Float
+field number --fieldName longitude             --type java.lang.Float
+field string --fieldName phone              --sizeMax 30
+field string --fieldName contactName               --sizeMax 30
+field enum   --fieldName status  --notNull             --type ~.reference.LocationStatus
+field string --fieldName rejectionReason               --sizeMax 200
+field date   --fieldName create_date           --type java.util.Date
+field reference --fieldName customer  --type ~.domain.Customer

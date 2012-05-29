@@ -89,7 +89,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<CustomerCard, String> ApplicationConversionServiceFactoryBean.getCustomerCardToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.bb.domain.CustomerCard, java.lang.String>() {
             public String convert(CustomerCard customerCard) {
-                return new StringBuilder().toString();
+                return new StringBuilder().append(customerCard.getUsedDate()).append(" ").append(customerCard.getIssuedDate()).append(" ").append(customerCard.getStatus()).toString();
             }
         };
     }
@@ -233,7 +233,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Location, String> ApplicationConversionServiceFactoryBean.getLocationToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.bb.domain.Location, java.lang.String>() {
             public String convert(Location location) {
-                return new StringBuilder().append(location.getName()).append(" ").append(location.getAddress()).append(" ").append(location.getCity()).append(" ").append(location.getGpsInfo()).toString();
+                return new StringBuilder().append(location.getName()).append(" ").append(location.getAddress()).append(" ").append(location.getCity()).append(" ").append(location.getLatitude()).toString();
             }
         };
     }

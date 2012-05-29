@@ -50,4 +50,12 @@ privileged aspect CustomerCard_Roo_JavaBean {
         this.status = status;
     }
     
+    public boolean CustomerCard.isIsWizard() {
+        return this.isWizard;
+    }
+    
+    public void CustomerCard.setIsWizard(boolean isWizard) {
+        this.isWizard = isWizard;
+    }
+    
 }
