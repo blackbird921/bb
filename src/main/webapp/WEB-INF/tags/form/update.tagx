@@ -47,7 +47,7 @@
                         <form:hidden id="_${fn:escapeXml(versionField)}_id" path="${fn:escapeXml(versionField)}"/>
                     </c:if>
                     <li class="accept">
-                        <button class="k-button" type="submit" style="margin-left: 110px; margin-top: 10px; margin-right: 10px;">Submit</button>
+                        <button class="k-button" type="submit" style="margin-left: 110px; margin-top: 10px; margin-right: 10px;"><c:out value="${label}"/></button>
                         <span class="status"></span>
                     </li>
                 </ul>

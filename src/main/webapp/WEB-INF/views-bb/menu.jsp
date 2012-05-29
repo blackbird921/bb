@@ -18,7 +18,7 @@
                     <a class="k-link" href="/customerproducts/hist/1">历史记录</a>
                 </li>
                 <li class="k-item k-state-default k-last">
-                    <a class="k-link" href="">体验卡</a>
+                    <a class="k-link" href="/customerproducts/card/1">健身卡</a>
                 </li>
             </ul>
         </li>
@@ -36,7 +36,7 @@
                     <a class="k-link" href="/customers/1?vacationform">请假</a>
                 </li>
                 <li class="k-item k-state-default k-last">
-                    <a class="k-link" href="">支付信息</a>
+                    <a class="k-link" href="/customers/account/1">账户信息</a>
                 </li>
             </ul>
         </li>

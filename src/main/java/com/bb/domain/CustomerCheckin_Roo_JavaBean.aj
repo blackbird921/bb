@@ -5,9 +5,9 @@ package com.bb.domain;
 
 import com.bb.domain.Customer;
 import com.bb.domain.CustomerCheckin;
+import java.util.Date;
 import com.bb.domain.Location;
 import com.bb.reference.CustomerCheckinEndType;
-import java.util.Date;
 
 privileged aspect CustomerCheckin_Roo_JavaBean {
     
@@ -57,6 +57,10 @@ privileged aspect CustomerCheckin_Roo_JavaBean {
     
     public void CustomerCheckin.setIsApproved(Boolean isApproved) {
         this.isApproved = isApproved;
+    }
+    
+    public void CustomerCheckin.setTimeLengthInMinute(long timeLengthInMinute) {
+        this.timeLengthInMinute = timeLengthInMinute;
     }
     
 }

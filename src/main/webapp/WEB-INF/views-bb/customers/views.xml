@@ -8,6 +8,9 @@
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/show.jsp"/>
         <put-attribute name="right-sidebar" value="/WEB-INF/views-bb/right-avatar.jsp"/>
     </definition>
+    <definition extends="default" name="customers/account">
+        <put-attribute name="body" value="/WEB-INF/views-bb/customers/account.jsp"/>
+    </definition>
     <definition extends="default" name="customers/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/create.jsp"/>
         <put-attribute name="header" value="/WEB-INF/views-bb/customers/header.jsp"/>

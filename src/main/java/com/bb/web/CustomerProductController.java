@@ -1,12 +1,10 @@
 package com.bb.web;
 
-import com.bb.domain.Customer;
-import com.bb.domain.CustomerProduct;
-import com.bb.domain.ProductCommit;
-import com.bb.domain.ProductStake;
+import com.bb.domain.*;
 import com.bb.reference.WeekStatus;
 import com.bb.service.CustomerCheckinService;
 import com.bb.service.CustomerProductService;
+import com.bb.service.CustomerProfitService;
 import com.bb.service.ReportService;
 import com.bb.util.AutowiredLogger;
 import org.joda.time.format.DateTimeFormat;
@@ -29,6 +27,7 @@ import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("/customerproducts")
@@ -42,6 +41,8 @@ public class CustomerProductController {
     private CustomerCheckinService customerCheckinService;
     @Autowired
     private CustomerProductService customerProductService;
+    @Autowired
+    private CustomerProfitService customerProfitService;
     @Autowired
     private ReportService reportService;
 
@@ -70,13 +71,13 @@ public class CustomerProductController {
         populateEditForm(uiModel, cp);
         List<String[]> dependencies = new ArrayList<String[]>();
         if (Customer.countCustomers() == 0) {
-            dependencies.add(new String[] { "customer", "customers" });
+            dependencies.add(new String[]{"customer", "customers"});
         }
         if (ProductCommit.countProductCommits() == 0) {
-            dependencies.add(new String[] { "productcommit", "productcommits" });
+            dependencies.add(new String[]{"productcommit", "productcommits"});
         }
         if (ProductStake.countProductStakes() == 0) {
-            dependencies.add(new String[] { "productstake", "productstakes" });
+            dependencies.add(new String[]{"productstake", "productstakes"});
         }
         uiModel.addAttribute("dependencies", dependencies);
         return "customerproducts/create";
@@ -90,21 +91,28 @@ public class CustomerProductController {
         WeekStatus weekStatus = customerCheckinService.getCurrentWeekStatus(id);
         if (cp != null) {
             weekStatus.setDaysToComplete(cp.getProductCommit().getCommits().intValue() - weekStatus.getDaysCompleted());
+            Customer customer = Customer.findCustomer(id);
+            System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            System.out.println(cp);
+            System.out.println(customer);
+            System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            cp.setCustomer(customer);
+            logger.info("{}", cp.getCustomer().getDisableStartDate());
+            logger.info("{}", cp.getCustomer().getDisableEndDate());
+            logger.info("{}", Calendar.getInstance());
+            if ((cp.getCustomer().getDisableStartDate() != null && cp.getCustomer().getDisableStartDate().before(Calendar.getInstance().getTime()))
+                    && (cp.getCustomer().getDisableEndDate() == null || cp.getCustomer().getDisableEndDate().after((Calendar.getInstance().getTime())))) {
+                logger.info("is on vacation...");
+                uiModel.addAttribute("isOnVacation", true);
+            }
+            uiModel.addAttribute("customerproduct", cp);
+            uiModel.addAttribute("weekstatus", weekStatus);
+            uiModel.addAttribute("customerreport", reportService.getCustomerStats(id));
+        }else {
+            cp = customerProductService.getFutureProduct(id);
+            uiModel.addAttribute("newUserStartDate", cp.getStartDate());
         }
 
-        Customer customer = Customer.findCustomer(id);
-        cp.setCustomer(customer);
-        logger.info("{}", cp.getCustomer().getDisableStartDate());
-        logger.info("{}", cp.getCustomer().getDisableEndDate());
-        logger.info("{}", Calendar.getInstance());
-        if ((cp.getCustomer().getDisableStartDate() != null && cp.getCustomer().getDisableStartDate().before(Calendar.getInstance().getTime()))
-                && (cp.getCustomer().getDisableEndDate() == null || cp.getCustomer().getDisableEndDate().after((Calendar.getInstance().getTime())))) {
-            logger.info("is on vacation...");
-            uiModel.addAttribute("isOnVacation", true);
-        }
-        uiModel.addAttribute("customerreport", reportService.getCustomerStats(id));
-        uiModel.addAttribute("customerproduct", cp);
-        uiModel.addAttribute("weekstatus", weekStatus);
         uiModel.addAttribute("itemId", id);
         return "customerproducts/show";
     }
@@ -147,11 +155,65 @@ public class CustomerProductController {
     }
 
     @RequestMapping(value = "/hist/{id}", method = RequestMethod.GET, produces = "text/html")
-    public String history(@PathVariable("id") Long id, Model uiModel) {
+    public String history(@PathVariable("id") Long id, @RequestParam(required = false) Long week, Model uiModel) {
         System.out.println("history.......");
         uiModel.addAttribute("customerproducts", CustomerProduct.findAllByCustomerId(id));
+        List<CustomerCheckin> checkins = CustomerCheckin.findCustomerCheckinsByCustomer(id).getResultList();
+        uiModel.addAttribute("customercheckins", checkins);
+
+        List<WeekStatus> allWeekStatus = new ArrayList<WeekStatus>();
+        int x = 52;
+        if (week != null) {
+            x = week.intValue();
+        }
+        for (int i = 1; i <= x; i++) {
+            CustomerProduct cp = customerProductService.getPastProduct(id, i);
+            if (cp != null) {
+                CustomerProfit cProfit = customerProfitService.getPastProfit(id, i);
+                WeekStatus weekStatus = customerCheckinService.getPastWeekStatus(id, i);
+                weekStatus.setCustomerProduct(cp);
+                weekStatus.setCustomerProfit(cProfit);
+                allWeekStatus.add(weekStatus);
+            }
+        }
+        uiModel.addAttribute("allWeekStatus", allWeekStatus);
+
         return "customerproducts/history";
     }
+
+
+    @RequestMapping(value = "/card/{id}", method = RequestMethod.GET, produces = "text/html")
+    public String card(@PathVariable("id") Long id, Model uiModel) {
+        System.out.println("card.......");
+
+        //TODO: delete line
+        uiModel.addAttribute("customerproducts", CustomerProduct.findAllByCustomerId(id));
+        uiModel.addAttribute("customerId", id);
+        uiModel.addAttribute("issuedDate", new Date());
+
+        List<CustomerCard> customerCards = CustomerCard.findAllByCustomerId(id);
+        uiModel.addAttribute("customercards", customerCards);
+
+        List<Card> cards = Card.findAllCards();
+        List<Card> cardsToAdd = new ArrayList<Card>();
+        cardsToAdd.addAll(cards);
+        System.out.println(cardsToAdd);
+
+        for (Card card : cards) {
+            for (CustomerCard cc : customerCards) {
+                System.out.println(cc.getCard().getId() + " " + card.getId());
+                if (cc.getCard().getId().equals(card.getId())) {
+                    cardsToAdd.remove(card);
+                }
+            }
+        }
+
+        System.out.println(cardsToAdd);
+        uiModel.addAttribute("cards", cardsToAdd);
+
+        return "customerproducts/card";
+    }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
@@ -183,7 +245,8 @@ public class CustomerProductController {
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException uee) {
+        }
         return pathSegment;
     }
 }

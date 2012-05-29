@@ -443,3 +443,20 @@ field string    --fieldName configType     --notNull       --sizeMax 25
 finder add --finderName findConfigurationsByConfigName --class ~.domain.Configuration
 // script temp.roo
 field string --fieldName activationCode      --sizeMax 50 --class ~.domain.Customer
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-15 15:33:08
+hint
+entity jpa --class ~.domain.CustomerCard --sequenceName CUSTOMER_CARD_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName card  --notNull --type ~.domain.Card
+field date   --fieldName usedDate     --notNull    --type java.util.Date
+field date   --fieldName issuedDate   --notNull    --type java.util.Date
+field string   --fieldName status     --notNull    --sizeMax 50
+// script temp.roo
+entity jpa --class ~.domain.CustomerCard --sequenceName CUSTOMER_CARD_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName card  --notNull --type ~.domain.Card
+field date   --fieldName usedDate      --type java.util.Date
+field date   --fieldName issuedDate   --notNull    --type java.util.Date
+field string   --fieldName status     --notNull    --sizeMax 50
+// script temp.roo
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-23 17:13:15

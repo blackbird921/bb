@@ -2,9 +2,11 @@ package com.bb.web;
 
 import com.bb.domain.Customer;
 import com.bb.domain.ref.RefSex;
+import com.bb.reference.AccountInfo;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
 import com.bb.service.AvatarService;
+import com.bb.service.CustomerAccountService;
 import com.bb.service.ValidationService;
 import com.bb.util.AutowiredLogger;
 import org.joda.time.format.DateTimeFormat;
@@ -42,6 +44,8 @@ public class CustomerController {
 
     @Autowired
     private AvatarService avatarService;
+    @Autowired
+    private CustomerAccountService customerAccountService;
 
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
@@ -121,6 +125,16 @@ public class CustomerController {
         uiModel.addAttribute("customer", Customer.findCustomer(id));
         uiModel.addAttribute("itemId", id);
         return "customers/show";
+    }
+
+    @RequestMapping(value = "/account/{id}", produces = "text/html")
+    public String account(@PathVariable("id") Long id, Model uiModel) {
+        logger.info("account.....");
+        addDateTimeFormatPatterns(uiModel);
+
+        AccountInfo accountInfo = customerAccountService.getAccountInfo(id);
+        uiModel.addAttribute("accountInfo", accountInfo);
+        return "customers/account";
     }
 
     @RequestMapping(produces = "text/html")

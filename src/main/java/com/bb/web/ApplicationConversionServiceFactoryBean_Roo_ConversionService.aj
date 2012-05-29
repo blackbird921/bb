@@ -9,11 +9,11 @@ import com.bb.domain.Customer;
 import com.bb.domain.CustomerCard;
 import com.bb.domain.CustomerCheckin;
 import com.bb.domain.CustomerPayment;
-import com.bb.domain.CustomerProduct;
 import com.bb.domain.CustomerProfit;
 import com.bb.domain.CustomerTransaction;
 import com.bb.domain.Faq;
 import com.bb.domain.Location;
+import com.bb.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
@@ -53,8 +53,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
             }
         };
     }
-
-
+    
     public Converter<Long, Company> ApplicationConversionServiceFactoryBean.getIdToCompanyConverter() {
         return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.Company>() {
             public com.bb.domain.Company convert(java.lang.Long id) {
@@ -90,7 +89,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<CustomerCard, String> ApplicationConversionServiceFactoryBean.getCustomerCardToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.bb.domain.CustomerCard, java.lang.String>() {
             public String convert(CustomerCard customerCard) {
-                return new StringBuilder().append(customerCard.getUsedDate()).toString();
+                return new StringBuilder().toString();
             }
         };
     }
@@ -114,7 +113,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<CustomerCheckin, String> ApplicationConversionServiceFactoryBean.getCustomerCheckinToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.bb.domain.CustomerCheckin, java.lang.String>() {
             public String convert(CustomerCheckin customerCheckin) {
-                return new StringBuilder().append(customerCheckin.getStartDate()).append(" ").append(customerCheckin.getEndDate()).toString();
+                return new StringBuilder().append(customerCheckin.getTimeLengthInMinute()).append(" ").append(customerCheckin.getStartDate()).append(" ").append(customerCheckin.getEndDate()).toString();
             }
         };
     }
@@ -155,30 +154,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.CustomerPayment>() {
             public com.bb.domain.CustomerPayment convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), CustomerPayment.class);
-            }
-        };
-    }
-    
-    public Converter<CustomerProduct, String> ApplicationConversionServiceFactoryBean.getCustomerProductToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.bb.domain.CustomerProduct, java.lang.String>() {
-            public String convert(CustomerProduct customerProduct) {
-                return new StringBuilder().append(customerProduct.getStartDate()).append(" ").append(customerProduct.getEndDate()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, CustomerProduct> ApplicationConversionServiceFactoryBean.getIdToCustomerProductConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.bb.domain.CustomerProduct>() {
-            public com.bb.domain.CustomerProduct convert(java.lang.Long id) {
-                return CustomerProduct.findCustomerProduct(id);
-            }
-        };
-    }
-    
-    public Converter<String, CustomerProduct> ApplicationConversionServiceFactoryBean.getStringToCustomerProductConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.bb.domain.CustomerProduct>() {
-            public com.bb.domain.CustomerProduct convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), CustomerProduct.class);
             }
         };
     }
@@ -298,9 +273,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getCustomerPaymentToStringConverter());
         registry.addConverter(getIdToCustomerPaymentConverter());
         registry.addConverter(getStringToCustomerPaymentConverter());
-        registry.addConverter(getCustomerProductToStringConverter());
-        registry.addConverter(getIdToCustomerProductConverter());
-        registry.addConverter(getStringToCustomerProductConverter());
         registry.addConverter(getCustomerProfitToStringConverter());
         registry.addConverter(getIdToCustomerProfitConverter());
         registry.addConverter(getStringToCustomerProfitConverter());

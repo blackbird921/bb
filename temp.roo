@@ -1,6 +1,16 @@
-entity jpa --class ~.domain.Configuration --sequenceName CONFIGURATION_SEQ
-field string    --fieldName configName    --notNull      --sizeMax 200
-field string    --fieldName configValue     --notNull       --sizeMax 200
-field string    --fieldName configType     --notNull       --sizeMax 25
+// #####################
+//   Payment
+// #####################
+entity jpa --class ~.domain.Payment --sequenceName Payment_SEQ
+field string --fieldName name --notNull --sizeMax 30 --sizeMin 2 --class ~.domain.Payment
 
-finder add --finderName findConfigurationsByConfigName --class ~.domain.Configuration
+
+// #####################
+//   CustomerPayment
+// #####################
+entity jpa --class ~.domain.CustomerPayment --sequenceName CUSTOMER_PAYMENT_SEQ
+field reference --fieldName customer --notNull --type ~.domain.Customer
+field reference --fieldName paymentType --notNull --type ~.domain.ref.RefPaymentType
+field string --fieldName accountId  --notNull --sizeMax 30 --sizeMin 2
+field date   --fieldName startDate --notNUll --type java.util.Date
+field date   --fieldName endDate --notNUll --type java.util.Date

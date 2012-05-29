@@ -24,7 +24,7 @@
     <div id="example" class="k-content">
 
         <div id="form-wrapper" class="k-header" style="height: 200px; width:400px;">
-            <form:update id="fu_com_bb_domain_Customer" modelAttribute="customer" multipart="true" path="/customers/update" versionField="Version" z="user-managed">
+            <form:update id="fu_com_bb_domain_Customer" modelAttribute="customer" multipart="true" path="/customers/update" versionField="Version" z="user-managed" label="递交">
                 <div style="display: none;">
                 <div class="errors" id="error_message">
                     <util:text id="usernameUniqueError" value="${usernameUniqueError}"/>

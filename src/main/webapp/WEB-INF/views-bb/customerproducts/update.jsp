@@ -70,7 +70,7 @@
         <h4>将来出勤计划:</h4>
 
         <div id="form-wrapper" class="k-header" style="height: 200px;">
-            <form:update id="fu_com_bb_domain_CustomerProduct" modelAttribute="futurecustomerproduct" path="/customerproducts" versionField="Version" z="tXGbjniBAOW9I55SMK7PCIxXFe4=">
+            <form:update id="fu_com_bb_domain_CustomerProduct" modelAttribute="futurecustomerproduct" path="/customerproducts" versionField="Version" z="tXGbjniBAOW9I55SMK7PCIxXFe4=" label="更新">
                 <input type="hidden" id="customer_id" name="customer" value="${futurecustomerproduct.customer.id}"/>
                 <input type="hidden" id="xxx" name="yyy" value="${futurecustomerproduct.id}"/>
                 <field:select field="productCommit" id="c_com_bb_domain_CustomerProduct_productCommit" itemValue="id" itemLabel="commits" items="${productcommits}" path="/productcommits" required="true"/>

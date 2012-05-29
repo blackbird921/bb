@@ -10,8 +10,13 @@ html,
 body
 {
     height:100%;
-    color:#000;
-    background:#fff;
+    /*color:#000;*/
+    /*background:#fff;*/
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", "SimHei", sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #79c136;
+    background-color: #fbfdf9
 }
 
 html,
@@ -24,11 +29,15 @@ body,
 html
 {
     overflow-y:scroll;
-    font:75% arial,helvetica,sans-serif;
+    /*font:75% arial,helvetica,sans-serif;*/
 }
 
 a, h1{
-    font-weight: bold;
+    /*font-weight: bold;*/
+}
+
+h1{
+    font-size:large;
 }
 
 #examplesThemeChooser .k-arrow-down,
@@ -533,7 +542,7 @@ a.bigButton
 
 #navWrap .k-link
 {
-    font: 16px bold Arial, Helvetica, sans-serif;
+    /*font: 16px bold Arial, Helvetica, sans-serif;*/
     font-weight: bold;
     color: #2175bd;
     background: none;
@@ -631,7 +640,7 @@ a.bigButton
 
 #example
 {
-    font-family: Arial, Helvetica, sans-serif;
+    /*font-family: Arial, Helvetica, sans-serif;*/
     /*margin:1em 0 0;*/
     padding: 50px 20px 20px;
     border: 1px solid #dedede;
@@ -645,7 +654,7 @@ a.bigButton
 
 #exampleTitle
 {
-    font: 18px arial,helvetica,sans-serif;
+    /*font: 18px arial,helvetica,sans-serif;*/
     font-weight: bold;
     background: transparent;
     margin-left: 21px;
@@ -656,7 +665,7 @@ a.bigButton
 }
 
 .content-title{
-    font: 18px arial,helvetica,sans-serif;
+    /*font: 18px arial,helvetica,sans-serif;*/
     margin-top: -25px;
     font-weight: bold;
     background: transparent;
@@ -754,7 +763,7 @@ a.bigButton
 /* code viewer */
 #codeStrip
 {
-    font: 12px bold Arial, Helvetica, sans-serif;
+    /*font: 12px bold Arial, Helvetica, sans-serif;*/
     /*display: none;*/
     background: none;
     border: 0;
@@ -945,7 +954,7 @@ label{
     margin-right: 4px;
     margin-top: 3px;
     text-align: right;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .invalid, .errors {

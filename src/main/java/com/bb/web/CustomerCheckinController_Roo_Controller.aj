@@ -14,8 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import org.joda.time.format.DateTimeFormat;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +52,6 @@ privileged aspect CustomerCheckinController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String CustomerCheckinController.show(@PathVariable("id") Long id, Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customercheckin", CustomerCheckin.findCustomerCheckin(id));
         uiModel.addAttribute("itemId", id);
         return "customercheckins/show";
@@ -71,7 +68,6 @@ privileged aspect CustomerCheckinController_Roo_Controller {
         } else {
             uiModel.addAttribute("customercheckins", CustomerCheckin.findAllCustomerCheckins());
         }
-        addDateTimeFormatPatterns(uiModel);
         return "customercheckins/list";
     }
     
@@ -102,14 +98,8 @@ privileged aspect CustomerCheckinController_Roo_Controller {
         return "redirect:/customercheckins";
     }
     
-    void CustomerCheckinController.addDateTimeFormatPatterns(Model uiModel) {
-        uiModel.addAttribute("customerCheckin_startdate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
-        uiModel.addAttribute("customerCheckin_enddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
-    }
-    
     void CustomerCheckinController.populateEditForm(Model uiModel, CustomerCheckin customerCheckin) {
         uiModel.addAttribute("customerCheckin", customerCheckin);
-        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customers", Customer.findAllCustomers());
         uiModel.addAttribute("locations", Location.findAllLocations());
         uiModel.addAttribute("customercheckinendtypes", Arrays.asList(CustomerCheckinEndType.values()));

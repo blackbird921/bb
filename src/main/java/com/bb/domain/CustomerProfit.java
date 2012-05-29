@@ -30,6 +30,13 @@ public class CustomerProfit {
     @NotNull
     private Long amount;
 
+    public static List<CustomerProfit> findAllProfitByCustomerId(Long id) {
+        EntityManager em = CustomerProfit.entityManager();
+        Query q = em.createQuery("SELECT o FROM CustomerProfit AS o WHERE o.customer.id = :id", CustomerProfit.class);
+        q.setParameter("id", id);
+        return q.getResultList();
+    }
+
     public static TypedQuery<Long> countProfitByCustomerId(Long id) {
         EntityManager em = CustomerProfit.entityManager();
         TypedQuery<Long> q = em.createQuery("SELECT sum(o.amount) FROM CustomerProfit AS o "
@@ -37,6 +44,7 @@ public class CustomerProfit {
         q.setParameter("id", id);
         return q;
     }
+
 
     public static Integer getProfitRankByCustomerId(Long cid) {
         EntityManager em = CustomerProfit.entityManager();

@@ -1,9 +1,14 @@
 /* main elements */
 
 body,div,td {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #666;
+	/*font-family: Arial, Helvetica, sans-serif;*/
+	/*font-size: 12px;*/
+	/*color: #666;*/
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", "SimHei", sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #79c136;
+    background-color: #fbfdf9
 }
 
 body {

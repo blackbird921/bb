@@ -9,38 +9,6 @@
 
 
 <script type="text/javascript">
-
-    var firstNames = ["Nancy", "Andrew", "Janet", "Margaret", "Steven", "Michael", "Robert", "Laura", "Anne", "Nige"],
-            lastNames = ["Davolio", "Fuller", "Leverling", "Peacock", "Buchanan", "Suyama", "King", "Callahan", "Dodsworth", "White"],
-            cities = ["Seattle", "Tacoma", "Kirkland", "Redmond", "London", "Philadelphia", "New York", "Seattle", "London", "Boston"],
-            titles = ["Accountant", "Vice President, Sales", "Sales Representative", "Technical Support", "Sales Manager", "Web Designer",
-                "Software Developer", "Inside Sales Coordinator", "Chief Techical Officer", "Chief Execute Officer"],
-            birthDates = [new Date("1948/12/08"), new Date("1952/02/19"), new Date("1963/08/30"), new Date("1937/09/19"), new Date("1955/03/04"), new Date("1963/07/02"), new Date("1960/05/29"), new Date("1958/01/09"), new Date("1966/01/27"), new Date("1966/03/27")];
-
-    function createRandomData(count) {
-        var data = [], now = new Date();
-        for (var i = 0; i < count; i++) {
-            var firstName = firstNames[Math.floor(Math.random() * firstNames.length)],
-                    lastName = lastNames[Math.floor(Math.random() * lastNames.length)],
-                    city = cities[Math.floor(Math.random() * cities.length)],
-                    title = titles[Math.floor(Math.random() * titles.length)],
-                    birthDate = birthDates[Math.floor(Math.random() * birthDates.length)],
-                    age = now.getFullYear() - birthDate.getFullYear();
-
-            data.push({
-                Id: i + 1,
-                FirstName: firstName,
-                LastName: lastName,
-                City: city,
-                Title: title,
-                BirthDate: birthDate,
-                Age: age
-            });
-        }
-        return data;
-    }
-
-
     $(document).ready(function () {
         $("#tabstrip").kendoTabStrip({
             animation:	{
@@ -63,73 +31,100 @@
         <div style="margin-bottom: 10px;"></div>
         <div id="tabstrip">
             <ul>
-                <li class="k-state-active">
-                    出勤历史记录
-                </li>
                 <li>
+                出勤历史记录
+                </li>
+                <li class="k-state-active">
                     每周动则赢统计
                 </li>
             </ul>
 
             <div class="gridWrapper">
-                <div id="grid"></div>
+                <table id="grid-checkin-history">
+                    <thead>
+                    <tr>
+                        <th data-field="">地点</th>
+                        <th data-field="">开始日期</th>
+                        <th data-field="">结束日期</th>
+                        <th data-field="">时长</th>
+                        <th data-field="">结束方式</th>
+                        <th data-field="">是否有效</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${customercheckins}" var="checkin">
+                    <tr>
+                        <td>${checkin.location.name}</td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${checkin.startDate}" type="both"/></td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${checkin.endDate}" type="both"/></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${checkin.timeLengthInMinute=='-1'}">无法确定</c:when>
+                                <c:otherwise>${checkin.timeLengthInMinute}分钟</c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${checkin.endType=='No_Signal'}">定位信号丢失</c:when>
+                                <c:otherwise>出勤完毕</c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${checkin.isApproved==true}">有效</c:when>
+                                <c:otherwise>否</c:otherwise>
+                            </c:choose>
+                        </td>
+                    </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
             </div>
             <div class="gridWrapper">
-                <div id="grid2">aaaaaaaaaaa</div>
+                <table id="grid-weekly-history">
+                    <thead>
+                    <tr>
+                        <th data-field="">开始日期</th>
+                        <th data-field="">结束日期</th>
+                        <th data-field="">承诺出勤</th>
+                        <th data-field="">缺勤每天罚金</th>
+                        <th data-field="">实际出勤</th>
+                        <th data-field="">当周奖金</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${allWeekStatus}" var="weekStatus">
+                        <tr>
+                            <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${weekStatus.startDate}" type="both"/></td>
+                            <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${weekStatus.endDate}" type="both"/></td>
+                            <td>${weekStatus.customerProduct.productCommit.commits}天</td>
+                            <td>${weekStatus.customerProduct.productStake.stakes}元</td>
+                            <td>${weekStatus.daysCompleted}天</td>
+                            <td>${weekStatus.customerProfit.amount}元</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <style scoped>
-            .gridWrapper {
-                /*width: 670px;*/
-                /*min-height: 200px;*/
-                /*padding: 10px 4px 0 4px;*/
-                /*margin-bottom: 10px;*/
-                /*background: url('../content/grid/clientsDb.png') no-repeat 0 0;*/
-            }
-        </style>
         <script>
             $(document).ready(function () {
-                $("#grid").kendoGrid({
-                    dataSource:{
-                        data:createRandomData(50),
-                        pageSize:10
-                    },
-                    height:360,
-                    groupable:true,
+                $("#grid-checkin-history").kendoGrid({
+                    height:400,
                     scrollable:true,
                     sortable:true,
-                    pageable:true,
-                    columns:[
-                        {
-                            field:"FirstName",
-                            width:90,
-                            title:"First Name"
-                        } ,
-                        {
-                            field:"LastName",
-                            width:90,
-                            title:"Last Name"
-                        } ,
-                        {
-                            width:100,
-                            field:"City"
-                        } ,
-                        {
-                            field:"Title"
-                        } ,
-                        {
-                            field:"BirthDate",
-                            title:"Birth Date",
-                            template:'#= kendo.toString(BirthDate,"dd MMMM yyyy") #'
-                        } ,
-                        {
-                            width:50,
-                            field:"Age"
-                        }
-                    ]
+                    pageable:true
                 });
             });
+
+            $("#grid-weekly-history").kendoGrid({
+                height:400,
+                scrollable:true,
+                sortable:true,
+                pageable:true
+            });
+
         </script>
     </div>
 </div>

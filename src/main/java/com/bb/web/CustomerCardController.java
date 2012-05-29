@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RequestMapping("/customercards")
@@ -43,7 +44,12 @@ public class CustomerCardController {
         uiModel.asMap().clear();
         customerCard.persist();
         logger.info("persisted:{}", customerCard);
-        return "redirect:/customerproducts/" + customerCard.getCustomer().getId().toString();
+
+        String cardPath = "";
+        if (!customerCard.getWizard()) {
+            cardPath = "card/";
+        }
+        return "redirect:/customerproducts/"+cardPath + customerCard.getCustomer().getId().toString();
     }
 
     @RequestMapping(value = "/{id}/create", produces = "text/html")
@@ -61,7 +67,9 @@ public class CustomerCardController {
         if (Card.countCards() == 0) {
             dependencies.add(new String[]{"card", "cards"});
         }
+        
         uiModel.addAttribute("dependencies", dependencies);
+        uiModel.addAttribute("issuedDate", new Date());
         return "customercards/create";
     }
 

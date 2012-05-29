@@ -34,4 +34,20 @@ privileged aspect CustomerCard_Roo_JavaBean {
         this.usedDate = usedDate;
     }
     
+    public Date CustomerCard.getIssuedDate() {
+        return this.issuedDate;
+    }
+    
+    public void CustomerCard.setIssuedDate(Date issuedDate) {
+        this.issuedDate = issuedDate;
+    }
+    
+    public String CustomerCard.getStatus() {
+        return this.status;
+    }
+    
+    public void CustomerCard.setStatus(String status) {
+        this.status = status;
+    }
+    
 }

@@ -20,4 +20,7 @@
     <definition extends="default" name="customerproducts/history">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/history.jsp"/>
     </definition>
+    <definition extends="default" name="customerproducts/card">
+        <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/card.jsp"/>
+    </definition>
 </tiles-definitions>

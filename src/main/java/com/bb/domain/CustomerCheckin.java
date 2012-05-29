@@ -38,6 +38,9 @@ public class CustomerCheckin {
 
     private Boolean isApproved;
 
+    @Transient
+    private long timeLengthInMinute;
+
     public static TypedQuery<CustomerCheckin> findCustomerCheckinsByCustomerAndDate(Long customerId, Date start, Date end) {
         if (customerId == null) throw new IllegalArgumentException("The customerId argument is required");
         EntityManager em = CustomerCheckin.entityManager();
@@ -53,6 +56,16 @@ public class CustomerCheckin {
         q.setParameter("customerId", customerId);
         return q;
     }
+
+    public static TypedQuery<CustomerCheckin> findCustomerCheckinsByCustomer(Long customerId) {
+        if (customerId == null) throw new IllegalArgumentException("The customerId argument is required");
+        EntityManager em = CustomerCheckin.entityManager();
+        TypedQuery<CustomerCheckin> q = em.createQuery("SELECT o FROM CustomerCheckin AS o WHERE o.customer.id = :customerId" +
+                " order by o.startDate desc", CustomerCheckin.class);
+        q.setParameter("customerId", customerId);
+        return q;
+    }
+
 
     public static Integer getCompletionRateByCustomer(Long customerId) {
         int checkin = findCustomerCheckinsByCustomerAndApproved(customerId).getResultList().size();
@@ -83,4 +96,10 @@ public class CustomerCheckin {
 
     }
 
+    public long getTimeLengthInMinute() {
+        if (startDate == null || endDate == null || endDate.before(startDate)) {
+            return -1;
+        }
+        return (endDate.getTime()-startDate.getTime())/1000/60;
+    }
 }

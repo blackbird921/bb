@@ -22,7 +22,7 @@
                 1. 注册<img src="/resources/images/arrow_right.png" height="35px" class="icon"/> </a></li>
             <li><a id="reg2" class="" href="">2. 设定出勤计划 <img src="/resources/images/arrow_right.png" height="35px" class="icon"/></a></li>
             <li><a id="reg3" class="" href="">3. 设定奖金账户 <img src="/resources/images/arrow_right.png" height="35px" class="icon"/></a></li>
-            <li><a id="reg4" class="last selected" href="">4. 获取体验卡<img src="/resources/images/arrow_right.png" height="35px" class="icon"/></a></li>
+            <li><a id="reg4" class="last selected" href="">4. 获取健身卡<img src="/resources/images/arrow_right.png" height="35px" class="icon"/></a></li>
         </ul>
     </div>
 </div>

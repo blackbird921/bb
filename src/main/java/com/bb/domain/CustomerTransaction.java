@@ -2,9 +2,8 @@ package com.bb.domain;
 
 import com.bb.domain.ref.RefPaymentTxType;
 import java.util.Date;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.List;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -36,4 +35,12 @@ public class CustomerTransaction {
     private Date transactionDate;
 
     private String transactionError;
+
+    public static List<CustomerTransaction> findAllTransactionByCustomerId(Long id) {
+        EntityManager em = CustomerTransaction.entityManager();
+        Query q = em.createQuery("SELECT o FROM CustomerTransaction AS o WHERE o.customer.id = :id", CustomerTransaction.class);
+        q.setParameter("id", id);
+        return q.getResultList();
+    }
+
 }

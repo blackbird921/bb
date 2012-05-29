@@ -48,12 +48,16 @@ $(document).ready(function () {
 <div id="example" class="k-content frame">
     <h1 class="content-title">
         <span class="exampleIcon overviewIcon"></span>
-        4. 获取体验卡
+        4. 获取健身卡
     </h1>
 
     <div id="form-wrapper" class="k-header" style="height: 300px;">
         <form:create id="fc_com_bb_domain_CustomerCard" modelAttribute="customerCard" path="/customercards" render="${empty dependencies}" label="完成">
             <input id="customer_id" name="customer" value="${customerCard.customer.id}" type="hidden"/>
+            <input id="isWizard" name="wizard" value="true" type="hidden"/>
+            <input type="hidden" name="issuedDate" value="${issuedDate}"/>
+            <input type="hidden" name="status" value="未使用"/>
+
             <field:select field="card" id="c_com_bb_domain_CustomerCard_card" itemValue="id" items="${cards}" path="/cards" required="true" z="Z7ebk5OBKmaDf94Y/sP9q4nV/J8="/>
             <div style="margin: 5px 57px;">${description}</div>
         </form:create>
