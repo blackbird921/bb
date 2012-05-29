@@ -490,3 +490,5 @@ field string --fieldName rejectionReason               --sizeMax 200
 field date   --fieldName create_date           --type java.util.Date
 field reference --fieldName customer  --type ~.domain.Customer
 // script temp.roo
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-29 22:43:11

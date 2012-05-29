@@ -18,7 +18,7 @@ public class CustomerIntegrationTest {
     @Autowired
     ReportService reportService;
 
-    @Test
+//    @Test
     public void testCustomerCrud() {
         CustomerDataOnDemand dod = new CustomerDataOnDemand();
         Customer c1 = dod.getNewTransientCustomer( 1 );
@@ -35,7 +35,7 @@ public class CustomerIntegrationTest {
         assertTrue( validationService.existsUniqueValue( Customer.class, "username", "aaa", c2.getId() ) );
     }
 
-    @Test
+//    @Test
     public void getCustomerStats() {
         CustomerStats customerStats = reportService.getCustomerStats(1L);
         System.out.println("bonusTotal="+customerStats.getBonusTotal());
