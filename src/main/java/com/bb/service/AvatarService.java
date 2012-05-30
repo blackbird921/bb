@@ -2,11 +2,13 @@ package com.bb.service;
 
 import com.bb.domain.Customer;
 import com.bb.util.AutowiredLogger;
+import com.bb.util.ImageCut;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,8 +30,7 @@ public class AvatarService {
             OutputStream outputStream = null;
             logger.info("method of uploadAvatar...........");
             if (file != null && file.getSize() > 0) {
-                String fileNewName = customer.getId() + FILE_SUFFIX;
-                fullPathName = realPath + "/" + fileNewName;
+                fullPathName = getFileFullName(customer, realPath);
                 logger.info(fullPathName);
                 inputStream = file.getInputStream();
                 outputStream = new FileOutputStream(fullPathName);
@@ -48,5 +49,25 @@ public class AvatarService {
         }
 
         return fullPathName;
+    }
+
+    public String cropAvatar(Customer customer, String realPath, Integer x, Integer y, Integer w, Integer h) {
+        String oldImagePath = getFileFullName(customer, realPath);
+
+        String newImagePath = oldImagePath;
+
+        ImageCut.abscut(oldImagePath, newImagePath, x, y, w, h);
+
+        File f = new File(newImagePath);
+        if(f.exists()){
+            System.out.println("剪切图片大小: "+w+"*"+h+"图片成功!");
+        }
+
+        return newImagePath;
+    }
+
+    private String getFileFullName(Customer customer, String realPath) {
+        String fileNewName = customer.getId() + FILE_SUFFIX;
+        return  realPath + "/" + fileNewName;
     }
 }

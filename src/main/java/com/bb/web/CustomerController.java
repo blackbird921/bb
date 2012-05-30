@@ -64,8 +64,6 @@ public class CustomerController {
         uiModel.asMap().clear();
         customer.persist();
         logger.info("customer save:{}", customer);
-//        avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
-//        customer.merge();
         String redirect = "redirect:/customerproducts/" + customer.getId().toString() + "/create";
         logger.info("{}", redirect);
         return redirect;
@@ -119,7 +117,8 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/{id}", produces = "text/html")
-    public String show(@PathVariable("id") Long id, Model uiModel) {
+    public String show(@PathVariable("id") Long id,
+                       Model uiModel) {
         logger.info("show.....");
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customer", Customer.findCustomer(id));
@@ -176,6 +175,43 @@ public class CustomerController {
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/customers";
     }
+
+
+    @RequestMapping(value = "/avatarUpload", method = RequestMethod.POST, produces = "text/html")
+    public String avatarUpload(Customer customer, Model uiModel, HttpServletRequest httpServletRequest) {
+        logger.info("avatarUpload..........");
+        logger.info("" + customer.getId());
+        logger.info("" + customer.getAvatar().getSize());
+        Customer foundCustomer = Customer.findCustomer(customer.getId());
+        foundCustomer.setAvatar(customer.getAvatar());
+
+        uiModel.asMap().clear();
+        avatarService.uploadAvatar(foundCustomer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
+        foundCustomer.merge();
+        uiModel.addAttribute("avatarCut", true);
+        return show(customer.getId(), uiModel);
+    }
+
+    @RequestMapping(value = "/avatarSave", method = RequestMethod.POST, produces = "text/html")
+    public String avatarSave(Customer customer, Model uiModel, HttpServletRequest httpServletRequest) {
+        logger.info("avatarSave..........");
+        logger.info("" + customer.getId());
+        System.out.println("x: " + httpServletRequest.getParameter("x") + "," + httpServletRequest.getParameter("y") + ","
+                + httpServletRequest.getParameter("w") + "," + httpServletRequest.getParameter("h"));
+
+        Integer x = Double.valueOf(httpServletRequest.getParameter("x")).intValue();
+        Integer y = Double.valueOf(httpServletRequest.getParameter("y")).intValue();
+        Integer w = Double.valueOf(httpServletRequest.getParameter("w")).intValue();
+        Integer h = Double.valueOf(httpServletRequest.getParameter("h")).intValue();
+
+        avatarService.cropAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"), x, y, w, h);
+
+        uiModel.asMap().clear();
+        uiModel.addAttribute("avatarCut", false);
+
+        return show(customer.getId(), uiModel);
+    }
+
 
     void addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("customer_registrationdate_date_format", DateTimeFormat.patternForStyle("MM", LocaleContextHolder.getLocale()));
