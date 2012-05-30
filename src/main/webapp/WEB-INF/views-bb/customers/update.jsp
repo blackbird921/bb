@@ -49,7 +49,7 @@
                     <util:text id="usernameUniqueError" value="${usernameUniqueError}"/>
                     <util:text id="emailUniqueError" value="${emailUniqueError}"/>
                 </div>
-                <util:avatar big="false" customerId="${customer.id}" hasUploadedAvatar="${customer.hasAvatar}" id="my_avartar" showUploadButton="true"/>
+                <%--<util:avatar big="false" customerId="${customer.id}" hasUploadedAvatar="${customer.hasAvatar}" id="my_avartar" showUploadButton="true"/>--%>
                 <field:input field="username" id="c_com_bb_domain_Customer_username" max="30" min="1" required="true" z="g8lc5GP2QhoIkXAhb5qwgRfxeq4="/>
                 <field:input field="password" id="c_com_bb_domain_Customer_password" max="15" min="4" required="true" z="m85pGvbzWxsKJt71sJA4uaIyqM0="/>
                 <field:input field="email" id="c_com_bb_domain_Customer_email" max="30" min="5" required="true" validationMessageCode="field_invalid_email" z="yaUEIVCqoUJKOTy2AjZUw4e48bE="/>
