@@ -35,6 +35,7 @@ public class ContactMsnImporter implements Runnable{
     }
 
     public void run() {
+        System.out.println("running");
         messenger = MsnMessengerFactory.createMsnMessenger(email, password);
         messenger.setSupportedProtocol(new MsnProtocol[]{MsnProtocol.MSNP11});
         messenger.login();
@@ -46,7 +47,7 @@ public class ContactMsnImporter implements Runnable{
         });
 
         try {
-            Thread.sleep(10000);
+            Thread.sleep(15000);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -57,21 +58,34 @@ public class ContactMsnImporter implements Runnable{
 
     private void listContacts() {
         MsnContact[] cons = messenger.getContactList().getContacts();
+        isContactObtained = true;
         for (MsnContact con : cons) {
 //            System.out.println(con.getDisplayName()+" "+con.getEmail());
             contacts.put(con.getEmail().getEmailAddress(), con.getDisplayName());
         }
-        isContactObtained = true;
+        System.out.println("here........");
+        System.out.println(isContactObtained());
     }
 
     public boolean isContactObtained() {
         return isContactObtained;
     }
 
-
-
-    public static void main(String[] args) throws Exception {
-        new ContactMsnImporter("zengq@hotmail.com", "mubai7").run();
+    public Map<String, String> getContacts() {
+        return contacts;
     }
 
+    public static void main(String[] args) throws Exception {
+        ContactMsnImporter importer = new ContactMsnImporter("zengq@hotmail.com", "mubai7");
+        Thread thread = new Thread(importer);
+        thread.start();
+        for (int i = 0; i < 15; i++) {
+            System.out.println(i);
+            if (importer.isContactObtained()) {
+                System.out.println(importer.getContacts());
+                return;
+            }
+            Thread.sleep(1000);
+        }
+    }
 }
