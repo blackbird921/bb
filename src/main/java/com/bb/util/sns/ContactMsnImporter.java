@@ -74,9 +74,9 @@ public class ContactMsnImporter implements Runnable{
     public Map<String, String> getContacts() {
         return contacts;
     }
-
+    
     public static void main(String[] args) throws Exception {
-        ContactMsnImporter importer = new ContactMsnImporter("zengq@hotmail.com", "mubai7");
+        ContactMsnImporter importer = new ContactMsnImporter("zengq@hotmail.com", "");
         Thread thread = new Thread(importer);
         thread.start();
         for (int i = 0; i < 15; i++) {
