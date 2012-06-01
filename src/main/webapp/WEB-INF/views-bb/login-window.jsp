@@ -9,7 +9,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div id="login-window-wrapper" style="margin-left: 150px;">
-    <div id="login-window" style="display: block;">
+    <div id="login-window" style="display: none;">
 
         <form id="customer_login" action="/" method="POST" enctype="application/x-www-form-urlencoded">
             <ul style="list-style-type: none;!important">
