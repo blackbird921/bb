@@ -11,7 +11,7 @@ import java.util.Date;
 public class CustomerLogin implements UserDetails {
     private String username;
     private String password;
-
+    private boolean isEnabled = true;
 
 
     @Override
@@ -46,7 +46,7 @@ public class CustomerLogin implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isEnabled;
     }
 
     public void setUsername(String username) {
@@ -55,5 +55,9 @@ public class CustomerLogin implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }

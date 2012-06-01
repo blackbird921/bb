@@ -9,6 +9,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +27,19 @@ public class RegisterAction {
     private LoginService loginService;
     @Autowired
     private MailService mailService;
+    @Autowired
+    private CustomerController customerController;
+
+    @RequestMapping(value = "/register/form")
+    public String registerForm(Model uiModel) {
+        return customerController.createForm(uiModel);
+    }
+
+    @RequestMapping(value = "/register/createCustomer")
+    public String registerCreateCustomer(Customer customer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        return customerController.create(customer, bindingResult, uiModel, httpServletRequest);
+    }
+
 
     @RequestMapping(value = "/verifyRegistration", method = RequestMethod.POST)
     public ModelAndView verifyRegistration(HttpServletRequest request) {

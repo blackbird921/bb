@@ -26,4 +26,9 @@
     <definition extends="public" name="login">
         <put-attribute name="body" value="/WEB-INF/views-bb/login.jsp"/>
     </definition>
+    <definition extends="default" name="about">
+        <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views-bb/about.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -64,7 +64,7 @@
         </h1>
 
         <div id="form-wrapper" class="k-header" style="height: 300px;">
-            <form:create id="fc_com_bb_domain_Customer" modelAttribute="customer" multipart="true" path="/customers?create" render="${empty dependencies}" z="user-managed" label="下一步">
+            <form:create id="fc_com_bb_domain_Customer" modelAttribute="customer" multipart="true" path="/register/createCustomer" render="${empty dependencies}" z="user-managed" label="下一步">
                 <div class="errors" id="error_message">
                     <c:if test="${not empty usernameUniqueError}">
                         <spring:message code="error_usernameUniqueError" var="message_value" htmlEscape="false" />
