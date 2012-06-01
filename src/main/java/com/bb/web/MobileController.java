@@ -135,14 +135,22 @@ public class MobileController {
         return result;
     }
 
-    @RequestMapping(value = "/register/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public
     @ResponseBody
-    Customer registerLogin(@RequestParam String username,
+    Customer login(@RequestParam String usernameOrEmail,
                            @RequestParam String password,
                            Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/register/login..............");
-        Customer customer = Customer.findCustomersByLogin(username, password);
+        System.out.println("/login..............");
+        Customer customer = null;
+        try {
+            customer = Customer.findCustomersByUsernameOrEmail(usernameOrEmail, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(1);
+            customer = new Customer();
+        }
+        System.out.println(2);
         return customer;
     }
 

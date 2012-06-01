@@ -112,11 +112,12 @@ public class Customer {
         return q;
     }
 
-    public static Customer findCustomersByLogin(String username, String password) {
-        if (username == null || password == null) throw new IllegalArgumentException("The username/password argument is required");
+    public static Customer findCustomersByUsernameOrEmail(String usernameOrEmail, String password) {
+        if (usernameOrEmail == null || password == null) throw new IllegalArgumentException("The username/password argument is required");
         EntityManager em = Customer.entityManager();
-        TypedQuery<Customer> q = em.createQuery("SELECT o FROM Customer AS o " + "WHERE o.username = :username  AND o.password= :password", Customer.class);
-        q.setParameter("username", username);
+        TypedQuery<Customer> q = em.createQuery("SELECT o FROM Customer AS o " + "WHERE (o.username = :username OR o.email = :email)  AND o.password= :password", Customer.class);
+        q.setParameter("username", usernameOrEmail);
+        q.setParameter("email", usernameOrEmail);
         q.setParameter("password", password);
         return q.getSingleResult();
     }
