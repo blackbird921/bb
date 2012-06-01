@@ -34,6 +34,8 @@ html
 
 a, h1{
     /*font-weight: bold;*/
+    color:#79C136;
+    font-style: normal;
 }
 
 h1{
