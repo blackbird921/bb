@@ -26,14 +26,14 @@ privileged aspect CustomerIntegrationTest_Roo_IntegrationTest {
     @Autowired
     private CustomerDataOnDemand CustomerIntegrationTest.dod;
     
-    @Test
+    //@Test
     public void CustomerIntegrationTest.testCountCustomers() {
         Assert.assertNotNull("Data on demand for 'Customer' failed to initialize correctly", dod.getRandomCustomer());
         long count = Customer.countCustomers();
         Assert.assertTrue("Counter for 'Customer' incorrectly reported there were no entries", count > 0);
     }
     
-    @Test
+    //@Test
     public void CustomerIntegrationTest.testFindCustomer() {
         Customer obj = dod.getRandomCustomer();
         Assert.assertNotNull("Data on demand for 'Customer' failed to initialize correctly", obj);
@@ -44,7 +44,7 @@ privileged aspect CustomerIntegrationTest_Roo_IntegrationTest {
         Assert.assertEquals("Find method for 'Customer' returned the incorrect identifier", id, obj.getId());
     }
     
-    @Test
+    //@Test
     public void CustomerIntegrationTest.testFindAllCustomers() {
         Assert.assertNotNull("Data on demand for 'Customer' failed to initialize correctly", dod.getRandomCustomer());
         long count = Customer.countCustomers();
@@ -54,7 +54,7 @@ privileged aspect CustomerIntegrationTest_Roo_IntegrationTest {
         Assert.assertTrue("Find all method for 'Customer' failed to return any data", result.size() > 0);
     }
     
-    @Test
+    //@Test
     public void CustomerIntegrationTest.testFindCustomerEntries() {
         Assert.assertNotNull("Data on demand for 'Customer' failed to initialize correctly", dod.getRandomCustomer());
         long count = Customer.countCustomers();
@@ -66,7 +66,7 @@ privileged aspect CustomerIntegrationTest_Roo_IntegrationTest {
         Assert.assertEquals("Find entries method for 'Customer' returned an incorrect number of entries", count, result.size());
     }
     
-    @Test
+    //@Test
     public void CustomerIntegrationTest.testFlush() {
         Customer obj = dod.getRandomCustomer();
         Assert.assertNotNull("Data on demand for 'Customer' failed to initialize correctly", obj);
@@ -80,7 +80,7 @@ privileged aspect CustomerIntegrationTest_Roo_IntegrationTest {
         Assert.assertTrue("Version for 'Customer' failed to increment on flush directive", (currentVersion != null && obj.getVersion() > currentVersion) || !modified);
     }
     
-    @Test
+    //@Test
     public void CustomerIntegrationTest.testMergeUpdate() {
         Customer obj = dod.getRandomCustomer();
         Assert.assertNotNull("Data on demand for 'Customer' failed to initialize correctly", obj);
@@ -95,7 +95,7 @@ privileged aspect CustomerIntegrationTest_Roo_IntegrationTest {
         Assert.assertTrue("Version for 'Customer' failed to increment on merge and flush directive", (currentVersion != null && obj.getVersion() > currentVersion) || !modified);
     }
     
-    @Test
+    //@Test
     public void CustomerIntegrationTest.testPersist() {
         Assert.assertNotNull("Data on demand for 'Customer' failed to initialize correctly", dod.getRandomCustomer());
         Customer obj = dod.getNewTransientCustomer(Integer.MAX_VALUE);
@@ -106,7 +106,7 @@ privileged aspect CustomerIntegrationTest_Roo_IntegrationTest {
         Assert.assertNotNull("Expected 'Customer' identifier to no longer be null", obj.getId());
     }
     
-    @Test
+    //@Test
     public void CustomerIntegrationTest.testRemove() {
         Customer obj = dod.getRandomCustomer();
         Assert.assertNotNull("Data on demand for 'Customer' failed to initialize correctly", obj);
