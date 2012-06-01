@@ -9,19 +9,11 @@
             <li><a href="">关于我们</a></li>
             <li><a href="/customers?form">注册</a></li>
             <li><a id="login" href="#">登录</a></li>
+            <li><a id="logout" href="/resources/j_spring_security_logout">退出</a></li>
             <li><a id="download" href="">下载手机应用</a></li>
         </ul>
     </div>
 </div>
 
-<div id="flowerWrap">
-    <div class="flowers"></div>
-    <div id="topnavWrap" class="centerWrap">
-        <ul id="topnav">
-            <li><a id="web" class="first selected" href=""><b>我的空间</b></a></li>
-            <li><a id="dataviz" class="" href=""><b>了解动则赢</b></a></li>
-            <li><a id="mobile" class="last" href="">排行榜</a></li>
-        </ul>
-    </div>
-</div>
+
 

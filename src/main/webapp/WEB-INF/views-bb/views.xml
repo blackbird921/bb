@@ -4,6 +4,7 @@
 <tiles-definitions>
 
     <definition extends="default" name="index">
+        <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp"/>
         <put-attribute name="body" value="/WEB-INF/views-bb/index.jsp"/>
     </definition>
 

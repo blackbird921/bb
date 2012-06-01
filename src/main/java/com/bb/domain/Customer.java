@@ -119,7 +119,13 @@ public class Customer {
         q.setParameter("username", usernameOrEmail);
         q.setParameter("email", usernameOrEmail);
         q.setParameter("password", password);
-        return q.getSingleResult();
+        Customer customer = new Customer();
+        try {
+            customer = q.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return customer;
     }
 
 

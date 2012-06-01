@@ -7,6 +7,7 @@
 
   <definition name="default" template="/WEB-INF/layouts-bb/default.jsp">
     <put-attribute name="header" value="/WEB-INF/views-bb/header.jsp" />
+    <put-attribute name="navigation" value="/WEB-INF/views-bb/blank.jsp" />
     <put-attribute name="menu" value="/WEB-INF/views-bb/menu.jsp" />
     <put-attribute name="body" value="/WEB-INF/views-bb/home.jsp" />
     <put-attribute name="login" value="/WEB-INF/views-bb/login-window.jsp" />
@@ -15,7 +16,7 @@
   </definition>
 
   <definition name="public" template="/WEB-INF/layouts-bb/default.jsp">
-      <put-attribute name="header" value="/WEB-INF/views-bb/header-min.jsp" />
+      <put-attribute name="header" value="/WEB-INF/views-bb/header.jsp" />
       <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp" />
       <put-attribute name="body" value="/WEB-INF/views-bb/home.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views-bb/footer.jsp" />

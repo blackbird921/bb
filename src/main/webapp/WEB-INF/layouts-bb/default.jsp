@@ -13,6 +13,7 @@
 <div id="exceptFooterWrap">
     <div id="exceptFooter">
         <tiles:insertAttribute name="header" ignore="true"/>
+        <tiles:insertAttribute name="navigation" ignore="true"/>
         <div id="navmainWrap" class="floatWrap centerWrap hasNavigation container_12">
             <tiles:insertAttribute name="menu" ignore="true"/>
             <tiles:insertAttribute name="login" ignore="true"/>

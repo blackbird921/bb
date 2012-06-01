@@ -10,7 +10,7 @@
     </definition>
     <definition extends="default" name="customercards/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/customercards/create.jsp"/>
-        <put-attribute name="header" value="/WEB-INF/views-bb/customercards/header.jsp"/>
+        <put-attribute name="navigation" value="/WEB-INF/views-bb/customercards/navigation.jsp"/>
         <put-attribute name="menu" value="/WEB-INF/views-bb/customers/blank.jsp"/>
     </definition>
     <definition extends="default" name="customercards/update">

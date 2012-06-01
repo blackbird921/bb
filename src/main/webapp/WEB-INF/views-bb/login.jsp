@@ -1,6 +1,14 @@
-<div xmlns:spring="http://www.springframework.org/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-  <jsp:directive.page contentType="text/html;charset=UTF-8" />
-  <jsp:output omit-xml-declaration="yes" />
+<%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" tagdir="/WEB-INF/tags/form" %>
+<%@ taglib prefix="field" tagdir="/WEB-INF/tags/form/fields" %>
+<%@ taglib prefix="util" tagdir="/WEB-INF/tags/util" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="springform" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<div>
   <spring:message code="security_login_title" var="title" htmlEscape="false" />
   <util:panel id="title" title="${title}">
     <c:if test="${not empty param.login_error}">
@@ -29,7 +37,7 @@
           <c:set var="sec_name_msg">
             <spring:escapeBody javaScriptEscape="true">${name_msg}</spring:escapeBody>
           </c:set>
-          Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_username", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${sec_name_msg}", required : true}})); 
+          Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_username", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${sec_name_msg}", required : true}}));
         </script>
       </div>
       <br />
@@ -43,7 +51,7 @@
           <c:set var="sec_pwd_msg">
             <spring:escapeBody javaScriptEscape="true">${pwd_msg}</spring:escapeBody>
           </c:set>
-          Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_password", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${sec_pwd_msg}", required : true}})); 
+          Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_password", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${sec_pwd_msg}", required : true}}));
         </script>
       </div>
       <br />
