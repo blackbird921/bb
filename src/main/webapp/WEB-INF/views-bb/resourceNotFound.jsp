@@ -1,6 +1,13 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-  <jsp:directive.page contentType="text/html;charset=UTF-8" />
-  <jsp:output omit-xml-declaration="yes" />
+<%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" tagdir="/WEB-INF/tags/form" %>
+<%@ taglib prefix="field" tagdir="/WEB-INF/tags/form/fields" %>
+<%@ taglib prefix="util" tagdir="/WEB-INF/tags/util" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="springform" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<div style="margin: 20px;">
   <spring:message var="title" code="error_resourcenotfound_title" htmlEscape="false" />
   <util:panel id="title" title="${title}">
     <h2>${fn:escapeXml(title)}</h2>

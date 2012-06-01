@@ -9,7 +9,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="util" tagdir="/WEB-INF/tags/util" %>
 
-
 <div>
   <spring:message var="title" code="error_uncaughtexception_title" htmlEscape="false" />
   <util:panel id="title" title="${title}">

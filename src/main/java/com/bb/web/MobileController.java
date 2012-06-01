@@ -147,10 +147,8 @@ public class MobileController {
             customer = Customer.findCustomersByUsernameOrEmail(usernameOrEmail, password);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(1);
             customer = new Customer();
         }
-        System.out.println(2);
         return customer;
     }
 
