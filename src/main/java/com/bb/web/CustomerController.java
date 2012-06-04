@@ -114,7 +114,7 @@ public class CustomerController {
         logger.info("disableStartDate:{}", customer.getDisableStartDate());
         avatarService.uploadAvatar(customer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
         customer.merge();
-        return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
+        return show(uiModel);
     }
 
     @RequestMapping(params = "create", produces = "text/html")

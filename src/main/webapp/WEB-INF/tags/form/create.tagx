@@ -26,7 +26,7 @@
         </c:if>
         <style>
             #${id}_ul li {
-                margin: 7px 0 0 0;
+                margin: -5px 0 0 0;
             }
         </style>
         <spring:message arguments="${label}" code="entity_create" var="title_msg" htmlEscape="false"/>

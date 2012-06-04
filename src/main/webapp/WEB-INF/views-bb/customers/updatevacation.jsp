@@ -74,7 +74,7 @@
                 </script>
         </div>
 
-                    <li>
+                    <li style="margin:15px 0; !important">
                         <spring:message code="label_${fn:toLowerCase(fn:substringAfter('c_com_bb_domain_Customer_disableStartDate','_'))}" htmlEscape="false" var="label"/>
                         <label for="c_com_bb_domain_Customer_disableStartDate">
                             <c:out value="${label}"/>:</label>
@@ -95,10 +95,10 @@
                     </script>
 
                         <%--<field:datetime dateTimePattern="${customer_disableenddate_date_format}" field="disableEndDate" id="c_com_bb_domain_Customer_disableEndDate" z="yZchis6yqg84AB8gPYVLa3IdvEg="/>--%>
-                    <li>
+                <li style="margin:15px 0; !important">
                         <spring:message code="label_${fn:toLowerCase(fn:substringAfter('c_com_bb_domain_Customer_disableEndDate','_'))}" htmlEscape="false" var="label"/>
                         <label for="c_com_bb_domain_Customer_disableEndDate">
-                            <c:out value="${label}"/>:</label>
+                            &nbsp;&nbsp;<c:out value="${label}"/>:</label>
                         <fmt:formatDate pattern='yyyy-MM-dd' value='${customer.disableEndDate}' var="formatEndDate"/>
                         <input id="c_com_bb_domain_Customer_disableEndDate" name="disableEndDate" type="text" value="${formatEndDate}"  class="k-textbox"/>
                     </li>
@@ -116,7 +116,9 @@
                     </script>
 
 
+                <div style="margin-left: 4px; margin-top: 20px;">
                     <field:input field="disableReason" id="c_com_bb_domain_Customer_disableReason" z="C7+VkdMG9tY212iWBEGul6RpM40="/>
+                </div>
 
                 <field:input disabled="true" field="avatar" id="c_com_bb_domain_Customer_avatar" render="false" z="user-managed"/>
                 <field:checkbox field="hasAvatar" id="c_com_bb_domain_Customer_hasAvatar" render="false" z="user-managed"/>

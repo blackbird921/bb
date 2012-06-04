@@ -29,7 +29,7 @@
         <spring:message arguments="${label}" code="entity_update" var="title_msg" htmlEscape="false"/>
         <style>
             #${id}_ul li {
-            margin: 7px 0 0 0;
+            margin: -5px 0 0 0;
         }
         </style>
         <util:panel id="${id}" title="${title_msg}" openPane="${openPane}">
