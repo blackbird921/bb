@@ -2,10 +2,7 @@ package com.bb.web;
 
 import com.bb.domain.*;
 import com.bb.reference.WeekStatus;
-import com.bb.service.CustomerCheckinService;
-import com.bb.service.CustomerProductService;
-import com.bb.service.CustomerProfitService;
-import com.bb.service.ReportService;
+import com.bb.service.*;
 import com.bb.util.AutowiredLogger;
 import org.joda.time.format.DateTimeFormat;
 import org.slf4j.Logger;
@@ -45,6 +42,8 @@ public class CustomerProductController {
     private CustomerProfitService customerProfitService;
     @Autowired
     private ReportService reportService;
+    @Autowired
+    private LoginService loginService;
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid CustomerProduct futurecustomerproduct, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -61,10 +60,11 @@ public class CustomerProductController {
         return redirect;
     }
 
-    @RequestMapping(value = "/{id}/create", produces = "text/html")
-    public String createForm(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/create", produces = "text/html")
+    public String createForm(Model uiModel) {
         logger.info("createForm.......");
         CustomerProduct cp = new CustomerProduct();
+        Long id = loginService.getCustomerId();
         cp.setCustomer(Customer.findCustomer(id));
         uiModel.addAttribute("futurecustomerproduct", cp);
         logger.info("{}", cp);
@@ -83,19 +83,20 @@ public class CustomerProductController {
         return "customerproducts/create";
     }
 
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/show", produces = "text/html")
+    public String show( Model uiModel) {
+        Long id = loginService.getCustomerId();
+        return show(id, uiModel);
+    }
+    public String show(Long id, Model uiModel) {
         logger.info("show .....");
         addDateTimeFormatPatterns(uiModel);
+        
         CustomerProduct cp = customerProductService.getCurrentProduct(id);
         WeekStatus weekStatus = customerCheckinService.getCurrentWeekStatus(id);
         if (cp != null) {
             weekStatus.setDaysToComplete(cp.getProductCommit().getCommits().intValue() - weekStatus.getDaysCompleted());
             Customer customer = Customer.findCustomer(id);
-            System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
-            System.out.println(cp);
-            System.out.println(customer);
-            System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
             cp.setCustomer(customer);
             logger.info("{}", cp.getCustomer().getDisableStartDate());
             logger.info("{}", cp.getCustomer().getDisableEndDate());
@@ -145,18 +146,24 @@ public class CustomerProductController {
         return "redirect:/customerproducts/" + encodeUrlPathSegment(futurecustomerproduct.getCustomer().getId().toString(), httpServletRequest);
     }
 
-    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
-    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping( params = "form", produces = "text/html")
+    public String updateForm( Model uiModel) {
         System.out.println("updateForm.......");
+        Long id = loginService.getCustomerId();
         CustomerProduct cp = customerProductService.getCurrentProduct(id);
         populateEditForm(uiModel, cp);
         uiModel.addAttribute("futurecustomerproduct", customerProductService.getFutureProduct(id));
         return "customerproducts/update";
     }
 
-    @RequestMapping(value = "/hist/{id}", method = RequestMethod.GET, produces = "text/html")
-    public String history(@PathVariable("id") Long id, @RequestParam(required = false) Long week, Model uiModel) {
+    @RequestMapping(value = "/hist", method = RequestMethod.GET, produces = "text/html")
+    public String history( @RequestParam(required = false) Long week, Model uiModel) {
+        Long id = loginService.getCustomerId();
+        return history(id, week, uiModel);
+    }
+    public String history(Long id, Long week, Model uiModel) {
         System.out.println("history.......");
+
         uiModel.addAttribute("customerproducts", CustomerProduct.findAllByCustomerId(id));
         List<CustomerCheckin> checkins = CustomerCheckin.findCustomerCheckinsByCustomer(id).getResultList();
         uiModel.addAttribute("customercheckins", checkins);
@@ -182,9 +189,14 @@ public class CustomerProductController {
     }
 
 
-    @RequestMapping(value = "/card/{id}", method = RequestMethod.GET, produces = "text/html")
-    public String card(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/card", method = RequestMethod.GET, produces = "text/html")
+    public String card( Model uiModel) {
+        Long id = loginService.getCustomerId();
+        return card(id, uiModel);
+    }
+    public String card(Long id, Model uiModel) {
         System.out.println("card.......");
+        
 
         //TODO: delete line
         uiModel.addAttribute("customerproducts", CustomerProduct.findAllByCustomerId(id));
@@ -215,8 +227,9 @@ public class CustomerProductController {
     }
 
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping( method = RequestMethod.DELETE, produces = "text/html")
+    public String delete( @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+        Long id = loginService.getCustomerId();
         CustomerProduct customerProduct = CustomerProduct.findCustomerProduct(id);
         customerProduct.remove();
         uiModel.asMap().clear();

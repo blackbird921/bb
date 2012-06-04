@@ -6,7 +6,7 @@
         <h1><a id="logo" href="">Kendo</a></h1>
         <ul>
             <li><a href="/">首页</a></li>
-            <li class="active"><a href="/customerproducts/1">动则赢</a></li>
+            <li class="active"><a href="/customerproducts/show">动则赢</a></li>
             <li><a href="/about">关于我们</a></li>
 
             <sec:authorize  access="isAnonymous()">

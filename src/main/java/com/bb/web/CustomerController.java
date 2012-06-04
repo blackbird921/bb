@@ -3,10 +3,12 @@ package com.bb.web;
 import com.bb.domain.Customer;
 import com.bb.domain.ref.RefSex;
 import com.bb.reference.AccountInfo;
+import com.bb.reference.CustomerLogin;
 import com.bb.reference.CustomerRole;
 import com.bb.reference.CustomerStatus;
 import com.bb.service.AvatarService;
 import com.bb.service.CustomerAccountService;
+import com.bb.service.LoginService;
 import com.bb.service.ValidationService;
 import com.bb.util.AutowiredLogger;
 import org.joda.time.format.DateTimeFormat;
@@ -14,6 +16,10 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,6 +52,8 @@ public class CustomerController {
     private AvatarService avatarService;
     @Autowired
     private CustomerAccountService customerAccountService;
+    @Autowired
+    private LoginService loginService;
 
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
@@ -109,28 +117,28 @@ public class CustomerController {
         return "redirect:/customers/" + encodeUrlPathSegment(customer.getId().toString(), httpServletRequest);
     }
 
-    @RequestMapping(params = "form", produces = "text/html")
+    @RequestMapping(params = "create", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new Customer());
         System.out.println("it's ok here");
         return "customers/create";
     }
 
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String show(@PathVariable("id") Long id,
-                       Model uiModel) {
+    @RequestMapping(value = "/show", produces = "text/html")
+    public String show(Model uiModel) {
+
         logger.info("show.....");
+        Long id = loginService.getCustomerId();
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("customer", Customer.findCustomer(id));
-        uiModel.addAttribute("itemId", id);
         return "customers/show";
     }
 
-    @RequestMapping(value = "/account/{id}", produces = "text/html")
-    public String account(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/account", produces = "text/html")
+    public String account(Model uiModel) {
         logger.info("account.....");
         addDateTimeFormatPatterns(uiModel);
-
+        Long id = loginService.getCustomerId();
         AccountInfo accountInfo = customerAccountService.getAccountInfo(id);
         uiModel.addAttribute("accountInfo", accountInfo);
         return "customers/account";
@@ -151,23 +159,26 @@ public class CustomerController {
         return "customers/list";
     }
 
-    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
-    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping( params = "form", produces = "text/html")
+    public String updateForm(Model uiModel) {
         logger.info("update form...");
+        Long id = loginService.getCustomerId();
         populateEditForm(uiModel, Customer.findCustomer(id));
         return "customers/update";
     }
 
-    @RequestMapping(value = "/{id}", params = "vacationform", produces = "text/html")
-    public String updateFormVacation(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping( params = "vacationform", produces = "text/html")
+    public String updateFormVacation( Model uiModel) {
         logger.info("update updateFormVacation...");
+        Long id = loginService.getCustomerId();
         populateEditForm(uiModel, Customer.findCustomer(id));
         return "customers/updatevacation";
     }
 
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(method = RequestMethod.DELETE, produces = "text/html")
+    public String delete( @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+        Long id = loginService.getCustomerId();
         Customer customer = Customer.findCustomer(id);
         customer.remove();
         uiModel.asMap().clear();
@@ -189,7 +200,7 @@ public class CustomerController {
         avatarService.uploadAvatar(foundCustomer, httpServletRequest.getSession().getServletContext().getRealPath("/images/upload"));
         foundCustomer.merge();
         uiModel.addAttribute("avatarCut", true);
-        return show(customer.getId(), uiModel);
+        return show(uiModel);
     }
 
     @RequestMapping(value = "/avatarSave", method = RequestMethod.POST, produces = "text/html")
@@ -209,7 +220,7 @@ public class CustomerController {
         uiModel.asMap().clear();
         uiModel.addAttribute("avatarCut", false);
 
-        return show(customer.getId(), uiModel);
+        return show(uiModel);
     }
 
 

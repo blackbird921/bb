@@ -116,7 +116,7 @@
 
 
         <div id="form-wrapper" class="k-header" style="height: 600px; width:400px;">
-            <div class="k-button" style="margin-bottom: 10px;" onclick="window.location='/customers/1?form'">更改个人信息
+            <div class="k-button" style="margin-bottom: 10px;" onclick="window.location='/customers?form'">更改个人信息
             </div>
             <br>
             <%--<util:avatar big="false" customerId="${customer.id}" hasUploadedAvatar="${customer.hasAvatar}" id="my_avartar" showUploadButton="false"/>--%>
