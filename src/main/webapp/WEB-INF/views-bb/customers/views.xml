@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="customers/list">
+    <definition extends="default" name="hasNavigation">
+        <put-attribute name="navigation" value="/WEB-INF/views-bb/navigation-space.jsp"/>
+    </definition>
+
+    <definition extends="hasNavigation" name="customers/list">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/list.jsp"/>
     </definition>
-    <definition extends="default" name="customers/show">
+    <definition extends="hasNavigation" name="customers/show">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/show.jsp"/>
         <put-attribute name="right-sidebar" value="/WEB-INF/views-bb/right-avatar.jsp"/>
     </definition>
-    <definition extends="default" name="customers/account">
+    <definition extends="hasNavigation" name="customers/account">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/account.jsp"/>
     </definition>
-    <definition extends="default" name="customers/create">
+    <definition extends="hasNavigation" name="customers/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/create.jsp"/>
-        <put-attribute name="navigation" value="/WEB-INF/views-bb/customers/navigation.jsp"/>
+        <put-attribute name="navigation" value="/WEB-INF/views-bb/navigation-register.jsp"/>
         <put-attribute name="menu" value="/WEB-INF/views-bb/customers/blank.jsp"/>
     </definition>
-    <definition extends="default" name="customers/update">
+    <definition extends="hasNavigation" name="customers/update">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/update.jsp"/>
     </definition>
-    <definition extends="default" name="customers/updatevacation">
+    <definition extends="hasNavigation" name="customers/updatevacation">
         <put-attribute name="body" value="/WEB-INF/views-bb/customers/updatevacation.jsp"/>
     </definition>
 

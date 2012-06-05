@@ -2,25 +2,29 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="customerproducts/list">
+    <definition extends="default" name="hasNavigation">
+        <put-attribute name="navigation" value="/WEB-INF/views-bb/navigation-space.jsp"/>
+    </definition>
+
+    <definition extends="hasNavigation" name="customerproducts/list">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/list.jsp"/>
     </definition>
-    <definition extends="default" name="customerproducts/show">
+    <definition extends="hasNavigation" name="customerproducts/show">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/show.jsp"/>
         <put-attribute name="right-sidebar" value="/WEB-INF/views-bb/right-avatar-no-control.jsp"/>
     </definition>
-    <definition extends="default" name="customerproducts/create">
+    <definition extends="hasNavigation" name="customerproducts/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/create.jsp"/>
-        <put-attribute name="navigation" value="/WEB-INF/views-bb/customerproducts/navigation.jsp"/>
+        <put-attribute name="navigation" value="/WEB-INF/views-bb/navigation-register.jsp"/>
         <put-attribute name="menu" value="/WEB-INF/views-bb/customers/blank.jsp"/>
     </definition>
-    <definition extends="default" name="customerproducts/update">
+    <definition extends="hasNavigation" name="customerproducts/update">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/update.jsp"/>
     </definition>
-    <definition extends="default" name="customerproducts/history">
+    <definition extends="hasNavigation" name="customerproducts/history">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/history.jsp"/>
     </definition>
-    <definition extends="default" name="customerproducts/card">
+    <definition extends="hasNavigation" name="customerproducts/card">
         <put-attribute name="body" value="/WEB-INF/views-bb/customerproducts/card.jsp"/>
     </definition>
 </tiles-definitions>
