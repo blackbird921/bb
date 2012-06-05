@@ -55,7 +55,7 @@ public class CustomerProductController {
         }
         uiModel.asMap().clear();
         futurecustomerproduct.persist();
-        String redirect = "redirect:/customercards/" + futurecustomerproduct.getCustomer().getId().toString() + "/create";
+        String redirect = "redirect:/customercards/create";
         logger.info("{}", redirect);
         return redirect;
     }
@@ -111,7 +111,11 @@ public class CustomerProductController {
             uiModel.addAttribute("customerreport", reportService.getCustomerStats(id));
         }else {
             cp = customerProductService.getFutureProduct(id);
-            uiModel.addAttribute("newUserStartDate", cp.getStartDate());
+            if (cp != null) {
+                uiModel.addAttribute("newUserStartDate", cp.getStartDate());
+            }else {
+                uiModel.addAttribute("isOnVacation", true);
+            }
         }
 
         uiModel.addAttribute("itemId", id);
@@ -151,6 +155,12 @@ public class CustomerProductController {
         System.out.println("updateForm.......");
         Long id = loginService.getCustomerId();
         CustomerProduct cp = customerProductService.getCurrentProduct(id);
+        if (cp == null) {
+            cp = customerProductService.getFutureProduct(id);
+            if (cp == null) {
+                return "redirect:/customerproducts/create";
+            }
+        }
         populateEditForm(uiModel, cp);
         uiModel.addAttribute("futurecustomerproduct", customerProductService.getFutureProduct(id));
         return "customerproducts/update";

@@ -4,9 +4,11 @@ import com.bb.domain.Card;
 import com.bb.domain.Customer;
 import com.bb.domain.CustomerCard;
 import com.bb.domain.CustomerProduct;
+import com.bb.service.LoginService;
 import com.bb.util.AutowiredLogger;
 import org.joda.time.format.DateTimeFormat;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,8 @@ import java.util.List;
 public class CustomerCardController {
     @AutowiredLogger
     Logger logger;
+    @Autowired
+    private LoginService loginService;
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid CustomerCard customerCard, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -49,12 +53,13 @@ public class CustomerCardController {
         if (!customerCard.getWizard()) {
             cardPath = "card/";
         }
-        return "redirect:/customerproducts/"+cardPath + customerCard.getCustomer().getId().toString();
+        return "redirect:/customerproducts/show"+cardPath;
     }
 
-    @RequestMapping(value = "/{id}/create", produces = "text/html")
-    public String createForm(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/create", produces = "text/html")
+    public String createForm( Model uiModel) {
         logger.info("createForm.......");
+        Long id = loginService.getCustomerId();
         CustomerCard cp = new CustomerCard();
         cp.setCustomer(Customer.findCustomer(id));
         logger.info("{}", cp.getCustomer());
@@ -73,9 +78,10 @@ public class CustomerCardController {
         return "customercards/create";
     }
 
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/show", produces = "text/html")
+    public String show( Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
+        Long id = loginService.getCustomerId();
         uiModel.addAttribute("customercard", CustomerCard.findCustomerCard(id));
         uiModel.addAttribute("itemId", id);
         return "customercards/show";

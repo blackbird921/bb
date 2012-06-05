@@ -14,7 +14,8 @@ import java.util.List;
 public class CustomerProductService {
 
     public CustomerProduct getCurrentProduct(Long cid) {
-        return getPastProduct(cid, 0);
+        CustomerProduct product = getPastProduct(cid, 0);
+        return product;
     }
 
     public CustomerProduct getPastProduct(Long cid, Integer lastNWeek) {
@@ -39,8 +40,11 @@ public class CustomerProductService {
         CustomerProduct futureProduct = null;
         CustomerProduct currentProduct = null;
         Date now = Calendar.getInstance().getTime();
+        System.out.println("now is "+now);
         for (CustomerProduct cp : all) {
+            System.out.println(cp.getStartDate());
             if (cp.getStartDate() != null && cp.getStartDate().after(now)) {
+                System.out.println("here...........");
                 futureProduct = cp;
             } else if (cp.getStartDate() != null && cp.getStartDate().before(now) && (cp.getEndDate() == null || cp.getEndDate().after(now))) {
                 currentProduct = cp;
@@ -49,7 +53,9 @@ public class CustomerProductService {
         }
         if (futureProduct == null) {
             futureProduct = currentProduct;
-            futureProduct.setShowStartDate(false);
+            if (futureProduct != null) {
+                futureProduct.setShowStartDate(false);
+            }
         }
         return futureProduct;
     }

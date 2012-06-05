@@ -4,6 +4,8 @@ import com.bb.domain.Customer;
 import com.bb.reference.CustomerLogin;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +21,15 @@ import java.util.List;
 @Service(value = "loginService" )
 public class LoginService implements UserDetailsService {
 
+    public void login(Customer customer) {
+        CustomerLogin customerLogin = new CustomerLogin();
+        customerLogin.setUsername(customer.getUsername());
+        customerLogin.setPassword(customer.getPassword());
+        customerLogin.setCustomerId(customer.getId());
+        Authentication authentication = new UsernamePasswordAuthenticationToken(customerLogin, customerLogin.getPassword());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
+    
     public Long getCustomerId() {
         Object p = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (p == null) {

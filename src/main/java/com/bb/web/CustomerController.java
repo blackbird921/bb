@@ -72,7 +72,8 @@ public class CustomerController {
         uiModel.asMap().clear();
         customer.persist();
         logger.info("customer save:{}", customer);
-        String redirect = "redirect:/customerproducts/" + customer.getId().toString() + "/create";
+        loginService.login(customer);
+        String redirect = "redirect:/customerproducts/create";
         logger.info("{}", redirect);
         return redirect;
     }
@@ -120,7 +121,6 @@ public class CustomerController {
     @RequestMapping(params = "create", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new Customer());
-        System.out.println("it's ok here");
         return "customers/create";
     }
 
