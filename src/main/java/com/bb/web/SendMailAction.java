@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @Controller
+@RequestMapping("/mail")
 public class SendMailAction {
 
     @AutowiredLogger
@@ -23,15 +24,13 @@ public class SendMailAction {
     private MailService mailService;
 
 
-    @RequestMapping(value="/sendMail",method = RequestMethod.GET)
+    @RequestMapping(value="/sendMail",method = RequestMethod.POST)
     public ModelAndView sendMail(HttpServletRequest request, HttpServletResponse response) {
         this.logger.info("send mail start..");
         ModelAndView view = new ModelAndView();
 
         String email = request.getParameter("email");
         String json = "";
-        String failureURL = request.getContextPath()+"/verifyRegistration?email=" + request.getParameter("email");
-        String successURL = request.getContextPath()+"/showSendMailSuccessPage?email=" + request.getParameter("email");
         String mailType = request.getParameter("mailType");
         this.logger.info("mail type : " + mailType);
 
@@ -43,14 +42,13 @@ public class SendMailAction {
             view.addObject("resetPwdSuccess", true);
         }
 
-        if(StringUtils.isBlank(email)) {
-            view.setViewName("verifyRegistration");
-        }else {
-            view.setViewName("showSendMailSuccessPage");
+        if (StringUtils.isBlank(email)) {
+            view.setViewName("/forgetPassword");
+        } else {
+            request.getSession().setAttribute("email", email);
+            view.addObject("sendMailResult", mailService.sendEmail(email, mailType));
+            view.setViewName("sendMailResult");
         }
-        request.getSession().setAttribute("email", email);
-        mailService.sendEmail(email, mailType);
-
 
         return view;
 

@@ -1,2 +1,2 @@
-#if($activateEmail)wheel4注册激活#end
-#if($resetPwd)wheel4找回您的帐户密码#end
+#if($activateEmail)健身达人网-注册激活#end
+#if($resetPwd)健身达人网-找回您的帐户密码#end

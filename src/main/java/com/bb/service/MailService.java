@@ -53,27 +53,27 @@ public class MailService {
         mailSender.send(msg);
     }
 
-    public void sendEmail(String mailTo, String mailType) {
+    public boolean sendEmail(String mailTo, String mailType) {
         String email = mailTo;
         String emailContent = "";
         String from = templateMessage.getFrom();
         String subject = "";
 
         if (StringUtils.isBlank(email)) {
-            return;
+            return false;
         }
 
         Customer customer = null;
         try {
-//            customer = Customer.findCustomersByEmail(email).getSingleResult();
-            customer = new Customer();
-            customer.setEmail("sean.zeng@logicsolutions.com");
+            customer = Customer.findCustomersByEmail(email).getSingleResult();
+//            customer = new Customer();
+//            customer.setEmail("sean.zeng@logicsolutions.com");
         } catch (Exception e) {
             e.printStackTrace();
-            return;
+            return false;
         }
         if (customer == null) {
-            return;
+            return false;
         }
 //        if (SEND_MAIL_AGAIN.equals(mailType)) {
 //            subject = "wheel4 注册激活";
@@ -86,11 +86,12 @@ public class MailService {
             emailContent = this.readEmailContent(customer, mailType);
         } catch (IOException e) {
             this.logger.error("Error send email ", e);
+            return false;
         }
 
         Thread t = new Thread(new SendMailThread(email, from, subject, emailContent));
         t.start();
-
+        return true;
     }
 
 
@@ -117,6 +118,7 @@ public class MailService {
         url.append("email=").append(email);
         url.append("&activationCode=").append(activationCode);
         ctx.put("link", url.toString());
+        ctx.put("password", customer.getPassword());
 
         return velocityService.format(REG_MAIL_TPL, ctx);
     }

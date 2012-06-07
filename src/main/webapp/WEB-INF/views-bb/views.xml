@@ -38,6 +38,10 @@
         <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp"/>
         <put-attribute name="body" value="/WEB-INF/views-bb/intro.jsp"/>
     </definition>
+    <definition extends="default" name="sendMailResult">
+        <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views-bb/sendMailResult.jsp"/>
+    </definition>
 
 
 </tiles-definitions>
