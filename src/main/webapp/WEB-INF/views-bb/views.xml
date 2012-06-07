@@ -30,5 +30,14 @@
         <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp"/>
         <put-attribute name="body" value="/WEB-INF/views-bb/about.jsp"/>
     </definition>
+    <definition extends="default" name="forgetPassword">
+        <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views-bb/forgetPassword.jsp"/>
+    </definition>
+    <definition extends="default" name="intro">
+        <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views-bb/intro.jsp"/>
+    </definition>
+
 
 </tiles-definitions>

@@ -35,7 +35,7 @@
                 <li><label for="password_id">密码:</label>
                     <input id="password_id" class="k-textbox" name="j_password" type="password" value="" required="true"/>
                     <spring:message code="security_login_form_password_message" var="pwd_msg" htmlEscape="false" />
-                    <a href="">忘记密码？</a>
+                    <a href="/forgetPassword">忘记密码？</a>
                     <br/>
                 </li>
                 <br/>

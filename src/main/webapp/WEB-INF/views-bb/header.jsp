@@ -6,10 +6,16 @@
         <h1><a id="logo" href="">Kendo</a></h1>
         <ul>
             <li><a href="/">首页</a></li>
-            <li class="active"><a href="/customerproducts/show">动则赢</a></li>
+            <sec:authorize access="isAuthenticated()">
+                <li class="active"><a href="/customerproducts/show">动则赢</a></li>
+            </sec:authorize>
+            <sec:authorize access="isAnonymous()">
+                <li class="active"><a href="/intro">了解动则赢</a></li>
+            </sec:authorize>
+            <li><a href="/faqs">常见问题</a></li>
             <li><a href="/about">关于我们</a></li>
 
-            <sec:authorize  access="isAnonymous()">
+            <sec:authorize access="isAnonymous()">
                 <li><a href="/register/form">注册</a></li>
                 <li><a id="login" href="/login">登录</a></li>
             </sec:authorize>

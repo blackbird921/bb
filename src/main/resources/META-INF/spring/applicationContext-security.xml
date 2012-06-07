@@ -22,6 +22,9 @@
         <intercept-url pattern="/mobile/**" access="permitAll"/>
         <intercept-url pattern="/" access="permitAll"/>
         <intercept-url pattern="/about" access="permitAll"/>
+        <intercept-url pattern="/forgetPassword" access="permitAll"/>
+        <intercept-url pattern="/intro" access="permitAll"/>
+        <intercept-url pattern="/faqs" access="permitAll"/>
 
         <intercept-url pattern="/**" access="isAuthenticated()"/>
     </http>

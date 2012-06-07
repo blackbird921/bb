@@ -137,20 +137,13 @@ h1{
 }
 
 
-#footer
-{
-    clear:both;
-    position:relative;
-    height:71px;
-    margin-top:-72px;
-    /*margin-bottom: 0px;*/
-}
 
 /*header*/
 
 #header
 {
     text-rendering: optimizeLegibility;
+    border-bottom: 5px solid #75C121;
     padding:4px 0 5px;
     box-shadow: 0 0 4px #555;
     position:relative;
@@ -385,12 +378,12 @@ a.bigButton:hover,
     margin-bottom: 1px;
 }
 
-#flowerWrap .flowers
-{
-    border-bottom: 1px solid #bc5021;
-    background: #ef652a;
-    height: 7px;
-}
+/*#flowerWrap .flowers*/
+/*{*/
+    /*border-bottom: 1px solid #bc5021;*/
+    /*background: #ef652a;*/
+    /*height: 5px;*/
+/*}*/
 
 #flowerWrap img
 {
@@ -476,11 +469,11 @@ a.bigButton
     position: relative;
     z-index: 1;
     color: #fff;
-    background: #ef652a;
+    background: #75C121;
     cursor: default;
     padding-bottom: 11px;
-    border-bottom: 1px solid #ef652a;
-    border-top-color: #ef652a;
+    border-bottom: 1px solid #75C121;
+    border-top-color: #75C121;
     margin-top: -1px;
     padding-top:13px;
 }
@@ -693,6 +686,10 @@ a.bigButton
     border-top: 5px solid #75C121;
     background:#4d4d4d;
     color:#808080;
+    clear:both;
+    position:relative;
+    height:71px;
+    margin-top:-72px;
 }
 
 #footer ul,

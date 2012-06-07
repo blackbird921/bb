@@ -3,12 +3,11 @@
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
     <definition extends="default" name="faqs/list">
+        <put-attribute name="menu" value="/WEB-INF/views-bb/blank.jsp" />
         <put-attribute name="body" value="/WEB-INF/views-bb/faqs/list.jsp"/>
     </definition>
     <definition extends="default" name="faqs/show">
         <put-attribute name="body" value="/WEB-INF/views-bb/faqs/show.jsp"/>
-    </definition>
-    <definition name="my" template="/WEB-INF/layouts-bb/my.jsp">
     </definition>
     <definition extends="default" name="faqs/create">
         <put-attribute name="body" value="/WEB-INF/views-bb/faqs/create.jsp"/>
