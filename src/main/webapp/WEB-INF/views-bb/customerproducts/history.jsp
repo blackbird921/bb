@@ -35,7 +35,7 @@
                 出勤历史记录
                 </li>
                 <li class="k-state-active">
-                    每周动则赢统计
+                    每周健身计划统计
                 </li>
             </ul>
 

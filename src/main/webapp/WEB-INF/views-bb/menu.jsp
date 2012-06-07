@@ -5,12 +5,12 @@
         <li class="k-state-active k-state-highlighted k-item k-first">
                         <span class="k-link k-header">
                             <span class="k-sprite integrationIcon"></span>
-                            动则赢
+                            健身计划
                             <span class="k-icon k-arrow-up k-panelbar-collapse"></span>
                         </span>
             <ul class="k-group">
                 <li class="k-item k-state-active k-first">
-                    <a class="k-link chosen" href="/customerproducts/show">我的动则赢</a>
+                    <a class="k-link chosen" href="/customerproducts/show">空间首页</a>
                 </li>
                 <li class="k-item k-state-default">
                     <a class="k-link" href="/customerproducts?form">修改计划</a>

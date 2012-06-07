@@ -7,10 +7,10 @@
         <ul>
             <li><a href="/">首页</a></li>
             <sec:authorize access="isAuthenticated()">
-                <li class="active"><a href="/customerproducts/show">动则赢</a></li>
+                <li class="active"><a href="/customerproducts/show">我的空间</a></li>
             </sec:authorize>
             <sec:authorize access="isAnonymous()">
-                <li class="active"><a href="/intro">了解动则赢</a></li>
+                <%--<li class="active"><a href="/intro">了解动则赢</a></li>--%>
             </sec:authorize>
             <li><a href="/faqs">常见问题</a></li>
             <li><a href="/about">关于我们</a></li>

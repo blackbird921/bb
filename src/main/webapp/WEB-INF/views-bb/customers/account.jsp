@@ -45,7 +45,7 @@
                         <td><span style="font-size: 8px;"><fmt:formatDate pattern="yy/MM/dd HH:mm" value="${item.timestamp}" type="both"/></span></td>
                         <td><c:choose>
                             <c:when test="${item.bonus!=0}">
-                                动则赢奖罚金
+                                奖罚金
                             </c:when>
                             <c:otherwise>
                                 ${item.name}

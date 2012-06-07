@@ -24,7 +24,7 @@
 <div id="main">
     <h1 id="exampleTitle" class="k-content">
         <span class="exampleIcon overviewIcon"></span>
-        我的动则赢
+        我的健身计划
     </h1>
 
     <div id="example" class="k-content" style="margin-top: 15px;">
@@ -34,7 +34,7 @@
                 <c:when test="${newUserStartDate!=null}">
                     <div style="text-align: center;">
                         <h1 style="color:#ef652a;">
-                            我的动则赢计划将于<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${newUserStartDate}" type="both"/>正式开始
+                            我的健身计划将于<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${newUserStartDate}" type="both"/>正式开始
                         </h1>
                     </div>
                 </c:when>
