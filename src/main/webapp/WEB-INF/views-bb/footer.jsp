@@ -3,10 +3,10 @@
 <div id="footer">
     <div class="floatWrap centerWrap">
         <ul>
-            <li><a href="http://www.kendoui.com/">Home</a></li>
-            <li><a href="http://www.kendoui.com/web">Web</a></li>
+            <li><a href="">工作机会</a></li>
+            <li><a href="">联系我们</a></li>
         </ul>
-        <p id="copy">Copyright © 2012 联信脉动 Inc. All rights reserved.</p>
+        <p id="copy" style="color: white">Copyright © 2012 联信脉动 Inc. 京ICP备11111111号</p>
     </div>
 </div>
 

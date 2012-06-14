@@ -15,11 +15,11 @@ import java.util.List;
 public class Faq {
 
     @NotNull
-    @Size(min = 2, max = 100)
+    @Size(min = 2, max = 200)
     private String question;
 
     @NotNull
-    @Size(min = 2, max = 500)
+    @Size(min = 2, max = 1000)
     private String answer;
 
     @NotNull

@@ -45,7 +45,7 @@
         <br>
         <img class="step" src="/resources/images/1-medium.png" alt="" >选择您的健身计划。
        <br>
-        <img class="step" src="/resources/images/2-medium.png" alt="" >在健身馆用您的手机记录出勤。
+        <img class="step" src="/resources/images/2-medium.png" alt="" >在健身馆用您的手机应用考勤。
         <br>
         <div style="float:left;"><img class="step" src="/resources/images/3-medium.png" alt="" ></div>
         <div style="width:280px; display: inline;"><div style="margin-top:25px;"></div>每个周末，只要您按照计划完成了出勤，奖金会自动分配到您的账户。</div>
