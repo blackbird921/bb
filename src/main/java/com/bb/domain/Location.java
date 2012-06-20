@@ -1,6 +1,7 @@
 package com.bb.domain;
 
 import com.bb.reference.LocationStatus;
+import com.bb.util.GpsDistanceCalc;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -25,7 +26,6 @@ public class Location {
     @Size(max = 100)
     private String address;
 
-    @NotNull
     @Size(max = 30)
     private String city;
 
@@ -156,6 +156,19 @@ public class Location {
 
     public static List<Location> findAllLocations() {
         return entityManager().createQuery("SELECT o FROM Location o", Location.class).getResultList();
+    }
+
+    public static List<Location> findAllLocationsInRange(GpsDistanceCalc.GpsRange range) {
+
+        TypedQuery<Location> q = entityManager().createQuery("SELECT o FROM Location AS o " +
+                "WHERE o.latitude > :minLat AND o.longitude > :minLon " +
+                "AND o.latitude < :maxLat AND o.longitude < :maxLon ", Location.class);
+        q.setParameter("minLat", range.minLat);
+        q.setParameter("minLon", range.minLon);
+        q.setParameter("maxLat", range.maxLat);
+        q.setParameter("maxLon", range.maxLon);
+
+        return q.getResultList();
     }
 
     public static Location findLocation(Long id) {

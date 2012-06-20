@@ -5,6 +5,7 @@ import com.bb.domain.ref.RefPaymentType;
 import com.bb.reference.*;
 import com.bb.service.*;
 import com.bb.util.AutowiredLogger;
+import com.bb.util.GpsDistanceCalc;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,7 +56,7 @@ public class MobileController {
                             @RequestParam String email,
                             @RequestParam String password,
                             Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/register/create..............");
+        logger.info("/register/create..............");
         Customer customer = new Customer();
         customer.setUsername(username);
         customer.setEmail(email);
@@ -72,7 +73,7 @@ public class MobileController {
     public
     @ResponseBody
     MobileRegisterList registerList(Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/register/list..............");
+        logger.info("/register/list..............");
         MobileRegisterList list = mobileService.getRegisterList();
         return list;
     }
@@ -88,7 +89,7 @@ public class MobileController {
                           @RequestParam(required = false) String accountNumber,
                           @RequestParam(required = false) String accountName,
                           Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/register/submit..............");
+        logger.info("/register/submit..............");
         String result = "success";
 
         try {
@@ -102,14 +103,14 @@ public class MobileController {
             customerProduct.setProductCommit(productCommit);
             customerProduct.setProductStake(productStake);
             customerProduct.setStartDate(new Date());
-            customer.persist();
+            customerProduct.persist();
 
             if (gymCardId != null) {
                 CustomerCard customerCard = new CustomerCard();
                 customerCard.setCustomer(customer);
                 customerCard.setCard(card);
                 customerCard.setIssuedDate(new Date());
-                customerCard.setStatus("未使用");
+                customerCard.setStatus("NOT USED");
                 customerCard.persist();
             }
 
@@ -141,7 +142,7 @@ public class MobileController {
     Customer login(@RequestParam String usernameOrEmail,
                            @RequestParam String password,
                            Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/login..............");
+        logger.info("/login..............");
         Customer customer = null;
         try {
             customer = Customer.findCustomersByUsernameOrEmail(usernameOrEmail, password);
@@ -156,7 +157,7 @@ public class MobileController {
     public
     @ResponseBody
     MobileSpaceList spaceList(@RequestParam Long cid, Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/space/list..............");
+        logger.info("/space/list..............");
         MobileSpaceList mobileSpaceList = new MobileSpaceList();
         customerProductController.show(cid, uiModel);
         Map<String, Object> attributes = uiModel.asMap();
@@ -173,7 +174,7 @@ public class MobileController {
     public
     @ResponseBody
     MobileSpaceCard spaceCard(@RequestParam Long cid, Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/space/card..............");
+        logger.info("/space/card..............");
         MobileSpaceCard mobileSpaceCard = new MobileSpaceCard();
         customerProductController.card(cid, uiModel);
         Map<String, Object> attributes = uiModel.asMap();
@@ -186,7 +187,7 @@ public class MobileController {
     public
     @ResponseBody
     MobileSpaceHistory spaceHistory(@RequestParam Long cid, Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/space/history..............");
+        logger.info("/space/history..............");
         MobileSpaceHistory mobileSpaceHistory = new MobileSpaceHistory();
         customerProductController.history(cid, 0L, uiModel);
         Map<String, Object> attributes = uiModel.asMap();
@@ -202,7 +203,7 @@ public class MobileController {
                               @RequestParam Long commitNextWeek,
                               @RequestParam Long stakeNextWeek,
                               Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/space/update/product..............");
+        logger.info("/space/update/product..............");
 
         try {
             CustomerProduct customerProduct = CustomerProduct.findCustomerProduct(customerProductId);
@@ -227,7 +228,7 @@ public class MobileController {
                                @RequestParam String oldPassword,
                                @RequestParam String newPassword,
                                Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/space/update/password..............");
+        logger.info("/space/update/password..............");
 
         try {
             loginService.changePassword(cid, oldPassword, newPassword);
@@ -244,7 +245,7 @@ public class MobileController {
     String spaceUpdateCard(@RequestParam Long cid,
                            @RequestParam Long cardId,
                            Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/space/update/card..............");
+        logger.info("/space/update/card..............");
 
         try {
             Card card = Card.findCard(cardId);
@@ -266,9 +267,10 @@ public class MobileController {
     String checkinStart(@RequestParam Long cid,
                         @RequestParam Float lat, @RequestParam Float lon,
                         Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/checkinStart/start..............");
+        logger.info("/checkinStart/start..............");
 
         try {
+            //TODO
             if (mobileService.checkinStart(cid, lat, lon)) {
                 return "success";
             } else {
@@ -287,9 +289,10 @@ public class MobileController {
                             @RequestParam Float lat, @RequestParam Float lon,
                             @RequestParam Long locationId,
                             Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/checkinStart/keepalive..............");
+        logger.info("/checkinStart/keepalive..............");
 
         try {
+            //TODO
             if (mobileService.checkinKeepalive(cid, lat, lon, locationId)) {
                 return "success";
             } else {
@@ -307,9 +310,10 @@ public class MobileController {
                       @RequestParam Float lat, @RequestParam Float lon,
                       @RequestParam Long locationId,
                       Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/checkinStart/end..............");
+        logger.info("/checkinStart/end..............");
 
         try {
+            //TODO
             if (mobileService.checkinEnd(cid, lat, lon, locationId)) {
                 return "success";
             } else {
@@ -327,12 +331,29 @@ public class MobileController {
                         @RequestParam Float lat, @RequestParam Float lon,
                         @RequestParam Long radiusInMeter,
                         Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/location/list..............");
+        logger.info("/location/list..............");
         List<MobileLocationListItem> list = new ArrayList<MobileLocationListItem>();
         try {
-
+            if (radiusInMeter <= 20000) {
+                GpsDistanceCalc.GpsRange range = GpsDistanceCalc.getGpsRange(lat, lon, radiusInMeter);
+                logger.info("range:{}", range);
+                List<Location> locations = Location.findAllLocationsInRange(range);
+                logger.info("locations:{}", locations);
+                for (Location location : locations) {
+                    MobileLocationListItem item = new MobileLocationListItem();
+                    item.setLatitude(location.getLatitude());
+                    item.setLongitude(location.getLongitude());
+                    item.setLocationId(location.getId());
+                    item.setName(location.getName());
+                    item.setAddress(location.getAddress());
+                    logger.info("item:{}", item);
+                    list.add(item);
+                }
+                logger.info("list", list);
+            }
         } catch (Exception e) {
-            return list;
+            e.printStackTrace();
+            logger.error("error:", e);
         }
 
         return list;
@@ -345,13 +366,19 @@ public class MobileController {
                        @RequestParam Float lat, @RequestParam Float lon,
                        @RequestParam String name, @RequestParam String address,
                        Model uiModel, HttpServletRequest httpServletRequest) {
-        System.out.println("/location/add..............");
+        logger.info("/location/add..............");
         Location location = new Location();
-        
-        try {
 
+        try {
+            location.setCustomer(Customer.findCustomer(cid));
+            location.setLatitude(lat);
+            location.setLongitude(lon);
+            location.setName(name);
+            location.setAddress(address);
+            location.setStatus(LocationStatus.Todo);
+            location.persist();
         } catch (Exception e) {
-            return location;
+            logger.error("error:", e);
         }
 
         return location;

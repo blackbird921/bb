@@ -5,6 +5,7 @@ public class MobileLocationListItem {
     private Float latitude;
     private Float longitude;
     private String name;
+    private String address;
 
     public Long getLocationId() {
         return locationId;
@@ -36,5 +37,13 @@ public class MobileLocationListItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

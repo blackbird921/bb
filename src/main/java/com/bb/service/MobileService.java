@@ -1,10 +1,9 @@
 package com.bb.service;
 
-import com.bb.domain.Card;
-import com.bb.domain.CustomerProfit;
-import com.bb.domain.ProductCommit;
-import com.bb.domain.ProductStake;
+import com.bb.domain.*;
 import com.bb.reference.MobileRegisterList;
+import com.bb.util.GpsDistanceCalc;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +14,10 @@ import java.util.List;
 @Service
 @Transactional
 public class MobileService {
+    @Autowired
+    private ConfigurationService configurationService;
+    @Autowired
+    private LocationService locationService;
 
     public MobileRegisterList getRegisterList() {
         MobileRegisterList list = new MobileRegisterList();
@@ -25,8 +28,19 @@ public class MobileService {
     }
 
     public boolean checkinStart(Long cid, Float lat, Float lon){
-        boolean result = true;
+        boolean result = false;
+        Location location = locationService.getCurrentLocation(lat, lon);
+        Customer customer = Customer.findCustomer(cid);
 
+        if (location != null && customer != null) {
+            CustomerCheckin customerCheckin = new CustomerCheckin();
+            customerCheckin.setCustomer(customer);
+            customerCheckin.setIsApproved(false);
+            customerCheckin.setStartDate(new Date());
+            customerCheckin.setTimeLengthInMinute(0);
+            customerCheckin.persist();
+            result = true;
+        }
 
         return result;
     }
@@ -44,7 +58,6 @@ public class MobileService {
 
         return result;
     }
-
 
 
 

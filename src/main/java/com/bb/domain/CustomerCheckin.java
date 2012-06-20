@@ -28,7 +28,6 @@ public class CustomerCheckin {
     @DateTimeFormat(style = "M-")
     private Date startDate;
 
-    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date endDate;
