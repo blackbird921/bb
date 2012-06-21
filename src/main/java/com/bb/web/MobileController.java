@@ -215,6 +215,7 @@ public class MobileController {
             customerProduct.setProductStake(stake);
             customerProductService.updateFutureProduct(customerProduct);
         } catch (Exception e) {
+            logger.error("{}", e);
             return "failure";
         }
 
@@ -233,6 +234,7 @@ public class MobileController {
         try {
             loginService.changePassword(cid, oldPassword, newPassword);
         } catch (Exception e) {
+            logger.error("{}", e);
             return "failure";
         }
 
@@ -255,6 +257,7 @@ public class MobileController {
             customerCard.setCustomer(customer);
             customerCard.persist();
         } catch (Exception e) {
+            logger.error("{}", e);
             return "failure";
         }
 
@@ -264,64 +267,56 @@ public class MobileController {
     @RequestMapping(value = "/checkin/start", method = RequestMethod.GET)
     public
     @ResponseBody
-    String checkinStart(@RequestParam Long cid,
+    CustomerCheckin checkinStart(@RequestParam Long cid,
                         @RequestParam Float lat, @RequestParam Float lon,
                         Model uiModel, HttpServletRequest httpServletRequest) {
         logger.info("/checkinStart/start..............");
-
+        CustomerCheckin customerCheckin = new CustomerCheckin();
         try {
-            //TODO
-            if (mobileService.checkinStart(cid, lat, lon)) {
-                return "success";
-            } else {
-                return "failure";
-            }
+            customerCheckin = mobileService.checkinStart(cid, lat, lon);
         } catch (Exception e) {
-            return "failure";
+            logger.error("{}", e);
         }
 
+        return customerCheckin;
     }
 
     @RequestMapping(value = "/checkin/keepalive", method = RequestMethod.GET)
     public
     @ResponseBody
-    String checkinKeepalive(@RequestParam Long cid,
-                            @RequestParam Float lat, @RequestParam Float lon,
-                            @RequestParam Long locationId,
+    CustomerCheckin  checkinKeepalive(@RequestParam Long cid,
+                            @RequestParam Double lat, @RequestParam Double lon,
+                            @RequestParam Long customerCheckinId,
                             Model uiModel, HttpServletRequest httpServletRequest) {
         logger.info("/checkinStart/keepalive..............");
+        CustomerCheckin customerCheckin = new CustomerCheckin();
 
         try {
             //TODO
-            if (mobileService.checkinKeepalive(cid, lat, lon, locationId)) {
-                return "success";
-            } else {
-                return "failure";
-            }
+            customerCheckin = mobileService.checkinKeepalive(cid, lat, lon, customerCheckinId);
         } catch (Exception e) {
-            return "failure";
+            logger.error("{}", e);
         }
+        return customerCheckin;
     }
 
     @RequestMapping(value = "/checkin/end", method = RequestMethod.GET)
     public
     @ResponseBody
-    String checkinEnd(@RequestParam Long cid,
-                      @RequestParam Float lat, @RequestParam Float lon,
-                      @RequestParam Long locationId,
+    CustomerCheckin checkinEnd(@RequestParam Long cid,
+                      @RequestParam Double lat, @RequestParam Double lon,
+                      @RequestParam Long customerCheckinId,
                       Model uiModel, HttpServletRequest httpServletRequest) {
         logger.info("/checkinStart/end..............");
+        CustomerCheckin customerCheckin = new CustomerCheckin();
 
         try {
             //TODO
-            if (mobileService.checkinEnd(cid, lat, lon, locationId)) {
-                return "success";
-            } else {
-                return "failure";
-            }
+            customerCheckin = mobileService.checkinEnd(cid, lat, lon, customerCheckinId);
         } catch (Exception e) {
-            return "failure";
+            logger.error("{}", e);
         }
+        return customerCheckin;
     }
 
     @RequestMapping(value = "/location/list", method = RequestMethod.GET)
@@ -363,7 +358,7 @@ public class MobileController {
     public
     @ResponseBody
     Location locationAdd(@RequestParam Long cid,
-                       @RequestParam Float lat, @RequestParam Float lon,
+                       @RequestParam Double lat, @RequestParam Double lon,
                        @RequestParam String name, @RequestParam String address,
                        Model uiModel, HttpServletRequest httpServletRequest) {
         logger.info("/location/add..............");

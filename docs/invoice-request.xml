@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+                   xmlns:ns1="http://webservices.micros.com/og/4.3/ResvAdvanced/"
+                   xmlns:ns2="http://webservices.micros.com/og/4.3/Core/">
+    <SOAP-ENV:Header>
+        <ns2:Action>http://webservices.micros.com/ows/5.1/ResvAdvanced.wsdl#Invoice</ns2:Action>
+        <ns2:OGHeader transactionID="536276" timeStamp="2012-06-18T17:31:15+08:00">
+            <ns2:Origin entityID="OWS" organizationID="WEB" systemType="WEB"/>
+            <ns2:Destination entityID="WBE" organizationID="WBE" systemType="WBE"/>
+            <ns2:Authentication>
+                <ns2:UserCredentials>
+                    <ns2:UserName>ADMINUSER2</ns2:UserName>
+                    <ns2:UserPassword>OPERA1234</ns2:UserPassword>
+                    <ns2:Domain>001</ns2:Domain>
+                </ns2:UserCredentials>
+            </ns2:Authentication>
+        </ns2:OGHeader>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns1:InvoiceRequest>
+            <ns1:ReservationRequest/>
+        </ns1:InvoiceRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

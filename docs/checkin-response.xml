@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+               xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+               xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <wsa:Action>http://schemas.xmlsoap.org/ws/2004/08/addressing/fault</wsa:Action>
+        <wsa:MessageID>urn:uuid:f970fcb7-33b0-423a-a9d3-48d33c032354</wsa:MessageID>
+        <wsa:RelatesTo>urn:uuid:317021a5-11e8-45f2-a1cb-004884d58bbb</wsa:RelatesTo>
+        <wsa:To>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</wsa:To>
+        <wsse:Security>
+            <wsu:Timestamp wsu:Id="Timestamp-7d1c4587-f092-4a7d-b803-0301447e3886">
+                <wsu:Created>2012-06-18T09:31:54Z</wsu:Created>
+                <wsu:Expires>2012-06-18T09:36:54Z</wsu:Expires>
+            </wsu:Timestamp>
+        </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <soap:Fault>
+            <faultcode>soap:Client</faultcode>
+            <faultstring>Server was unable to read request. ---&gt; There is an error in the XML document. ---&gt; The
+                string '' is not a valid AllXsd value.
+            </faultstring>
+            <detail/>
+        </soap:Fault>
+    </soap:Body>
+</soap:Envelope>

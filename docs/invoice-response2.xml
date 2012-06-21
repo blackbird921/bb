@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+               xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+               xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <OGHeader transactionID="439707" timeStamp="2012-06-18T03:17:29-07:00" primaryLangID="E"
+                  xmlns="http://webservices.micros.com/og/4.3/Core/">
+            <Origin entityID="OWS" organizationID="WEB" systemType="WEB"/>
+            <Destination entityID="WBE" organizationID="WBE" systemType="WBE"/>
+            <Authentication>
+                <UserCredentials>
+                    <UserName>ADMINUSER2</UserName>
+                    <UserPassword>OPERA1234</UserPassword>
+                    <Domain>001</Domain>
+                </UserCredentials>
+            </Authentication>
+        </OGHeader>
+        <wsa:Action>http://webservices.micros.com/ows/5.1/ResvAdvanced.wsdl#InvoiceResponse</wsa:Action>
+        <wsa:MessageID>urn:uuid:12af6837-6c34-4cfd-9161-593ec521d005</wsa:MessageID>
+        <wsa:RelatesTo>urn:uuid:6591b100-7a8b-4f49-8eae-ba0f6477ce97</wsa:RelatesTo>
+        <wsa:To>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</wsa:To>
+        <wsse:Security>
+            <wsu:Timestamp wsu:Id="Timestamp-84682aaa-59c3-4366-93e9-bea33b9a80f6">
+                <wsu:Created>2012-06-18T10:17:39Z</wsu:Created>
+                <wsu:Expires>2012-06-18T10:22:39Z</wsu:Expires>
+            </wsu:Timestamp>
+        </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <InvoiceResponse
+                xmlns:c="http://webservices.micros.com/og/4.3/Common/"
+                xmlns="http://webservices.micros.com/og/4.3/ResvAdvanced/">
+            <Result resultStatusFlag="FAIL">
+                <c:Text>
+                    <c:TextElement>No connection could be made because the target machine actively refused it
+                        10.76.92.62:9025
+                    </c:TextElement>
+                </c:Text>
+            </Result>
+        </InvoiceResponse>
+    </soap:Body>
+</soap:Envelope>

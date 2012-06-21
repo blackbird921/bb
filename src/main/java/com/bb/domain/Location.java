@@ -29,9 +29,9 @@ public class Location {
     @Size(max = 30)
     private String city;
 
-    private Float latitude;
+    private Double latitude;
 
-    private Float longitude;
+    private Double longitude;
 
     @Size(max = 30)
     private String phone;
@@ -77,19 +77,19 @@ public class Location {
         this.city = city;
     }
 
-    public Float getLatitude() {
+    public Double getLatitude() {
         return this.latitude;
     }
 
-    public void setLatitude(Float latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public Float getLongitude() {
+    public Double getLongitude() {
         return this.longitude;
     }
 
-    public void setLongitude(Float longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
@@ -163,10 +163,10 @@ public class Location {
         TypedQuery<Location> q = entityManager().createQuery("SELECT o FROM Location AS o " +
                 "WHERE o.latitude > :minLat AND o.longitude > :minLon " +
                 "AND o.latitude < :maxLat AND o.longitude < :maxLon ", Location.class);
-        q.setParameter("minLat", range.minLat);
-        q.setParameter("minLon", range.minLon);
-        q.setParameter("maxLat", range.maxLat);
-        q.setParameter("maxLon", range.maxLon);
+        q.setParameter("minLat", (double)range.minLat);
+        q.setParameter("minLon", (double)range.minLon);
+        q.setParameter("maxLat", (double)range.maxLat);
+        q.setParameter("maxLon", (double)range.maxLon);
 
         return q.getResultList();
     }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+               xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+               xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <OGHeader transactionID="536276" timeStamp="2012-06-18T02:31:15-07:00" primaryLangID="E"
+                  xmlns="http://webservices.micros.com/og/4.3/Core/">
+            <Origin entityID="OWS" organizationID="WEB" systemType="WEB"/>
+            <Destination entityID="WBE" organizationID="WBE" systemType="WBE"/>
+            <Authentication>
+                <UserCredentials>
+                    <UserName>ADMINUSER2</UserName>
+                    <UserPassword>OPERA1234</UserPassword>
+                    <Domain>001</Domain>
+                </UserCredentials>
+            </Authentication>
+        </OGHeader>
+        <wsa:Action>http://webservices.micros.com/ows/5.1/ResvAdvanced.wsdl#InvoiceResponse</wsa:Action>
+        <wsa:MessageID>urn:uuid:f11e43a0-d62b-4536-85b4-6265ca6b1bb7</wsa:MessageID>
+        <wsa:RelatesTo>urn:uuid:40252bd4-12fa-4e04-ba18-ce7bc5bf8331</wsa:RelatesTo>
+        <wsa:To>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</wsa:To>
+        <wsse:Security>
+            <wsu:Timestamp wsu:Id="Timestamp-15b4e953-094d-4c89-b068-76471ff24394">
+                <wsu:Created>2012-06-18T09:31:22Z</wsu:Created>
+                <wsu:Expires>2012-06-18T09:36:22Z</wsu:Expires>
+            </wsu:Timestamp>
+        </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <InvoiceResponse
+                xmlns:c="http://webservices.micros.com/og/4.3/Common/"
+                xmlns="http://webservices.micros.com/og/4.3/ResvAdvanced/">
+            <Result resultStatusFlag="FAIL">
+                <c:Text>
+                    <c:TextElement>Opera Resort is Missing in Request Message</c:TextElement>
+                </c:Text>
+            </Result>
+        </InvoiceResponse>
+    </soap:Body>
+</soap:Envelope>

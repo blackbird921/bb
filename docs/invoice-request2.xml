@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+                   xmlns:ns1="http://webservices.micros.com/og/4.3/ResvAdvanced/"
+                   xmlns:ns2="http://webservices.micros.com/og/4.3/Common/"
+                   xmlns:ns3="http://webservices.micros.com/og/4.3/Core/">
+    <SOAP-ENV:Header>
+        <ns3:Action>http://webservices.micros.com/ows/5.1/ResvAdvanced.wsdl#Invoice</ns3:Action>
+        <ns3:OGHeader transactionID="439707" timeStamp="2012-06-18T18:17:29+08:00">
+            <ns3:Origin entityID="OWS" organizationID="WEB" systemType="WEB"/>
+            <ns3:Destination entityID="WBE" organizationID="WBE" systemType="WBE"/>
+            <ns3:Authentication>
+                <ns3:UserCredentials>
+                    <ns3:UserName>ADMINUSER2</ns3:UserName>
+                    <ns3:UserPassword>OPERA1234</ns3:UserPassword>
+                    <ns3:Domain>001</ns3:Domain>
+                </ns3:UserCredentials>
+            </ns3:Authentication>
+        </ns3:OGHeader>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns1:InvoiceRequest>
+            <ns1:ReservationRequest>
+                <ns1:HotelReference chainCode="CASINO2" hotelCode="CASINO3">CASINO1</ns1:HotelReference>
+                <ns1:KeyTrack Key1Track="1000000000016505" Key2Track="1000000000016566" Key3Track="1000000000016577"
+                              Key4Track="1000000000016588"/>
+                <ns1:ReservationID>
+                    <ns2:UniqueID type="INTERNAL" source="Opera">500</ns2:UniqueID>
+                    <ns2:UniqueID type="EXTERNAL" source="PMS">342</ns2:UniqueID>
+                </ns1:ReservationID>
+            </ns1:ReservationRequest>
+            <ns1:Printer StationID="KIOSK001" PrinterEmulation="PDF" PrinterName="KIOSK1" UserID="UserID"/>
+        </ns1:InvoiceRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
