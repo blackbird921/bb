@@ -170,9 +170,9 @@ h1{
 {
     display:block;
     height:36px;
-    background:no-repeat url(kendo-logo.png);
+    background:no-repeat url(logo.png);
     text-indent:-4000px;
-    overflow:hidden;
+    overflow:visible;
 }
 
 #referenceUrl
