@@ -170,6 +170,7 @@ h1{
 {
     display:block;
     height:36px;
+    width: 200px;
     background:no-repeat url(logo.png);
     text-indent:-4000px;
     overflow:visible;
