@@ -75,7 +75,7 @@
                     <spring:message code="label_${fn:toLowerCase(fn:substringAfter('c_com_bb_domain_Customer_birthday','_'))}" htmlEscape="false" var="label"/>
                     <label for="c_com_bb_domain_Customer_birthday">
                         <c:out value="${label}"/>:</label>
-                    <fmt:formatDate pattern='yyyy-MM-dd' value='${customer.birthday}' var="formatBirthday"/>
+                    <fmt:formatDate pattern='yyyy/MM/dd' value='${customer.birthday}' var="formatBirthday"/>
                     <input id="c_com_bb_domain_Customer_birthday" name="birthday" type="text" value="${formatBirthday}" readonly="" class="k-textbox" required/>
                 </li>
                 <script src="/resources/scripts/jquery-ui/development-bundle/ui/i18n/jquery.ui.datepicker-zh-CN.js" type="text/javascript">
@@ -84,7 +84,7 @@
                 <script>
                     $(function () {
                         $("#c_com_bb_domain_Customer_birthday").datepicker({
-                            dateFormat:"yy-mm-dd",
+                            dateFormat:"yy/mm/dd",
                             numberOfMonths:3,
                             maxDate:'-6Y'
                         });
@@ -96,7 +96,7 @@
                         <spring:message code="label_${fn:toLowerCase(fn:substringAfter('c_com_bb_domain_Customer_disableStartDate','_'))}" htmlEscape="false" var="label"/>
                         <label for="c_com_bb_domain_Customer_disableStartDate">
                             <c:out value="${label}"/>:</label>
-                        <fmt:formatDate pattern='yyyy-MM-dd' value='${customer.disableStartDate}' var="formatStartDate"/>
+                        <fmt:formatDate pattern='yyyy/MM/dd' value='${customer.disableStartDate}' var="formatStartDate"/>
                         <input id="c_com_bb_domain_Customer_disableStartDate" name="disableStartDate" type="text" value="${formatStartDate}" readonly="" class="k-textbox" required/>
 
                     </li>
@@ -106,7 +106,7 @@
                     <script>
                         $(function () {
                             $("#c_com_bb_domain_Customer_disableStartDate").datepicker({
-                                dateFormat:"yy-mm-dd",
+                                dateFormat:"yy/mm/dd",
                                 numberOfMonths:1,
                                 minDate:-0
                             });
@@ -118,7 +118,7 @@
                         <spring:message code="label_${fn:toLowerCase(fn:substringAfter('c_com_bb_domain_Customer_disableEndDate','_'))}" htmlEscape="false" var="label"/>
                         <label for="c_com_bb_domain_Customer_disableEndDate">
                             <c:out value="${label}"/>:</label>
-                        <fmt:formatDate pattern='yyyy-MM-dd' value='${customer.disableEndDate}' var="formatEndDate"/>
+                        <fmt:formatDate pattern='yyyy/MM/dd' value='${customer.disableEndDate}' var="formatEndDate"/>
                         <input id="c_com_bb_domain_Customer_disableEndDate" name="disableEndDate" type="text" value="${formatEndDate}" readonly="" class="k-textbox" required/>
                     </li>
                     <script src="/resources/scripts/jquery-ui/development-bundle/ui/i18n/jquery.ui.datepicker-zh-CN.js" type="text/javascript">
@@ -127,7 +127,7 @@
                     <script>
                         $(function () {
                             $("#c_com_bb_domain_Customer_disableEndDate").datepicker({
-                                dateFormat:"yy-mm-dd",
+                                dateFormat:"yy/mm/dd",
                                 numberOfMonths:1,
                                 minDate:+1
                             });

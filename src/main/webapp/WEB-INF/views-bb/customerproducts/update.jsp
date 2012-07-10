@@ -81,7 +81,7 @@
                         <c:out value="${label}"/>:</label>
 
                     <c:if test="${futurecustomerproduct.showStartDate}">
-                        <fmt:formatDate pattern='yyyy-MM-dd' value='${futurecustomerproduct.startDate}' var="futureStartDate"/>
+                        <fmt:formatDate pattern='yyyy/MM/dd' value='${futurecustomerproduct.startDate}' var="futureStartDate"/>
                     </c:if>
                     <input id="c_com_bb_domain_CustomerProduct_startDate" name="startDate" type="text" value="${futureStartDate}" readonly="" class="k-textbox" required/>
                 </li>
@@ -91,7 +91,7 @@
                 <script>
                     $(function () {
                         $("#c_com_bb_domain_CustomerProduct_startDate").datepicker({
-                            dateFormat:"yy-mm-dd",
+                            dateFormat:"yy/mm/dd",
                             numberOfMonths:1,
                             showButtonPanel:true,
                             minDate:-0, maxDate:'+12M',

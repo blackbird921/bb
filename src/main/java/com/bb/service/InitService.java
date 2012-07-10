@@ -2,9 +2,12 @@ package com.bb.service;
 
 import com.bb.domain.ref.RefPaymentType;
 import com.bb.domain.ref.RefSex;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+
+import java.util.Calendar;
 
 import static com.bb.util.StringHelper.parseUtf8String;
 
@@ -27,5 +30,10 @@ public class InitService {
 //
 //        RefSex.RefSexBuilder.refSex().withName( parseUtf8String( "男" ) ).build().persist();
 //        RefSex.RefSexBuilder.refSex().withName( parseUtf8String( "女" ) ).build().persist();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(DateUtils.ceiling(Calendar.getInstance(), Calendar.MONDAY).getTime());
+
     }
 }
